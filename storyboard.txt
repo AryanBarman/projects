@@ -1,0 +1,144 @@
+STORYBOARD GUIDE - from an SRT to a continuous 3D explainer (no code in this file)
+==============================================================================
+Purpose: a repeatable order of steps for turning one voice-over SRT (one "part", 20-70 seconds)
+into a storyboard that can be handed to anyone (person or AI) to build. Follow the steps in
+order. Do not start building before step 6 is written down.
+
+Inputs you need
+  - The part's SRT (text + start/end times). The SRT is the only timing source.
+  - The look to keep: dark teal "blueprint" world, toon outlines, stickman characters
+    (Jensen, Elon, general public) cut from the character sheets.
+  - The existing engine/template for that file type. Reuse it. Never rebuild the engine.
+
+------------------------------------------------------------------------------
+STEP 1  READ THE SRT AS BEATS, NOT AS SENTENCES
+------------------------------------------------------------------------------
+  1. Copy the SRT into a table: line no. | start | end | text.
+  2. Merge lines into BEATS. A beat is one idea the viewer must see. Typical part = 6-10 beats.
+     Start a new beat when: the subject changes, a number/date/name appears, the tone flips
+     ("But", "Then", "In fact"), or there is a pause of 0.4s+ between lines.
+  3. For each beat write: start time, end time, one-sentence meaning, and the KEY WORDS
+     (nouns, numbers, names, verbs of change: "ousted", "$119 billion", "sealed").
+  4. Mark the HARD NUMBERS and NAMES. These must appear on screen exactly as spoken.
+     Do not add facts the narration does not say (invented figures, extra statistics).
+  5. Flag the 3-5 PEAK MOMENTS (the line the viewer will remember). These get the biggest
+     asset, a camera move, and an impact effect.
+
+  Output of step 1: a beat table.
+
+------------------------------------------------------------------------------
+STEP 2  FIND THE THROUGH-LINE
+------------------------------------------------------------------------------
+  Pick ONE object or world that carries the whole part, so it feels like one flight and not
+  slides. Examples already used: a golden thread on the floor; a partnership chain link that
+  breaks; a supplier web held by a pin then by a handshake; a folder that becomes a map that
+  becomes a campus. Rules:
+  - It must change state at least twice (grows, breaks, locks, turns red/gold, is sealed).
+  - It must be visible in the first and the last beat.
+  Output: one sentence "The through-line is ___ ; it goes from ___ to ___."
+
+------------------------------------------------------------------------------
+STEP 3  TURN EACH BEAT INTO A STATION
+------------------------------------------------------------------------------
+  Lay the beats out along ONE axis in the 3D world (usually moving away from the viewer, or
+  sideways for a very long part). One station per beat or per 2 beats.
+  For each station decide:
+  - Where it sits (x, z). Keep 20-40 units between stations so the camera has room to fly.
+  - Its ground: a plain slab, a map, a paper, a grid. Stations must be recognisable at a glance.
+  - Its LIGHTING: day or night/dark. Switch lighting only on a story turn (good news -> bad news).
+  Output: a station list with coordinates.
+
+------------------------------------------------------------------------------
+STEP 4  CHOOSE THE ASSETS (show the idea, do not make a character talk about it)
+------------------------------------------------------------------------------
+  For every beat answer: "What object, built from boxes/cylinders/flat panels, SHOWS this idea?"
+  Write each asset as one line:
+     asset | what it is | which key word triggers it (time) | how it appears | what it does | when it goes
+  Preferred asset kinds (cheap and readable):
+     counters that climb to the spoken number; bars/towers that grow or crash; stacks that
+     fuse; a sign/label with the exact spoken phrase; stamps (REVOKED, SEALED, BYPASSED);
+     paths/rings that trace a boundary; objects that fall, slam, snap or open; panels with a
+     chart that draws itself; a phone/paper/folder that unfolds; a lock, chain, cage or door.
+  Rules:
+  - Each asset appears ON its word (within ~0.2s), not before.
+  - Use a metaphor only if it is obvious in 1 second. Add a 2-4 word label if not.
+  - Max 2-3 new things on screen per second. Remove an asset once its beat is over, or fade it
+    before the camera swings away so it never crops.
+  - Labels are short: 1-4 words, max ~25 characters. Longer text goes in a small panel.
+  - Every number the narrator says appears once as big text (counter if it can count).
+  Output: an asset table per beat.
+
+------------------------------------------------------------------------------
+STEP 5  DESIGN THE CAMERA (always moving, never static)
+------------------------------------------------------------------------------
+  The camera is one continuous path through the stations. Write it as KEYS:
+     time | camera position (x,y,z) | look-at point (x,y,z) | field of view
+  Rules:
+  1. A key at the start of every beat, and one at every peak moment.
+  2. Move INTO and AWAY from depth, not only left-right. Mix: push-in, pull-back, arc around an
+     object, crane up/down, fly-through a portal or arch.
+  3. Never closer than ~9 units to a sign or label; a hero object should fill about half the frame.
+  4. Keep text clear of the top-left headline bar and the bottom caption bar.
+  5. Between stations use a fast fly or whip (~1-2s). Use a hard cut only when the narration
+     itself cuts ("hard cut to the ledger"), and hold the old view until the cut time.
+  6. Slow drift (small movement) during holds; add a tiny roll/sway so nothing is frozen.
+  7. Field of view: 36-40 for close object shots, 44-50 for reveals and aerials.
+  8. Do not put the camera inside any object. Check it against every box on its path.
+  Output: a camera key table.
+
+------------------------------------------------------------------------------
+STEP 6  CAST (use sparingly)
+------------------------------------------------------------------------------
+  - Characters walk between stations and point/gesture. They do not narrate.
+  - Jensen / Elon only where the narration names them. Everyone else = general-public figure.
+  - One or two characters per station at most. They walk in on their beat and walk out or fade.
+  - Write for each: role | enters (time, from where) | action | exits.
+  - Their feet must stand on the ground in front of the asset they relate to, not behind a sign.
+
+------------------------------------------------------------------------------
+STEP 7  WRITE THE ONE-PAGE STORYBOARD (this is what you hand over)
+------------------------------------------------------------------------------
+  Compose a single document in this order:
+   A. Through-line sentence.
+   B. Beat table (step 1).
+   C. Station list with coordinates and lighting (step 3).
+   D. Per-beat block: time range | station | assets (step 4) | camera (step 5) | cast (step 6) |
+      headline bar text (3-6 words) + subtitle (<= 8 words).
+   E. Peak moments list with the effect used (impact flash, slam, counter).
+   F. "Not in the narration" list: anything you were tempted to add that the script does not say.
+  Review checklist before building:
+   [ ] every spoken number/name appears on screen exactly as spoken
+   [ ] every beat has at least one asset that changes state
+   [ ] camera key at every beat start, never still for more than ~1.5s
+   [ ] no asset appears before its word
+   [ ] only one through-line, visible first to last beat
+   [ ] nothing invented beyond the script
+
+------------------------------------------------------------------------------
+STEP 8  HAND-OFF AND BUILD ORDER (so the build is cheap)
+------------------------------------------------------------------------------
+  1. Use the existing engine file. Replace ONLY: the captions list, the camera keys, the world
+     (assets) and the cast. Keep the audio loader, captions renderer, export buttons.
+  2. Point the audio tag at the part's WAV in the audio folder.
+  3. Run the sprite embed once (character images become embedded data, so exports are not blocked).
+  4. Build in this order: world and camera first -> assets with their times -> cast -> headline bar.
+  5. Check with 10-16 still frames: one per beat plus every peak moment. Combine 4 per sheet and look.
+     Fix: cropped text, overlapping signs, characters hidden behind assets, objects too big/small,
+     camera too close. Two rounds are normally enough.
+  6. Never overwrite the original. Write a new "-v2" file.
+
+------------------------------------------------------------------------------
+COMMON MISTAKES (seen in this project)
+------------------------------------------------------------------------------
+  - Camera too close: labels and characters crop. Start wide, then push in.
+  - Everything appears at once: put each asset on its own word.
+  - Text too long for its sign: shorten it; the sign shrinks the font to fit.
+  - Characters used as the main storytelling: use assets first, characters second.
+  - Re-describing the same idea with several assets: one clear asset per idea.
+  - Adding numbers or claims the narrator did not say (for example a football-field comparison).
+  - Hard cuts everywhere: keep them for the moments the narration itself cuts.
+  - Skipping the checklist in step 7 and fixing the same problems in every frame later.
+
+What this guide does NOT cover
+  - Live playback, audio sync and motion smoothness: still frames cannot prove these.
+    Test them by playing the file once the build is done.

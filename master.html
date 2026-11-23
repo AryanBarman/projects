@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Master recorder — all acts</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #0b191e; color: #f4f1ea; font: 15px/1.5 system-ui, "Segoe UI", sans-serif; }
+  #ui { max-width: 980px; margin: 0 auto; padding: 20px 16px; }
+  h1 { font-size: 22px; margin: 0 0 6px; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 10px 0; }
+  select, button { font: inherit; padding: 8px 12px; border-radius: 8px; border: 1px solid #2e5261; background: #12262e; color: #f4f1ea; }
+  button.go { background: #2b8a6e; border-color: #3b9e7a; font-weight: 700; cursor: pointer; }
+  button.stop { background: #8a2f2a; border-color: #c8463c; cursor: pointer; }
+  #log { background: #071318; border: 1px solid #1b3540; border-radius: 8px; padding: 10px; height: 200px; overflow: auto; font: 13px/1.5 ui-monospace, Consolas, monospace; white-space: pre-wrap; }
+  #prev { width: 100%; max-width: 960px; aspect-ratio: 16/9; background: #000; border-radius: 8px; display: block; margin-top: 10px; }
+  #stage { position: absolute; left: -6000px; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
+  #stage iframe { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; border: 0; }
+  small { color: #9fb3bd; }
+</style></head>
+<body>
+<div id="ui">
+  <h1>Master recorder: all acts in one video</h1>
+  <small>Serve this folder (see README below) and open <b>http://localhost:8765/master.html</b> in Chrome or Edge on a computer with a GPU. Keep this tab in the foreground while recording.</small>
+  <div class="row">
+    <label>From act <select id="from"></select></label>
+    <label>to act <select id="to"></select></label>
+    <label><input type="checkbox" id="perAct" checked> one file per act</label>
+    <label><input type="checkbox" id="rec" checked> record (untick for a silent-less preview run)</label>
+    <label><input type="checkbox" id="mon" checked> hear audio while recording</label>
+  </div>
+  <div class="row"><button class="go" id="go">Start</button><button class="stop" id="stopb" disabled>Stop</button><span id="status">idle</span></div>
+  <canvas id="prev" width="1920" height="1080"></canvas>
+  <p><b>Log</b></p><div id="log"></div>
+  <p><small>Cuts: each part ends 0.35 s after its voice-over ends, so there are no frozen tail frames. Transitions: 0.45 s cross-fade between parts of one act; fade to black plus an act title card (2.4 s) between acts. Output is WebM (VP9 + Opus). Join the per-act files with ffmpeg: <code>ffmpeg -f concat -safe 0 -i list.txt -c copy full.webm</code>, where list.txt has one <code>file 'act1.webm'</code> line per file, or re-encode to MP4 with <code>-c:v libx264 -c:a aac</code>.</small></p>
+  <p><small><b>README:</b> copy the whole <i>projects</i> folder (including <i>audio</i>) to the recording computer, open a terminal in it, run <code>python -m http.server 8765</code>, then open the URL above. The 3D acts (3, 5, 6, 7) load Three.js from unpkg.com, so that computer needs internet.</small></p>
+</div>
+<div id="stage"></div>
+<script>
+(() => {
+  const ACTS = [
+    { n: 1, title: 'THE OFFER', sub: 'NVIDIA ousts Jensen. Elon makes his move.', col: '#EBC16B', parts: ['act1_part1_jensen_elon_3d-hybrid-v2.html', 'act1_part2_jensen_elon_3d-hybrid-v2.html', 'act1_part3_jensen_elon_3d-hybrid-v2.html', 'act1_part4_jensen_elon_3d-hybrid-v2.html'] },
+    { n: 2, title: 'HOW NVIDIA REALLY WORKS', sub: 'Margins, suppliers and a handshake network.', col: '#9BE01B', parts: ['act2_part1_nvidia_supply_chain_3d-hybrid-v2.html', 'act2_part2_personal_lynchpin_3d-hybrid-v2.html', 'act2_part3_elon_advantage_3d-hybrid-v2.html', 'act2_part4_dream_factory_3d-hybrid-v2.html'] },
+    { n: 3, title: 'THE BEST-CASE SCENARIO', sub: 'TerraFab, the driver seat, orbit, and the reality check.', col: '#45B8AC', parts: ['act3_part1_terrafab_10m_cut-3d.html', 'act3_part2_driver_seat_economics-3d.html', 'act3_part3_orbit_vertical_stack-3d.html', 'act3_part4_reality_check-3d.html'] },
+    { n: 4, title: 'THE HARD PART OF BUILDING CHIPS', sub: 'Fabless secrets, division of labor, bottlenecks, concrete.', col: '#D94E43', parts: ['act4_part1_fabless_secret_offline-v2.html', 'act4_part2_division_of_labor_offline-v2.html', 'act4_part3_physical_bottlenecks_offline-v2.html', 'act4_part4_concrete_trap_offline-v2.html'] },
+    { n: 5, title: 'THE WEB OF OBSTACLES', sub: 'Money, law and Washington.', col: '#EBC16B', parts: ['act5_part1_financial_web-3d.html', 'act5_part2_legal_wall-3d.html', 'act5_part3_washington-3d.html'] },
+    { n: 6, title: 'THE REAL GAME', sub: 'Pressure, talent and the physical ceiling.', col: '#45B8AC', parts: ['act6_full_strategy-3d.html'] },
+    { n: 7, title: 'THE VERDICT', sub: 'A broken handshake and a war of attrition.', col: '#9BE01B', parts: ['act7_full_conclusion-3d.html'] }
+  ];
+  const TAIL = 0.35, XFADE = 0.45, CARD = 2.4, FPS = 30;
+  const $ = id => document.getElementById(id), log = m => { const l = $('log'); l.textContent += m + '\n'; l.scrollTop = l.scrollHeight; }, setStatus = m => { $('status').textContent = m; };
+  const sleep = ms => new Promise(r => setTimeout(r, ms)), raf = () => new Promise(r => requestAnimationFrame(r));
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v)), ease = t => t * t * (3 - 2 * t);
+  ACTS.forEach(a => { ['from', 'to'].forEach(id => { const o = document.createElement('option'); o.value = a.n; o.textContent = a.n + ' — ' + a.title; $(id).appendChild(o); }); });
+  $('to').value = ACTS.length;
+
+  const comp = document.createElement('canvas'); comp.width = 1920; comp.height = 1080; const cx = comp.getContext('2d');
+  const snap = document.createElement('canvas'); snap.width = 1920; snap.height = 1080; const sx = snap.getContext('2d');
+  const prev = $('prev'), px = prev.getContext('2d');
+  function present() { px.drawImage(comp, 0, 0); }
+  let abort = false, ac = null, dest = null, rec = null, chunks = [], stream = null;
+
+  function grabFrame(win, ctx) {
+    const d = win.document, cs = [...d.querySelectorAll('canvas')];
+    ctx.fillStyle = '#0b191e'; ctx.fillRect(0, 0, 1920, 1080);
+    cs.forEach(c => { const st = win.getComputedStyle(c); if (st.display === 'none' || st.visibility === 'hidden') return; const o = parseFloat(st.opacity); if (o <= 0.01) return; ctx.globalAlpha = o; try { ctx.drawImage(c, 0, 0, 1920, 1080); } catch (e) {} ctx.globalAlpha = 1; });
+  }
+  function loadPart(file) {
+    return new Promise((res, rej) => {
+      const f = document.createElement('iframe'); f.src = file + '?capture=1'; $('stage').appendChild(f);
+      const t0 = Date.now();
+      const poll = setInterval(() => {
+        let w; try { w = f.contentWindow; } catch (e) { clearInterval(poll); rej(new Error('cross-origin: serve the folder over http, not file://')); return; }
+        if (w && w.READY === true && typeof w.render === 'function') { clearInterval(poll); res({ f, w, file }); }
+        else if (Date.now() - t0 > 60000) { clearInterval(poll); rej(new Error('timeout loading ' + file)); }
+      }, 250);
+    });
+  }
+  function loadAudio(part) {
+    return new Promise((res, rej) => {
+      const el = part.w.document.getElementById('vo'); const a = new Audio(); a.preload = 'auto'; a.crossOrigin = 'anonymous'; a.src = el.currentSrc || el.src;
+      a.addEventListener('loadedmetadata', () => res(a), { once: true }); a.addEventListener('error', () => rej(new Error('audio failed: ' + a.src)), { once: true }); a.load();
+    });
+  }
+  function ensureAudio() {
+    if (ac) return; ac = new (window.AudioContext || window.webkitAudioContext)(); dest = ac.createMediaStreamDestination();
+  }
+  function wire(a) { const s = ac.createMediaElementSource(a); s.connect(dest); if ($('mon').checked) s.connect(ac.destination); }
+
+  function startRec(name) {
+    if (!$('rec').checked) return;
+    stream = comp.captureStream(FPS); dest.stream.getAudioTracks().forEach(t => stream.addTrack(t));
+    const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9,opus') ? 'video/webm;codecs=vp9,opus' : 'video/webm';
+    rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 12e6, audioBitsPerSecond: 192e3 }); chunks = [];
+    rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+    const mine = chunks; rec.onstop = () => { const blob = new Blob(mine, { type: 'video/webm' }); const u = document.createElement('a'); u.href = URL.createObjectURL(blob); u.download = name + '.webm'; u.click(); log('saved ' + name + '.webm (' + (blob.size / 1048576).toFixed(1) + ' MB)'); };
+    rec.start(1000); log('recording → ' + name + '.webm');
+  }
+  function stopRec() { return new Promise(r => { if (rec && rec.state === 'recording') { const o = rec.onstop; rec.onstop = () => { o(); r(); }; rec.stop(); } else r(); }); }
+
+  async function tween(dur, fn) { const t0 = performance.now(); for (;;) { if (abort) return; const p = clamp((performance.now() - t0) / 1000 / dur, 0, 1); fn(p); present(); if (p >= 1) return; await raf(); } }
+  function drawCard(act, p) {
+    // p 0..1 over CARD seconds: bars wipe in, text fades up, then fades out
+    cx.fillStyle = '#0b191e'; cx.fillRect(0, 0, 1920, 1080);
+    const g = cx.createRadialGradient(960, 540, 60, 960, 540, 900); g.addColorStop(0, 'rgba(46,82,97,0.55)'); g.addColorStop(1, 'rgba(11,25,30,0)'); cx.fillStyle = g; cx.fillRect(0, 0, 1920, 1080);
+    const a = Math.min(ease(clamp(p / 0.2, 0, 1)), 1 - ease(clamp((p - 0.82) / 0.18, 0, 1))), w = 760 * ease(clamp(p / 0.35, 0, 1));
+    cx.save(); cx.globalAlpha = a; cx.textAlign = 'center'; cx.textBaseline = 'middle';
+    cx.fillStyle = act.col; cx.font = '800 40px system-ui, "Segoe UI", sans-serif'; cx.fillText('ACT ' + act.n, 960, 400 - (1 - ease(clamp(p / 0.3, 0, 1))) * 24);
+    cx.fillRect(960 - w / 2, 442, w, 6);
+    cx.fillStyle = '#f4f1ea'; let s = 84; cx.font = '900 ' + s + 'px system-ui, "Segoe UI", sans-serif'; while (cx.measureText(act.title).width > 1560 && s > 30) { s -= 4; cx.font = '900 ' + s + 'px system-ui, "Segoe UI", sans-serif'; } cx.fillText(act.title, 960, 540);
+    cx.fillStyle = '#b8c2c7'; cx.font = '600 32px system-ui, "Segoe UI", sans-serif'; cx.fillText(act.sub, 960, 624);
+    cx.restore();
+  }
+
+  async function playPart(part, aud, isFirstOfAct, fadeIn) {
+    // plays one part until its voice-over ends (+TAIL); optional cross-fade from the previous frame snapshot
+    const dur = aud.duration; aud.currentTime = 0; await aud.play();
+    const t0 = performance.now(); let lastT = 0;
+    for (;;) {
+      if (abort) { aud.pause(); return; }
+      const t = Math.min(aud.ended ? dur + TAIL : aud.currentTime, dur + TAIL);
+      const tt = aud.ended || aud.currentTime >= dur - 0.02 ? (performance.now() - t0) / 1000 : t; // after the audio ends, hold the last frame for TAIL
+      const rt = Math.min(aud.currentTime, dur); try { part.w.render(rt); } catch (e) { log('render error: ' + e.message); }
+      grabFrame(part.w, cx);
+      if (fadeIn > 0 && t < fadeIn) { cx.globalAlpha = 1 - ease(t / fadeIn); cx.drawImage(snap, 0, 0); cx.globalAlpha = 1; }
+      present(); lastT = rt;
+      if (aud.ended || aud.currentTime >= dur - 0.02) break;
+      await raf();
+    }
+    // hold final frame for TAIL seconds (voice-over finished; this is a breath, not a frozen still)
+    const te = performance.now(); while ((performance.now() - te) / 1000 < TAIL && !abort) { try { part.w.render(Math.min(dur, lastT + (performance.now() - te) / 1000)); } catch (e) {} grabFrame(part.w, cx); present(); await raf(); }
+    aud.pause(); grabFrame(part.w, sx); sx.drawImage(comp, 0, 0);
+  }
+
+  async function run() {
+    abort = false; $('go').disabled = true; $('stopb').disabled = false; $('log').textContent = '';
+    const from = +$('from').value, to = +$('to').value; if (from > to) { log('"from" must be ≤ "to"'); end(); return; }
+    ensureAudio(); await ac.resume();
+    try {
+      const todo = ACTS.filter(a => a.n >= from && a.n <= to);
+      let total = 0; todo.forEach(a => total += a.parts.length); let done = 0, loaded = null;
+      const wired = new WeakSet();
+      for (let ai = 0; ai < todo.length && !abort; ai++) {
+        const act = todo[ai]; const perAct = $('perAct').checked;
+        if (perAct || ai === 0) startRec(perAct ? 'act' + act.n : 'acts_' + from + '-' + to);
+        // act title card (not before the very first act of the run's first frame; there the card is also shown for continuity)
+        setStatus('Act ' + act.n + ' title card');
+        if (ai > 0 && !perAct) await tween(0.5, p => { cx.drawImage(snap, 0, 0); cx.fillStyle = 'rgba(11,25,30,' + ease(p) + ')'; cx.fillRect(0, 0, 1920, 1080); });
+        let nextLoad = loaded || loadPart(act.parts[0]);
+        await tween(CARD, p => drawCard(act, p));
+        for (let pi = 0; pi < act.parts.length && !abort; pi++) {
+          setStatus('Act ' + act.n + ' part ' + (pi + 1) + '/' + act.parts.length + ' — ' + (++done) + ' of ' + total);
+          const part = await nextLoad; let aud;
+          try { aud = await loadAudio(part); } catch (e) { log(e.message); abort = true; break; }
+          wire(aud);
+          // prefetch the next part (same act, or the first of the next act) while this one plays
+          const nextFile = pi + 1 < act.parts.length ? act.parts[pi + 1] : (todo[ai + 1] ? todo[ai + 1].parts[0] : null);
+          nextLoad = nextFile ? loadPart(nextFile).catch(e => { log(e.message); return null; }) : null; loaded = null;
+          log('playing ' + part.file + ' (' + aud.duration.toFixed(2) + ' s)');
+          // first part after a card fades in from black (snap is black); later parts cross-fade from the previous part
+          if (pi === 0) { sx.fillStyle = '#0b191e'; sx.fillRect(0, 0, 1920, 1080); }
+          await playPart(part, aud, pi === 0, pi === 0 ? 0.5 : XFADE);
+          part.f.remove();
+        }
+        if (nextLoad && ai + 1 < todo.length) loaded = nextLoad; else if (nextLoad) nextLoad.then(p => p && p.f.remove());
+        if (abort) break;
+        // act end: fade the last frame to black
+        await tween(0.5, p => { cx.drawImage(snap, 0, 0); cx.fillStyle = 'rgba(11,25,30,' + ease(p) + ')'; cx.fillRect(0, 0, 1920, 1080); });
+        if (perAct) { await sleep(200); await stopRec(); }
+        sx.fillStyle = '#0b191e'; sx.fillRect(0, 0, 1920, 1080);
+      }
+      if (!$('perAct').checked) await stopRec();
+      log(abort ? 'stopped' : 'finished');
+    } catch (e) { log('ERROR: ' + e.message); await stopRec(); }
+    end();
+  }
+  function end() { $('go').disabled = false; $('stopb').disabled = true; setStatus('idle'); }
+  $('go').onclick = run; $('stopb').onclick = async () => { abort = true; await stopRec(); };
+
+  // headless test hook (?test=1): composites two parts at fixed times for a visual check
+  if (new URLSearchParams(location.search).get('test') === '1') {
+    prev.style.cssText = 'position:fixed;left:0;top:0;width:1920px;height:1080px;max-width:none;z-index:99;border-radius:0'; $('ui').style.display = 'none';
+    window.READY = false;
+    (async () => {
+      const files = (new URLSearchParams(location.search).get('files') || '').split(',').filter(Boolean); const parts = [];
+      for (const f of files) parts.push(await loadPart(f));
+      window.__parts = parts; window.READY = true;
+      window.render = t => { if (t < 0) { drawCard(ACTS[Math.min(ACTS.length - 1, Math.round(-t) - 1)], 0.5); present(); return; } const p = parts[Math.floor(t / 1000)]; p.w.render(t % 1000); grabFrame(p.w, cx); present(); };
+    })();
+  }
+})();
+</script>
+</body></html>

@@ -1,0 +1,119 @@
+1
+00:00:00,000 --> 00:00:01,980
+Let's come back to where we started.
+
+2
+00:00:02,740 --> 00:00:05,680
+When Nvidia's board forced Jensen Huang out in November
+
+3
+00:00:05,680 --> 00:00:09,100
+2026, they thought they were protecting the company from
+
+4
+00:00:09,100 --> 00:00:10,140
+a governance crisis.
+
+5
+00:00:10,900 --> 00:00:14,420
+Instead, they broke the personal handshake network that
+
+6
+00:00:14,420 --> 00:00:17,820
+held the AI supply chain together and turned the
+
+7
+00:00:17,820 --> 00:00:21,480
+most valuable chip architect on earth into a free
+
+8
+00:00:21,480 --> 00:00:21,860
+agent.
+
+9
+00:00:22,320 --> 00:00:26,000
+If Elon Musk actually hires Jensen Huang to lead
+
+10
+00:00:26,000 --> 00:00:29,000
+Terafab, it won't produce an overnight miracle.
+
+11
+00:00:29,640 --> 00:00:32,720
+There is no magic wand that bypasses clean room
+
+12
+00:00:32,720 --> 00:00:35,300
+physics, Intel's 14A ramp,
+
+13
+00:00:35,760 --> 00:00:40,140
+IP lawsuits, or SpaceX's $44 billion dependence
+
+14
+00:00:40,140 --> 00:00:42,140
+on NVIDIA's Vera Rubin chips.
+
+15
+00:00:43,000 --> 00:00:46,480
+Instead, a Musk -Hwang partnership would be a brutal,
+
+16
+00:00:46,840 --> 00:00:48,560
+multi -year war of attrition,
+
+17
+00:00:49,080 --> 00:00:52,980
+betting up to $119 billion that the world's
+
+18
+00:00:52,980 --> 00:00:55,920
+greatest chip designer and the world's most relentless
+
+19
+00:00:55,920 --> 00:01:00,000
+manufacturer can build a self -contained AI engine stretching
+
+20
+00:01:00,000 --> 00:01:02,120
+from Texas to low -Earth orbit.
+
+21
+00:01:03,040 --> 00:01:04,820
+Whether Jensen signs that contract,
+
+22
+00:01:05,400 --> 00:01:07,440
+or simply uses Elon's offer as leverage,
+
+23
+00:01:07,980 --> 00:01:09,680
+one thing is already certain,
+
+24
+00:01:10,220 --> 00:01:13,300
+NVIDIA's monopoly just lost its biggest moat.
+
+25
+00:01:13,980 --> 00:01:15,920
+And if you haven't seen the full story of
+
+26
+00:01:15,920 --> 00:01:18,700
+the boardroom implosion that forced Jensen Huang out
+
+27
+00:01:18,700 --> 00:01:20,060
+of NVIDIA in the first place,
+
+28
+00:01:20,500 --> 00:01:24,020
+and why it triggered this entire $4 trillion standoff,
+
+29
+00:01:24,600 --> 00:01:26,860
+click the video on your screen right now to
+
+30
+00:01:26,860 --> 00:01:27,920
+watch the full breakdown.

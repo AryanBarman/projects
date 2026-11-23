@@ -1,0 +1,203 @@
+1
+00:00:00,000 --> 00:00:02,840
+This is where you see the real game being
+
+2
+00:00:02,840 --> 00:00:04,480
+played beneath the headlines.
+
+3
+00:00:05,160 --> 00:00:07,440
+Elon Musk didn't go on stage at Dealbook and
+
+4
+00:00:07,440 --> 00:00:09,760
+praise Jensen Huang out of pure charity,
+
+5
+00:00:10,060 --> 00:00:12,500
+and he didn't float the idea of Jensen running
+
+6
+00:00:12,500 --> 00:00:16,140
+terra fab without calculating the exact shockwave it
+
+7
+00:00:16,140 --> 00:00:18,000
+would send through Nvidia's boardroom.
+
+8
+00:00:18,560 --> 00:00:21,000
+Look at who is running Nvidia right now.
+
+9
+00:00:21,520 --> 00:00:23,960
+Interim leadership is stepping into the hottest seat
+
+10
+00:00:23,960 --> 00:00:27,100
+in global tech at the exact moment Nvidia stock
+
+11
+00:00:27,100 --> 00:00:29,900
+is tumbling, and hyperscalers like Google,
+
+12
+00:00:30,340 --> 00:00:33,700
+Amazon, and Broadcom are racing to replace Nvidia GPUs
+
+13
+00:00:33,700 --> 00:00:35,160
+with custom ASICs.
+
+14
+00:00:35,860 --> 00:00:38,500
+Nvidia's board is terrified of two things.
+
+15
+00:00:39,020 --> 00:00:41,560
+Losing key chip architects who are loyal to Jensen
+
+16
+00:00:41,560 --> 00:00:45,100
+and losing their single most aggressive hardware buyer,
+
+17
+00:00:45,560 --> 00:00:46,160
+Elon Musk.
+
+18
+00:00:46,600 --> 00:00:51,220
+By publicly dangling the keys to a $119 billion
+
+19
+00:00:51,220 --> 00:00:53,280
+Texas megafab in front of Jensen,
+
+20
+00:00:53,820 --> 00:00:57,120
+Elon achieves three massive strategic wins without even
+
+21
+00:00:57,120 --> 00:00:58,620
+signing an employment contract.
+
+22
+00:00:59,220 --> 00:01:02,740
+First, he puts maximum psychological pressure on NVIDIA's
+
+23
+00:01:02,740 --> 00:01:06,080
+interim leadership. Every time SpaceX negotiates GPU
+
+24
+00:01:06,080 --> 00:01:09,880
+pricing, allocation priority, or custom orbital specs
+
+25
+00:01:09,880 --> 00:01:12,480
+for its $44 billion Vera Rubin rollout,
+
+26
+00:01:12,480 --> 00:01:14,860
+NVIDIA's executives have to wonder,
+
+27
+00:01:15,360 --> 00:01:17,100
+if we push Elon too hard,
+
+28
+00:01:17,440 --> 00:01:19,740
+does he actually pull the trigger and make Jensen
+
+29
+00:01:19,740 --> 00:01:20,820
+the head of Terafab?
+
+30
+00:01:21,520 --> 00:01:24,340
+Second, it acts as a talent magnet for Terafab.
+
+31
+00:01:24,840 --> 00:01:27,660
+Right now, Terafab's biggest bottleneck isn't concrete.
+
+32
+00:01:27,980 --> 00:01:31,020
+It's recruiting elite semiconductor engineers who doubt
+
+33
+00:01:31,020 --> 00:01:33,540
+whether a rocket and car company can actually build
+
+34
+00:01:33,540 --> 00:01:34,780
+world -class chipfab.
+
+35
+00:01:35,300 --> 00:01:38,940
+Simply associating Jensen Huang's name with Terafab signals
+
+36
+00:01:38,940 --> 00:01:42,080
+to every disgruntled silicon engineer in Silicon Valley
+
+37
+00:01:42,080 --> 00:01:45,600
+and Taiwan that Elon is deadly serious about building
+
+38
+00:01:45,600 --> 00:01:47,240
+a true rival to TSMC.
+
+39
+00:01:47,700 --> 00:01:51,400
+Third, look at the physical ceiling that still governs
+
+40
+00:01:51,400 --> 00:01:54,540
+everyone. Whether Jensen joins Terafab,
+
+41
+00:01:54,860 --> 00:01:56,840
+starts his own independent chip venture,
+
+42
+00:01:57,280 --> 00:01:58,720
+or advises from the sidelines,
+
+43
+00:01:59,500 --> 00:02:02,500
+nobody escapes the real choke point of the AI
+
+44
+00:02:02,500 --> 00:02:05,360
+era. ASML scanner delivery queues,
+
+45
+00:02:05,920 --> 00:02:09,680
+TSMC advanced packaging capacity, and raw gigawatts
+
+46
+00:02:09,680 --> 00:02:10,900
+of electrical power.
+
+47
+00:02:11,540 --> 00:02:14,940
+Even Terafab's Texas site has to build massive on
+
+48
+00:02:14,940 --> 00:02:17,960
+-site power and water infrastructure just to keep the
+
+49
+00:02:17,960 --> 00:02:18,960
+clean rooms running.
+
+50
+00:02:19,840 --> 00:02:22,340
+In the end, the threat of a Musk -Hwang
+
+51
+00:02:22,340 --> 00:02:25,520
+alliance is almost as powerful as the alliance itself.
