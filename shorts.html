@@ -30,17 +30,17 @@
 (() => {
   const DEFAULT = [
     { id: 'short1_offer', hook: 'ELON JUST OFFERED JENSEN THE KEYS TO A $119 BILLION CHIP PLANT', tag: 'THE OFFER', col: '#EBC16B',
-      segs: [{ file: 'act1_part1_jensen_elon_3d-hybrid-v2.html', from: 0, to: 22.9 }] },
+      segs: [{ file: 'act1_part1_jensen_elon-short.html', from: 0, to: 22.9 }] },
     { id: 'short2_44b', hook: 'THE $44 BILLION LOAN NOBODY CAN REPO', tag: 'THE WEB OF OBSTACLES', col: '#45B8AC',
-      segs: [{ file: 'act5_part1_financial_web-3d.html', from: 25.4, to: 46.5 }, { file: 'act5_part1_financial_web-3d.html', from: 59.6, to: 67.3 }] },
+      segs: [{ file: 'act5_part1_financial_web-short.html', from: 25.4, to: 46.5 }, { file: 'act5_part1_financial_web-short.html', from: 59.6, to: 67.3 }] },
     { id: 'short3_legal', hook: 'WHY JENSEN CANNOT JUST BUILD A NEW NVIDIA', tag: 'THE LEGAL WALL', col: '#D94E43',
-      segs: [{ file: 'act5_part2_legal_wall-3d.html', from: 27.4, to: 48.4 }, { file: 'act5_part2_legal_wall-3d.html', from: 66.95, to: 80.6 }] },
+      segs: [{ file: 'act5_part2_legal_wall-short.html', from: 27.4, to: 48.4 }, { file: 'act5_part2_legal_wall-short.html', from: 66.95, to: 80.6 }] },
     { id: 'short4_three_wins', hook: 'ELON GOT 3 WINS WITHOUT SIGNING ANYTHING', tag: 'THE REAL GAME', col: '#9BE01B',
-      segs: [{ file: 'act6_full_strategy-3d.html', from: 46.6, to: 95 }] },
+      segs: [{ file: 'act6_full_strategy-short.html', from: 46.6, to: 95 }] },
     { id: 'short5_moat', hook: "NVIDIA'S BIGGEST MOAT JUST CRACKED", tag: 'THE VERDICT', col: '#EBC16B',
-      segs: [{ file: 'act7_full_conclusion-3d.html', from: 43.0, to: 73.6 }] },
+      segs: [{ file: 'act7_full_conclusion-short.html', from: 43.0, to: 73.6 }] },
     { id: 'short6_sealed', hook: 'SPACEX WENT TO COURT TO HIDE THE COST OF A $119B CHIP FACTORY', tag: 'THE BEST-CASE SCENARIO', col: '#D94E43',
-      segs: [{ file: 'act3_part1_terrafab_10m_cut-3d.html', from: 44.35, to: 66.8 }] }
+      segs: [{ file: 'act3_part1_terrafab_10m_cut-short.html', from: 44.35, to: 66.8 }] }
   ];
   $ = id => document.getElementById(id); $('cfg').value = JSON.stringify(DEFAULT, null, 1);
   const log = m => { const l = $('log'); l.textContent += m + '\n'; l.scrollTop = l.scrollHeight; }, sleep = ms => new Promise(r => setTimeout(r, ms)), raf = () => new Promise(r => requestAnimationFrame(r));
@@ -74,6 +74,14 @@
     // progress bar
     cx.fillStyle = 'rgba(244,241,234,0.25)'; cx.fillRect(60, 1830, W - 120, 10); cx.fillStyle = sh.col; cx.fillRect(60, 1830, (W - 120) * clamp(prog, 0, 1), 10);
   }
+  // native portrait: the pages already render 1080x1920, so just copy their canvases; add the hook title for the first 3 s
+  function compose(sh, win, t, prog, hasSubs) {
+    cx.fillStyle = '#0b191e'; cx.fillRect(0, 0, W, H);
+    [...win.document.querySelectorAll('canvas')].forEach(c => { const st = win.getComputedStyle(c); if (st.display === 'none' || st.visibility === 'hidden') return; const o = parseFloat(st.opacity); if (o <= 0.01) return; cx.globalAlpha = o; try { cx.drawImage(c, 0, 0, W, H); } catch (e) {} cx.globalAlpha = 1; });
+    const el = prog * 0 + (hookT === null ? 99 : performance.now() / 1000 - hookT);
+    if (el < 3.4) { const a = Math.min(ease(clamp(el / 0.3, 0, 1)), 1 - ease(clamp((el - 2.9) / 0.5, 0, 1))); cx.save(); cx.globalAlpha = a; cx.fillStyle = 'rgba(8,19,24,0.82)'; cx.fillRect(0, 430, W, 330); cx.fillStyle = sh.col; cx.fillRect(0, 430, W, 8); cx.textAlign = 'center'; cx.textBaseline = 'middle'; cx.fillStyle = '#f4f1ea'; let sz = 92; cx.font = '900 ' + sz + 'px system-ui, "Segoe UI", sans-serif'; let ls = wrapLines(cx, sh.hook, 940); while (ls.length > 3 && sz > 48) { sz -= 6; cx.font = '900 ' + sz + 'px system-ui, "Segoe UI", sans-serif'; ls = wrapLines(cx, sh.hook, 940); } ls.forEach((l, i) => cx.fillText(l, W / 2, 595 + (i - (ls.length - 1) / 2) * sz * 1.1)); cx.restore(); }
+  }
+  let hookT = null;
   function endCard(sh, p) { cx.fillStyle = '#0b191e'; cx.fillRect(0, 0, W, H); cx.globalAlpha = ease(clamp(p / 0.4, 0, 1)); cx.textAlign = 'center'; cx.textBaseline = 'middle'; cx.fillStyle = sh.col; cx.font = '900 84px system-ui, "Segoe UI", sans-serif'; cx.fillText('WATCH THE FULL STORY', W / 2, 880); cx.fillStyle = '#f4f1ea'; cx.font = '700 46px system-ui, "Segoe UI", sans-serif'; cx.fillText($('endtxt').value, W / 2, 990); cx.globalAlpha = 1; }
 
   function ensureAudio() { if (ac) return; ac = new (window.AudioContext || window.webkitAudioContext)(); dest = ac.createMediaStreamDestination(); }
@@ -83,13 +91,13 @@
 
   async function runShort(sh) {
     const total = sh.segs.reduce((s, g) => s + (g.to - g.from), 0); let done = 0;
-    await ac.resume(); rec = mkRec(sh.id); log('recording ' + sh.id + ' (' + total.toFixed(1) + ' s)');
+    await ac.resume(); hookT = null; rec = mkRec(sh.id); log('recording ' + sh.id + ' (' + total.toFixed(1) + ' s)');
     for (let i = 0; i < sh.segs.length && !abort; i++) {
       const g = sh.segs[i], part = await loadPart(g.file), aud = await loadAudio(part), hasSubs = !!(part.w.STORY && part.w.STORY.SUBS && part.w.STORY.SUBS.length);
       const s = ac.createMediaElementSource(aud); s.connect(dest); if ($('mon').checked) s.connect(ac.destination);
       aud.currentTime = g.from; await new Promise(r => { if (Math.abs(aud.currentTime - g.from) < 0.05) r(); else aud.addEventListener('seeked', r, { once: true }); });
       const gain = ac.createGain(); s.disconnect(); s.connect(gain); gain.connect(dest); if ($('mon').checked) gain.connect(ac.destination); gain.gain.value = 0;
-      await aud.play(); const t0 = performance.now();
+      await aud.play(); const t0 = performance.now(); if (i === 0) hookT = performance.now() / 1000;
       for (;;) {
         if (abort) break; const t = aud.currentTime, el = t - g.from, left = g.to - t;
         if (t >= g.to || aud.ended) break;
