@@ -1,0 +1,51 @@
+1
+00:00:00,020 --> 00:00:03,720
+Third, look at the physical ceiling that still governs
+
+2
+00:00:03,720 --> 00:00:06,860
+everyone. Whether Jensen joins Terafab,
+
+3
+00:00:07,180 --> 00:00:09,160
+starts his own independent chip venture,
+
+4
+00:00:09,600 --> 00:00:11,040
+or advises from the sidelines,
+
+5
+00:00:11,820 --> 00:00:14,820
+nobody escapes the real choke point of the AI
+
+6
+00:00:14,820 --> 00:00:17,680
+era. ASML scanner delivery queues,
+
+7
+00:00:18,240 --> 00:00:22,000
+TSMC advanced packaging capacity, and raw gigawatts
+
+8
+00:00:22,000 --> 00:00:23,220
+of electrical power.
+
+9
+00:00:23,860 --> 00:00:27,260
+Even Terafab's Texas site has to build massive on
+
+10
+00:00:27,260 --> 00:00:30,280
+-site power and water infrastructure just to keep the
+
+11
+00:00:30,280 --> 00:00:31,280
+clean rooms running.
+
+12
+00:00:32,160 --> 00:00:34,660
+In the end, the threat of a Musk -Hwang
+
+13
+00:00:34,660 --> 00:00:37,840
+alliance is almost as powerful as the alliance itself.

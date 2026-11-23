@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:02,360
+For years, that partnership worked,
+
+2
+00:00:02,620 --> 00:00:03,900
+because one designed the chips,
+
+3
+00:00:04,280 --> 00:00:06,880
+and the other bought every single one he could
+
+4
+00:00:06,880 --> 00:00:07,880
+get his hands on.
+
+5
+00:00:08,560 --> 00:00:12,760
+Then, in November 2026, NVIDIA's board abruptly
+
+6
+00:00:12,760 --> 00:00:14,940
+accepted Jensen Huang's resignation.
+
+7
+00:00:15,740 --> 00:00:19,360
+Now, the founder who built AI's most valuable hardware
+
+8
+00:00:19,360 --> 00:00:21,940
+company is suddenly a free agent.
+
+9
+00:00:22,600 --> 00:00:23,580
+And Elon Musk?
+
+10
+00:00:23,580 --> 00:00:27,340
+He's already broken ground on a massive semiconductor
+
+11
+00:00:27,340 --> 00:00:29,200
+complex in Grimes County, Texas.

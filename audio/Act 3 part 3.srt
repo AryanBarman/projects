@@ -1,0 +1,79 @@
+1
+00:00:00,080 --> 00:00:02,600
+Second, look up into orbit.
+
+2
+00:00:03,280 --> 00:00:05,580
+Just one month before Jensen's ouster,
+
+3
+00:00:06,080 --> 00:00:09,540
+Elon and Jensen stood together to unveil Star Mind,
+
+4
+00:00:10,020 --> 00:00:13,640
+a co -engineered orbital AI compute payload powered
+
+5
+00:00:13,640 --> 00:00:15,780
+by NVIDIA's Vera Rubin architecture,
+
+6
+00:00:16,240 --> 00:00:19,740
+built to fly aboard SpaceX's massive satellites starting
+
+7
+00:00:19,740 --> 00:00:23,540
+in 2027. SpaceX's whole pitch for space
+
+8
+00:00:23,540 --> 00:00:25,100
+-based data centers is simple,
+
+9
+00:00:25,540 --> 00:00:28,320
+free, 24 -7 solar power in orbit,
+
+10
+00:00:28,640 --> 00:00:31,620
+an effortless radiative cooling in the vacuum of space.
+
+11
+00:00:32,500 --> 00:00:36,120
+With Jensen inside SpaceX, Elon wouldn't just launch
+
+12
+00:00:36,120 --> 00:00:37,520
+NVIDIA's chips into orbit.
+
+13
+00:00:37,900 --> 00:00:40,300
+He would own the entire vertical stack,
+
+14
+00:00:40,640 --> 00:00:44,040
+from raw silicon wafers in Texas to radiation -hardened
+
+15
+00:00:44,040 --> 00:00:47,600
+AI processors to the Starship rockets carrying them into
+
+16
+00:00:47,600 --> 00:00:48,560
+low -Earth orbit.
+
+17
+00:00:49,260 --> 00:00:51,840
+That is the peak of the what -if dream.
+
+18
+00:00:52,010 --> 00:00:56,040
+A single, vertically integrated hardware juggernaut spanning
+
+19
+00:00:56,040 --> 00:00:59,340
+Earth and space, led by the two most aggressive
+
+20
+00:00:59,340 --> 00:01:01,380
+execution machines in modern tech.

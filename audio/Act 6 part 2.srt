@@ -1,0 +1,83 @@
+1
+00:00:00,000 --> 00:00:04,620
+By publicly dangling the keys to a $119 billion
+
+2
+00:00:04,620 --> 00:00:06,680
+Texas megafab in front of Jensen,
+
+3
+00:00:07,220 --> 00:00:10,520
+Elon achieves three massive strategic wins without even
+
+4
+00:00:10,520 --> 00:00:12,020
+signing an employment contract.
+
+5
+00:00:12,620 --> 00:00:16,140
+First, he puts maximum psychological pressure on NVIDIA's
+
+6
+00:00:16,140 --> 00:00:19,480
+interim leadership. Every time SpaceX negotiates GPU
+
+7
+00:00:19,480 --> 00:00:23,280
+pricing, allocation priority, or custom orbital specs
+
+8
+00:00:23,280 --> 00:00:25,880
+for its $44 billion Vera Rubin rollout,
+
+9
+00:00:25,880 --> 00:00:28,260
+NVIDIA's executives have to wonder,
+
+10
+00:00:28,760 --> 00:00:30,500
+if we push Elon too hard,
+
+11
+00:00:30,840 --> 00:00:33,140
+does he actually pull the trigger and make Jensen
+
+12
+00:00:33,140 --> 00:00:34,220
+the head of Terafab?
+
+13
+00:00:34,920 --> 00:00:37,740
+Second, it acts as a talent magnet for Terafab.
+
+14
+00:00:38,240 --> 00:00:41,060
+Right now, Terafab's biggest bottleneck isn't concrete.
+
+15
+00:00:41,380 --> 00:00:44,420
+It's recruiting elite semiconductor engineers who doubt
+
+16
+00:00:44,420 --> 00:00:46,940
+whether a rocket and car company can actually build
+
+17
+00:00:46,940 --> 00:00:48,180
+world -class chipfab.
+
+18
+00:00:48,700 --> 00:00:52,340
+Simply associating Jensen Huang's name with Terafab signals
+
+19
+00:00:52,340 --> 00:00:55,480
+to every disgruntled silicon engineer in Silicon Valley
+
+20
+00:00:55,480 --> 00:00:59,000
+and Taiwan that Elon is deadly serious about building
+
+21
+00:00:59,000 --> 00:01:00,640
+a true rival to TSMC.

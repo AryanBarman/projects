@@ -1,0 +1,43 @@
+1
+00:00:00,020 --> 00:00:02,880
+Think about the sheer scale of what's sitting on
+
+2
+00:00:02,880 --> 00:00:04,220
+the table right now.
+
+3
+00:00:04,780 --> 00:00:06,280
+Over the last three years,
+
+4
+00:00:06,580 --> 00:00:10,720
+two men have quietly reshaped the entire global economy.
+
+5
+00:00:11,600 --> 00:00:15,160
+Jensen Huang turned NVIDIA into a multi -trillion dollar
+
+6
+00:00:15,160 --> 00:00:18,940
+juggernaut, controlling the silicon brains behind artificial
+
+7
+00:00:18,940 --> 00:00:22,660
+intelligence. Meanwhile, Elon Musk became the
+
+8
+00:00:22,660 --> 00:00:25,480
+single biggest buyer keeping that empire fed.
+
+9
+00:00:26,060 --> 00:00:29,500
+He's poured tens of billions of dollars into massive
+
+10
+00:00:29,500 --> 00:00:33,400
+GPU clusters for XAI, autonomous training rigs
+
+11
+00:00:33,400 --> 00:00:36,500
+for Tesla, and orbital data centers for SpaceX.

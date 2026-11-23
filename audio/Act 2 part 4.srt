@@ -1,0 +1,63 @@
+1
+00:00:00,000 --> 00:00:02,880
+Now, here is the sudden drop.
+
+2
+00:00:03,500 --> 00:00:06,760
+NVIDIA's board didn't just ask Jensen to step back
+
+3
+00:00:06,760 --> 00:00:07,900
+into an advisory role.
+
+4
+00:00:08,400 --> 00:00:12,260
+Board Chair Harvey Jones declared there is zero path
+
+5
+00:00:12,260 --> 00:00:14,700
+back for Jensen to return as CEO.
+
+6
+00:00:15,420 --> 00:00:18,620
+And almost overnight, NVIDIA's stock plunged,
+
+7
+00:00:19,140 --> 00:00:22,060
+shedding hundreds of billions of dollars in market value
+
+8
+00:00:22,060 --> 00:00:25,840
+as investors realized the company's chief architect was
+
+9
+00:00:25,840 --> 00:00:27,100
+gone for good.
+
+10
+00:00:27,890 --> 00:00:31,700
+Which raises a terrifying question for NVIDIA and an
+
+11
+00:00:31,700 --> 00:00:34,220
+irresistible opportunity for Elon.
+
+12
+00:00:34,840 --> 00:00:37,100
+If Jensen Huang can never go back to the
+
+13
+00:00:37,100 --> 00:00:39,900
+company he founded, what happens if he takes his
+
+14
+00:00:39,900 --> 00:00:43,500
+decades of chip architecture genius and potentially
+
+15
+00:00:43,500 --> 00:00:47,280
+dozens of NVIDIA's top engineers across the street
+
+16
+00:00:47,280 --> 00:00:50,740
+to build Elon's dream factory from scratch?

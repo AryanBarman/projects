@@ -1,0 +1,87 @@
+1
+00:00:00,000 --> 00:00:03,680
+If Elon Musk actually hires Jensen Huang to lead
+
+2
+00:00:03,680 --> 00:00:06,680
+Terafab, it won't produce an overnight miracle.
+
+3
+00:00:07,320 --> 00:00:10,400
+There is no magic wand that bypasses clean room
+
+4
+00:00:10,400 --> 00:00:12,980
+physics, Intel's 14A ramp,
+
+5
+00:00:13,440 --> 00:00:17,820
+IP lawsuits, or SpaceX's $44 billion dependence
+
+6
+00:00:17,820 --> 00:00:19,820
+on NVIDIA's Vera Rubin chips.
+
+7
+00:00:20,680 --> 00:00:24,160
+Instead, a Musk -Hwang partnership would be a brutal,
+
+8
+00:00:24,520 --> 00:00:26,240
+multi -year war of attrition,
+
+9
+00:00:26,760 --> 00:00:30,660
+betting up to $119 billion that the world's
+
+10
+00:00:30,660 --> 00:00:33,600
+greatest chip designer and the world's most relentless
+
+11
+00:00:33,600 --> 00:00:37,680
+manufacturer can build a self -contained AI engine stretching
+
+12
+00:00:37,680 --> 00:00:39,800
+from Texas to low -Earth orbit.
+
+13
+00:00:40,720 --> 00:00:42,500
+Whether Jensen signs that contract,
+
+14
+00:00:43,080 --> 00:00:45,120
+or simply uses Elon's offer as leverage,
+
+15
+00:00:45,660 --> 00:00:47,360
+one thing is already certain,
+
+16
+00:00:47,900 --> 00:00:50,980
+NVIDIA's monopoly just lost its biggest moat.
+
+17
+00:00:51,660 --> 00:00:53,600
+And if you haven't seen the full story of
+
+18
+00:00:53,600 --> 00:00:56,380
+the boardroom implosion that forced Jensen Huang out
+
+19
+00:00:56,380 --> 00:00:57,740
+of NVIDIA in the first place,
+
+20
+00:00:58,180 --> 00:01:01,700
+and why it triggered this entire $4 trillion standoff,
+
+21
+00:01:02,280 --> 00:01:04,540
+click the video on your screen right now to
+
+22
+00:01:04,540 --> 00:01:05,600
+watch the full breakdown.

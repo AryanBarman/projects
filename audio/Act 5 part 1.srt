@@ -1,0 +1,91 @@
+1
+00:00:00,000 --> 00:00:03,180
+Even if Elon and Jensen solved the physics of
+
+2
+00:00:03,180 --> 00:00:06,420
+chip manufacturing, they still have to survive the lawyers,
+
+3
+00:00:06,940 --> 00:00:09,600
+the bondholders, and the United States government.
+
+4
+00:00:10,460 --> 00:00:13,320
+Let's look at the financial web tying SpaceX and
+
+5
+00:00:13,320 --> 00:00:15,040
+NVIDIA together right now.
+
+6
+00:00:15,460 --> 00:00:18,020
+This isn't a clean breakup where Elon can simply
+
+7
+00:00:18,020 --> 00:00:20,100
+poach NVIDIA's founder and walk away.
+
+8
+00:00:20,700 --> 00:00:22,680
+Just look at what happened on Wall Street on
+
+9
+00:00:22,680 --> 00:00:24,760
+November 20, 2026.
+
+10
+00:00:25,400 --> 00:00:28,720
+Apollo Global Management and Goldman Sachs priced roughly
+
+11
+00:00:28,720 --> 00:00:32,220
+$44 billion in off -balance -sheet lease notes,
+
+12
+00:00:32,620 --> 00:00:35,680
+the largest GPU financing deal ever executed,
+
+13
+00:00:36,180 --> 00:00:40,060
+specifically to buy NVIDIA Vero Rubin GPUs and lease
+
+14
+00:00:40,060 --> 00:00:42,880
+them to SpaceX through a special vehicle called Saturn
+
+15
+00:00:42,880 --> 00:00:46,420
+Funding Trust. Those Vero Rubin racks start landing in
+
+16
+00:00:46,420 --> 00:00:48,220
+the first half of 2027.
+
+17
+00:00:48,980 --> 00:00:52,800
+Even more interesting, lenders backing that $44 billion
+
+18
+00:00:52,800 --> 00:00:56,160
+deal have been closely watching SpaceX's plans to launch
+
+19
+00:00:56,160 --> 00:00:59,560
+Starmine GPUs into orbit in late 2027.
+
+20
+00:01:00,100 --> 00:01:02,560
+Because while a lender can repossess a server rack
+
+21
+00:01:02,560 --> 00:01:03,660
+in a Texas data center,
+
+22
+00:01:04,240 --> 00:01:06,740
+nobody can send a repo truck into low -Earth
+
+23
+00:01:06,740 --> 00:01:07,200
+orbit.

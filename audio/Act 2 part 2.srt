@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:04,060
+For 33 years, Jensen Huang was the personal
+
+2
+00:00:04,060 --> 00:00:06,020
+lynchpin of that entire web.
+
+3
+00:00:06,640 --> 00:00:09,220
+He didn't manage suppliers through layers of corporate
+
+4
+00:00:09,220 --> 00:00:11,720
+procurement lawyers. He flew to Taipei,
+
+5
+00:00:12,180 --> 00:00:14,260
+ate at night markets with foundry executives,
+
+6
+00:00:14,700 --> 00:00:18,180
+and allocated billions of dollars of scarce wafer capacity
+
+7
+00:00:18,180 --> 00:00:19,660
+on personal trust.
+
+8
+00:00:20,440 --> 00:00:22,900
+That's why, when Elon Musk spoke at the Dealbook
+
+9
+00:00:22,900 --> 00:00:24,580
+Summit right after Jensen's exit,
+
+10
+00:00:24,980 --> 00:00:27,600
+he pointed out something that sent a chill down
+
+11
+00:00:27,600 --> 00:00:28,420
+Wall Street's spine.
+
+12
+00:00:28,980 --> 00:00:32,460
+Elon compared Nvidia's board to the Chicago Bulls kicking
+
+13
+00:00:32,460 --> 00:00:34,960
+Michael Jordan off the team right in the middle
+
+14
+00:00:34,960 --> 00:00:36,680
+of a championship -winning streak.
+
+15
+00:00:37,420 --> 00:00:40,060
+And he warned that a massive portion of Nvidia's
+
+16
+00:00:40,060 --> 00:00:42,640
+supply chain wasn't built on ironclad paperwork.
+
+17
+00:00:43,260 --> 00:00:45,520
+It was built on a handshake with Jensen.

@@ -1,0 +1,87 @@
+1
+00:00:00,110 --> 00:00:02,250
+Let's play out the best -case scenario.
+
+2
+00:00:02,850 --> 00:00:06,470
+Imagine tomorrow morning, SpaceX and Tesla issue a joint
+
+3
+00:00:06,470 --> 00:00:10,310
+press release. Jensen Huang has been named chief executive
+
+4
+00:00:10,310 --> 00:00:13,810
+of TerraFab. If you haven't tracked the Texas tax
+
+5
+00:00:13,810 --> 00:00:15,130
+filings out of Grimes County,
+
+6
+00:00:15,650 --> 00:00:17,710
+TerraFab isn't some small research lab.
+
+7
+00:00:18,230 --> 00:00:21,630
+Unveiled in early 2026 by Tesla and SpaceX across
+
+8
+00:00:21,630 --> 00:00:25,350
+a reinvestment zone spanning more than 22,000 acres,
+
+9
+00:00:25,710 --> 00:00:28,230
+it is an audacious plan to build one of
+
+10
+00:00:28,230 --> 00:00:31,410
+the largest semiconductor manufacturing complexes on
+
+11
+00:00:31,410 --> 00:00:35,210
+earth. Under one roof, Elon wants to fabricate
+
+12
+00:00:35,210 --> 00:00:38,650
+logic chips, manufacture memory, and handle advanced
+
+13
+00:00:38,650 --> 00:00:42,410
+packaging, targeting a staggering one terawatt of
+
+14
+00:00:42,410 --> 00:00:43,750
+annual compute hardware.
+
+15
+00:00:44,350 --> 00:00:47,390
+County tax abatement records put phase one at $16
+
+16
+00:00:47,390 --> 00:00:51,290
+.8 billion, with full -scale build -out estimates across
+
+17
+00:00:51,290 --> 00:00:55,250
+four phases stretching all the way to $119 billion.
+
+18
+00:00:55,250 --> 00:00:58,850
+In fact, the details inside those filings are
+
+19
+00:00:58,850 --> 00:01:01,890
+so sensitive that SpaceX went to court in Texas
+
+20
+00:01:01,890 --> 00:01:03,110
+trying to keep the cost,
+
+21
+00:01:03,410 --> 00:01:06,030
+design, and water and power records sealed from the
+
+22
+00:01:06,030 --> 00:01:06,290
+public.

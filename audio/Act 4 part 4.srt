@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:02,760
+So, if Jensen joins TerraFab tomorrow,
+
+2
+00:00:03,140 --> 00:00:05,120
+he doesn't get to flip a switch and start
+
+3
+00:00:05,120 --> 00:00:07,660
+printing Vera Rubin killers next summer.
+
+4
+00:00:08,060 --> 00:00:10,680
+He spends the next three to five years fighting
+
+5
+00:00:10,680 --> 00:00:13,500
+cleanroom contamination, tool delivery cues,
+
+6
+00:00:13,840 --> 00:00:15,180
+and wafer yield curves.
+
+7
+00:00:15,820 --> 00:00:18,440
+And while Jensen is stuck waiting for Texas concrete
+
+8
+00:00:18,440 --> 00:00:22,020
+to dry, Elon still needs tens of thousands of
+
+9
+00:00:22,020 --> 00:00:23,640
+AI chips right now.
+
+10
+00:00:23,640 --> 00:00:27,620
+Which brings us straight into the second and far
+
+11
+00:00:27,620 --> 00:00:29,240
+more dangerous trap.

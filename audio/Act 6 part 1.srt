@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:02,840
+This is where you see the real game being
+
+2
+00:00:02,840 --> 00:00:04,480
+played beneath the headlines.
+
+3
+00:00:05,160 --> 00:00:07,440
+Elon Musk didn't go on stage at Dealbook and
+
+4
+00:00:07,440 --> 00:00:09,760
+praise Jensen Huang out of pure charity,
+
+5
+00:00:10,060 --> 00:00:12,500
+and he didn't float the idea of Jensen running
+
+6
+00:00:12,500 --> 00:00:16,140
+terra fab without calculating the exact shockwave it
+
+7
+00:00:16,140 --> 00:00:18,000
+would send through Nvidia's boardroom.
+
+8
+00:00:18,560 --> 00:00:21,000
+Look at who is running Nvidia right now.
+
+9
+00:00:21,520 --> 00:00:23,960
+Interim leadership is stepping into the hottest seat
+
+10
+00:00:23,960 --> 00:00:27,100
+in global tech at the exact moment Nvidia stock
+
+11
+00:00:27,100 --> 00:00:29,900
+is tumbling, and hyperscalers like Google,
+
+12
+00:00:30,340 --> 00:00:33,700
+Amazon, and Broadcom are racing to replace Nvidia GPUs
+
+13
+00:00:33,700 --> 00:00:35,160
+with custom ASICs.
+
+14
+00:00:35,860 --> 00:00:38,500
+Nvidia's board is terrified of two things.
+
+15
+00:00:39,020 --> 00:00:41,560
+Losing key chip architects who are loyal to Jensen
+
+16
+00:00:41,560 --> 00:00:45,100
+and losing their single most aggressive hardware buyer,
+
+17
+00:00:45,560 --> 00:00:46,160
+Elon Musk.

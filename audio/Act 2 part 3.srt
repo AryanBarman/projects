@@ -1,0 +1,59 @@
+1
+00:00:00,000 --> 00:00:02,860
+Here is the peak of Elon's advantage.
+
+2
+00:00:03,420 --> 00:00:06,160
+With Jensen suddenly stripped of his NVIDIA badge,
+
+3
+00:00:06,520 --> 00:00:10,400
+that entire personal loyalty network is now untethered.
+
+4
+00:00:11,460 --> 00:00:13,020
+Within hours of the announcement,
+
+5
+00:00:13,460 --> 00:00:16,580
+shocked NVIDIA employees signed an open letter demanding
+
+6
+00:00:16,580 --> 00:00:18,080
+the board reinstate Jensen.
+
+7
+00:00:18,680 --> 00:00:21,940
+They even warned they might resign and join SpaceX's
+
+8
+00:00:21,940 --> 00:00:25,780
+TerraFab project instead, noting that Elon had already
+
+9
+00:00:25,780 --> 00:00:27,600
+assured them jobs were waiting.
+
+10
+00:00:28,340 --> 00:00:31,720
+Even Jensen had previously joked to other tech buyers
+
+11
+00:00:31,720 --> 00:00:33,840
+that demand from Tesla, XAI,
+
+12
+00:00:34,080 --> 00:00:35,640
+and SpaceX was so massive,
+
+13
+00:00:35,960 --> 00:00:38,980
+he could practically hand all of NVIDIA's capacity straight
+
+14
+00:00:38,980 --> 00:00:42,340
+to Elon. The chemistry was already there.
+
+15
+00:00:42,840 --> 00:00:45,220
+The engineering loyalty was already there.

@@ -1,0 +1,103 @@
+1
+00:00:00,110 --> 00:00:02,510
+Think about what that means in the real world.
+
+2
+00:00:03,150 --> 00:00:06,110
+Elon Musk cannot declare war on NVIDIA.
+
+3
+00:00:06,830 --> 00:00:09,990
+SpaceX is spending tens of billions of dollars in
+
+4
+00:00:09,990 --> 00:00:12,250
+a single year on NVIDIA Compute.
+
+5
+00:00:12,870 --> 00:00:16,270
+If NVIDIA's new leadership slows down Vera Rubin shipments
+
+6
+00:00:16,270 --> 00:00:18,770
+to SpaceX by even six months,
+
+7
+00:00:19,290 --> 00:00:23,090
+SpaceX's $44 billion financing structure and
+
+8
+00:00:23,090 --> 00:00:26,830
+its 2027 satellite launch schedule take a direct hit.
+
+9
+00:00:27,430 --> 00:00:30,310
+Now add the legal wall on Jensen's side.
+
+10
+00:00:30,850 --> 00:00:33,830
+When a CEO leads a multi -trillion -dollar public
+
+11
+00:00:33,830 --> 00:00:36,950
+company for 33 years, they don't walk out the
+
+12
+00:00:36,950 --> 00:00:37,970
+door with a blank slate.
+
+13
+00:00:38,650 --> 00:00:42,430
+Every single architectural blueprint, every NVLink
+
+14
+00:00:42,430 --> 00:00:46,170
+interconnect protocol, every CUDA compiler optimization
+
+15
+00:00:46,170 --> 00:00:48,390
+belongs legally to NVIDIA.
+
+16
+00:00:49,090 --> 00:00:51,050
+If Jensen walks into Terafab,
+
+17
+00:00:51,450 --> 00:00:54,350
+especially with former NVIDIA engineers following him,
+
+18
+00:00:54,350 --> 00:00:57,490
+and designs a chip that looks even remotely like
+
+19
+00:00:57,490 --> 00:01:01,650
+NVIDIA's proprietary IP, NVIDIA's legal team will bury
+
+20
+00:01:01,650 --> 00:01:04,490
+Terafab and trade secret injunctions before a single
+
+21
+00:01:04,490 --> 00:01:05,810
+wafer leaves the line.
+
+22
+00:01:06,950 --> 00:01:09,250
+Jensen would effectively have to design a brand new
+
+23
+00:01:09,250 --> 00:01:12,670
+chip architecture from zero, while simultaneously building
+
+24
+00:01:12,670 --> 00:01:15,730
+a brand new software ecosystem to compete against CUDA.
+
+25
+00:01:16,030 --> 00:01:19,190
+The very software moat Jensen spent 20 years making
+
+26
+00:01:19,190 --> 00:01:20,530
+impossible to replace.

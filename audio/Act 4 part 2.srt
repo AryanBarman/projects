@@ -1,0 +1,71 @@
+1
+00:00:00,000 --> 00:00:03,280
+Running a leading -edge wafer fab is an entirely
+
+2
+00:00:03,280 --> 00:00:06,640
+different beast. Building rockets out of stainless steel
+
+3
+00:00:06,640 --> 00:00:09,700
+in Boca Chica, or stamping Model Y frames in
+
+4
+00:00:09,700 --> 00:00:12,440
+Austin does not teach you how to yield two
+
+5
+00:00:12,440 --> 00:00:15,140
+nanometer transistors. Elon knows that.
+
+6
+00:00:15,840 --> 00:00:17,860
+That's why in April 2026,
+
+7
+00:00:18,340 --> 00:00:21,740
+Tesla and SpaceX brought in Intel as TerraFab's process
+
+8
+00:00:21,740 --> 00:00:25,580
+technology partner, licensing Intel's upcoming 14A
+
+9
+00:00:25,580 --> 00:00:28,580
+manufacturing node and advanced packaging know -how,
+
+10
+00:00:28,860 --> 00:00:32,080
+so TerraFab wouldn't spend until the 2030s reinventing
+
+11
+00:00:32,080 --> 00:00:35,840
+semiconductor physics. Even TSMC confirmed in October
+
+12
+00:00:35,840 --> 00:00:39,320
+2026 that it had held talks about potential cooperation
+
+13
+00:00:39,320 --> 00:00:40,460
+around the Texas site.
+
+14
+00:00:41,380 --> 00:00:43,800
+So on the surface, the division of labor looks
+
+15
+00:00:43,800 --> 00:00:46,860
+smart. Intel brings the 14A process recipe,
+
+16
+00:00:47,680 --> 00:00:49,520
+Elon brings the capital and construction speed,
+
+17
+00:00:49,960 --> 00:00:52,600
+and Jensen brings the chip architecture and supplier
+
+18
+00:00:52,600 --> 00:00:53,080
+relationships.

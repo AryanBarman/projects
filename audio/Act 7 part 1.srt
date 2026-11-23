@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:01,980
+Let's come back to where we started.
+
+2
+00:00:02,740 --> 00:00:05,680
+When Nvidia's board forced Jensen Huang out in November
+
+3
+00:00:05,680 --> 00:00:09,100
+2026, they thought they were protecting the company from
+
+4
+00:00:09,100 --> 00:00:10,140
+a governance crisis.
+
+5
+00:00:10,900 --> 00:00:14,420
+Instead, they broke the personal handshake network that
+
+6
+00:00:14,420 --> 00:00:17,820
+held the AI supply chain together and turned the
+
+7
+00:00:17,820 --> 00:00:21,480
+most valuable chip architect on earth into a free
+
+8
+00:00:21,480 --> 00:00:21,860
+agent.
