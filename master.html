@@ -24,8 +24,10 @@
     <label>From act <select id="from"></select></label>
     <label>to act <select id="to"></select></label>
     <label><input type="checkbox" id="perAct" checked> one file per act</label>
+    <label><input type="checkbox" id="full" checked> also save the full joined video (full_video.webm)</label>
     <label><input type="checkbox" id="rec" checked> record (untick for a silent-less preview run)</label>
     <label><input type="checkbox" id="mon" checked> hear audio while recording</label>
+    <label>video offset (ms) <input id="off" type="number" value="0" step="20" style="width:80px"></label>
   </div>
   <div class="row"><button class="go" id="go">Start</button><button class="stop" id="stopb" disabled>Stop</button><span id="status">idle</span></div>
   <canvas id="prev" width="1920" height="1080"></canvas>
@@ -85,16 +87,18 @@
   }
   function wire(a) { const s = ac.createMediaElementSource(a); s.connect(dest); if ($('mon').checked) s.connect(ac.destination); }
 
-  function startRec(name) {
-    if (!$('rec').checked) return;
-    stream = comp.captureStream(FPS); dest.stream.getAudioTracks().forEach(t => stream.addTrack(t));
+  let fullRec = null;
+  function mkRec(name) {
+    if (!$('rec').checked) return null;
+    if (!stream) { stream = comp.captureStream(FPS); dest.stream.getAudioTracks().forEach(t => stream.addTrack(t)); }
     const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9,opus') ? 'video/webm;codecs=vp9,opus' : 'video/webm';
-    rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 12e6, audioBitsPerSecond: 192e3 }); chunks = [];
-    rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
-    const mine = chunks; rec.onstop = () => { const blob = new Blob(mine, { type: 'video/webm' }); const u = document.createElement('a'); u.href = URL.createObjectURL(blob); u.download = name + '.webm'; u.click(); log('saved ' + name + '.webm (' + (blob.size / 1048576).toFixed(1) + ' MB)'); };
-    rec.start(1000); log('recording → ' + name + '.webm');
+    const r = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 12e6, audioBitsPerSecond: 192e3 }); const ch = [];
+    r.ondataavailable = e => { if (e.data.size) ch.push(e.data); };
+    r.onstop = () => { const blob = new Blob(ch, { type: 'video/webm' }); const u = document.createElement('a'); u.href = URL.createObjectURL(blob); u.download = name + '.webm'; u.click(); log('saved ' + name + '.webm (' + (blob.size / 1048576).toFixed(1) + ' MB)'); };
+    r.start(1000); log('recording → ' + name + '.webm'); return r;
   }
-  function stopRec() { return new Promise(r => { if (rec && rec.state === 'recording') { const o = rec.onstop; rec.onstop = () => { o(); r(); }; rec.stop(); } else r(); }); }
+  function stopR(r) { return new Promise(res => { if (r && r.state === 'recording') { const o = r.onstop; r.onstop = () => { o(); res(); }; r.stop(); } else res(); }); }
+  function stopRec() { const a = rec, b = fullRec; rec = null; fullRec = null; return Promise.all([stopR(a), stopR(b)]); }
 
   async function tween(dur, fn) { const t0 = performance.now(); for (;;) { if (abort) return; const p = clamp((performance.now() - t0) / 1000 / dur, 0, 1); fn(p); present(); if (p >= 1) return; await raf(); } }
   function drawCard(act, p) {
@@ -118,7 +122,7 @@
       if (abort) { aud.pause(); return; }
       const t = Math.min(aud.ended ? dur + TAIL : aud.currentTime, dur + TAIL);
       const tt = aud.ended || aud.currentTime >= dur - 0.02 ? (performance.now() - t0) / 1000 : t; // after the audio ends, hold the last frame for TAIL
-      const rt = Math.min(aud.currentTime, dur); try { part.w.render(rt); } catch (e) { log('render error: ' + e.message); }
+      const rt = clamp(aud.currentTime + (+$('off').value || 0) / 1000, 0, dur); try { part.w.render(rt); } catch (e) { log('render error: ' + e.message); }
       grabFrame(part.w, cx);
       if (fadeIn > 0 && t < fadeIn) { cx.globalAlpha = 1 - ease(t / fadeIn); cx.drawImage(snap, 0, 0); cx.globalAlpha = 1; }
       present(); lastT = rt;
@@ -134,13 +138,18 @@
     abort = false; $('go').disabled = true; $('stopb').disabled = false; $('log').textContent = '';
     const from = +$('from').value, to = +$('to').value; if (from > to) { log('"from" must be ≤ "to"'); end(); return; }
     ensureAudio(); await ac.resume();
+    if (!window.__keep) { // inaudible noise keeps the recorded audio track continuous, so silent title cards are not dropped from the audio
+      const nb = ac.createBuffer(1, ac.sampleRate * 2, ac.sampleRate), d = nb.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1);
+      const ns = ac.createBufferSource(); ns.buffer = nb; ns.loop = true; const ng = ac.createGain(); ng.gain.value = 0.0015; ns.connect(ng); ng.connect(dest); ns.start(); window.__keep = ns;
+    }
     try {
       const todo = ACTS.filter(a => a.n >= from && a.n <= to);
       let total = 0; todo.forEach(a => total += a.parts.length); let done = 0, loaded = null;
       const wired = new WeakSet();
       for (let ai = 0; ai < todo.length && !abort; ai++) {
         const act = todo[ai]; const perAct = $('perAct').checked;
-        if (perAct || ai === 0) startRec(perAct ? 'act' + act.n : 'acts_' + from + '-' + to);
+        if (ai === 0 && ($('full').checked || !perAct)) fullRec = mkRec('full_video');
+        if (perAct) rec = mkRec('act' + act.n);
         // act title card (not before the very first act of the run's first frame; there the card is also shown for continuity)
         setStatus('Act ' + act.n + ' title card');
         if (ai > 0 && !perAct) await tween(0.5, p => { cx.drawImage(snap, 0, 0); cx.fillStyle = 'rgba(11,25,30,' + ease(p) + ')'; cx.fillRect(0, 0, 1920, 1080); });
@@ -164,10 +173,10 @@
         if (abort) break;
         // act end: fade the last frame to black
         await tween(0.5, p => { cx.drawImage(snap, 0, 0); cx.fillStyle = 'rgba(11,25,30,' + ease(p) + ')'; cx.fillRect(0, 0, 1920, 1080); });
-        if (perAct) { await sleep(200); await stopRec(); }
+        if (perAct) { await sleep(200); const r0 = rec; rec = null; await stopR(r0); }
         sx.fillStyle = '#0b191e'; sx.fillRect(0, 0, 1920, 1080);
       }
-      if (!$('perAct').checked) await stopRec();
+      await stopRec();
       log(abort ? 'stopped' : 'finished');
     } catch (e) { log('ERROR: ' + e.message); await stopRec(); }
     end();
