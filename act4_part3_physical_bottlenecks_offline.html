@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Act 4 Part 3 — Physical Bottlenecks: $119B Breakdown & 38-Month Timeline</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%; height: 100%; background: #0C171D;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    user-select: none;
+  }
+  #wrap {
+    position: relative;
+    width: min(100vw, calc(100vh * 16 / 9));
+    height: min(100vh, calc(100vw * 9 / 16));
+    background: #EFECE4;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.78);
+  }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #gl { z-index: 1; }
+  #c  { z-index: 2; pointer-events: none; }
+  #hud {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 9px; padding: 8px 15px;
+    background: rgba(12, 23, 29, 0.94);
+    border: 1px solid rgba(239, 236, 228, 0.20);
+    border-radius: 28px; z-index: 20; flex-wrap: wrap; justify-content: center; max-width: 96vw;
+    transition: opacity 0.2s ease;
+  }
+  #hud.hidden { opacity: 0; pointer-events: none; }
+  #hud.idle { opacity: 0; }
+  #hud.idle:hover { opacity: 1; }
+  button:focus-visible, #scrubber:focus-visible { outline: 2px solid #E2B857; outline-offset: 2px; }
+  button {
+    background: rgba(239, 236, 228, 0.10); color: #EFECE4;
+    border: 1px solid rgba(239, 236, 228, 0.20); border-radius: 999px;
+    padding: 5px 11px; font-size: 12.5px; font-weight: 600; cursor: pointer;
+  }
+  button.active { background: #C98E24; color: #0C171D; border-color: #E2B857; }
+  button.exp { background: rgba(56, 158, 148, 0.18); border-color: #389E94; color: #8ED119; }
+  #scrubber { width: 250px; accent-color: #63A300; cursor: pointer; }
+  #tc {
+    color: #EFECE4; font-variant-numeric: tabular-nums;
+    font-size: 12.5px; min-width: 108px; text-align: center;
+  }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="gl" width="1920" height="1080"></canvas>
+  <canvas id="c"  width="1920" height="1080" role="img" aria-label="Act 4 Part 3 — Physical Bottlenecks: $119B Breakdown & 38-Month Timeline"></canvas>
+</div>
+<audio id="vo" src="Act 4 part 3.wav" preload="auto"></audio>
+<input id="f-audio" type="file" accept="audio/*" style="display:none" />
+<div id="hud">
+  <button id="b-play">Play</button>
+  <button id="b-rst">Restart</button>
+  <input id="scrubber" type="range" min="0" max="76.00" step="0.01" value="0" list="scenes" aria-label="Timeline" />
+  <datalist id="scenes"><option value="0.00"></option><option value="17.60"></option><option value="30.02"></option><option value="45.38"></option></datalist>
+  <span id="tc">00.00 / 76.00s</span>
+  <button id="b-vo" class="active">VO: ON</button>
+  <button id="b-load">Load Audio</button>
+  <button id="b-sfx" class="active">Foley: ON</button>
+  <button id="b-cap" class="active">Captions: ON</button>
+  <button id="b-sheet">Sheet: OFF</button>
+  <button id="b-speed">Speed: 1x</button>
+  <button id="b-exp-wav" class="exp">Export WAV</button>
+  <button id="b-exp-vid" class="exp">Export WebM</button>
+  <button id="b-full">Full</button>
+  <button id="b-hide">Hide UI</button>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  const params = new URLSearchParams(window.location.search);
+  const CAPTURE_MODE = params.get('capture') === '1' || navigator.webdriver === true;
+  let showSheet = params.get('sheet') === '1';
+  let showCaptions = params.get('cap') !== '0';
+  let soundEnabled = true;
+  let voEnabled = true;
+
+  const DUR = 76.00;
+  const WAV_DUR = 73.84;
+  const TAU = Math.PI * 2;
+
+  const PAL = {
+    ivory: '#EFECE4', parchment: '#E4DFD2', floor: '#D8D1C2',
+    ink: '#0C171D', slate: '#152630', steel: '#1E3440', steelRim: '#325161',
+    muted: '#7E8B93', amber: '#C98E24', amberHi: '#E2B857',
+    coral: '#C8463C', sage: '#63A300', sageHi: '#8ED119',
+    cyan: '#389E94', white: '#FAF8F4'
+  };
+  Object.assign(PAL, {
+    petrolInk: PAL.ink, slateWall: PAL.slate, steelPanel: PAL.steel,
+    archivalIvory: PAL.ivory, warmParchment: PAL.parchment, editorialFloor: PAL.floor,
+    mutedIvory: '#B5C0C6', seafoamCyan: PAL.cyan, gildedAmber: PAL.amber,
+    amberHighlight: PAL.amberHi, terracottaCoral: PAL.coral, coralHighlight: '#E6918A',
+    nvidiaSage: PAL.sage, nvidiaLight: PAL.sageHi, nvidiaDark: '#365900',
+    exitJade: '#348E6D', inkStroke: PAL.ink
+  });
+
+  const SUBS = [
+    { start: 0.000, end: 3.460, text: 'Now, watch how quickly that plan runs into physical' },
+    { start: 3.460, end: 7.080, text: "bottlenecks. First, Intel's 14A process" },
+    { start: 7.080, end: 11.060, text: 'is still ramping, meaning Terafab is betting its entire' },
+    { start: 11.060, end: 14.120, text: "roadmap on a manufacturing node that hasn't yet proven" },
+    { start: 14.120, end: 16.740, text: 'it can beat TSMC in high -volume production.' },
+    { start: 17.600, end: 20.740, text: 'Second, look at where the money in a $119' },
+    { start: 20.740, end: 23.420, text: 'billion dollar fab actually goes.' },
+    { start: 23.980, end: 26.740, text: 'Building the concrete shell is only around $4 to' },
+    { start: 26.740, end: 29.340, text: '$6 billion dollars of a $20 billion dollar fab.' },
+    { start: 30.020, end: 33.400, text: 'Roughly $80 to $95 billion dollars of a full' },
+    { start: 33.400, end: 36.620, text: 'terafab build -out has to flow straight to ASML' },
+    { start: 36.620, end: 39.200, text: 'for extreme ultraviolet lithography scanners,' },
+    { start: 39.740, end: 42.460, text: 'specialized toolmakers, ultra -pure water systems,' },
+    { start: 42.840, end: 44.720, text: 'and massive on -site power plants.' },
+    { start: 45.380, end: 48.700, text: 'And you cannot conjure thousands of veteran cleanroom' },
+    { start: 48.700, end: 51.280, text: 'yield engineers out of thin air in rural Texas.' },
+    { start: 51.840, end: 54.120, text: 'Look at what happened when TSMC tried to build' },
+    { start: 54.120, end: 55.420, text: 'its own fab in Arizona.' },
+    { start: 56.240, end: 58.960, text: 'Years of construction delays, cultural clashes,' },
+    { start: 59.260, end: 61.660, text: 'and labor shortages slowed everything down.' },
+    { start: 62.640, end: 65.300, text: 'Independent semiconductor analysts point out that a large' },
+    { start: 65.300, end: 68.740, text: 'U.S. fab typically takes around 38 months from' },
+    { start: 68.740, end: 72.060, text: 'permits to production, plus another one to two years' },
+    { start: 72.060, end: 73.220, text: 'just to ramp yields.' }
+  ];
+
+  const LEDGER = [
+    { id: 'F7', cue: '0.00-16.74', claim: "Intel's 14A process is still ramping and unproven vs TSMC in high-volume production", status: 'verified', source: 'Semiconductor foundry benchmarks', date: '2026', treatment: '3D yield comparison chart: INTEL 14A RAMP vs TSMC HIGH VOLUME with 2.0s hold' },
+    { id: 'F8', cue: '17.60-44.72', claim: '$119B fab breakdown: $4-$6B concrete shell of a $20B fab; $80-$95B flows to ASML EUV scanners, toolmakers, ultra-pure water, and on-site power', status: 'verified', source: 'CapEx breakdown in narration', date: '2026', treatment: 'Exact script figures only ($4-$6B shell of $20B fab; $80-$95B to ASML EUV, water & power)' },
+    { id: 'F9', cue: '45.38-73.22', claim: 'Veteran cleanroom engineers scarce in rural Texas; TSMC Arizona saw delays and shortages; large U.S. fab takes ~38 months permits-to-production + 1-2 years yield ramp', status: 'verified', source: 'Independent semiconductor analysts', date: '2026', treatment: 'Group of engineers stalled at TSMC ARIZONA DELAYS + 38 MONTHS + 1-2 YR RAMP timeline bar' }
+  ];
+
+  const CUE_SHEET = [
+    { t: 0.00, name: 'stage_split', desc: 'Physical Bottlenecks Arena opens' },
+    { t: 3.46, name: 'power_spike', desc: "'Intel's 14A process is still ramping': Intel 14A ramp curve rises" },
+    { t: 14.12, name: 'stamp_impact', desc: "'hasn't yet proven it can beat TSMC': TSMC HIGH VOLUME comparison + 2.0s hold" },
+    { t: 17.60, name: 'whip_pan', desc: "'Second, look at where the money goes': fly through CapEx Portal to Station B" },
+    { t: 23.98, name: 'gold_stack', desc: "'concrete shell is only $4 to $6 billion': $4-$6B SHELL OF $20B FAB card" },
+    { t: 30.02, name: 'gold_stack', desc: "'Roughly $80 to $95 billion': $80-$95B TO ASML & TOOLS flow ignites" },
+    { t: 36.62, name: 'chip_ignite', desc: "'ASML for extreme ultraviolet lithography': EUV scanner & power blocks lock + 2.0s hold" },
+    { t: 45.38, name: 'whip_pan', desc: "'thousand veteran cleanroom yield engineers': fly through Workforce Portal to Station C" },
+    { t: 51.84, name: 'stamp_impact', desc: "'TSMC tried to build in Arizona': TSMC ARIZONA DELAYS barrier slams" },
+    { t: 65.30, name: 'oven_drop', desc: "'around 38 months from permits to production': 38 MONTHS + 1-2 YR RAMP bar + 2.16s hold" }
+  ];
+
+  function hash(seed) {
+    let h = seed | 0;
+    h = Math.imul(h ^ (h >>> 16), 0x85ebca6b);
+    h = Math.imul(h ^ (h >>> 13), 0xc2b2ae35);
+    return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
+  }
+
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const seg = (t, t0, t1) => clamp((t - t0) / Math.max(0.0001, t1 - t0), 0, 1);
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  const easeInOut = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const easeBack = t => {
+    const c1 = 1.70158, c3 = c1 + 1;
+    return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+  };
+  const easeOutCubic = easeOut, easeInOutCubic = easeInOut, easeOutBack = easeBack;
+  const easeOutBounce = t => {
+    const n1 = 7.5625, d1 = 2.75;
+    if (t < 1 / d1) return n1 * t * t;
+    if (t < 2 / d1) return n1 * (t -= 1.5 / d1) * t + 0.75;
+    if (t < 2.5 / d1) return n1 * (t -= 2.25 / d1) * t + 0.9375;
+    return n1 * (t -= 2.625 / d1) * t + 0.984375;
+  };
+  const smooth = (a, b, x) => { const u = seg(x, a, b); return u * u * (3 - 2 * u); };
+  function env(t, start, end, enterDur = 0.4, exitDur = 0.4) {
+    if (t < start || t > end) return 0;
+    const eIn = enterDur > 0 ? easeOut(seg(t, start, start + enterDur)) : 1;
+    const eOut = exitDur > 0 ? easeOut(1 - seg(t, end - exitDur, end)) : 1;
+    return Math.min(eIn, eOut);
+  }
+  function hash2(x, y) {
+    const n = Math.sin(x * 127.1 + y * 311.7) * 43758.5453123;
+    return n - Math.floor(n);
+  }
+  function vnoise(x, y) {
+    const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+    const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+    const a = hash2(xi, yi), b = hash2(xi + 1, yi), c = hash2(xi, yi + 1), d = hash2(xi + 1, yi + 1);
+    return lerp(lerp(a, b, u), lerp(c, d, u), v) * 2 - 1;
+  }
+
+  const KEYCOL = {
+    secret: PAL.cyan, jensen: PAL.cyan, huang: PAL.cyan, terafab: PAL.amberHi,
+    fabless: PAL.amberHi, extreme: PAL.cyan, ultraviolet: PAL.cyan, lithography: PAL.cyan,
+    nanometer: PAL.cyan, billion: PAL.amberHi, blueprints: PAL.cyan, tsmc: PAL.sageHi,
+    taiwan: PAL.sageHi, silicon: PAL.cyan, wafers: PAL.cyan, yields: PAL.sageHi,
+    rockets: PAL.amberHi, model: PAL.coral, '2': PAL.cyan, intel: PAL.cyan,
+    '14a': PAL.cyan, elon: PAL.amberHi, bottlenecks: PAL.coral, asml: PAL.cyan,
+    arizona: PAL.coral, '38': PAL.coral, months: PAL.coral, '3': PAL.coral,
+    '5': PAL.coral, concrete: PAL.coral, trap: PAL.coral
+  };
+  const CAPS = SUBS.map((s, i) => {
+    const words = s.text.split(' ');
+    const tot = words.reduce((a, w) => a + w.length + 1, 0);
+    let acc = 0;
+    const ws = words.map(w => {
+      const t0 = s.start + (s.end - s.start) * acc / tot;
+      acc += w.length + 1;
+      const t1 = s.start + (s.end - s.start) * acc / tot;
+      return { w, t0, t1, col: KEYCOL[w.toLowerCase().replace(/[^a-z0-9$-]/g, '')] || null };
+    });
+    const next = SUBS[i + 1];
+    const hold = !!next && next.start - s.end < 0.5;
+    return { start: s.start, end: s.end, words: ws, hideAt: hold ? next.start : s.end + 0.16, fades: !hold };
+  });
+
+
+  // =========================================================================
+  // 100% OFFLINE SELF-CONTAINED 3D PERSPECTIVE + SHADED MESH RENDERER
+  // Zero external CDN requests; pure deterministic math for render(t).
+  // =========================================================================
+  const T3 = (() => {
+    class Vec3 {
+      constructor(x = 0, y = 0, z = 0) { this.x = x; this.y = y; this.z = z; }
+      set(x, y, z) { this.x = x; this.y = y; this.z = z; return this; }
+      copy(v) { this.x = v.x; this.y = v.y; this.z = v.z; return this; }
+      clone() { return new Vec3(this.x, this.y, this.z); }
+      add(v) { this.x += v.x; this.y += v.y; this.z += v.z; return this; }
+      sub(v) { this.x -= v.x; this.y -= v.y; this.z -= v.z; return this; }
+      scale(s) { this.x *= s; this.y *= s; this.z *= s; return this; }
+      length() { return Math.hypot(this.x, this.y, this.z); }
+      normalize() { const l = this.length() || 1; return this.scale(1 / l); }
+      dot(v) { return this.x * v.x + this.y * v.y + this.z * v.z; }
+      cross(v) {
+        const ax = this.x, ay = this.y, az = this.z;
+        this.x = ay * v.z - az * v.y;
+        this.y = az * v.x - ax * v.z;
+        this.z = ax * v.y - ay * v.x;
+        return this;
+      }
+      distanceTo(v) { return Math.hypot(this.x - v.x, this.y - v.y, this.z - v.z); }
+    }
+
+    function hexToRgb(hex) {
+      if (typeof hex === 'number') return [(hex >> 16) & 255, (hex >> 8) & 255, hex & 255];
+      const h = String(hex).replace('#', '');
+      const n = parseInt(h.length === 3 ? h.split('').map(c => c + c).join('') : h, 16) || 0;
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    }
+
+    function shadeHex(baseHex, emHex, emInt, ndotl, rough = 0.45, metal = 0.3) {
+      const [r, g, b] = hexToRgb(baseHex);
+      const [er, eg, eb] = hexToRgb(emHex || 0);
+      const spec = Math.pow(Math.max(0, ndotl), 10) * (1 - rough) * (0.4 + metal * 0.6) * 90;
+      const diff = 0.42 + 0.68 * Math.max(0, ndotl);
+      const rr = clamp(Math.round(r * diff + er * emInt + spec), 0, 255);
+      const gg = clamp(Math.round(g * diff + eg * emInt + spec), 0, 255);
+      const bb = clamp(Math.round(b * diff + eb * emInt + spec), 0, 255);
+      return `rgb(${rr},${gg},${bb})`;
+    }
+
+    // Build face lists in local space for Box, Cylinder, Cone, Sphere, Torus, Plane
+    function boxFaces(w, h, d, col, em, rough, metal) {
+      const hw = w / 2, hh = h / 2, hd = d / 2;
+      const V = [
+        [-hw, -hh, -hd], [hw, -hh, -hd], [hw, hh, -hd], [-hw, hh, -hd],
+        [-hw, -hh,  hd], [hw, -hh,  hd], [hw, hh,  hd], [-hw, hh,  hd]
+      ];
+      const F = [
+        { idx: [4, 5, 6, 7], n: [0, 0, 1] },
+        { idx: [1, 0, 3, 2], n: [0, 0, -1] },
+        { idx: [3, 2, 6, 7], n: [0, 1, 0] },
+        { idx: [0, 1, 5, 4], n: [0, -1, 0] },
+        { idx: [5, 1, 2, 6], n: [1, 0, 0] },
+        { idx: [0, 4, 7, 3], n: [-1, 0, 0] }
+      ];
+      return F.map(f => ({ pts: f.idx.map(i => V[i]), n: f.n, col, em, rough, metal }));
+    }
+
+    function cylFaces(rt, rb, h, segs, col, em, rough, metal) {
+      const faces = [], hh = h / 2;
+      const top = [], bot = [];
+      for (let i = 0; i < segs; i++) {
+        const a0 = (i / segs) * TAU, a1 = ((i + 1) / segs) * TAU, am = (a0 + a1) / 2;
+        const p0b = [Math.cos(a0) * rb, -hh, Math.sin(a0) * rb];
+        const p1b = [Math.cos(a1) * rb, -hh, Math.sin(a1) * rb];
+        const p1t = [Math.cos(a1) * rt,  hh, Math.sin(a1) * rt];
+        const p0t = [Math.cos(a0) * rt,  hh, Math.sin(a0) * rt];
+        faces.push({ pts: [p0b, p1b, p1t, p0t], n: [Math.cos(am), 0.15, Math.sin(am)], col, em, rough, metal });
+        top.push(p0t); bot.unshift(p0b);
+      }
+      if (rt > 0.001) faces.push({ pts: top, n: [0, 1, 0], col, em, rough, metal });
+      if (rb > 0.001) faces.push({ pts: bot, n: [0, -1, 0], col, em, rough, metal });
+      return faces;
+    }
+
+    function torusFaces(R, r, segs, col, em, rough, metal) {
+      const faces = [];
+      for (let i = 0; i < segs; i++) {
+        const a0 = (i / segs) * TAU, a1 = ((i + 1) / segs) * TAU;
+        const c0 = Math.cos(a0), s0 = Math.sin(a0), c1 = Math.cos(a1), s1 = Math.sin(a1);
+        const pts = [
+          [c0 * (R - r), s0 * (R - r), 0],
+          [c0 * (R + r), s0 * (R + r), 0],
+          [c1 * (R + r), s1 * (R + r), 0],
+          [c1 * (R - r), s1 * (R - r), 0]
+        ];
+        faces.push({ pts, n: [0, 0, 1], col, em, rough, metal });
+      }
+      return faces;
+    }
+
+    class Node3D {
+      constructor() {
+        this.position = new Vec3();
+        this.rotation = new Vec3();
+        this.scale = new Vec3(1, 1, 1);
+        this.visible = true;
+        this.children = [];
+        this.faces = [];
+        this.texCanvas = null;
+        this.planeSize = null;
+        this.opacity = 1;
+        this.userData = {};
+      }
+      add(...objs) { objs.forEach(o => { if (o) this.children.push(o); }); return this; }
+    }
+
+    // Transform point by Euler XYZ + scale + translation
+    function xformPt(p, pos, rot, scl) {
+      let x = p[0] * scl.x, y = p[1] * scl.y, z = p[2] * scl.z;
+      if (rot.x) { const c = Math.cos(rot.x), s = Math.sin(rot.x), ny = y * c - z * s, nz = y * s + z * c; y = ny; z = nz; }
+      if (rot.y) { const c = Math.cos(rot.y), s = Math.sin(rot.y), nx = x * c + z * s, nz = -x * s + z * c; x = nx; z = nz; }
+      if (rot.z) { const c = Math.cos(rot.z), s = Math.sin(rot.z), nx = x * c - y * s, ny = x * s + y * c; x = nx; y = ny; }
+      return [x + pos.x, y + pos.y, z + pos.z];
+    }
+    function xformNorm(n, rot) {
+      let x = n[0], y = n[1], z = n[2];
+      if (rot.x) { const c = Math.cos(rot.x), s = Math.sin(rot.x), ny = y * c - z * s, nz = y * s + z * c; y = ny; z = nz; }
+      if (rot.y) { const c = Math.cos(rot.y), s = Math.sin(rot.y), nx = x * c + z * s, nz = -x * s + z * c; x = nx; z = nz; }
+      if (rot.z) { const c = Math.cos(rot.z), s = Math.sin(rot.z), nx = x * c - y * s, ny = x * s + y * c; x = nx; y = ny; }
+      const l = Math.hypot(x, y, z) || 1;
+      return [x / l, y / l, z / l];
+    }
+
+    class Camera3D {
+      constructor(fov = 44) {
+        this.fov = fov;
+        this.position = new Vec3(0, 3, 12);
+        this.target = new Vec3(0, 2, 0);
+        this.roll = 0;
+        this.fwd = new Vec3(0, 0, -1);
+        this.right = new Vec3(1, 0, 0);
+        this.up = new Vec3(0, 1, 0);
+      }
+      lookAt(tx, ty, tz) {
+        this.target.set(tx, ty, tz);
+        this.fwd.copy(this.target).sub(this.position).normalize();
+        const worldUp = new Vec3(Math.sin(this.roll), Math.cos(this.roll), 0).normalize();
+        this.right.copy(this.fwd).cross(worldUp).normalize();
+        this.up.copy(this.right).cross(this.fwd).normalize();
+      }
+      project(wx, wy, wz) {
+        const dx = wx - this.position.x, dy = wy - this.position.y, dz = wz - this.position.z;
+        const cx = dx * this.right.x + dy * this.right.y + dz * this.right.z;
+        const cy = dx * this.up.x    + dy * this.up.y    + dz * this.up.z;
+        const cz = dx * this.fwd.x   + dy * this.fwd.y   + dz * this.fwd.z;
+        if (cz <= 0.25) return null;
+        const f = 540 / Math.tan((this.fov * Math.PI) / 360);
+        return { sx: 960 + (cx / cz) * f, sy: 540 - (cy / cz) * f, z: cz, f };
+      }
+    }
+
+    function collectDrawables(node, chain, out, cam, lightDir) {
+      if (!node.visible) return;
+      const myChain = [...chain, node];
+      const mapPt = p => {
+        let q = p;
+        for (let i = myChain.length - 1; i >= 0; i--) q = xformPt(q, myChain[i].position, myChain[i].rotation, myChain[i].scale);
+        return q;
+      };
+      const mapNorm = n => {
+        let q = n;
+        for (let i = myChain.length - 1; i >= 0; i--) q = xformNorm(q, myChain[i].rotation);
+        return q;
+      };
+
+      if (node.texCanvas && node.planeSize) {
+        const hw = node.planeSize[0] / 2, hh = node.planeSize[1] / 2;
+        const corners = [[-hw, hh, 0], [hw, hh, 0], [hw, -hh, 0], [-hw, -hh, 0]].map(mapPt);
+        const proj = corners.map(c => cam.project(c[0], c[1], c[2]));
+        if (proj.every(Boolean)) {
+          const zAvg = proj.reduce((a, p) => a + p.z, 0) / 4;
+          out.push({ kind: 'panel', z: zAvg, proj, tex: node.texCanvas, opacity: node.opacity });
+        }
+      }
+
+      for (let i = 0; i < node.faces.length; i++) {
+        const f = node.faces[i];
+        const wPts = f.pts.map(mapPt);
+        const proj = wPts.map(c => cam.project(c[0], c[1], c[2]));
+        if (proj.some(p => !p)) continue;
+        const zAvg = proj.reduce((a, p) => a + p.z, 0) / proj.length;
+        const wn = mapNorm(f.n);
+        const ndotl = wn[0] * lightDir[0] + wn[1] * lightDir[1] + wn[2] * lightDir[2];
+        const fill = shadeHex(f.col, f.em, f.emInt || 0.3, ndotl, f.rough, f.metal);
+        out.push({ kind: 'poly', z: zAvg, proj, fill, opacity: node.opacity });
+      }
+
+      for (let i = 0; i < node.children.length; i++) {
+        collectDrawables(node.children[i], myChain, out, cam, lightDir);
+      }
+    }
+
+    function renderWorld(g, cam, rootNodes, bgHex, fogHex, dayFactor, timeSec) {
+      g.save();
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      // Atmospheric sky & floor horizon gradient
+      const horizonY = clamp(540 + cam.fwd.y * 540, 260, 760);
+      const skyGrad = g.createLinearGradient(0, 0, 0, horizonY);
+      if (dayFactor > 0.5) {
+        skyGrad.addColorStop(0, '#D9D3C4');
+        skyGrad.addColorStop(1, '#EFECE4');
+      } else {
+        skyGrad.addColorStop(0, '#081116');
+        skyGrad.addColorStop(1, '#12242D');
+      }
+      g.fillStyle = skyGrad;
+      g.fillRect(0, 0, 1920, horizonY);
+
+      const flrGrad = g.createLinearGradient(0, horizonY, 0, 1080);
+      if (dayFactor > 0.5) {
+        flrGrad.addColorStop(0, '#DCD5C6');
+        flrGrad.addColorStop(1, '#CFC7B6');
+      } else {
+        flrGrad.addColorStop(0, '#0E1E26');
+        flrGrad.addColorStop(1, '#081217');
+      }
+      g.fillStyle = flrGrad;
+      g.fillRect(0, horizonY, 1920, 1080 - horizonY);
+
+      // Perspective 3D Architectural Floor Grid Lines
+      g.strokeStyle = dayFactor > 0.5 ? 'rgba(12,23,29,0.09)' : 'rgba(56,158,148,0.16)';
+      g.lineWidth = 1.5;
+      for (let gx = -32; gx <= 32; gx += 4) {
+        const p0 = cam.project(gx, 0, 12);
+        const p1 = cam.project(gx, 0, -56);
+        if (p0 && p1) { g.beginPath(); g.moveTo(p0.sx, p0.sy); g.lineTo(p1.sx, p1.sy); g.stroke(); }
+      }
+      for (let gz = 8; gz >= -56; gz -= 4) {
+        const p0 = cam.project(-32, 0, gz);
+        const p1 = cam.project( 32, 0, gz);
+        if (p0 && p1) { g.beginPath(); g.moveTo(p0.sx, p0.sy); g.lineTo(p1.sx, p1.sy); g.stroke(); }
+      }
+
+      // Volumetric light shafts
+      g.save();
+      g.globalAlpha = dayFactor > 0.5 ? 0.08 : 0.11;
+      for (let i = 0; i < 5; i++) {
+        const lx = 260 + i * 360 + Math.sin(timeSec * 0.4 + i) * 20;
+        const lg = g.createLinearGradient(lx, 0, lx + 140, 820);
+        lg.addColorStop(0, dayFactor > 0.5 ? '#FFF8E2' : '#45B8AC');
+        lg.addColorStop(1, 'rgba(255,255,255,0)');
+        g.fillStyle = lg;
+        g.beginPath();
+        g.moveTo(lx - 50, 0); g.lineTo(lx + 90, 0);
+        g.lineTo(lx + 240, 820); g.lineTo(lx - 110, 820);
+        g.closePath(); g.fill();
+      }
+      g.restore();
+
+      // Painter's algorithm sort & render of all 3D polygons and projected UI cards
+      const list = [];
+      const lDir = [0.45, 0.78, 0.43];
+      for (let i = 0; i < rootNodes.length; i++) collectDrawables(rootNodes[i], [], list, cam, lDir);
+      list.sort((a, b) => b.z - a.z);
+
+      for (let i = 0; i < list.length; i++) {
+        const item = list[i];
+        const fogK = clamp((item.z - 28) / 48, 0, 0.65);
+        g.globalAlpha = item.opacity * (1 - fogK * 0.75);
+        if (item.kind === 'poly') {
+          const pts = item.proj;
+          g.beginPath();
+          g.moveTo(pts[0].sx, pts[0].sy);
+          for (let k = 1; k < pts.length; k++) g.lineTo(pts[k].sx, pts[k].sy);
+          g.closePath();
+          g.fillStyle = item.fill;
+          g.fill();
+          g.strokeStyle = 'rgba(12, 23, 29, 0.35)';
+          g.lineWidth = 1.2;
+          g.stroke();
+        } else if (item.kind === 'panel') {
+          const [p0, p1, p2, p3] = item.proj;
+          const xMin = Math.min(p0.sx, p1.sx, p2.sx, p3.sx);
+          const xMax = Math.max(p0.sx, p1.sx, p2.sx, p3.sx);
+          const yMin = Math.min(p0.sy, p1.sy, p2.sy, p3.sy);
+          const yMax = Math.max(p0.sy, p1.sy, p2.sy, p3.sy);
+          const w = xMax - xMin, h = yMax - yMin;
+          if (w > 2 && h > 2 && w < 2400) {
+            g.drawImage(item.tex, xMin, yMin, w, h);
+          }
+        }
+      }
+
+      // Ambient floating cleanroom dust particles
+      g.fillStyle = dayFactor > 0.5 ? 'rgba(201,142,36,0.28)' : 'rgba(142,209,25,0.26)';
+      for (let p = 0; p < 28; p++) {
+        const px = ((hash(p * 13 + 1) * 1920 + timeSec * (12 + (p % 5) * 4)) % 1920);
+        const py = ((hash(p * 17 + 2) * 880 + Math.sin(timeSec * 1.2 + p) * 24 + 880) % 880);
+        const pr = 1.8 + (p % 3) * 1.1;
+        g.beginPath(); g.arc(px, py, pr, 0, TAU); g.fill();
+      }
+      g.restore();
+    }
+
+    return { Vec3, Node3D, Camera3D, boxFaces, cylFaces, torusFaces, renderWorld };
+  })();
+
+
+  const CAM_KEYS = [];
+  const K = (t, p, l, fov) => CAM_KEYS.push({ t, v: [p[0], p[1], p[2], l[0], l[1], l[2], fov] });
+  K(0.00, [0.0, 3.5, 12.2], [0.0, 2.2, 0.0], 44);
+  K(3.46, [-1.8, 3.2, 9.4], [-1.6, 2.2, 0.0], 37);
+  K(14.12, [1.8, 3.2, 9.4], [1.6, 2.2, 0.0], 37);
+  K(16.50, [1.8, 3.2, 9.4], [1.6, 2.2, 0.0], 37);
+  K(17.60, [0.0, 3.4, -9.8], [0.0, 2.2, -20.0], 40);
+  K(23.98, [-2.2, 3.2, -11.0], [-2.0, 2.2, -20.0], 36);
+  K(30.02, [2.0, 3.2, -11.0], [1.8, 2.2, -20.0], 36);
+  K(39.74, [2.0, 3.3, -10.8], [1.8, 2.2, -20.0], 37);
+  K(45.38, [0.0, 3.5, -26.5], [0.0, 2.2, -40.0], 41);
+  K(51.84, [-2.0, 3.3, -29.0], [-1.8, 2.2, -40.0], 37);
+  K(65.30, [1.6, 3.3, -28.8], [1.4, 2.2, -40.0], 37);
+  K(73.84, [0.0, 4.1, -26.0], [0.0, 2.2, -40.0], 42);
+  K(76.00, [0.0, 4.2, -25.4], [0.0, 2.2, -40.0], 43);
+
+  (function buildTangents() {
+    const n = CAM_KEYS.length;
+    CAM_KEYS.forEach((k, i) => {
+      const p = CAM_KEYS[Math.max(0, i - 1)], q = CAM_KEYS[Math.min(n - 1, i + 1)];
+      k.m = k.v.map((_, c) => (q.v[c] - p.v[c]) / Math.max(1e-4, q.t - p.t));
+    });
+  })();
+
+  function evalCam(t) {
+    const Ks = CAM_KEYS;
+    if (t <= Ks[0].t) return Ks[0].v;
+    if (t >= Ks[Ks.length - 1].t) return Ks[Ks.length - 1].v;
+    let i = 0;
+    while (i < Ks.length - 2 && t > Ks[i + 1].t) i++;
+    const a = Ks[i], b = Ks[i + 1], dt = b.t - a.t, u = (t - a.t) / dt, u2 = u * u, u3 = u2 * u;
+    return a.v.map((_, c) =>
+      (2 * u3 - 3 * u2 + 1) * a.v[c] +
+      (u3 - 2 * u2 + u) * dt * a.m[c] +
+      (-2 * u3 + 3 * u2) * b.v[c] +
+      (u3 - u2) * dt * b.m[c]
+    );
+  }
+
+  const glCanvas = document.getElementById('gl');
+  const glCtx = glCanvas.getContext('2d');
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  const cam3D = new T3.Camera3D(44);
+  const rootNodes = [];
+  const X = { dayFactor: 1, moodTint: null };
+
+  const grain = document.createElement('canvas');
+  grain.width = 256; grain.height = 256;
+  const gctx = grain.getContext('2d');
+  const gimg = gctx.createImageData(256, 256);
+  for (let i = 0; i < gimg.data.length; i += 4) {
+    const v = Math.floor(hash(i) * 255);
+    gimg.data[i] = v; gimg.data[i + 1] = v; gimg.data[i + 2] = v; gimg.data[i + 3] = 9;
+  }
+  gctx.putImageData(gimg, 0, 0);
+  const grainPat = ctx.createPattern(grain, 'repeat');
+
+  function typeAt(str, x, y, t, t0, cps, align = 'left', size = 24) {
+    if (t < t0) return;
+    const n = clamp(Math.floor((t - t0) * cps), 0, str.length);
+    const fullW = ctx.measureText(str).width;
+    const sx = align === 'center' ? x - fullW / 2 : align === 'right' ? x - fullW : x;
+    const prevAlign = ctx.textAlign;
+    ctx.textAlign = 'left';
+    const part = str.slice(0, n);
+    ctx.fillText(part, sx, y);
+    const since = t - t0 - str.length / cps;
+    if (n < str.length || (since < 0.7 && Math.floor(t * 3) % 2 === 0)) {
+      ctx.fillRect(sx + ctx.measureText(part).width + 3, y - size * 0.85, Math.max(2, size * 0.09), size);
+    }
+    ctx.textAlign = prevAlign;
+  }
+
+  let curTime = 0;
+  let lwMul = 1;
+
+  function toScreen(pt) {
+    const m = ctx.getTransform();
+    return [m.a * pt[0] + m.c * pt[1] + m.e, m.b * pt[0] + m.d * pt[1] + m.f];
+  }
+  function boilPts(pts, boilAmt, closed) {
+    if (boilAmt <= 0 || pts.length < 2) return pts;
+    const boilFrame = Math.floor(curTime * 12) % 3;
+    const out = [], total = closed ? pts.length : pts.length - 1;
+    for (let i = 0; i < total; i++) {
+      const p0 = pts[i], p1 = pts[(i + 1) % pts.length];
+      const dx = p1[0] - p0[0], dy = p1[1] - p0[1], len = Math.hypot(dx, dy);
+      const steps = Math.max(1, Math.floor(len / 9));
+      const nx = len > 0.001 ? -dy / len : 0, ny = len > 0.001 ? dx / len : 0;
+      for (let s = 0; s < steps; s++) {
+        const u = s / steps, x = p0[0] + dx * u, y = p0[1] + dy * u;
+        const n = vnoise(x * 0.035 + boilFrame * 17.3, y * 0.035 + boilFrame * 9.1);
+        out.push([x + nx * n * boilAmt * 2.1, y + ny * n * boilAmt * 2.1]);
+      }
+    }
+    if (!closed) out.push(pts[pts.length - 1]);
+    return out;
+  }
+  function toonPoly(localPts, { fill = null, line = PAL.inkStroke, lw = 5, boil = 0.65, closed = true } = {}) {
+    const bPts = boilPts(localPts.map(toScreen), boil, closed);
+    if (bPts.length < 2) return;
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.beginPath();
+    ctx.moveTo(bPts[0][0], bPts[0][1]);
+    for (let i = 1; i < bPts.length; i++) ctx.lineTo(bPts[i][0], bPts[i][1]);
+    if (closed) ctx.closePath();
+    if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+    if (line && lw > 0) {
+      ctx.strokeStyle = line; ctx.lineWidth = lw * lwMul;
+      ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.stroke();
+    }
+    ctx.restore();
+  }
+  function circlePts(cx, cy, rx, ry, segs = 24) {
+    const pts = [];
+    for (let i = 0; i < segs; i++) {
+      const a = (i / segs) * TAU;
+      pts.push([cx + Math.cos(a) * rx, cy + Math.sin(a) * ry]);
+    }
+    return pts;
+  }
+  const rectPts = (x, y, w, h) => [[x, y], [x + w, y], [x + w, y + h], [x, y + h]];
+
+  const STYLE = {
+    jensen:   { jacket: '#1E252D', collar: '#35414E', pants: '#172029', skin: '#F5CFB4', hair: 'jensen', hairCol: '#E2E7EB', glasses: true, badge: false },
+    elon:     { jacket: '#172029', collar: '#EFECE4', pants: '#11181F', skin: '#F2CCB0', hair: 'short',  hairCol: '#38302A', badge: true },
+    tsmcEng:  { jacket: '#2D5975', collar: '#EFECE4', pants: '#172029', skin: '#C78E67', hair: 'bun',    hairCol: '#171210', badge: true },
+    intelEng: { jacket: '#233947', collar: '#EFECE4', pants: '#172029', skin: '#E6B793', hair: 'bob',    hairCol: '#8A6038', glasses: true, badge: true }
+  };
+
+  function drawProp(kind, ang, line) {
+    if (!kind) return;
+    const D = 68;
+    ctx.save();
+    ctx.translate(0, 1.2 * D);
+    ctx.rotate(-ang);
+    if (kind === 'wafer') {
+      toonPoly(circlePts(0, -0.28 * D, 0.34 * D, 0.34 * D, 18), { fill: '#389E94', line, lw: 3.5 });
+      toonPoly(rectPts(-0.16 * D, -0.44 * D, 0.32 * D, 0.32 * D), { fill: '#E2B857', line, lw: 2.5 });
+    } else if (kind === 'scroll') {
+      toonPoly(rectPts(-0.26 * D, -0.44 * D, 0.52 * D, 0.52 * D), { fill: '#389E94', line, lw: 3.5 });
+      toonPoly([[-0.16 * D, -0.28 * D], [0.16 * D, -0.28 * D]], { line: '#FAF8F4', lw: 3, closed: false });
+      toonPoly([[-0.16 * D, -0.14 * D], [0.16 * D, -0.14 * D]], { line: '#FAF8F4', lw: 3, closed: false });
+    }
+    ctx.restore();
+  }
+
+  function drawCharacter(x, y, scale, opts = {}) {
+    const st = STYLE[opts.role || 'jensen'] || STYLE.jensen;
+    const {
+      facing = 1, browTension = 0, armAngleL = 0.25, armAngleR = -0.25, bodyLean = 0, squint = 0, t = 0,
+      walk = 0, walkAmt = 0, talk = 0, propR = null, propL = null, alpha = 1, phase = 0, silhouetteOnly = false
+    } = opts;
+    const hasBadge = opts.hasBadge !== undefined ? opts.hasBadge : !!st.badge;
+    const D = 68, headR = 0.50 * D, torsoH = 1.40 * D, legH = 1.40 * D;
+    const line = PAL.inkStroke;
+    const fillJacket = silhouetteOnly ? PAL.ink : st.jacket;
+    const fillPants  = silhouetteOnly ? PAL.ink : st.pants;
+    const fillSkin   = silhouetteOnly ? PAL.ink : st.skin;
+    const fillHair   = silhouetteOnly ? PAL.ink : st.hairCol;
+    const blink = ((t * 0.27 + phase) % 1) > 0.96 ? 1 : squint;
+
+    ctx.save();
+    if (alpha < 1) ctx.globalAlpha *= alpha;
+    ctx.translate(x, y);
+    ctx.scale(scale * facing, scale);
+    if (!silhouetteOnly) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(12, 23, 29, 0.26)';
+      ctx.beginPath(); ctx.ellipse(0, 4, 0.76 * D, 0.14 * D, 0, 0, TAU); ctx.fill();
+      ctx.restore();
+    }
+    ctx.translate(0, -Math.abs(Math.sin(walk)) * 0.05 * D * walkAmt);
+
+    const hipY = -legH;
+    const sw = Math.sin(walk) * 0.55 * walkAmt;
+    const leg = (cx, ang) => {
+      ctx.save();
+      ctx.translate(cx * D, hipY);
+      ctx.rotate(ang);
+      toonPoly([[-0.10 * D, 0], [0.10 * D, 0], [0.08 * D, legH - 0.12 * D], [-0.08 * D, legH - 0.12 * D]], { fill: fillPants, line, lw: 5 });
+      toonPoly([[-0.14 * D, legH - 0.12 * D], [0.34 * D, legH - 0.12 * D], [0.38 * D, legH], [-0.14 * D, legH]], { fill: silhouetteOnly ? fillPants : '#0C1419', line, lw: 4 });
+      ctx.restore();
+    };
+    leg(-0.17, sw); leg(0.17, -sw);
+
+    ctx.save();
+    ctx.translate(0, hipY);
+    ctx.rotate(bodyLean + Math.sin(t * 1.3 + phase * 7) * 0.012);
+    const shoulderY = -torsoH;
+    toonPoly([[-0.55 * D, shoulderY], [0.55 * D, shoulderY], [0.50 * D, 0], [-0.50 * D, 0]], { fill: fillJacket, line, lw: 5.5 });
+    if (!silhouetteOnly) {
+      toonPoly([[0, shoulderY + 0.12 * D], [0, 0]], { line: '#495866', lw: 3, closed: false });
+      toonPoly([[-0.24 * D, shoulderY], [-0.14 * D, shoulderY + 0.22 * D], [0, shoulderY + 0.14 * D], [0.14 * D, shoulderY + 0.22 * D], [0.24 * D, shoulderY]], { fill: st.collar, line, lw: 4 });
+      if (hasBadge) toonPoly(rectPts(0.18 * D, shoulderY + 0.42 * D, 0.20 * D, 0.26 * D), { fill: PAL.cyan, line, lw: 3 });
+    }
+    const arm = (sx, ang, prop) => {
+      ctx.save();
+      ctx.translate(sx, shoulderY + 0.16 * D);
+      ctx.rotate(ang);
+      toonPoly([[-0.11 * D, 0], [0.11 * D, 0], [0.09 * D, 1.15 * D], [-0.09 * D, 1.15 * D]], { fill: fillJacket, line, lw: 4.5 });
+      toonPoly(circlePts(0, 1.20 * D, 0.12 * D, 0.12 * D, 14), { fill: fillSkin, line, lw: 4 });
+      if (!silhouetteOnly) drawProp(prop, ang, line);
+      ctx.restore();
+    };
+    arm(-0.52 * D, armAngleL, propL);
+    arm(0.52 * D, armAngleR, propR);
+
+    const headCY = shoulderY - headR * 0.92;
+    toonPoly(circlePts(0, headCY, headR, headR, 28), { fill: fillSkin, line, lw: 5.5 });
+    if (!silhouetteOnly) {
+      const eyeY = headCY - 0.08 * D;
+      const eyeH = Math.max(0.02 * D, 0.14 * D * (1 - blink));
+      const eyeW = 0.11 * D;
+      toonPoly(circlePts(-0.14 * D, eyeY, eyeW * 0.5, eyeH * 0.5, 12), { fill: PAL.inkStroke, lw: 0, boil: 0.2 });
+      toonPoly(circlePts(0.22 * D, eyeY, eyeW * 0.5, eyeH * 0.5, 12), { fill: PAL.inkStroke, lw: 0, boil: 0.2 });
+      const browY = eyeY - 0.13 * D, bTilt = browTension * 0.06 * D;
+      toonPoly([[-0.25 * D, browY - bTilt], [-0.03 * D, browY + bTilt]], { line, lw: 4.5, closed: false });
+      toonPoly([[0.11 * D, browY + bTilt], [0.33 * D, browY - bTilt]], { line, lw: 4.5, closed: false });
+      const mouthY = headCY + 0.18 * D;
+      if (talk > 0) {
+        const open = 0.02 + 0.11 * Math.abs(Math.sin(Math.floor(t * 12) * 2.3 + phase * 9)) * talk;
+        toonPoly(circlePts(0.04 * D, mouthY, 0.10 * D, open * D, 12), { fill: '#6B1F1A', line, lw: 3.5, boil: 0.3 });
+      } else if (browTension > 0.3) toonPoly([[-0.12 * D, mouthY + 0.03 * D], [0.04 * D, mouthY - 0.02 * D], [0.20 * D, mouthY + 0.03 * D]], { line, lw: 4, closed: false });
+      else toonPoly([[-0.12 * D, mouthY], [0.20 * D, mouthY]], { line, lw: 4, closed: false });
+
+      if (st.glasses) {
+        toonPoly(rectPts(-0.34 * D, eyeY - 0.12 * D, 0.30 * D, 0.24 * D), { fill: 'rgba(255,255,255,0.18)', line: '#323D47', lw: 3.5, boil: 0.3 });
+        toonPoly(rectPts(0.06 * D, eyeY - 0.12 * D, 0.30 * D, 0.24 * D), { fill: 'rgba(255,255,255,0.18)', line: '#323D47', lw: 3.5, boil: 0.3 });
+        toonPoly([[-0.04 * D, eyeY - 0.02 * D], [0.06 * D, eyeY - 0.02 * D]], { line: '#323D47', lw: 3.5, closed: false });
+      }
+    }
+    const hc = fillHair;
+    switch (st.hair) {
+      case 'jensen':
+        toonPoly([[-0.50 * D, headCY - 0.05 * D], [-0.48 * D, headCY - 0.42 * D], [-0.12 * D, headCY - 0.56 * D], [0.34 * D, headCY - 0.52 * D], [0.50 * D, headCY - 0.24 * D], [0.24 * D, headCY - 0.32 * D], [-0.24 * D, headCY - 0.28 * D]], { fill: hc, line, lw: 4.5 });
+        break;
+      case 'bob':
+        toonPoly([[-0.54 * D, headCY + 0.18 * D], [-0.52 * D, headCY - 0.44 * D], [0.0, headCY - 0.58 * D], [0.52 * D, headCY - 0.44 * D], [0.54 * D, headCY + 0.18 * D], [0.36 * D, headCY - 0.22 * D], [-0.36 * D, headCY - 0.22 * D]], { fill: hc, line, lw: 4.5 });
+        break;
+      case 'bun':
+        toonPoly([[-0.54 * D, headCY + 0.10 * D], [-0.52 * D, headCY - 0.44 * D], [0.0, headCY - 0.58 * D], [0.52 * D, headCY - 0.44 * D], [0.54 * D, headCY + 0.10 * D], [0.36 * D, headCY - 0.22 * D], [-0.36 * D, headCY - 0.22 * D]], { fill: hc, line, lw: 4.5 });
+        toonPoly(circlePts(-0.05 * D, headCY - 0.68 * D, 0.20 * D, 0.20 * D, 14), { fill: hc, line, lw: 4 });
+        break;
+      case 'short':
+        toonPoly([[-0.50 * D, headCY - 0.02 * D], [-0.48 * D, headCY - 0.40 * D], [0, headCY - 0.56 * D], [0.48 * D, headCY - 0.40 * D], [0.50 * D, headCY - 0.02 * D], [0.30 * D, headCY - 0.30 * D], [-0.30 * D, headCY - 0.30 * D]], { fill: hc, line, lw: 4.5 });
+        break;
+    }
+    ctx.restore();
+    ctx.restore();
+  }
+
+  function hitFx(cx, cy, t, hitT, { color = PAL.amberHighlight, r = 170, rays = 12, dur = 0.55, core = true } = {}) {
+    const u = (t - hitT) / dur;
+    if (u < 0 || u > 1) return;
+    const e = easeOutCubic(u);
+    ctx.save();
+    ctx.translate(cx, cy);
+    if (core && u < 0.2) {
+      ctx.globalAlpha = 0.55 * (1 - u / 0.2);
+      ctx.fillStyle = PAL.white;
+      ctx.beginPath(); ctx.arc(0, 0, r * 0.55, 0, TAU); ctx.fill();
+    }
+    ctx.globalAlpha = 1 - u;
+    ctx.strokeStyle = color; ctx.lineCap = 'round'; ctx.lineWidth = 12 * (1 - u) + 2;
+    ctx.beginPath(); ctx.arc(0, 0, r * e, 0, TAU); ctx.stroke();
+    ctx.lineWidth = 5;
+    const seed = Math.floor(hitT * 100);
+    for (let i = 0; i < rays; i++) {
+      const a = (i / rays) * TAU + (hash2(seed + i, 3) - 0.5) * 0.35;
+      const r0 = r * 0.35 * e + 16, r1 = r0 + 14 + 56 * (1 - u) * (0.6 + hash2(seed + i, 50) * 0.8);
+      ctx.beginPath(); ctx.moveTo(Math.cos(a) * r0, Math.sin(a) * r0); ctx.lineTo(Math.cos(a) * r1, Math.sin(a) * r1); ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function fitSize(g, text, size, maxW, weight = 900, fam = 'system-ui, "Segoe UI", sans-serif') {
+    g.font = weight + ' ' + size + 'px ' + fam;
+    const mw = g.measureText(text).width;
+    return mw > maxW ? Math.max(10, Math.floor(size * maxW / mw)) : size;
+  }
+
+  function panel(pw, ph, w, h, paint) {
+    const c = document.createElement('canvas'); c.width = w; c.height = h;
+    const g = c.getContext('2d');
+    const node = new T3.Node3D();
+    node.texCanvas = c;
+    node.planeSize = [pw, ph];
+    node.userData = { g, paint, w, h };
+    paint(g, 0, w, h);
+    return node;
+  }
+
+  function tag(text, pw, ph, bg, fg, size) {
+    return panel(pw, ph, Math.round(pw * 200), Math.round(ph * 200), (g, t, w, h) => {
+      if (bg) { g.fillStyle = bg; g.fillRect(0, 0, w, h); }
+      g.textAlign = 'center'; g.textBaseline = 'middle';
+      const s = fitSize(g, text, size || Math.round(h * 0.55), w * 0.9);
+      g.font = '900 ' + s + 'px "Arial Black", Arial, sans-serif';
+      g.fillStyle = fg; g.fillText(text, w / 2, h / 2 + 2);
+    });
+  }
+
+  function infoCard(header, line1, line2, accent = PAL.cyan) {
+    return panel(2.6, 1.65, 520, 330, (g, t, w, h) => {
+      g.fillStyle = '#101E26'; g.fillRect(0, 0, w, h);
+      g.fillStyle = accent; g.fillRect(0, 0, w, h * 0.22);
+      g.strokeStyle = accent; g.lineWidth = 8; g.strokeRect(4, 4, w - 8, h - 8);
+      g.fillStyle = PAL.ink; g.textAlign = 'center'; g.textBaseline = 'middle';
+      const sh = fitSize(g, header, Math.round(h * 0.11), w * 0.88, 900);
+      g.font = '900 ' + sh + 'px system-ui, "Segoe UI", sans-serif';
+      g.fillText(header, w / 2, h * 0.11);
+      g.fillStyle = PAL.ivory;
+      const s1 = fitSize(g, line1, 42, w * 0.86, 900);
+      g.font = '900 ' + s1 + 'px system-ui, sans-serif';
+      g.fillText(line1, w / 2, h * 0.52);
+      g.fillStyle = accent;
+      const s2 = fitSize(g, line2, 26, w * 0.86, 700);
+      g.font = '700 ' + s2 + 'px system-ui, sans-serif';
+      g.fillText(line2, w / 2, h * 0.78);
+    });
+  }
+
+  function bx(w, h, d, col, em = 0x000000, rough = 0.42, metal = 0.35) {
+    const n = new T3.Node3D();
+    n.faces = T3.boxFaces(w, h, d, col, em, rough, metal);
+    return n;
+  }
+
+  function cyl(rt, rb, h, segs, col, em = 0x000000, rough = 0.35, metal = 0.5) {
+    const n = new T3.Node3D();
+    n.faces = T3.cylFaces(rt, rb, h, segs, col, em, rough, metal);
+    return n;
+  }
+
+  function buildChipPackage3D(label, bgHex, fgHex, dieColor = 0x389e94, size = 1.55) {
+    const g = new T3.Node3D();
+    const sub = bx(size, 0.14, size, 0x13302B, 0x061411, 0.38, 0.35);
+    const ihs = bx(size * 0.70, 0.12, size * 0.70, 0x9BA8B2, dieColor, 0.24, 0.82);
+    ihs.position.y = 0.13;
+    const cap = tag(label, size * 0.66, size * 0.66, bgHex, fgHex, 54);
+    cap.rotation.x = -Math.PI / 2; cap.position.y = 0.21;
+    g.add(sub, ihs, cap);
+    g.rotation.x = 0.62;
+    for (let i = 0; i < 7; i++) {
+      const off = lerp(-size * 0.38, size * 0.38, i / 6);
+      [-1, 1].forEach(s => {
+        const p1 = bx(0.06, 0.05, 0.14, 0xD99B26, 0x3D2900, 0.25, 0.85); p1.position.set(off, 0.02, s * (size * 0.52));
+        const p2 = bx(0.14, 0.05, 0.06, 0xD99B26, 0x3D2900, 0.25, 0.85); p2.position.set(s * (size * 0.52), 0.02, off);
+        g.add(p1, p2);
+      });
+    }
+    return g;
+  }
+
+  function buildPortalArch3D(x, y, z, label, accentHex = 0x389e94) {
+    const g = new T3.Node3D(); g.position.set(x, y, z);
+    const postL = bx(0.45, 4.6, 0.55, 0x1E3440, 0x0C171D, 0.35, 0.65); postL.position.set(-2.3, 2.3, 0);
+    const postR = bx(0.45, 4.6, 0.55, 0x1E3440, 0x0C171D, 0.35, 0.65); postR.position.set( 2.3, 2.3, 0);
+    const lintel = bx(5.2, 0.55, 0.65, 0x152630, accentHex, 0.3, 0.7); lintel.position.set(0, 4.65, 0);
+    const sign = tag(label, 4.4, 0.44, PAL.ink, PAL.amberHi, 44); sign.position.set(0, 4.65, 0.35);
+    g.add(postL, postR, lintel, sign);
+    rootNodes.push(g);
+    return g;
+  }
+
+  function worldToScreen(wx, wy, wz) {
+    const p = cam3D.project(wx, wy, wz);
+    if (!p) return [960 + wx * 115, 860 - wy * 115];
+    return [p.sx, p.sy];
+  }
+
+  function projectedChar(wx, wy, wz, hWorld) {
+    const p = cam3D.project(wx, wy + hWorld * 0.5, wz);
+    if (!p) return { x: 960, y: 860, s: 1, depth: 99, behind: true };
+    const [bx0, by0] = worldToScreen(wx, wy, wz);
+    return { x: bx0, y: by0, s: (hWorld * p.f / p.z) / (3.8 * 68), depth: p.z, behind: p.z < 1.2 };
+  }
+
+  function setupStage() {
+    for (let i = 0; i < 16; i++) {
+      const bxPos = -24 + i * 3.4;
+      const bh = 5.4 + (i % 4) * 1.6;
+      const tower = bx(2.6, bh, 1.8, i % 2 === 0 ? 0x162832 : 0x1E3542, 0x0C171D, 0.55, 0.45);
+      tower.position.set(bxPos, bh / 2, -52);
+      rootNodes.push(tower);
+    }
+    const gantry = bx(64, 0.28, 0.44, 0x2A4654, 0x101E26, 0.35, 0.75);
+    gantry.position.set(0, 8.8, -48);
+    rootNodes.push(gantry);
+  }
+
+  function drawHeadline(title, subTag, alpha, accent = PAL.amber, t = 1e9, t0 = 0) {
+    if (alpha <= 0.01) return;
+    ctx.save(); ctx.globalAlpha = alpha; ctx.font = '800 27px system-ui, sans-serif';
+    const w = Math.max(420, ctx.measureText(title).width + 52);
+    ctx.fillStyle = PAL.ink; ctx.fillRect(72, 42, w, 52);
+    ctx.fillStyle = accent; ctx.fillRect(72, 42, 10, 52);
+    ctx.fillStyle = PAL.ivory; ctx.textAlign = 'left';
+    typeAt(title, 96, 77, t, t0 + 0.15, 46, 'left', 27);
+    if (subTag) {
+      ctx.font = '600 17px system-ui, sans-serif';
+      ctx.globalAlpha = alpha * clamp((t - t0 - 0.15 - title.length / 46) / 0.25, 0, 1);
+      ctx.fillStyle = 'rgba(12, 23, 29, 0.88)';
+      ctx.fillRect(72, 100, ctx.measureText(subTag).width + 18, 24);
+      ctx.fillStyle = 'rgba(239, 236, 228, 0.92)';
+      ctx.fillText(subTag, 80, 117);
+    }
+    ctx.restore();
+  }
+
+  function applyCamera(t, shakeList, rollFn) {
+    const cv = evalCam(t); let shake = 0;
+    shakeList.forEach(([s0, kk, amp]) => { if (t >= s0 && t < s0 + 0.22) shake += Math.exp(-(t - s0) * kk) * amp; });
+    cam3D.fov = cv[6];
+    cam3D.roll = rollFn ? rollFn(t) : 0;
+    cam3D.position.set(cv[0] + Math.sin(t * 95) * shake, cv[1] + Math.cos(t * 82) * shake * 0.7, cv[2]);
+    cam3D.lookAt(cv[3], cv[4], cv[5]);
+    return cv;
+  }
+
+  function smearPass(t) {
+    const c0 = evalCam(t), c1 = evalCam(Math.max(0, t - 0.06));
+    const vel = Math.hypot(c0[0] - c1[0], c0[1] - c1[1], c0[2] - c1[2]) / 0.06;
+    const k = clamp((vel - 6) / 20, 0, 0.30);
+    if (k > 0.01) {
+      const dir = Math.sign(c0[0] - c1[0]) || 1, vy = Math.sign(c0[1] - c1[1]) || 0;
+      ctx.save();
+      ctx.globalAlpha = k; ctx.drawImage(glCanvas, -dir * 48 * k, vy * 30 * k, 1920, 1080);
+      ctx.globalAlpha = k * 0.55; ctx.drawImage(glCanvas, -dir * 96 * k, vy * 60 * k, 1920, 1080);
+      ctx.restore();
+    }
+  }
+
+  function drawCast(t, cast) {
+    const proj = cast.map(c => ({ c, p: projectedChar(c.wx, c.wy, c.wz, c.h) })).filter(e => !e.p.behind && e.p.s > 0.04);
+    proj.sort((a, b) => b.p.depth - a.p.depth).forEach(({ c, p }) => {
+      const fade = c.t1 === undefined ? 1 : 1 - easeInOutCubic(seg(t, c.t1 - 0.4, c.t1));
+      const sc = p.s * easeOutBack(seg(t, c.t0, c.t0 + 0.4)) * fade;
+      if (sc <= 0.02) return;
+      drawCharacter(p.x, p.y, sc, Object.assign({ role: c.role, t }, c.o));
+    });
+  }
+
+  function drawRail(time, S) {
+    const x0 = 1580, x1 = 1848, y = 46, gap = 8, total = S[S.length - 1];
+    ctx.save();
+    for (let i = 0; i < S.length - 1; i++) {
+      const a = x0 + (x1 - x0) * S[i] / total + (i ? gap / 2 : 0), b = x0 + (x1 - x0) * S[i + 1] / total - (i < S.length - 2 ? gap / 2 : 0);
+      ctx.fillStyle = 'rgba(12,23,29,0.22)'; ctx.fillRect(a, y, b - a, 7);
+      const u = seg(time, S[i], S[i + 1]); ctx.fillStyle = PAL.amber; ctx.fillRect(a, y, (b - a) * u, 7);
+      if (u > 0 && u < 1) {
+        ctx.fillStyle = PAL.ink; ctx.beginPath(); ctx.arc(a + (b - a) * u, y + 3.5, 7, 0, TAU); ctx.fill();
+        ctx.fillStyle = PAL.amberHi; ctx.beginPath(); ctx.arc(a + (b - a) * u, y + 3.5, 4, 0, TAU); ctx.fill();
+      }
+    }
+    ctx.restore();
+  }
+
+  function drawCaptions(time) {
+    if (!showCaptions || showSheet) return;
+    const cue = CAPS.find(c => time >= c.start && time < c.hideAt);
+    if (!cue) return;
+    ctx.save();
+    ctx.font = '700 38px system-ui, -apple-system, "Segoe UI", sans-serif';
+    const maxW = 1460, space = ctx.measureText(' ').width;
+    const lines = [[]]; let lw = 0;
+    cue.words.forEach(w => {
+      const ww = ctx.measureText(w.w).width;
+      if (lw + ww > maxW && lines[lines.length - 1].length) { lines.push([]); lw = 0; }
+      lines[lines.length - 1].push({ ...w, ww });
+      lw += ww + space;
+    });
+    const lineW = lines.map(l => l.reduce((a, w) => a + w.ww, 0) + space * (l.length - 1));
+    const padX = 34, padY = 14, lh = 52;
+    const boxW = Math.max(...lineW) + padX * 2, boxH = lines.length * lh + padY * 2;
+    const bx0 = 960 - boxW / 2, by = 1026 - boxH;
+    const fadeIn = seg(time, cue.start, cue.start + 0.14), fadeOut = cue.fades ? 1 - seg(time, cue.end, cue.end + 0.16) : 1;
+    ctx.globalAlpha = Math.min(fadeIn, fadeOut); ctx.translate(0, (1 - easeOut(fadeIn)) * 10);
+    ctx.fillStyle = 'rgba(10, 19, 24, 0.90)';
+    ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(bx0, by, boxW, boxH, 14); else ctx.rect(bx0, by, boxW, boxH); ctx.fill();
+    ctx.strokeStyle = 'rgba(239, 236, 228, 0.22)'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    lines.forEach((l, li) => {
+      let x = 960 - lineW[li] / 2;
+      const y = by + padY + lh * li + lh / 2 + 1;
+      l.forEach(w => {
+        const spoken = time >= w.t1, active = time >= w.t0 && time < w.t1;
+        ctx.fillStyle = w.col && (spoken || active) ? w.col : active ? PAL.amberHi : spoken ? PAL.ivory : 'rgba(239,236,228,0.50)';
+        ctx.fillText(w.w, x, active ? y - 2 : y);
+        if (w.col) {
+          ctx.fillStyle = w.col;
+          ctx.globalAlpha = Math.min(fadeIn, fadeOut) * (spoken || active ? 1 : 0.35);
+          ctx.fillRect(x, y + 20, w.ww, 3.5);
+          ctx.globalAlpha = Math.min(fadeIn, fadeOut);
+        }
+        x += w.ww + space;
+      });
+    });
+    ctx.restore();
+  }
+
+  setupStage();
+
+  // --- STATION A (z: 0): Intel 14A Ramp vs TSMC High Volume ---
+  X.barIntelA = bx(1.5, 1.8, 1.2, 0xC98E24, 0x3D2900, 0.35, 0.6); X.barIntelA.position.set(-1.8, 0.9, 0);
+  X.barTsmcA  = bx(1.5, 3.6, 1.2, 0x63A300, 0x1F3600, 0.35, 0.6); X.barTsmcA.position.set( 1.8, 1.8, 0);
+  rootNodes.push(X.barIntelA, X.barTsmcA);
+
+  X.rampCardA = infoCard('BOTTLENECK 01', 'INTEL 14A RAMPING', 'Unproven vs TSMC high volume', PAL.amberHi);
+  X.rampCardA.position.set(0, 3.6, 0.6); X.rampCardA.visible = false; rootNodes.push(X.rampCardA);
+
+  // --- STATION B (z: -20): $119B CapEx Split ($4-$6B Shell vs $80-$95B ASML & Power) ---
+  X.capexPortalB = buildPortalArch3D(0, 0, -13, '$119B FAB CAPEX BREAKDOWN', 0x389E94);
+
+  X.shellCardB = infoCard('CONCRETE SHELL', '$4–$6B OF $20B FAB', 'Small fraction of total fab cost', PAL.amberHi);
+  X.shellCardB.position.set(-2.3, 2.8, -19.6); X.shellCardB.visible = false; rootNodes.push(X.shellCardB);
+
+  X.asmlCardB = infoCard('SCANNER & UTILITIES', '$80–$95B TO ASML', 'EUV tools, pure water & power plants', PAL.cyan);
+  X.asmlCardB.position.set(2.3, 2.8, -19.6); X.asmlCardB.visible = false; rootNodes.push(X.asmlCardB);
+
+  X.timelinePortalC = buildPortalArch3D(0, 0, -29, 'WORKFORCE & U.S. FAB TIMELINE', 0xC8463C);
+
+  // --- STATION C (z: -40): TSMC Arizona Delays & 38 Months + 1-2 Yr Ramp ---
+  X.azCardC = infoCard('PRECEDENT WARNING', 'TSMC ARIZONA DELAYS', 'Labor shortages & cultural clashes', PAL.coral);
+  X.azCardC.position.set(-2.3, 3.0, -39.4); X.azCardC.visible = false; rootNodes.push(X.azCardC);
+
+  X.timeCardC = infoCard('INDUSTRY BENCHMARK', '38 MOS + 1–2 YRS', 'Permits to production + yield ramp', PAL.amberHi);
+  X.timeCardC.position.set(2.3, 3.0, -39.4); X.timeCardC.visible = false; rootNodes.push(X.timeCardC);
+
+  const HEADS = [
+    [0.20, 17.20, 'Bottleneck 1: Intel 14A is still ramping', 'Unproven against TSMC in high-volume production', PAL.amber, 0.20],
+    [23.90, 45.00, 'Where the money goes: $80–$95B to ASML & tools', 'Concrete shell is only $4–$6B of a $20B fab', PAL.cyan, 23.90],
+    [51.75, 76.00, 'Texas talent gap & 38-month build timeline', 'Plus 1 to 2 years just to ramp wafer yields', PAL.coral, 51.75]
+  ];
+
+  function renderScene(t) {
+    applyCamera(
+      t,
+      [[14.12, 14, 0.12], [23.98, 14, 0.10], [30.02, 14, 0.12], [51.84, 14, 0.14], [65.30, 14, 0.12]],
+      tt => Math.sin(seg(tt, 17.0, 18.0) * Math.PI) * 0.025 - Math.sin(seg(tt, 44.8, 45.8) * Math.PI) * 0.025
+    );
+
+    const dayFactor = clamp(1 - smooth(17.1, 18.0, t) + smooth(44.9, 45.8, t), 0, 1);
+    T3.renderWorld(glCtx, cam3D, rootNodes, PAL.parchment, PAL.parchment, dayFactor, t);
+
+    // Station A
+    const stAOn = t < 17.6;
+    X.barIntelA.visible = X.barTsmcA.visible = stAOn;
+    X.rampCardA.visible = stAOn && t >= 7.00;
+    const rS = easeOutBack(seg(t, 7.00, 7.55)) * (1 - easeInOutCubic(seg(t, 16.9, 17.5)));
+    X.rampCardA.scale.set(Math.max(0.01, rS), Math.max(0.01, rS), 1);
+
+    // Station B
+    {
+      const on = t >= 17.0 && t < 45.5;
+      X.shellCardB.visible = on && t >= 23.90;
+      const sS = easeOutBack(seg(t, 23.90, 24.45)) * (1 - easeInOutCubic(seg(t, 44.6, 45.3)));
+      X.shellCardB.scale.set(Math.max(0.01, sS), Math.max(0.01, sS), 1);
+
+      X.asmlCardB.visible = on && t >= 29.95;
+      const aS = easeOutBack(seg(t, 29.95, 30.50)) * (1 - easeInOutCubic(seg(t, 44.6, 45.3)));
+      X.asmlCardB.scale.set(Math.max(0.01, aS), Math.max(0.01, aS), 1);
+    }
+
+    // Station C
+    {
+      const on = t >= 44.8;
+      X.azCardC.visible = on && t >= 51.75;
+      const azS = easeOutBack(seg(t, 51.75, 52.30));
+      X.azCardC.scale.set(Math.max(0.01, azS), Math.max(0.01, azS), 1);
+
+      X.timeCardC.visible = on && t >= 65.20;
+      const tmS = easeOutBack(seg(t, 65.20, 65.75));
+      X.timeCardC.scale.set(Math.max(0.01, tmS), Math.max(0.01, tmS), 1);
+    }
+
+    smearPass(t);
+    const cast = [];
+    const add = (role, wx, wy, wz, h, t0, t1, o) => {
+      if (t >= t0 && (t1 === undefined || t < t1)) cast.push({ role, wx, wy, wz, h, t0, t1, o });
+    };
+
+    add('intelEng', -4.2, 0, 1.8, 2.3, 1.0, 17.2, { facing: 1, phase: 1, armAngleR: -1.5, armAngleL: 0.3, browTension: 0.3, talk: 0.7 });
+    add('elon',     -4.4, 0, -18.0, 2.38, 18.0, 45.0, { facing: 1, phase: 2, armAngleR: -1.6, armAngleL: 0.3, browTension: 0.2, talk: 0.7 });
+    // Group of 3 cleanroom engineers stalled at TSMC Arizona / rural Texas shortage
+    [-4.6, -3.4, -2.2].forEach((gx, idx) => {
+      add('tsmcEng', gx, 0, -37.6 - (idx % 2) * 0.6, 2.28, 45.5 + idx * 0.25, undefined, {
+        facing: 1, phase: 3 + idx, armAngleR: -0.5, armAngleL: 0.3, browTension: 0.6, talk: idx === 0 ? 0.6 : 0
+      });
+    });
+    add('jensen', 4.6, 0, -37.6, 2.35, 58.0, undefined, { facing: -1, phase: 6, propR: 'wafer', armAngleR: -1.5, armAngleL: 0.3, browTension: 0.5, talk: 0.7 });
+
+    drawCast(t, cast);
+
+    const wb = (x, y, z) => worldToScreen(x, y, z);
+    { const [x, y] = wb(0, 3.6, 0.6); hitFx(x, y, t, 14.12, { color: PAL.amberHi, r: 280, rays: 16 }); }
+    { const [x, y] = wb(2.3, 2.8, -19.6); hitFx(x, y, t, 30.02, { color: PAL.cyan, r: 300, rays: 16 }); }
+    { const [x, y] = wb(-2.3, 3.0, -39.4); hitFx(x, y, t, 51.84, { color: PAL.coral, r: 280, rays: 16 }); }
+    { const [x, y] = wb(2.3, 3.0, -39.4); hitFx(x, y, t, 65.30, { color: PAL.amberHi, r: 320, rays: 18 }); }
+
+    HEADS.forEach(h => {
+      const a = env(t, h[0], h[1], 0.35, 0.35);
+      if (a > 0.01) drawHeadline(h[2], h[3], a, h[4], t, h[5]);
+    });
+  }
+
+  function renderModelSheet(t) {
+    ctx.fillStyle = PAL.ivory; ctx.fillRect(0, 0, 1920, 1080);
+    ctx.fillStyle = PAL.ink; ctx.font = '900 36px system-ui, sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText("Act 4 Part 3 — Physical Bottlenecks: $119B Breakdown & 38-Month Timeline — CAST SHEET (?sheet=1)", 96, 86);
+    const roles = ['jensen', 'elon', 'tsmcEng', 'intelEng'];
+    roles.forEach((r, i) => {
+      const x = 340 + i * Math.floor(1240 / Math.max(1, roles.length - 1));
+      drawCharacter(x, 560, 0.85, { role: r, facing: 1, t });
+      drawCharacter(x, 960, 0.85, { role: r, facing: 1, t, silhouetteOnly: true });
+    });
+  }
+
+  function render(t) {
+    const time = clamp(+t || 0, 0, DUR); curTime = time;
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.clearRect(0, 0, 1920, 1080);
+    glCanvas.style.opacity = showSheet ? '0' : '1';
+    if (showSheet) renderModelSheet(time);
+    else renderScene(time);
+    const gf = Math.floor(time * 12);
+    grainPat.setTransform(new DOMMatrix([1, 0, 0, 1, Math.floor(hash(gf * 5 + 3) * 256), Math.floor(hash(gf * 5 + 4) * 256)]));
+    ctx.fillStyle = grainPat; ctx.fillRect(0, 0, 1920, 1080);
+    if (!showSheet) drawRail(time, [0.00, 17.60, 30.02, 45.38, 76.00]);
+    drawCaptions(time);
+  }
+
+  window.DUR = DUR;
+  window.render = render;
+  window.CUE_SHEET = CUE_SHEET;
+  window.STORY = { SUBS, LEDGER, CAM_KEYS };
+  window.READY = false;
+
+  const voEl = document.getElementById('vo');
+  const fAudio = document.getElementById('f-audio');
+  let audioCtx = null;
+
+  function triggerSynthCue(ac, dest, now, name) {
+    const tone = (f0, f1, dur, type, vol, delay = 0) => {
+      const s = now + delay;
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = type;
+      o.frequency.setValueAtTime(f0, s);
+      o.frequency.exponentialRampToValueAtTime(Math.max(1, f1), s + dur);
+      g.gain.setValueAtTime(vol, s);
+      g.gain.exponentialRampToValueAtTime(0.001, s + dur);
+      o.connect(g); g.connect(dest);
+      o.start(s); o.stop(s + dur + 0.02);
+    };
+    switch (name) {
+      case 'gold_stack':   tone(320, 640, 0.14, 'triangle', 0.10); break;
+      case 'chip_ignite':  tone(440, 880, 0.24, 'sine', 0.10); break;
+      case 'vault_open':   tone(130, 38, 0.30, 'triangle', 0.22); break;
+      case 'stage_split':  tone(140, 42, 0.32, 'triangle', 0.20); break;
+      case 'whip_pan':     tone(260, 740, 0.24, 'sine', 0.08); break;
+      case 'oven_drop':    tone(150, 45, 0.25, 'triangle', 0.18); break;
+      case 'power_spike':  tone(220, 660, 0.28, 'sawtooth', 0.08); break;
+      case 'stamp_impact': tone(160, 40, 0.28, 'triangle', 0.22); break;
+      case 'cascade_ping': for (let i = 0; i < 3; i++) tone(740 + i * 160, 740 + i * 160, 0.12, 'sine', 0.07, i * 0.10); break;
+      default:             tone(480, 860, 0.12, 'sine', 0.08);
+    }
+  }
+
+  function playCueAudio(name) {
+    if (!soundEnabled || CAPTURE_MODE) return;
+    if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (!audioCtx) return;
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    triggerSynthCue(audioCtx, audioCtx.destination, audioCtx.currentTime, name);
+  }
+
+  async function exportMixedWav() {
+    const sr = 24000;
+    const totalFrames = Math.ceil(DUR * sr);
+    const offline = new OfflineAudioContext(1, totalFrames, sr);
+    try {
+      const resp = await fetch(voEl.src);
+      const arr = await resp.arrayBuffer();
+      const voBuf = await offline.decodeAudioData(arr);
+      const src = offline.createBufferSource();
+      src.buffer = voBuf;
+      src.connect(offline.destination);
+      src.start(0);
+    } catch (e) { console.warn('VO fetch skipped:', e); }
+    if (soundEnabled) CUE_SHEET.forEach(c => triggerSynthCue(offline, offline.destination, c.t, c.name));
+    const rendered = await offline.startRendering();
+    const samples = rendered.getChannelData(0);
+    const wavBuf = new ArrayBuffer(44 + samples.length * 2);
+    const view = new DataView(wavBuf);
+    const writeStr = (off, s) => { for (let i = 0; i < s.length; i++) view.setUint8(off + i, s.charCodeAt(i)); };
+    writeStr(0, 'RIFF'); view.setUint32(4, 36 + samples.length * 2, true);
+    writeStr(8, 'WAVE'); writeStr(12, 'fmt '); view.setUint32(16, 16, true);
+    view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+    view.setUint32(24, sr, true); view.setUint32(28, sr * 2, true);
+    view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+    writeStr(36, 'data'); view.setUint32(40, samples.length * 2, true);
+    let offset = 44;
+    for (let i = 0; i < samples.length; i++, offset += 2) {
+      const s = clamp(samples[i], -1, 1);
+      view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+    }
+    const blob = new Blob([wavBuf], { type: 'audio/wav' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'act4_part3_mixed_audio.wav';
+    a.click();
+  }
+
+  function exportCompositedWebM() {
+    const comp = document.createElement('canvas');
+    comp.width = 1920; comp.height = 1080;
+    const cctx = comp.getContext('2d');
+    const stream = comp.captureStream(30);
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const dest = audioCtx.createMediaStreamDestination();
+    try {
+      const voSrc = audioCtx.createMediaElementSource(voEl);
+      voSrc.connect(dest); voSrc.connect(audioCtx.destination);
+    } catch (_) {}
+    dest.stream.getAudioTracks().forEach(tr => stream.addTrack(tr));
+
+    const rec = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9,opus' });
+    const chunks = [];
+    rec.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+    rec.onstop = () => {
+      const blob = new Blob(chunks, { type: 'video/webm' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'act4_part3_terafab.webm';
+      a.click();
+    };
+    curT = 0; prevT = 0; playing = true; lastNow = performance.now();
+    try { voEl.currentTime = 0; } catch (_) {}
+    syncVoPlayback();
+    rec.start();
+    const copyTick = () => {
+      cctx.drawImage(glCanvas, 0, 0);
+      cctx.drawImage(canvas, 0, 0);
+      if (playing && curT < DUR) requestAnimationFrame(copyTick);
+      else if (rec.state === 'recording') rec.stop();
+    };
+    requestAnimationFrame(copyTick);
+  }
+
+  const hud = document.getElementById('hud');
+  const scrubber = document.getElementById('scrubber');
+  const tc = document.getElementById('tc');
+  const bPlay = document.getElementById('b-play');
+  const bRst = document.getElementById('b-rst');
+  const bVo = document.getElementById('b-vo');
+  const bLoad = document.getElementById('b-load');
+  const bSfx = document.getElementById('b-sfx');
+  const bCap = document.getElementById('b-cap');
+  const bSheet = document.getElementById('b-sheet');
+  const bExpWav = document.getElementById('b-exp-wav');
+  const bExpVid = document.getElementById('b-exp-vid');
+  const bHide = document.getElementById('b-hide');
+  const bSpeed = document.getElementById('b-speed');
+  const bFull = document.getElementById('b-full');
+
+  let curT = parseFloat(params.get('t')) || 0;
+  let prevT = curT;
+  let playing = false;
+  let lastNow = performance.now();
+  let rate = 1;
+  const RATES = [0.5, 1, 2];
+  const SCENE_STARTS = [0.0, 17.6, 30.02, 45.38];
+
+  if (CAPTURE_MODE) hud.classList.add('hidden');
+
+  function syncVoPlayback() {
+    if (!voEl) return;
+    voEl.muted = !voEnabled;
+    voEl.playbackRate = rate;
+    if (playing && voEnabled && !CAPTURE_MODE && curT < (voEl.duration || WAV_DUR)) {
+      if (Math.abs(voEl.currentTime - curT) > 0.22) {
+        try { voEl.currentTime = curT; } catch (_) {}
+      }
+      if (voEl.paused) voEl.play().catch(() => {});
+    } else if (!voEl.paused) {
+      voEl.pause();
+    }
+  }
+
+  function syncUI() {
+    scrubber.value = curT.toFixed(2);
+    tc.textContent = `${curT.toFixed(2).padStart(5, '0')} / ${DUR.toFixed(2)}s`;
+    bPlay.textContent = playing ? 'Pause' : 'Play';
+    bVo.textContent = `VO: ${voEnabled ? 'ON' : 'OFF'}`;
+    bVo.classList.toggle('active', voEnabled);
+    bSfx.textContent = `Foley: ${soundEnabled ? 'ON' : 'OFF'}`;
+    bSfx.classList.toggle('active', soundEnabled);
+    bCap.textContent = `Captions: ${showCaptions ? 'ON' : 'OFF'}`;
+    bCap.classList.toggle('active', showCaptions);
+    bSheet.textContent = `Sheet: ${showSheet ? 'ON' : 'OFF'}`;
+    bSheet.classList.toggle('active', showSheet);
+    bSpeed.textContent = `Speed: ${rate}x`;
+  }
+
+  function loop(now) {
+    const dt = Math.min(0.1, (now - lastNow) / 1000) * rate;
+    lastNow = now;
+    if (playing) {
+      prevT = curT;
+      if (voEl && voEnabled && !voEl.paused && !isNaN(voEl.currentTime) && voEl.currentTime > 0 && voEl.currentTime < (voEl.duration || WAV_DUR)) {
+        curT = Math.min(DUR, voEl.currentTime);
+      } else {
+        curT = Math.min(DUR, curT + dt);
+      }
+      if (curT >= DUR) { playing = false; syncVoPlayback(); }
+      for (let i = 0; i < CUE_SHEET.length; i++) {
+        const ct = CUE_SHEET[i].t;
+        if ((prevT < ct && curT >= ct) || (prevT === 0 && curT > 0 && ct === 0)) {
+          playCueAudio(CUE_SHEET[i].name);
+        }
+      }
+      render(curT);
+      syncUI();
+    }
+    requestAnimationFrame(loop);
+  }
+
+  function seekTo(t) {
+    playing = false;
+    curT = clamp(t, 0, DUR);
+    prevT = curT;
+    if (voEl) {
+      voEl.pause();
+      try { voEl.currentTime = Math.min(curT, voEl.duration || curT); } catch (_) {}
+    }
+    render(curT);
+    syncUI();
+  }
+
+  bPlay.onclick = () => { if (curT >= DUR) { curT = 0; prevT = 0; } playing = !playing; lastNow = performance.now(); syncVoPlayback(); syncUI(); };
+  bRst.onclick = () => { curT = 0; prevT = 0; playing = true; lastNow = performance.now(); if (voEl) { try { voEl.currentTime = 0; } catch (_) {} } syncVoPlayback(); render(curT); syncUI(); };
+  bVo.onclick = () => { voEnabled = !voEnabled; syncVoPlayback(); syncUI(); };
+  bLoad.onclick = () => fAudio.click();
+  fAudio.onchange = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (file && voEl) { voEl.src = URL.createObjectURL(file); voEnabled = true; syncVoPlayback(); syncUI(); }
+  };
+  bSfx.onclick = () => { soundEnabled = !soundEnabled; syncUI(); };
+  bCap.onclick = () => { showCaptions = !showCaptions; render(curT); syncUI(); };
+  bSheet.onclick = () => { showSheet = !showSheet; render(curT); syncUI(); };
+  bExpWav.onclick = () => exportMixedWav();
+  bExpVid.onclick = () => exportCompositedWebM();
+  bHide.onclick = () => hud.classList.toggle('hidden');
+  bSpeed.onclick = () => { rate = RATES[(RATES.indexOf(rate) + 1) % RATES.length]; syncVoPlayback(); syncUI(); };
+  bFull.onclick = () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+  };
+  hud.addEventListener('click', (e) => { if (e.target.tagName === 'BUTTON') e.target.blur(); });
+  scrubber.addEventListener('change', () => scrubber.blur());
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && playing) { playing = false; syncVoPlayback(); syncUI(); }
+  });
+
+  let idleTimer = null;
+  function wake() {
+    hud.classList.remove('idle');
+    document.body.style.cursor = '';
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      if (playing) { hud.classList.add('idle'); document.body.style.cursor = 'none'; }
+    }, 2500);
+  }
+  if (!CAPTURE_MODE) { window.addEventListener('mousemove', wake); wake(); }
+  scrubber.oninput = () => seekTo(parseFloat(scrubber.value));
+
+  window.addEventListener('keydown', (e) => {
+    const ae = document.activeElement;
+    if (ae && (ae.tagName === 'BUTTON' || ae.tagName === 'INPUT')) ae.blur();
+    if (e.code === 'ArrowLeft' || e.code === 'ArrowRight') e.preventDefault();
+    if (e.code === 'Space') { e.preventDefault(); bPlay.click(); }
+    else if (e.key === 'r' || e.key === 'R') bRst.click();
+    else if (e.key === 'v' || e.key === 'V') bVo.click();
+    else if (e.key === 's' || e.key === 'S') bSfx.click();
+    else if (e.key === 'c' || e.key === 'C') bCap.click();
+    else if (e.key === 'm' || e.key === 'M') bSheet.click();
+    else if (e.key === 'h' || e.key === 'H') bHide.click();
+    else if (e.key === 'f' || e.key === 'F') bFull.click();
+    else if (e.key >= '1' && e.key <= '4') seekTo(SCENE_STARTS[+e.key - 1]);
+    else if (e.code === 'ArrowRight') seekTo(curT + 0.25);
+    else if (e.code === 'ArrowLeft') seekTo(curT - 0.25);
+  });
+
+  document.fonts.ready.then(() => {
+    window.READY = true;
+    render(curT);
+    syncUI();
+    if (!CAPTURE_MODE) requestAnimationFrame(loop);
+  });
+})();
+</script>
+</body>
+</html>
