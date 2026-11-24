@@ -1,5 +1,7 @@
 # HANDOFF — Jensen / Elon explainer videos (read this first in a new session)
 
+Full documentation is in `docs\`: `README.md` (index), `RUNBOOK.md` (step-by-step commands and new-device setup), `LEARNINGS.md` (rules, mistakes, costs), `SHORTS_GUIDE.md` (shorts design and mobile rules). Read those after this file.
+
 Working folder: `C:\Users\Aryan Barman\personal\new_projects\projects\` (call it `P`). Method notes from earlier work live in `C:\Users\Aryan Barman\Projects\learning\improvement.txt`; the storyboard method is in `P\storyboard.txt`.
 
 ## 1. What this project is
@@ -34,6 +36,9 @@ Animated explainers (HTML canvas + Three.js, stickman sprites, voice-over WAV + 
 - `tools\build_short.py` turns a `-3d` (or the Act 1 v2) file into a true portrait file: 1080x1920 canvases, portrait camera (min distance `DPORT = 31`, fov 50), larger signs, portrait headline/captions/progress overrides from `portrait_over.js`. `tools\mk_all.py` rebuilds all six `-short.html` files.
 - `shorts.html` records them. Each short has: hook card at 0-3 s, a mid "re-hook" band at a chosen source time, the voice-over picks (editable JSON in the page), and a 3.2 s end card with a question + CTA. Picks: Act 1 p1 (offer), Act 5 p1 ($44B loan), Act 5 p2 (legal wall), Act 6 (three wins), Act 7 (moat), Act 3 p1 (sealed court filings).
 - STATUS: UNTESTED recorder. Portrait rendering and camera were checked with stills only. Known issues: some beats have empty floor/sky and the subject small; hook/re-hook/end-card positions were set by guess; Act 1 short is dark with tiny characters. NEXT STEP: a per-beat framing pass on the six picked sections (one hero object per beat, closer, focus on it), then watch the shorts in a real browser and fix text positions. Also consider shorts that are self-contained arcs written for the short (own SRT-based mini script) instead of cutting existing parts.
+
+## 5b. Mobile status (honest)
+Shorts are native 1080x1920 with large captions, but NOT yet tuned for platform UI safe zones (captions end near y=1640, inside the area apps cover; headline near the top icons), in-scene labels are small, and some beats have empty floor. The long video is 16:9 and not restructured for phones. To-do list: `docs/SHORTS_GUIDE.md` section 5 (do step 1 first: move captions/headline into safe zones).
 
 ## 6. Recording the long video
 Copy P (with `audio`) to a machine with GPU + internet. In P run `python -m http.server 8765`, open `http://localhost:8765/master.html`. Options: one file per act (`act1.webm`..), "also save full joined video", video offset (ms). A 2.4 s act title card plus fades are drawn by the page; inaudible noise keeps the audio track continuous (fixes the earlier title-card audio shift). Join act files with `python join_acts.py [--fix-cards] [--av=+/-ms] [--mp4]` (`--fix-cards` only for files recorded BEFORE the noise fix). Planned timeline: total about 19:52; act starts 0:00, 2:01, 5:16, 8:56, 12:27, 15:51, 18:20.

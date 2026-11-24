@@ -1,0 +1,510 @@
+ACT 3 IMPROVEMENT GUIDE: how testing3.html became testing3-hybrid.html
+=======================================================================
+Written as a playbook: the thinking, the decisions, the maths, the mistakes.
+Companion to file.txt (rules 1-61). New rules from this act are numbered 62+ at the end.
+
+Request that started it: "too many still frames, no movement, no characters;
+captions can be improved; the rest you analyse and identify."
+
+
+-----------------------------------------------------------------------
+PART 1. HOW I APPROACHED IT (the mindset)
+-----------------------------------------------------------------------
+1. DIAGNOSE BEFORE BUILDING. I read the whole file first and wrote the diagnosis
+   in my head as a list of "what the viewer sees at second N":
+     - 0-13s : a static wall panel, labels popping, no people.
+     - 13-29s: three paper slabs + a green box. First (flat) character at 21.8s.
+     - 29-41s: white panels rotating away, a cube. Nothing "behind the curtain".
+     - 41-54s: four octahedra with text. The "four vectors" were just shapes.
+   The user's complaint (still frames / no characters) was visible in the code:
+   almost every object had either no animation or one single easing in.
+
+2. TREAT THE NARRATION AS THE TIMELINE, NOT THE ORIGINAL BEAT TABLE.
+   The original T table was aligned to subtitle CUE STARTS, but cues start
+   mid-sentence. E.g. cue 25.60-29.38 = "Executive Officer. But behind the polished
+   press releases". The curtain flip was set at 29.38, but "But behind" is spoken
+   ~2.5s earlier. So the first job was to estimate WORD times (Part 3).
+
+3. ASK "WHAT WOULD A HUMAN SEE FOR EACH WORD?" for every phrase in the script.
+   Abstract phrases need a visual metaphor with a CHARACTER in it:
+     "news networks ran chyrons"  -> six TV screens, each with a talking anchor
+     "mainstream headlines"       -> newspapers SLAMMING in + a press pool flashing
+     "elevation of Kress"         -> she WALKS in, a podium RISES, flashes fire
+     "carefully timed leaks"      -> hooded figures passing an envelope, a clock
+     "far more complex game"      -> red-string evidence wall
+     "dangerous game being played"-> a chess match, with a capture
+     "geopolitical collision"     -> two comets wrap a globe and collide
+     "four vectors"               -> one CHARACTER per vector on a hovering pad
+     "$5T backbone of economy"    -> spokes from the core into a city that lights up
+   Rule: if a phrase has no moving thing and no person, it is a still frame.
+
+4. REUSE PROVEN INFRASTRUCTURE, REWRITE ONLY THE SCENE.
+   Act 2 hybrid already had: camera keyframe track, wipe/iris/smear/flash,
+   typeOn, hitFx, stateless cue audio, HUD, pause-on-hide, dt clamp. I copied
+   those, and wrote new scenes + a bigger character rig. (Honest note below on
+   why this still took too long.)
+
+5. VERIFY WITH PICTURES AFTER EVERY BIG STEP. Typed code is a hypothesis; only
+   a rendered frame proves it. Every bug in Part 7 was found from a screenshot,
+   none from reading the code.
+
+
+-----------------------------------------------------------------------
+PART 2. THE STRUCTURAL DECISIONS
+-----------------------------------------------------------------------
+D1. NEW FILE, ORIGINAL UNTOUCHED. testing3-hybrid.html. The user can diff/compare.
+D2. ONE CONTINUOUS 3D SCENE, NOT FOUR. The act is a chain of scenes in one
+    THREE.Scene toggled by time windows: newsGroup, pressGroup, roomGroup,
+    chessGroup, globeGroup. Pure function of t, so scrubbing works.
+D3. THE S1->S2 TRANSITION IS IN-WORLD, NOT A CUT. The press-release wall is made
+    of 11 panels that flip edge-on (rotation.y -> PI/2) in a staggered wave, while
+    the lighting LERPS from day to dark over 26.84-28.3. A hard cut would have
+    hidden the narrative idea ("behind the polished press releases").
+D4. A DIFFERENT WORLD VIA SPACE, NOT FADES. The chess table lives at x = 30,
+    30 units from the origin. The camera cut (33.079/33.08) hides inside a whip
+    smear, and the new world needs no teardown. Same trick the earlier acts used
+    for "big world changes".
+D5. TV SCREENS ARE ANIMATED CANVAS TEXTURES drawn by the SAME toon engine.
+    I made `ctx` a `let` and a helper withCtx(g, fn) that points the toon engine at
+    an offscreen 512x320 canvas. So the characters on the TVs use drawCharacter
+    unchanged. Redraw at 12 fps only (key = floor(t*12)); upload texture only then.
+    A `lwMul` multiplier thins the ink on the small screens (toonPoly uses absolute
+    pixel line widths, so scaled-down characters otherwise look cartoonishly thick).
+D6. CHARACTER RIG v3 (drawCharacter): role STYLE table (jacket/skin/hair/etc.),
+    walk cycle (legs rotate about the hip, body bob), talking mouth (ellipse height
+    from sin of a 12 fps step), props (mic, camera, notebook, binoculars, case,
+    paddle, phone, cane) drawn in the hand's frame with ctx.rotate(-armAngle) so
+    they stay upright, hair/hat shapes (bob, bun, short, cap, fedora, hood),
+    silhouette mode for hooded figures (dark fill, cyan RIM line, glowing eyes).
+    No text drawn inside the flipped (facing = -1) frame, as text would mirror.
+D7. HOODED FIGURES GET A CYAN OUTLINE. Dark-on-dark (#14232B on #0A1418) vanished.
+    The fix was a bright ink line, not lighter fills. (Contrast problem solved with
+    the line, as in comic inking.)
+D8. LOOKS (lighting) LERP INSTEAD OF SWAP. The day floor is a second plane 4mm
+    above the dark floor whose material opacity fades. A texture swap would pop.
+    All look values are THREE.Color objects mixed by mixLook(a,b,u) each frame.
+D9. CAPTIONS REBUILT (see Part 5).
+
+
+-----------------------------------------------------------------------
+PART 3. CALCULATION BREAKDOWN
+-----------------------------------------------------------------------
+3.1 Word-level timing from subtitle cues (no timestamps exist)
+    For cue [s, e] with words w1..wn: total = sum(len(wi) + 1).
+      word i start = s + (e - s) * (sum of (len+1) of previous words) / total
+    Example: cue 22.12-25.60 "of Chief Financial Officer Colette Kress to Interim Chief"
+      total = 3+6+10+8+8+6+3+8+6 = 58 chars.  (e-s) = 3.48s
+      "Colette" starts after 3+6+10+8 = 27 -> 22.12 + 3.48*27/58 = 23.74
+      "Interim" after 3+6+10+8+8+6+3 = 44 -> 22.12 + 3.48*44/58 = 24.76
+    These became the beats: name lower-third 23.74, podium/"INTERIM CEO" 24.76.
+    Limitation (stated to the user): this is an ESTIMATE; real TTS timestamps
+    would be tighter. Speaking rate is not uniform per character, but within a
+    3-4s cue the error is typically +/-0.2s, far better than the 2-3s errors
+    in the original.
+    A node script (words.js) prints every word's time so beats can be read off.
+
+3.2 Placing the cut inside a transition
+    Wipe 14.00-14.80, fully-covered hold is the middle 10% (45-55% of u).
+    Cut time = (14.00 + 14.80)/2 = 14.40. Camera keys at 14.399 and 14.40.
+    Smears: 32.88-33.28 -> cut 33.08;  38.54-38.94 -> cut 38.74.
+    Both sit in narration silences (33.08 is a cue start; 38.30-38.74 is a gap).
+
+3.3 Perspective-correct 2D character scale (character drawn in a 3D place)
+      ppu   = (viewport_h / 2) / (distance * tan(fov / 2))   [pixels per world unit]
+            = 540 / (dist * tan(fov*PI/360))
+      scale = hWorld * ppu / (3.8 * 68)                      [3.8 D tall, D = 68 px]
+    Example: Kress hWorld = 3.3, camera 8.2 away, fov 32: tan(16 deg) = 0.2867
+      ppu = 540 / (8.2 * 0.2867) = 229.7 px/unit
+      scale = 3.3 * 229.7 / 258.4 = 2.93
+    The camera MUST be updated (updateProjectionMatrix, updateMatrixWorld)
+    before worldToScreen/projectedChar, otherwise projections lag a frame.
+
+3.4 Why world-anchored reporters failed and screen-anchored worked
+    Half-width visible at distance d with vertical fov f:
+      halfW = d * tan(f/2) * (16/9)
+    At d = 7, f = 36 deg: 7 * 0.325 * 1.78 = 4.05 units. I had put reporters at
+    x = +/-6.8, i.e. OUTSIDE the frame in every wide shot (screenshot showed none).
+    Fix: pin them to screen space (x = 130/330/1690/1810 px, feet below the
+    bottom edge), add camera-x parallax (-cam.x * 14 px), and a rise-in.
+    Rule: do the half-width calculation before placing anything at the frame edge.
+
+3.5 Occluding a 2D character behind a 3D object
+    Kress behind the podium, hooded figure C behind the table: clip the character
+    at the object's top BACK edge in screen space:
+      clipY = worldToScreen(x, topHeight, backEdgeZ).y ;  ctx.rect(0,0,1920,clipY)
+    For the podium that rises, topHeight = 1.35 * podium.scale.y, so the clip
+    tracks the rise and legs are progressively covered. The podium "pops up in
+    front of her".
+
+3.6 Bounce / hit synchronisation (reused from the Act 2 lesson)
+    Newspaper drop uses easeOutBounce over 0.45s. First contact is at 0.364 of
+    the duration, so a paper "lands" at on + 0.16. The floor ring and the 2D
+    ray burst fire at on + 0.16, not at on.
+
+3.7 Convergence of the four vectors
+    Pad position = lerp(start * slide, end, easeInCubic(seg(t, 48.20, 49.22))).
+    easeInCubic = accelerating, so they arrive at maximum speed exactly when
+    "collided directly" lands (49.22). end = (x*0.30, 3.4 + (y-3.4)*0.22, 2.1),
+    i.e. 2.1 in front of the core, so they stop short of the cube's face.
+
+3.8 Comets wrapping the globe
+    theta = lerp(-2.7*dir, 0, easeInOutCubic(u)) ; pos = (R sin th, 3.4 + 0.9 sin 2th, R cos th), R = 4.4.
+    They start behind the sphere (occluded), swing round the sides, and meet in
+    front at theta = 0 on the beat "collision" (40.75). Trail = 6 spheres with a
+    time offset (u computed at t - k*0.035).
+
+3.9 "Spokes" (backbone) in Three.js without a line library
+    CylinderGeometry(0.035,0.035,1), rotateX(PI/2), translate(0,0,0.5) so the
+    mesh points along +Z with its base at the origin. Then mesh.position = core,
+    mesh.lookAt(target), mesh.scale.z = distance * progress. Grows like a laser.
+
+3.10 Colour/lerp counts
+    S1->S2 look mix duration 1.46s (26.84-28.3); panel flip per panel 0.85s with
+    0.09s stagger across 11 panels = 1.76s total (ends 28.6). pressGroup is hidden
+    at 28.9, after the last panel finishes (hiding at 28.2 would pop the last ones).
+
+
+-----------------------------------------------------------------------
+PART 4. CAMERA DESIGN (why each key exists)
+-----------------------------------------------------------------------
+Grammar: {t, p[x,y,z], l[x,y,z], fov, snap?}. snap = ease-out quart (fast
+attack). Everything else = ease-in-out cubic. The ease belongs to the DESTINATION
+key.
+- Wide -> tight -> wide rhythm. After every punch-in there is a relax key before
+  the next beat (e.g. 14.70 punch, 16.90 relax, 17.33 punch).
+- One camera move per narrated noun: S0 hops screen to screen as each is named
+  (5.49 NVDA, 7.17 founder, 8.92 hubris, 10.83 probe, 12.39 undisclosed).
+- FOV drop = zoom without moving (36 -> 28) for emphasis; position change = parallax.
+  Punches use BOTH (fov 32-34 plus a closer position).
+- Big world changes are zoom-OUTS: globe reveal at 38.74 (fov 44, dist 17),
+  final pull-back 51.22 -> 53.72 (z = 17 -> 33, y 5 -> 7.6) to show the whole
+  economy.
+- Impact shakes are added on top of keys: decaying random offset at 60 steps/s,
+  amplitude by importance (0.08 minor, 0.20 collision, 0.30 final impact).
+- Gotcha found in review: do the chess shot at an ANGLE (camera at x = 27, not
+  x = 30). Straight-on, rows of pieces stack along the view axis into a pile.
+
+
+-----------------------------------------------------------------------
+PART 5. CAPTIONS (the explicit ask)
+-----------------------------------------------------------------------
+Problems in the original: OFF by default; one line only (long lines overflowed
+the box); the box popped on/off; no emphasis.
+New design:
+  a) ON by default (?cap=0 turns off; button still toggles).
+  b) KARAOKE: each word has t0/t1 (Part 3.1). Spoken = ivory, active = amber and
+     raised 2px, upcoming = 50% ivory.
+  c) KEYWORD COLOURS (KEYCOL map): hubris/investigation coral, Colette/Kress/
+     Interim green, intelligence/family cyan, $5/trillion/backbone green...
+     A coloured underline bar under keywords (dim until spoken).
+  d) WRAP to max 1460px, box sized to the longest line, bottom edge fixed at
+     y = 1022 (inside the TV safe area), multi-line grows upward.
+  e) FADE: 0.14s in with a 10px slide; 0.16s out. If the gap to the next cue
+     is < 0.5s, HOLD the line until the next starts (no flicker between 4.14-3.34).
+  f) A 3px progress hairline at the box bottom = cue progress.
+  g) Layout interplay: lower-thirds sit at y = 690-840 so they never touch
+     the caption box (y >= 930).
+
+
+-----------------------------------------------------------------------
+PART 6. TIMING TABLE (what moved)
+-----------------------------------------------------------------------
+Word -> beat (estimated word time -> what fires)
+  "snapped" 1.25     -> screens snap in (staggered 1.10 + 0.22 per screen)
+  "breaking chyrons" 5.49 -> NVDA chart screen + BREAKING chyron
+  "founder" 7.17     -> FOUNDER OUSTED screen, Jensen bust crossed out
+  "hubris" 8.92 / "board" 10.83 / "undisclosed" 12.39 / "relationships" 13.14
+  "Mainstream" 14.70 -> paper 1 slams (15.38, 16.00 for the others)
+  "executive suite drama" 17.33 -> badge pops on the WSJ paper
+  "compliance" 19.78 / "violations" 20.33 -> badge, then VIOLATION stamp lands
+  "Chief Financial Officer" 22.30 -> Kress starts walking in, lower third slides
+  "Colette" 23.74 -> she arrives, name types
+  "Interim" 24.76 -> CFO struck through, INTERIM CEO types, podium rises, flashes
+  "But behind" 26.84 -> curtain flips (original was 29.38)
+  "carefully timed" 29.68 -> envelope passes; "leaks" 30.86 -> thrown at camera
+  "far more complex" 31.5 -> red strings draw across the evidence wall
+  "dangerous game" 33.08 -> whip to the chess world; capture on "played" 34.37
+  "not" 35.79 / "collapse" 37.75 -> NOT badge, struck-out text, king topples
+  "geopolitical collision" 38.74 / 40.75 -> globe born / comets collide
+  vector words 42.16 / 43.98 / 45.87 (+46.33 DENIED) / 47.25 -> pads arrive
+  "collided directly" 48.2 -> 49.22 convergence and impact
+  "$5 trillion" 50.42 / "backbone" 51.22 / "economy" 52.76 -> counter, spokes, zoom-out
+
+
+-----------------------------------------------------------------------
+PART 7. BUGS FOUND BY SCREENSHOT AND HOW EACH WAS FIXED
+-----------------------------------------------------------------------
+1. t=1.0 frame was an empty floor: desk and gavel dropped away before the camera
+   pulled back. Fix: start both pulls at 0.7, not 0.5.
+2. Green slabs on the floor at 14.9/20.6/16.3: the podium at scale.y = 0.01 is a
+   flat green square, still rendered. Fix: podium.visible = t >= interim.
+3. No reporters in wide shots: world-anchored, off-frame (maths in 3.4).
+4. Empty dark headline bar with a cursor for ~0.2s: bar drew at t0, text typed at
+   t0 + 0.2. Fix: start typing at t0 + 0.02 (ties to the old "empty bar" lesson).
+5. Envelope rendered as a thin rod: a flat box seen edge-on. Fix: rotation.x =
+   PI/2 so the broad face looks at the camera and enlarge it.
+   (Still reads pale pink at ~28.6; flagged as known.)
+6. Back room too bright/grey: the lamp (2.2) plus a light back wall washed out
+   the silhouettes. Fix: lamp 1.5, wall 0x0b1a20.
+7. Camera so close in the room that hooded figure C filled the frame (32.4):
+   keys moved from z = -3 to z = 0.8-2.2.
+8. Chess pile-up and giant pieces: SQ 0.55 -> 0.62, piece scale 0.8, board 5.0,
+   camera angled. Capture ring scale 2.4 -> 0.9 so it does not cover the board.
+9. White collision ring covered the screen (camera was inside it): coral, max
+   scale 6 -> 2.6.
+10. Comets too small to see: radius 0.3 -> 0.46.
+11. Globe floor over-bright cyan: rim light 2.6 -> 1.7.
+
+
+-----------------------------------------------------------------------
+PART 8. HONEST POST-MORTEM (what cost time)
+-----------------------------------------------------------------------
+- The user noticed: earlier acts were quick because I edited an existing file.
+  This one was slow because I REBUILT: ~1,600 lines in one file, then ~8
+  screenshot rounds. Reasonable if the original is structurally static (it was:
+  four near-static scenes), but I should have said "this is a rebuild, ~30 min"
+  up front, or offered the cheaper option of adding characters and captions to the
+  existing file only.
+- The first screenshot method (chrome --screenshot with a pipe to grep) HUNG for
+  ~4 minutes. Chrome child processes keep the pipe open and virtual-time-budget with
+  a live requestAnimationFrame loop never settles. The fix was a CDP script:
+  launch chrome with --remote-debugging-port, call window.render(t) via
+  Runtime.evaluate, then Page.captureScreenshot. It batches many times in one
+  launch (~2s per frame after warm-up, first frame ~6s for shader compile).
+  KEEP cdp.js; it is the reusable verifier (in the session scratchpad).
+- Windows gotcha: Python text-mode writes CRLF. It broke my regex that extracts the
+  <script> for node --check. Use newline-agnostic regex (\r?\n) or write bytes.
+- A bash heredoc with many quotes failed ("unexpected EOF"). For long patch
+  scripts, WRITE THE FILE with the Write tool and run it.
+
+
+-----------------------------------------------------------------------
+PART 9. NEW RULES (continue numbering from file.txt)
+-----------------------------------------------------------------------
+62. Estimate word times from characters-per-cue; fire beats on the WORD, not on
+    the cue start. Cues start mid-sentence.
+63. Every narrated noun gets a moving thing; abstract nouns get a character in a
+    metaphor. If a phrase has neither, it is a still frame.
+64. Point the toon engine at an offscreen canvas (let ctx + withCtx) to put
+    characters on in-world screens; redraw textures at 12 fps only.
+65. Scale line width independently of character scale (lwMul) when drawing small.
+66. Silhouette characters need a bright outline line, not a lighter fill.
+67. Do the frame half-width calculation before placing anything near the edge:
+    halfW = d * tan(fov/2) * 16/9. If it is outside, anchor it in screen space.
+68. Hide a growable object (scale 0.01) with .visible, not just scale.
+69. Prefer in-world transitions (flip, dolly through) when the idea is the
+    transition; use wipes/smears only to hide unavoidable hard cuts.
+70. Build alternate WORLDS far apart in space (x = 30) and hide the camera cut in
+    a smear; no scene tear-down.
+71. Lerp lights and fade a second floor plane; never swap textures mid-shot.
+72. View chess/row-type objects at an angle; straight-on stacks them.
+73. Verify by rendered frames at every beat time, with a CDP batch screenshotter,
+    not by reading code. Avoid piping chrome output; use CDP.
+74. Tell the user "rebuild vs edit" and the time cost before starting.
+75. Content check: when a script presents invented scandal about real,
+    named people as news, flag it and suggest a "dramatization" label.
+
+
+-----------------------------------------------------------------------
+PART 10. REMAINING KNOWN ISSUES (not fixed)
+-----------------------------------------------------------------------
+- Envelope reads pale pink/large around 28.6s.
+- Left chess player mostly off-frame (x = CX - 4.4 with camera at x = 26-28).
+- At ~46.6s the vector pads at the screen edges are partly cropped.
+- Audio and real-time playback never exercised (screenshots only).
+- Word timings are estimates; use real TTS timestamps if available.
+- Act 2 ends on a wide pull-back but Act 3 starts tight on the gavel.
+- Performance on a real GPU is untested (first frame in software GL ~6s).
+
+
+-----------------------------------------------------------------------
+PART 11. PORTING THE LESSONS BACK TO ACT 1 AND ACT 2 (fast pass, ~15 min)
+-----------------------------------------------------------------------
+Method that made it fast (rule 76): port by SCRIPT, not by hand.
+  - One python patch script pulls the new code OUT of testing3-hybrid.html by
+    anchor strings (from "// Captions v2" to "function drawNoThreeNotice") and
+    splices it into the other files, so the ported code is identical.
+  - Verify with ONE batch screenshot call per file (cdp.js, now in myenv-test/).
+  - Do not re-read whole files; grep for the 3-4 anchors you need.
+What was ported:
+  - Captions v2 into testing1-hybrid and testing2-hybrid (word karaoke, keyword
+    colours, wrap, fades). Default ON.
+  - Character rig v3 into testing2-hybrid (STYLE table, props, walk, talk).
+    STYLE.chair = STYLE.kress keeps the old board figure unchanged.
+  - Act 2 middle section (5.86-23.92, the "no people" stretch): a screen-anchored
+    crowd that rises in, watches the bar, cheers on the $5T lock (13.30) and the
+    84% beat (16.60), and points during the GPU teardown.
+Pitfalls hit: a stray `chair: null` line after a replace (an object literal edit
+done by string replace; syntax-check immediately); and keyword maps must be
+specific per act (KEYCOL).
+Not done: Act 1 got captions only (it already had Musk, the crowd and signatures).
+
+PART 12. SECOND PORTING PASS (Act 1 + Act 2, ~10 min, one patch script, one screenshot batch per file)
+  Act 1: rig v3 replaces the old one (STYLE.musk keeps his look); new 'sign' prop; analysts gasp at the
+         fracture then photograph the resignation; two rumour-mongers on phones; 12-person protest crowd
+         marches in (one per 0.5s, walk cycle, signs, fists up at 16.70).
+  Act 2: five wealth-seekers walk toward the pin (world-anchored, sorted by depth); security officers walk in
+         at the card rejection; two extra board members behind the desk, clipped at the desk's back edge.
+  Why faster: reused rig/maths/flash code by extracting from testing3-hybrid with anchors; no re-reading of
+  whole files; one syntax check + one screenshot batch per file. (Rule 77: crowds = screen-anchored at the
+  frame bottom for 2D scenes, world-anchored + depth-sorted when they must share the 3D space.)
+
+PART 13. EXTENDING THE METHOD TO ACTS 4-13 (what "improve" actually means)
+  THE CORRECTION THAT SHAPED THIS PART
+  I first treated "improve" as "add people". That was wrong, and the user said so. An improvement pass is five layers,
+  and characters are the smallest one:
+    1. CAMERA   one continuous flight (see rule 78), not a slow drift per cue and not hard cuts under wipes.
+    2. WORLD    real 3D assets that carry each idea (objects that change), not slides or flat cards.
+    3. THROUGH-LINE  one visible object that runs through every station (a red string, a golden thread, a trail).
+    4. LIGHT    day/dusk/night cross-fade with the camera's travel, never a snap.
+    5. CAST     last: a few figures for scale and reaction only. The ideas live in the objects, not in the people.
+  Later correction (Acts 9-10): "showing the ideas through the assets rather than making the character talk looks
+  much better." Default to NO talking characters; 0-3 silent figures per act.
+  Later correction (Acts 11-13): the old 2D acts are not exempt. Keep what is good (headline bar + source line,
+  quote-card text, ledger, cue sheet + sound engine, timing, "generic silhouette" treatment) and rebuild the stage in
+  the shared 3D foundation, so the whole series is consistent.
+
+  HOW THE CAMERA FLOWS (rule 78)
+    - Lay the scenes out along an axis in world space (x = 0, 12, 24, ...), one "station" per idea.
+    - Camera = Hermite spline through keys [t, pos, look, fov]; tangents by finite differences (neighbour keys), so
+      velocity never drops to zero at a key. This replaces ease-in-out per segment, which stops at every key.
+    - Never cut. The old "whip pan" is just the fastest stretch of the path.
+    - A visible connector rides each move between stations (fiber tube, trace line, crane arc, the red string).
+    - Hide a big location change by putting the next place physically where the camera is going: Act 4's
+      server hall moved UNDERGROUND below the restricted zone and the camera flies down a lit shaft; Act 7's
+      campus sits behind the boardroom's window wall and the camera flies through the glass as it shatters.
+    - Motion smear only while the camera really moves: smear = clamp((speed - 5) / 18, 0, 0.36); draw the GL canvas
+      twice, offset opposite to travel, alpha k and 0.6k.
+    - Lighting cross-fades: lerp background/fog/hemi/rim by a smoothstep of time, plus a second day-floor plane whose
+      opacity is faded (the floor texture cannot be lerped).
+    - Keep the world alive across the move: overlap stage visibility windows so the next stage already exists.
+
+  FILE REPAIR (new work this session)
+  Acts 5, 6, 8, 9, 10 arrived as one flattened line: every newline had been collapsed, so the first `//` comment hid the
+  whole script and the page rendered BLANK. Act 7 arrived as a Python script (html_code = '''...''') instead of HTML.
+  Recovery: write an "unflatten" tool that finds each `//` comment (skipping strings and template literals, which can
+  contain `//` such as 'REGISTRY // ORIGINAL' and URLs) and tries candidate end points word by word, accepting the first
+  split where the remaining code still parses. Then prettier for readable code, then check template strings for lost
+  `${...}`. For the Python wrapper: ast.parse + literal_eval, never run the script. Always keep the original and work
+  from a recovered copy.
+
+  TEXT CLIPPING IN 3D SIGNS (bug the user spotted; not CSS)
+  In-world signs are drawn into fixed-size canvases; text wider than the canvas is cut at the edge ("PERATIONS FROZE").
+  Fix: size the font by measurement, fitSize(g, text, size, maxW): measure at the requested size, scale down if wider
+  than 0.9 of the canvas. Use it in every tag/label/panel helper. Also: paint a panel once at creation (a panel that is
+  only repainted while visible renders empty on a single-frame screenshot), and set visible BEFORE repaint.
+
+  PER-ACT NOTES
+  Act 3  (done earlier) full rebuild; the template for everything below.
+  Act 4  hybrid: crew + captions first (people only - the mistake), then camera/assets/transitions, then the continuous
+         flight with an underground hall. Known rough: shot at 24.4 passes through the restricted-zone sheds.
+  Act 5  trail through Singapore -> archive corridor -> BVI shell -> Alice -> ramp/column; 180 degree flip is a real
+         barrel roll of the camera with the day-night change inside it.
+  Act 6  four worlds on one axis (Singapore 0, Shanghai 40, Beijing/DC 80, boardroom 120) joined by an underground
+         fiber tube, a ground trace line and a crane arc.
+  Act 7  campus behind the window wall; 36 reports run in and form rings; the "three decades" path lights slab by slab.
+  Act 8  pure-2D original rebuilt as a 3D runner of six stations; protagonists walk the path (pathX eased moves).
+  Act 9  ideas as objects: bull + ticker, turntable of architectures with sun/moon, winch-hung founder shield that
+         cracks, five-floor HQ cutaway with REDACTED arcs, three labelled liability arrows + scales + glass veil,
+         ultimatum fork, globe that freezes. 3 silent figures only.
+  Act 10 sub-second beats as objects: signature drawing itself on a 3D paper, stamp, cardboard box to the door, scale
+         crushed by a SILICON VALLEY weight, calculator ERROR, clock cracking, rockets to the board HQ.
+  Act 11-13 Doc Studio acts rebuilt in 3D; sourced text kept; hooded generic silhouettes only (ledger requirement).
+
+  NEW RULES (continue from 77)
+  78. Camera: Hermite spline through keys with finite-difference tangents, zero cuts, connector objects on every move,
+      overlap stage windows, speed-based smear. Never ease to a stop at each key.
+  79. Improve = camera + world + through-line + light + cast, in that order. Cast is last and smallest.
+  80. Carry each idea in an object that changes state (cracks, drops, splits, freezes, lights up); words are hints.
+  81. Every in-world text goes through fitSize; paint panels once at creation; set visible before repaint.
+  82. A flattened file is blank, not broken: recover newlines with a string-aware unflatten, keep the original untouched.
+  83. Do not exempt older files: keep their good content and rebuild the stage in the shared foundation.
+  84. Do not delete or overwrite the user's originals; write *-hybrid.html beside them.
+  85. Port by script: extract rig/captions/hitFx from testing3-hybrid by anchor string, splice, ONE syntax check
+      (extract <script> body, node --check) and ONE screenshot batch. Large batches take minutes in headless
+      SwiftShader: run them in the background with a long timeout and render 8-11 frames, not 30.
+
+  WHAT WAS NOT VERIFIED (be honest about it)
+  Everything was checked by still screenshots in headless Chrome: no live playback, no audio, no real-GPU performance.
+  Transitions between stations are checked only as single frames. Several frames were not viewed. The playback bar
+  overlaps the captions in screenshots (hides with H).
+
+  KNOWN ROUGH SPOTS (open)
+  Act 3: pale pink envelope near 28.6s; left chess player off-frame; vector pads cropped at ~46.6s.
+  Act 4: muddy pink wash at 24.4s (camera inside the sheds).
+  Act 8: character hides the first word of the plaque at 12.5s; end shot washed out by bright fog.
+  Act 9: scales' pans float without chains; HQ cutaway is plain.
+  Act 11-13: coins/tags overlap some counters; "Independence" tag floats away from its barrier.
+
+PART 14. ACTS 14-16 (the last three Doc Studio acts) - and the shared builder that made them fast
+  Same engine as Acts 11-13 (2D Doc Studio: headline bar + source line, ledger, cue sheet, foley). Rebuilt in the
+  shared 3D hybrid foundation; original files untouched; output testing14/15/16-hybrid.html.
+  WHAT MADE IT FAST: one reusable builder (docbase.py) that, given an original Doc Studio file,
+    - keeps everything up to the camera (palette, math, SUBS, LEDGER, CUE_SHEET) and everything from the audio engine
+      onward (foley, HUD, scrubber, keyboard) untouched,
+    - drops the old camera + scenes, and splices in: Hermite camera, rig v3 + hitFx from testing3-hybrid, captions v2,
+      fitSize/panel/tag/cardBase/typeG helpers (in-world text that can never clip), setupStage (floors, columns, light
+      shafts), applyCamera/applyLook/smearPass/drawCast/drawRail/drawCaptions, and its own drawHeadline.
+    - each act file then supplies only 4 things: keyword colours, camera keys, the 3D world, the per-frame function.
+  Anchors are found by regex at line starts, so a compact (unindented) file like Act 14 works the same as an indented one.
+  Pitfalls hit: Act 14 had no drawHeadline function (own one now); its CUE_SHEET sat after the camera so it was dropped
+  (extract it when missing from the kept head); an apostrophe in a keyword key ("musk's") broke the object literal; a
+  panel painted only while visible renders empty (paint once at creation); and Python edits that wrote escape sequences
+  turned into real newlines inside string literals (use chr(10) or the Edit tool, never sed/replace with \n in a
+  one-liner).
+  Act 14 (three paths): option doors -> Musk's verbatim post card (quote typed on a 3D card) -> market ripple ->
+    Texas slab with Terafab/Gigasat pins, sheds rising, planned orbital arc (translucent, labelled PLANNED), the
+    four-layer full-stack tower dropping in -> a DASHED, ghosted hypothetical lab (goes solid at 30.30; ties to Musk
+    and Nvidia are cut; the "corporate constraints" wall drops; a bypass arc lands) -> Nvidia tower, a 0-10% gauge
+    that fills to exactly 3.58%, proxy-access card, petition counter locking on 136,000+ ("Unverified"), BlackRock /
+    Vanguard blocks, and a 10-seat board where two nominee seats light. Every sourced caption from the ledger is kept
+    in the sign text; hypothetical things are drawn hypothetical (dashed/ghost).
+  Act 15: DOMINANCE monolith that cracks and splits (rubble) -> world map with fab pins, two great-circle arcs, three
+    supply columns (Silicon / Software / Compute) -> decentralized mesh of nodes and links -> HQ door, board with the
+    keys, key stamped on the lock (LOCKED), the $5T counter rolling to 5T+ with its Yahoo Finance source, the chain
+    that breaks, and the founder walking free while the door recedes.
+  Act 16: X post card (verbatim quote typed) with the INDUSTRIAL CIVIL WAR banner stamped below -> "Hiring a displaced
+    executive" sign struck through and falling -> two blocks/figures walk together (JOINING FORCES; "Nothing left to
+    lose") -> three pillars (Alternative hardware architectures / Custom enterprise silicon / Global compute economics
+    with a live line chart) joined by a lintel and an ONE REALITY stamp -> FREE AGENT plaque replaces the falling
+    "Chief Executive" tag, the $4T+ counter, ten arrows radiating from Jensen.
+  People: generic hooded silhouettes only, with a name tag where the original had one. Musk/Jensen are never drawn as
+  likenesses.
+  NEW RULES (continue from 85)
+  86. For a family of similar files, build ONE builder script that splices a shared foundation into each original and
+      write only the per-file world; it turned three acts into ~1 pass each.
+  87. Keep the sourced text, tag hypotheticals visibly (dashed/ghost), and mark unverified numbers on the object
+      itself ("Unverified - per SCMP").
+  88. When an original lacks an expected anchor (no drawHeadline, cue sheet outside the kept region), supply it from
+      the builder rather than editing the original.
+  NOT VERIFIED: live playback, audio, performance; several frames not viewed; the playback bar overlaps the captions on
+  screen (hides with H).
+  KNOWN ROUGH SPOTS: Act 14: the "Option 2" tag is near the top edge at 31s; some coins/sign overlaps. Act 15: the mesh
+  links are only visible after 15.43 so 15.0 shows bare nodes. Act 16: a few labels sit close to the headline bar.
+  ALL 16 ACTS now have a *-hybrid.html (1-3 hand-built, 4-16 per this guide).
+
+PART 15. ACT 1 REBUILT TO THE HYBRID STANDARD (user: "lack of assets, not 3D, movements not there, like the other hybrids")
+  Act 1 was the first hybrid and the oldest: sparse world, hard cuts under wipes, screen-anchored 2D crowds. Rebuilt in place
+  (backup kept) with the Act 3-10 recipe:
+    - CAMERA: Hermite spline, zero cuts; stations on one axis (empire/collapse x=0, Musk's offer x=20, revolt + HQ doors x=40);
+      the old "hard cuts hidden by wipes" are now fast flights along a gold thread; Musk walks the thread with the camera.
+      Depth moves (dolly in/out) instead of a sideways drift. Lighting cross-fades day -> night -> teal -> dusk by weights.
+    - ASSETS: S1 climbing bar charts, gold stacks, NVDA ticker (flips to FREE FALL), NVIDIA flags that slide down and turn red,
+      confetti; S2 podium with a resignation letter that gets RESIGNED stamped, floor cracks, a plunging chart line with an arrowhead,
+      bars that collapse red; S3 phones wired to the offer card, orbiting "?" tags, HIRING? bubble, an X rocket, a desk of papers;
+      S4 the NVIDIA HQ tower, a LOCKED OUT gate that lifts when the doors breach, four banners, a signature scroll that unrolls as the
+      counter climbs, the poaching contract tearing in 3D, a green door beam on the breach.
+    - CAST: world-anchored, depth-sorted (traders run in, cheer, gasp, flee, two photograph; rumour-mongers; Musk; a 16-person
+      march). The old screen-corner crowds were removed.
+    - Removed the caption's green timing line from every hybrid (user: "not needed").
+  Rule 89: a first-generation file is not exempt from the standard; rebuild it with the same layers.
+
+PART 16. ACT 1 PART 1 ("What happens when Apple ditches NVIDIA", new testing1.html) - built with the shared Doc Studio builder
+  Output: myenv-test/testing1-part1-hybrid.html (+ testing1-part1.html = newline-repaired readable copy of the flattened original).
+  Kept: the voice-over <audio> sync, VO toggle, foley, ledger, cue sheet, scene starts. Stations on one axis: gold-rush tower (x0),
+  vault + Baltra chip (x14), split stage (x28), pizza kitchen (x46), cloud rent ledger (x64), joined by the gold thread.
+  Builder fixes for flattened sources: slice anchors by index, not by line start (several statements share one line);
+  start the kept audio section at "const voEl" (VO is set up before audioCtx); strip the source's own KEYCOL; do not keep the
+  caption timing hairline (user asked for it gone).
+  Caution recorded: rebuilding testing1-hybrid.html in place replaced the version the user liked; always write a new file name and
+  keep the previous one (saved as testing1-hybrid-previous.html).
