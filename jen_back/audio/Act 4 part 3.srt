@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:02,020
+As Senator Jack Reed put it,
+
+2
+00:00:02,260 --> 00:00:03,220
+after the White House intervened,
+
+3
+00:00:03,860 --> 00:00:05,920
+is NVIDIA now too big to fail,
+
+4
+00:00:06,400 --> 00:00:09,720
+or was Jensen Huang simply too powerful to fire?
+
+5
+00:00:10,440 --> 00:00:12,920
+Either way, the lesson is unmistakable.
+
+6
+00:00:13,460 --> 00:00:16,140
+When a company becomes critical infrastructure for the
+
+7
+00:00:16,140 --> 00:00:20,020
+United States government, its CEO is never truly independent
+
+8
+00:00:20,020 --> 00:00:23,120
+again. And while Jensen was fighting to win back
+
+9
+00:00:23,120 --> 00:00:24,860
+control of NVIDIA on Earth,
+
+10
+00:00:24,860 --> 00:00:28,660
+his biggest customer was quietly fighting a $44
+
+11
+00:00:28,660 --> 00:00:32,500
+billion battle to launch NVIDIA's chips into space.

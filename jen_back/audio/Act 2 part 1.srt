@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:03,560
+When NVIDIA's board accepted Jensen Huang's resignation
+
+2
+00:00:03,560 --> 00:00:07,180
+on November 12th, they thought they were doing textbook
+
+3
+00:00:07,180 --> 00:00:11,040
+corporate governance. Scandal hits, founder steps down,
+
+4
+00:00:11,440 --> 00:00:13,740
+CFO steps up as interim CEO,
+
+5
+00:00:14,520 --> 00:00:15,280
+life goes on.
+
+6
+00:00:16,040 --> 00:00:17,540
+There was just one problem.
+
+7
+00:00:18,180 --> 00:00:20,300
+NVIDIA wasn't a normal company.
+
+8
+00:00:20,740 --> 00:00:24,400
+It was a personal handshake empire held together by
+
+9
+00:00:24,400 --> 00:00:28,300
+one man. Within days, the entire semiconductor
+
+10
+00:00:28,300 --> 00:00:30,280
+ecosystem started fracturing.
+
+11
+00:00:31,020 --> 00:00:34,080
+NVIDIA's stock plunged more than 40 % off its
+
+12
+00:00:34,080 --> 00:00:37,460
+highs, dragging major market indexes down in a seven
+
+13
+00:00:37,460 --> 00:00:40,800
+-day route. Inside NVIDIA's Santa Clara headquarters,
+
+14
+00:00:41,500 --> 00:00:43,220
+panic turned into open revolt.
+
+15
+00:00:44,040 --> 00:00:46,580
+Engineers and researchers signed an internal petition
+
+16
+00:00:46,580 --> 00:00:48,460
+warning the board that without Jensen,
+
+17
+00:00:49,000 --> 00:00:51,940
+NVIDIA's culture and product roadmap would collapse.

@@ -1,0 +1,55 @@
+1
+00:00:00,000 --> 00:00:03,080
+Because right as Jensen walked back into NVIDIA on
+
+2
+00:00:03,080 --> 00:00:06,720
+Monday, a massive financial story broke involving Elon
+
+3
+00:00:06,720 --> 00:00:07,920
+Musk and SpaceX.
+
+4
+00:00:08,880 --> 00:00:09,960
+Over the last few weeks,
+
+5
+00:00:10,300 --> 00:00:13,380
+Apollo Global Management and Goldman Sachs priced roughly
+
+6
+00:00:13,380 --> 00:00:16,660
+$44 billion in debt and lease financing,
+
+7
+00:00:17,000 --> 00:00:19,720
+the largest GPU financing deal in history,
+
+8
+00:00:20,180 --> 00:00:23,400
+so SpaceX can buy tens of thousands of NVIDIA's
+
+9
+00:00:23,400 --> 00:00:24,820
+upcoming Vera Rubin chips.
+
+10
+00:00:25,510 --> 00:00:28,200
+On paper, it is pure Musk ambition.
+
+11
+00:00:28,740 --> 00:00:30,400
+Race tens of billions on Wall Street,
+
+12
+00:00:30,840 --> 00:00:32,720
+lock down NVIDIA's next -generation silicon,
+
+13
+00:00:33,140 --> 00:00:35,400
+and power massive AI data centers,
+
+14
+00:00:35,580 --> 00:00:38,500
+both on Earth and aboard SpaceX's orbital satellites.
