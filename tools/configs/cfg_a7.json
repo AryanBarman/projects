@@ -1,0 +1,28 @@
+{
+  "part": 7,
+  "audio": "Act 7 all",
+  "out": "act7_full_conclusion-v2.html",
+  "title": "Act 7 (Parts 1–2) — The Broken Handshake and the War of Attrition",
+  "dur": 88.4,
+  "rail": [0, 22.32, 43.0, 63.04, 73.98, 88.4],
+  "keys": "a7_keys.js",
+  "scene": "a7_scene.js",
+  "fixes": {"Terafab": "TerraFab", "Hwang": "Huang", "Nvidia": "NVIDIA"},
+  "keycol": {"jensen": "cyanHi", "elon": "amberHi", "nvidia": "sageHi", "terrafab": "amberHi", "handshake": "coral", "agent": "sageHi", "119": "amberHi", "billion": "amberHi", "44": "amberHi", "attrition": "coral", "moat": "coral", "trillion": "amberHi", "rubin": "sageHi", "14a": "cyanHi"},
+  "ledger": [
+    ["0.00-21.86", "When NVIDIA's board forced Jensen Huang out in November 2026 they thought they were avoiding a governance crisis; instead they broke the personal handshake network that held the AI supply chain together and turned the most valuable chip architect on earth into a free agent", "dramatization", "Episode thesis", "Boardroom, forced out, handshake network snapping, free agent"],
+    ["22.32-62.12", "Hiring Jensen to lead TerraFab would not be an overnight miracle: clean room physics, Intel's 14A ramp, IP lawsuits and SpaceX's $44B dependence on NVIDIA's Vera Rubin remain; a Musk-Huang partnership would be a brutal multi-year war of attrition betting up to $119B on a self-contained AI engine from Texas to low-Earth orbit", "dramatization", "Episode premise", "Four obstacles, war of attrition, $119B stack, Texas to orbit tower"],
+    ["63.04-87.92", "Whether Jensen signs or uses the offer as leverage, NVIDIA's monopoly has lost its biggest moat; the full boardroom story and the $4 trillion standoff are in the linked video", "dramatization", "Episode conclusion", "Contract vs leverage, cracked moat, video call to action"]
+  ],
+  "cues": [
+    [2.80, "stamp_impact", "Jensen forced out"],
+    [10.90, "laser_trace", "The handshake network"],
+    [14.40, "mega_boom", "The network breaks"],
+    [21.40, "swell_boom", "Free agent"],
+    [29.60, "ratchet_rise", "The obstacles rise"],
+    [43.20, "industrial_beat", "War of attrition"],
+    [49.10, "gold_stack", "Up to $119 billion"],
+    [71.80, "mega_boom", "The moat cracks"],
+    [84.60, "stamp_impact", "Click the video"]
+  ]
+}

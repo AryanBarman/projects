@@ -1,0 +1,29 @@
+{
+  "part": 5,
+  "audio": "Act 5 part 2",
+  "out": "act5_part2_legal_wall-v2.html",
+  "title": "Act 5 Part 2 — No War with NVIDIA: The Legal Wall and the CUDA Moat",
+  "dur": 81.28,
+  "rail": [0, 12.87, 27.43, 49.09, 66.95, 81.28],
+  "keys": "a5p2_keys.js",
+  "scene": "a5p2_scene.js",
+  "fixes": {"Terafab": "TerraFab"},
+  "keycol": {"elon": "amberHi", "jensen": "cyanHi", "war": "coral", "nvidia": "sageHi", "nvidias": "sageHi", "spacex": "cyanHi", "spacexs": "cyanHi", "billions": "amberHi", "44": "amberHi", "billion": "amberHi", "2027": "coral", "vera": "sageHi", "rubin": "sageHi", "terrafab": "amberHi", "cuda": "sageHi", "nvlink": "cyanHi", "injunctions": "coral", "moat": "amberHi", "legal": "coral", "wall": "coral"},
+  "ledger": [
+    ["0.11-26.83", "SpaceX spends tens of billions a year on NVIDIA compute, so Elon cannot declare war on NVIDIA; a six-month slowdown in Vera Rubin shipments would hit SpaceX's $44 billion financing structure and its 2027 satellite launch schedule", "dramatization", "Episode premise and reported financing terms", "No-war sign, coin stream, slowed conveyor, direct hit on notes and rocket"],
+    ["27.43-48.39", "A CEO of a multi-trillion-dollar public company for 33 years does not leave with a blank slate; every blueprint, NVLink protocol and CUDA optimization legally belongs to NVIDIA", "dramatization", "Episode premise", "Legal wall, 33-year bar, three cabinets stamped owned by NVIDIA"],
+    ["49.09-65.81", "If Jensen walks into TerraFab with former NVIDIA engineers and designs a chip resembling NVIDIA IP, NVIDIA's lawyers would bury TerraFab in trade secret injunctions before a wafer leaves the line", "dramatization", "Episode premise", "Engineers follow Jensen, lookalike chips, lawyers and injunction papers"],
+    ["66.95-80.53", "Jensen would have to design a new chip architecture from zero and a new software ecosystem to compete with CUDA, the software moat he spent 20 years making impossible to replace", "dramatization", "Episode premise", "Blank blueprint, new stack, CUDA moat"]
+  ],
+  "cues": [
+    [3.30, "stamp_impact", "Elon cannot declare war on NVIDIA"],
+    [7.40, "gold_stack", "Tens of billions flow to NVIDIA"],
+    [14.00, "hydraulic_lock", "New leadership slows the shipments"],
+    [23.40, "mega_boom", "Direct hit on the financing and the launch"],
+    [27.60, "ratchet_rise", "The legal wall rises"],
+    [44.50, "ledger_slam", "Everything owned by NVIDIA"],
+    [62.00, "paper_fold", "Injunctions bury TerraFab"],
+    [64.40, "stamp_impact", "No wafer leaves the line"],
+    [79.20, "mega_boom", "The CUDA moat"]
+  ]
+}

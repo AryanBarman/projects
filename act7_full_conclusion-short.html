@@ -244,7 +244,7 @@
   // =========================================================================
   // ---- station mapping: canvas scenes lay stations along x; here each station is moved into its own depth slot (z) so the camera flies forward
   const STN = [{"b": 44, "c": 18}, {"b": 96, "c": 70}, {"b": 150, "c": 124}, {"b": 228, "c": 196}, {"b": 280, "c": 250}, {"b": 1000000000.0, "c": 292}];            // [{ b: upper x bound, c: station centre x }]
-  const ZSTEP = 30, DMIN = 38, DMAX = 52, YAWMAX = 0.24, PMIN = 0.20, PMAX = 0.40;
+  const ZSTEP = 30, DMIN = 31, DMAX = 45, YAWMAX = 0.24, PMIN = 0.20, PMAX = 0.40;
   function stIdx(x) { for (let i = 0; i < STN.length; i++) if (x < STN[i].b) return i; return STN.length - 1; }
   function mp(x, y, z) { if (!STN.length) return [x, y, z]; const k = stIdx(x); return [x - STN[k].c, y, z - ZSTEP * k]; }
   const CAM_KEYS = [];

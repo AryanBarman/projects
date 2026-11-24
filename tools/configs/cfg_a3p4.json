@@ -1,0 +1,27 @@
+{
+  "part": 4,
+  "out": "act3_part4_reality_check-v2.html",
+  "title": "Act 3 Part 4 — Reality Check: The $119B Ceiling and the Chip Printing Problem",
+  "dur": 49.28,
+  "rail": [0, 5.3, 23.84, 37.32, 49.28],
+  "keys": "a3p4_keys.js",
+  "scene": "a3p4_scene.js",
+  "fixes": {"terafabs": "TerraFab's", "10 -year": "10-year"},
+  "keycol": {"dream": "coral", "reality": "coral", "terafab": "amberHi", "terafabs": "amberHi", "december": "amberHi", "2026": "amberHi", "2028": "coral", "2029": "coral", "phase": "cyanHi", "119": "amberHi", "billion": "amberHi", "10-year": "cyanHi", "ceiling": "cyanHi", "16.8": "sageHi", "committed": "sageHi", "elon": "amberHi", "engineering": "coral", "problem": "coral", "sports": "coral"},
+  "ledger": [
+    ["0.00-22.76", "Texas filings list TerraFab construction starting December 2026, with Phase 1 running into late 2028 or 2029; the $119 billion headline is not a single check in a bank account", "verified", "Texas tax abatement filings (Grimes County)", "Price tag and clock, timeline road to 2029, torn check and empty vault"],
+    ["23.84-36.92", "The $119B is a 10-year ceiling across four separate bets; only Phase 1's $16.8 billion is actually committed", "verified", "Texas tax abatement filings (Grimes County)", "Ceiling over four pillars; only Phase 1 solid"],
+    ["37.32-48.88", "A bigger engineering problem is hiding in TerraFab's blueprint: designing the best chip and printing it in a factory are two different sports", "dramatization", "Episode premise", "Blueprint lifts to reveal the problem; two different pitches"]
+  ],
+  "cues": [
+    [0.60, "swell_boom", "The dream falls"],
+    [2.90, "stamp_impact", "The dream shatters on reality"],
+    [5.30, "ledger_slam", "Price tag and clock"],
+    [10.40, "industrial_beat", "Construction starts December 2026"],
+    [19.60, "paper_fold", "The $119B check tears in half"],
+    [25.40, "ratchet_rise", "Four pillars under a 10-year ceiling"],
+    [28.20, "hydraulic_lock", "Only Phase 1 is committed"],
+    [41.20, "mega_boom", "The engineering problem is revealed"],
+    [47.20, "stamp_impact", "Two different sports"]
+  ]
+}

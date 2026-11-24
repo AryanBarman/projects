@@ -1,0 +1,29 @@
+{
+  "part": 5,
+  "audio": "Act 5 part 3",
+  "out": "act5_part3_washington-v2.html",
+  "title": "Act 5 Part 3 — Washington: Starshield, National Security Reviews and the Hiring Question",
+  "dur": 51.48,
+  "rail": [0, 11.54, 17.32, 26.34, 38.74, 51.48],
+  "keys": "a5p3_keys.js",
+  "scene": "a5p3_scene.js",
+  "fixes": {"star shield": "Starshield", "terafab": "TerraFab", "to the video": "to NVIDIA"},
+  "keycol": {"washington": "amberHi", "dc": "amberHi", "jensens": "cyanHi", "jensen": "cyanHi", "resignation": "coral", "vacuum": "coral", "pentagon": "cyanHi", "pentagons": "cyanHi", "spacex": "cyanHi", "starshield": "cyanHi", "classified": "coral", "reviews": "coral", "terrafab": "amberHi", "44": "amberHi", "billion": "amberHi", "elon": "amberHi", "nvidia": "sageHi", "hiring": "coral"},
+  "ledger": [
+    ["0.00-16.64", "Jensen's sudden resignation in November 2026 did not happen in a vacuum; it was triggered by explosive boardroom and media reports around personal contact, with Washington, D.C. the final layer nobody can ignore", "reported", "Boardroom and media reports (as described in the script)", "Capitol, calendar and resignation letter in a jar, boardroom and breaking-news panel"],
+    ["17.32-25.94", "SpaceX is one of the Pentagon's most sensitive national security contractors, launching classified defense payloads and operating Starshield", "reported", "As described in the script", "Pentagon, SpaceX, classified launch, Starshield ring"],
+    ["26.34-37.90", "Putting a freshly ousted CEO at the helm of a defense contractor's strategic semiconductor fab would trigger immediate, intense regulatory and national security reviews in Washington", "dramatization", "Episode premise", "Jensen at the helm, review papers flying in from a Capitol"],
+    ["38.74-50.96", "If physics slows TerraFab down and $44 billion of GPU debt keeps SpaceX chained to NVIDIA, why is Elon publicly floating the idea of hiring Jensen at all?", "dramatization", "Episode premise", "Slowed TerraFab, chain between SpaceX and NVIDIA, Elon's thought bubble"]
+  ],
+  "cues": [
+    [4.00, "stamp_impact", "Washington, D.C. rises"],
+    [6.10, "paper_fold", "The resignation, November 2026"],
+    [9.70, "airlock_whoosh", "Not in a vacuum"],
+    [12.40, "mega_boom", "Explosive reports"],
+    [22.00, "ratchet_rise", "Classified payload launches"],
+    [24.00, "laser_trace", "Starshield constellation"],
+    [33.00, "hydraulic_lock", "National security reviews begin"],
+    [43.40, "stamp_impact", "$44B GPU debt"],
+    [49.00, "mega_boom", "Why hire Jensen at all?"]
+  ]
+}

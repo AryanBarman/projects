@@ -1,0 +1,29 @@
+{
+  "part": 5,
+  "audio": "Act 5 part 1",
+  "out": "act5_part1_financial_web-v2.html",
+  "title": "Act 5 Part 1 — The Financial Web: Lawyers, Bondholders, Saturn Funding Trust and Orbit",
+  "dur": 67.64,
+  "rail": [0, 10.46, 20.70, 36.18, 48.98, 67.64],
+  "keys": "a5p1_keys.js",
+  "scene": "a5p1_scene.js",
+  "fixes": {"Vero Rubin": "Vera Rubin", "Starmine": "Star Mind"},
+  "keycol": {"elon": "amberHi", "jensen": "cyanHi", "lawyers": "coral", "bondholders": "coral", "government": "coral", "spacex": "cyanHi", "nvidia": "sageHi", "nvidias": "sageHi", "apollo": "amberHi", "goldman": "amberHi", "44": "amberHi", "billion": "amberHi", "saturn": "amberHi", "funding": "amberHi", "trust": "amberHi", "vera": "sageHi", "rubin": "sageHi", "2027": "coral", "orbit": "cyanHi", "repo": "coral"},
+  "ledger": [
+    ["0.00-9.60", "Even if Elon and Jensen solve the chip-manufacturing physics, they must survive the lawyers, the bondholders and the US government", "dramatization", "Episode premise", "Three gates: lawyers, bonds, government building"],
+    ["10.46-24.76", "A financial web ties SpaceX and NVIDIA together; it is not a clean breakup where Elon can poach NVIDIA's founder and walk away", "dramatization", "Episode premise", "Web of cords between SpaceX and NVIDIA; Jensen pulled back"],
+    ["25.40-46.42", "On November 20, 2026 Apollo Global Management and Goldman Sachs priced roughly $44 billion in off-balance-sheet lease notes, the largest GPU financing deal ever, to buy NVIDIA Vera Rubin GPUs and lease them to SpaceX through Saturn Funding Trust; racks land in the first half of 2027", "verified", "Reported financing terms", "Notes stack, Saturn Funding Trust, racks leased to SpaceX"],
+    ["48.98-67.20", "Lenders watch SpaceX's plans to launch Star Mind GPUs into orbit in late 2027; a lender can repossess a rack in a Texas data center but cannot send a repo truck into low-Earth orbit", "dramatization", "Episode premise", "Repo truck takes a rack, cannot reach orbit"]
+  ],
+  "cues": [
+    [4.60, "stamp_impact", "Lawyers gate"],
+    [8.60, "ledger_slam", "The US government gate"],
+    [10.50, "laser_trace", "The financial web forms"],
+    [18.00, "hydraulic_lock", "Jensen is pulled back by the web"],
+    [28.70, "mega_boom", "$44B in lease notes"],
+    [32.80, "swell_boom", "Largest GPU financing deal ever"],
+    [41.40, "industrial_beat", "Saturn Funding Trust"],
+    [56.20, "ratchet_rise", "Star Mind launches toward orbit"],
+    [65.60, "stamp_impact", "Nobody can repo orbit"]
+  ]
+}

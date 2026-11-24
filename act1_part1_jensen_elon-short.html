@@ -258,7 +258,7 @@
   }
 
   function evalCam(t) {
-    const v = evalCamL(t).slice(); let dx = v[0] - v[3], dy = v[1] - v[4], dz = v[2] - v[5]; const d = Math.hypot(dx, dy, dz) || 1, k = Math.max(1, 38 / d);
+    const v = evalCamL(t).slice(); let dx = v[0] - v[3], dy = v[1] - v[4], dz = v[2] - v[5]; const d = Math.hypot(dx, dy, dz) || 1, k = Math.max(1, 31 / d);
     v[0] = v[3] + dx * k; v[1] = v[4] + dy * k + 1.2; v[2] = v[5] + dz * k; v[6] = 50; return v;
   }
   // =========================================================================

@@ -1,0 +1,28 @@
+{
+  "part": 6,
+  "audio": "Act 6 all",
+  "out": "act6_full_strategy-v2.html",
+  "title": "Act 6 (Parts 1–3) — The Real Game Beneath the Headlines: Pressure, Talent and the Physical Ceiling",
+  "dur": 146.08,
+  "rail": [0, 46.60, 107.68, 146.08],
+  "keys": "a6_keys.js",
+  "scene": "a6_scene.js",
+  "fixes": {"terra fab": "TerraFab", "Terafab": "TerraFab", "Dealbook": "DealBook", "Hwang": "Huang", "Nvidia": "NVIDIA"},
+  "keycol": {"elon": "amberHi", "jensen": "cyanHi", "dealbook": "coral", "nvidia": "sageHi", "nvidias": "sageHi", "terrafab": "amberHi", "asics": "cyanHi", "119": "amberHi", "billion": "amberHi", "44": "amberHi", "pressure": "coral", "talent": "sageHi", "tsmc": "amberHi", "asml": "cyanHi", "gigawatts": "amberHi", "alliance": "coral", "ceiling": "cyanHi"},
+  "ledger": [
+    ["0.00-46.16", "Elon's DealBook praise and the TerraFab idea were calculated for effect on NVIDIA's boardroom; NVIDIA's interim leadership faces falling stock and hyperscalers replacing GPUs with custom ASICs; the board fears losing Jensen-loyal chip architects and its most aggressive buyer, Elon", "dramatization", "Episode premise", "Headlines over a chessboard, DealBook shockwave, interim hot seat, board's two fears"],
+    ["46.60-107.24", "Dangling a $119B Texas megafab gives Elon three wins without a contract: pressure on NVIDIA's interim leadership while negotiating Vera Rubin terms, a talent magnet for TerraFab, and a signal to engineers that he is serious about a rival to TSMC", "dramatization", "Episode premise", "Keys, negotiation table, engineers queue, engineers drawn by Jensen's name"],
+    ["107.68-146.08", "The physical ceiling (ASML scanner queues, TSMC advanced packaging, gigawatts of power) governs everyone; TerraFab's Texas site must build its own power and water; the threat of a Musk-Huang alliance is almost as powerful as the alliance itself", "dramatization", "Episode premise", "Three doors under one ceiling, choke points, power and water, balance scale"]
+  ],
+  "cues": [
+    [3.40, "ledger_slam", "The real game beneath the headlines"],
+    [12.50, "stamp_impact", "The shockwave leaves DealBook"],
+    [24.00, "swell_boom", "NVIDIA stock tumbles"],
+    [39.10, "hydraulic_lock", "The board's two fears"],
+    [53.80, "gold_stack", "The three strategic wins"],
+    [75.00, "laser_trace", "Pressure on NVIDIA's interim leadership"],
+    [100.00, "ratchet_rise", "Engineers drawn to Jensen's name"],
+    [108.00, "airlock_whoosh", "The physical ceiling"],
+    [143.00, "mega_boom", "The alliance threat"]
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "part": 3,
+  "out": "act3_part3_orbit_vertical_stack-v2.html",
+  "title": "Act 3 Part 3 — Star Mind in Orbit: The Vertical Stack from Wafers to Space",
+  "dur": 61.8,
+  "rail": [0, 6.08, 16.24, 32.5, 49.26, 61.8],
+  "keys": "a3p3_world.js",
+  "scene": "a3p3_scene.js",
+  "fixes": {},
+  "keycol": {"orbit": "cyanHi", "jensen": "cyanHi", "elon": "amberHi", "star": "amberHi", "mind": "amberHi", "nvidia": "sageHi", "nvidias": "sageHi", "rubin": "sageHi", "spacex": "cyanHi", "spacexs": "cyanHi", "2027": "coral", "solar": "amberHi", "cooling": "cyanHi", "vertical": "sageHi", "stack": "sageHi", "wafers": "cyanHi", "starship": "amberHi", "dream": "coral", "peak": "coral"},
+  "ledger": [
+    ["0.08-31.62", "One month before Jensen's ouster, Elon and Jensen unveiled Star Mind, a co-engineered orbital AI compute payload on NVIDIA Vera Rubin, to fly aboard SpaceX satellites from 2027; SpaceX pitches free 24/7 solar power and radiative cooling in orbit", "dramatization", "Episode premise", "Star Mind unveil, satellite lift to orbit, solar and cooling"],
+    ["32.50-48.56", "With Jensen inside SpaceX, Elon would own the entire vertical stack from silicon wafers in Texas to radiation-hardened AI processors to Starship rockets into low-Earth orbit", "dramatization", "Episode premise", "Stack of wafers, AI processors and Starship to orbit"],
+    ["49.26-61.38", "The peak of the what-if dream: a vertically integrated hardware juggernaut spanning Earth and space, led by the two most aggressive execution machines in modern tech", "dramatization", "Episode premise", "Earth-to-space line with Jensen and Elon"]
+  ],
+  "cues": [
+    [0.08, "airlock_whoosh", "Camera looks up from the pad to the orbit ring"],
+    [6.08, "stamp_impact", "Curtain lifts on Star Mind"],
+    [11.0, "hydraulic_lock", "SpaceX and NVIDIA halves lock together"],
+    [18.6, "swell_boom", "Satellite lifts toward orbit"],
+    [25.6, "power_surge", "Free solar power reaches the data-center satellite"],
+    [34.4, "ratchet_rise", "Starship launches with NVIDIA chips"],
+    [40.64, "ledger_slam", "The vertical stack builds from wafers upward"],
+    [49.4, "mega_boom", "The peak of the what-if dream"],
+    [59.4, "stamp_impact", "Jensen and Elon: two execution machines"]
+  ]
+}
