@@ -1,0 +1,59 @@
+1
+00:00:00,000 --> 00:00:03,360
+Wall Street banks just lent Elon Musk $44 billion
+
+2
+00:00:03,360 --> 00:00:05,200
+to buy NVIDIA AI chips.
+
+3
+00:00:05,980 --> 00:00:08,140
+Normally, banks love financing hardware,
+
+4
+00:00:08,340 --> 00:00:10,280
+but this deal has lenders panicking.
+
+5
+00:00:10,800 --> 00:00:13,720
+Apollo and Goldman Sachs use those physical NVIDIA Vera
+
+6
+00:00:13,720 --> 00:00:16,240
+Rubin GPUs as the collateral backing the loan.
+
+7
+00:00:16,740 --> 00:00:19,920
+But Elon's master plan is to blast AI data
+
+8
+00:00:19,920 --> 00:00:21,460
+centers into low -Earth orbit.
+
+9
+00:00:21,920 --> 00:00:24,520
+Therefore, bondholders realized a terrifying loophole.
+
+10
+00:00:24,520 --> 00:00:27,780
+If SpaceX ever defaults, nobody can send a repo
+
+11
+00:00:27,780 --> 00:00:29,980
+truck 340 miles into space.
+
+12
+00:00:30,600 --> 00:00:32,880
+So how did Wall Street try to stop him?
+
+13
+00:00:33,500 --> 00:00:36,160
+Lenders pushed for legal clauses barring those GPUs from
+
+14
+00:00:36,160 --> 00:00:38,940
+leaving Earth, proving that even when Wall Street lends
+
+15
+00:00:38,940 --> 00:00:41,980
+Elon Musk $44 billion to buy...
