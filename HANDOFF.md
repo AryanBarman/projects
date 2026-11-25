@@ -4,6 +4,10 @@ Full documentation is in `docs\`: `README.md` (index), `RUNBOOK.md` (step-by-ste
 
 Working folder: `C:\Users\Aryan Barman\personal\new_projects\projects\` (call it `P`). Method notes from earlier work live in `C:\Users\Aryan Barman\Projects\learning\improvement.txt`; the storyboard method is in `P\storyboard.txt`.
 
+
+## 0. NEWEST WORK (2026-11-25): the `jen_back` series
+A second 15-part series (Jensen's comeback, Acts 1-7) was built after this file was written. Everything about it is in `docs\JEN_BACK_STATUS.md` (parts, what is correct, what needs fixing, how to continue), with commands in `docs\RUNBOOK.md` sections 9 to 9h. Files: `jen_back\*.html`, `jen_backudio\`, sources in `tools\jb\`. Never run: playback, audio sync, video export, shorts for this series.
+
 ## 1. What this project is
 Animated explainers (HTML canvas + Three.js, stickman sprites, voice-over WAV + SRT). 7 acts, 25 parts. Goal: a long 16:9 video (about 19:50) and several 9:16 shorts. Originals are never edited; every improvement is a new file.
 

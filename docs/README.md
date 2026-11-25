@@ -6,8 +6,10 @@ Start here in any new session or on any device. Read in this order:
 2. `RUNBOOK.md` — copy-paste steps for every task (rebuild a part, make a 3D version, render stills, record, join, make shorts) and how to set up on a new machine.
 3. `LEARNINGS.md` — everything learned: what worked, what failed, the rules, the token costs, the gotchas.
 4. `SHORTS_GUIDE.md` — how to design vertical shorts (structure, mobile safe zones, text sizes, camera) and the shorts checklist.
-5. `../storyboard.txt` — the step-by-step method for turning an SRT into a storyboard before any code.
-6. `../tools/` — scripts, scene sources and configs. Paths inside them are hardcoded; see RUNBOOK section 0.
+5. `CHARKIT.md` — hybrid character kit (sprite heads + procedural bodies, poses, props) used for the jen_back series.
+6. `JEN_BACK_STATUS.md` — the newer 15-part jen_back series: parts, what is correct, what needs fixing, how to continue.
+7. `../storyboard.txt` — the step-by-step method for turning an SRT into a storyboard before any code.
+8. `../tools/` — scripts, scene sources and configs. Paths inside them are hardcoded; see RUNBOOK section 0.
 
 First message to give a new session (copy this):
 

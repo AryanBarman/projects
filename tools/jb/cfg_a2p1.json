@@ -1,0 +1,406 @@
+{
+ "audio": "Act 2 part 1",
+ "out": "act2_part1_one_man_empire-3d.html",
+ "title": "Act 2 Part 1 \u00e2\u20ac\u201d A Handshake Empire Held by One Man (3D)",
+ "dur": 52.48,
+ "rail": [
+  0,
+  15.3,
+  31.0,
+  41.4,
+  52.48
+ ],
+ "stn": [
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   1000000000,
+   78
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ],
+  [
+   38,
+   -26
+  ],
+  [
+   76,
+   -50
+  ],
+  [
+   44,
+   -84
+  ]
+ ],
+ "dmin": 16,
+ "dmax": 28,
+ "mood": [
+  [
+   0,
+   "day"
+  ],
+  [
+   15.3,
+   "tense"
+  ],
+  [
+   31.0,
+   "dusk"
+  ],
+  [
+   41.4,
+   "night"
+  ]
+ ],
+ "fixes": {
+  "Nvidia": "NVIDIA",
+  "40 %": "40%",
+  "seven-day route": "seven-day rout",
+  "-day route.": "-day rout."
+ },
+ "keycol": {
+  "jensen": "cyanHi",
+  "nvidia": "sageHi",
+  "november": "amberHi",
+  "textbook": "amberHi",
+  "interim": "amberHi",
+  "problem": "coral",
+  "handshake": "amberHi",
+  "empire": "amberHi",
+  "fracturing": "coral",
+  "plunged": "coral",
+  "40": "coral",
+  "rout": "coral",
+  "panic": "coral",
+  "revolt": "coral",
+  "petition": "cyanHi",
+  "collapse": "coral"
+ },
+ "ledger": [
+  [
+   "0.00-15.28",
+   "The board accepted Jensen Huang's resignation on November 12th and followed the textbook governance playbook: scandal hits, founder steps down, CFO steps up as interim CEO, life goes on",
+   "scripted narration",
+   "Episode script (Act 2 part 1 SRT)",
+   "Resignation card, four-step playbook, interim CEO"
+  ],
+  [
+   "16.04-30.28",
+   "NVIDIA was not a normal company but a personal handshake empire held together by one man; within days the semiconductor ecosystem started fracturing",
+   "scripted narration",
+   "Episode script (Act 2 part 1 SRT)",
+   "Org chart vs handshake network, links breaking"
+  ],
+  [
+   "31.02-40.80",
+   "NVIDIA's stock plunged more than 40% off its highs, dragging major market indexes down in a seven-day rout",
+   "scripted narration",
+   "Episode script (Act 2 part 1 SRT)",
+   "Falling chart, -40% counter, index bars, day counter"
+  ],
+  [
+   "41.50-51.94",
+   "Inside Santa Clara headquarters panic turned into open revolt; engineers and researchers signed an internal petition warning the board that without Jensen NVIDIA's culture and product roadmap would collapse",
+   "scripted narration",
+   "Episode script (Act 2 part 1 SRT)",
+   "Panicking crowd, typed petition"
+  ]
+ ],
+ "cues": [
+  [
+   1.0,
+   "stamp_impact",
+   "Resignation accepted"
+  ],
+  [
+   16.2,
+   "mega_boom",
+   "One problem"
+  ],
+  [
+   24.6,
+   "swell_boom",
+   "One man"
+  ],
+  [
+   28.5,
+   "mega_boom",
+   "Fracturing"
+  ],
+  [
+   32.6,
+   "industrial_beat",
+   "The plunge"
+  ],
+  [
+   37.8,
+   "ratchet_rise",
+   "Seven-day rout"
+  ],
+  [
+   42.2,
+   "stamp_impact",
+   "Open revolt"
+  ],
+  [
+   51.4,
+   "mega_boom",
+   "Collapse"
+  ]
+ ],
+ "sets": [
+  "office",
+  "plaza",
+  "market",
+  "campus"
+ ],
+ "dress": [
+  [
+   "flow",
+   0,
+   15.3,
+   [
+    -10.5,
+    2.8,
+    6.0
+   ],
+   [
+    10.5,
+    3.6,
+    6.0
+   ],
+   8,
+   "#F4F1EA",
+   0.9
+  ],
+  [
+   "flow",
+   0.8,
+   15.3,
+   [
+    10.5,
+    1.6,
+    7.2
+   ],
+   [
+    -10.5,
+    2.4,
+    7.2
+   ],
+   6,
+   "#E2B857",
+   0.7
+  ],
+  [
+   "orbit",
+   0,
+   15.3,
+   [
+    0,
+    7.5,
+    3.0
+   ],
+   5.0,
+   4,
+   "#2C5BA8"
+  ],
+  [
+   "orbit",
+   15.3,
+   31,
+   [
+    26,
+    3.6,
+    6.0
+   ],
+   8.5,
+   7,
+   "#45B8AC"
+  ],
+  [
+   "orbit",
+   15.3,
+   31,
+   [
+    26,
+    5.2,
+    6.0
+   ],
+   5.5,
+   5,
+   "#E2B857",
+   -1
+  ],
+  [
+   "flow",
+   15.3,
+   31,
+   [
+    15.5,
+    1.4,
+    7.0
+   ],
+   [
+    36.5,
+    1.4,
+    7.0
+   ],
+   8,
+   "#9BE01B",
+   0.6
+  ],
+  [
+   "pulse",
+   31,
+   41.4,
+   [
+    52,
+    4.5
+   ],
+   10,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   31,
+   41.4,
+   [
+    41.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   31,
+   41.4,
+   [
+    62.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "sparks",
+   31.3,
+   41.4,
+   [
+    52,
+    7.0
+   ],
+   9,
+   "#F0A39A",
+   7
+  ],
+  [
+   "pulse",
+   41.4,
+   52.5,
+   [
+    78,
+    4.5
+   ],
+   10,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   41.4,
+   52.5,
+   [
+    67.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   41.4,
+   52.5,
+   [
+    88.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "sparks",
+   41.699999999999996,
+   52.5,
+   [
+    78,
+    7.0
+   ],
+   9,
+   "#F0A39A",
+   7
+  ],
+  [
+   "flow",
+   48,
+   52.5,
+   [
+    67.5,
+    2.8,
+    6.0
+   ],
+   [
+    88.5,
+    3.6,
+    6.0
+   ],
+   8,
+   "#F4F1EA",
+   0.9
+  ],
+  [
+   "flow",
+   48.8,
+   52.5,
+   [
+    88.5,
+    1.6,
+    7.2
+   ],
+   [
+    67.5,
+    2.4,
+    7.2
+   ],
+   6,
+   "#E2B857",
+   0.7
+  ],
+  [
+   "orbit",
+   48,
+   52.5,
+   [
+    78,
+    7.5,
+    3.0
+   ],
+   5.0,
+   4,
+   "#2C5BA8"
+  ]
+ ]
+}

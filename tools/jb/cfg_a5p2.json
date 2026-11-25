@@ -1,0 +1,364 @@
+{
+ "assets": true,
+ "dmin": 19,
+ "dmax": 30,
+ "audio": "Act 5 part 2",
+ "out": "act5_part2_the_wall-3d.html",
+ "title": "Act 5 Part 2 \u2014 The Wall (3D)",
+ "dur": 53.6,
+ "rail": [
+  0,
+  6.9,
+  22.9,
+  38.9,
+  53.6
+ ],
+ "stn": [
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   1000000000,
+   78
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ]
+ ],
+ "fixes": {
+  "Nvidia": "NVIDIA",
+  "Vero Rubin": "Vera Rubin",
+  "8.36 %": "8.36%",
+  "$40 -plus": "$40-plus",
+  "low -Earth": "low-Earth"
+ },
+ "keycol": {
+  "wall": "coral",
+  "interest": "amberHi",
+  "rates": "amberHi",
+  "subordinated": "coral",
+  "yields": "amberHi",
+  "8.36%": "coral",
+  "gpus": "sageHi",
+  "depreciate": "coral",
+  "brutally": "coral",
+  "loophole": "coral",
+  "terrifying": "coral",
+  "orbital": "cyanHi",
+  "orbit": "cyanHi",
+  "vera": "sageHi",
+  "rubin": "sageHi",
+  "bondholders": "cyanHi",
+  "defaults": "coral",
+  "repossess": "coral",
+  "340": "amberHi"
+ },
+ "mood": [
+  [
+   0,
+   "tense"
+  ],
+  [
+   6.9,
+   "day"
+  ],
+  [
+   22.9,
+   "dusk"
+  ],
+  [
+   38.9,
+   "night"
+  ]
+ ],
+ "sets": [
+  "plaza",
+  "market",
+  "plaza",
+  "plaza"
+ ],
+ "ledger": [
+  [
+   "0.00-6.94",
+   "Here is where the math and the lenders hit a wall",
+   "scripted narration",
+   "Episode script (Act 5 part 2 SRT)",
+   "Brick wall rises between SpaceX and the lenders"
+  ],
+  [
+   "6.94-21.64",
+   "Lenders forced SpaceX to pay yields as high as 8.36% on subordinated tranches because GPUs depreciate fast with every newer NVIDIA chip",
+   "scripted narration",
+   "Episode script (Act 5 part 2 SRT)",
+   "Tranche stack, yield counter to 8.36%, chips losing value"
+  ],
+  [
+   "22.88-38.9",
+   "Lenders noticed a loophole: the orbital data center pitch relies on launching Vera Rubin chips into low-Earth orbit",
+   "scripted narration",
+   "Episode script (Act 5 part 2 SRT)",
+   "Elon, rocket and satellites rising"
+  ],
+  [
+   "38.9-53.14",
+   "If SpaceX defaults on a $40-plus billion loan, how do you repossess a GPU floating 340 miles above the Earth?",
+   "scripted narration",
+   "Episode script (Act 5 part 2 SRT)",
+   "Bondholder, default stamp, hook too short, question mark"
+  ]
+ ],
+ "cues": [
+  [
+   3.4,
+   "mega_boom",
+   "A wall"
+  ],
+  [
+   11.0,
+   "laser_trace",
+   "Yields"
+  ],
+  [
+   14.6,
+   "stamp_impact",
+   "8.36%"
+  ],
+  [
+   23.2,
+   "stamp_impact",
+   "Loophole"
+  ],
+  [
+   43.4,
+   "stamp_impact",
+   "Default"
+  ],
+  [
+   49.2,
+   "swell_boom",
+   "Repossess"
+  ]
+ ],
+ "faces": [
+  [
+   24.0,
+   26.5,
+   [
+    47,
+    2.6,
+    3.4
+   ],
+   1
+  ],
+  [
+   40.0,
+   42.6,
+   [
+    76,
+    3.3,
+    3.6
+   ],
+   -1
+  ]
+ ],
+ "dress": [
+  [
+   "pulse",
+   0,
+   6.9,
+   [
+    0,
+    4.5
+   ],
+   10,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   0,
+   6.9,
+   [
+    -10.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   0,
+   6.9,
+   [
+    10.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "sparks",
+   0.3,
+   6.9,
+   [
+    0,
+    7.0
+   ],
+   9,
+   "#F0A39A",
+   7
+  ],
+  [
+   "flow",
+   6.9,
+   22.9,
+   [
+    15.5,
+    2.2,
+    6.2
+   ],
+   [
+    36.5,
+    3.2,
+    6.2
+   ],
+   9,
+   "#E2B857",
+   0.7
+  ],
+  [
+   "rise",
+   7.300000000000001,
+   22.9,
+   [
+    38.3,
+    7.0
+   ],
+   6,
+   "#76B900",
+   1.2
+  ],
+  [
+   "sparks",
+   6.9,
+   22.9,
+   [
+    14.5,
+    6.0
+   ],
+   3,
+   "#F2D58F",
+   6
+  ],
+  [
+   "rise",
+   22.9,
+   38.9,
+   [
+    41.5,
+    6.4
+   ],
+   7,
+   "#5E6F7A",
+   1.1
+  ],
+  [
+   "rise",
+   23.5,
+   38.9,
+   [
+    62.5,
+    6.4
+   ],
+   7,
+   "#76B900",
+   1.1
+  ],
+  [
+   "flow",
+   22.9,
+   38.9,
+   [
+    43.5,
+    1.8,
+    7.2
+   ],
+   [
+    60.5,
+    1.8,
+    7.2
+   ],
+   7,
+   "#F4F1EA",
+   0.6
+  ],
+  [
+   "pulse",
+   38.9,
+   53.6,
+   [
+    78,
+    4.5
+   ],
+   10,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   38.9,
+   53.6,
+   [
+    67.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   38.9,
+   53.6,
+   [
+    88.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "sparks",
+   39.199999999999996,
+   53.6,
+   [
+    78,
+    7.0
+   ],
+   9,
+   "#F0A39A",
+   7
+  ]
+ ]
+}

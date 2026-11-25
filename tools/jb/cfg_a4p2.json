@@ -1,0 +1,409 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 4 part 2",
+ "out": "act4_part2_new_normal-3d.html",
+ "title": "Act 4 Part 2 \u2014 The New Normal (3D)",
+ "dur": 32.2,
+ "rail": [
+  0,
+  5.6,
+  10.4,
+  20.6,
+  27.7,
+  32.2
+ ],
+ "stn": [
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   91,
+   78
+  ],
+  [
+   1000000000,
+   104
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ],
+  [
+   62,
+   -100
+  ]
+ ],
+ "fixes": {
+  "Nvidia": "NVIDIA",
+  "Jensen Wang": "Jensen Huang"
+ },
+ "keycol": {
+  "33": "amberHi",
+  "years": "amberHi",
+  "autonomy": "sageHi",
+  "billions": "amberHi",
+  "wafers": "sageHi",
+  "taiwan": "cyanHi",
+  "singapore": "cyanHi",
+  "lightning": "sageHi",
+  "export": "cyanHi",
+  "license": "cyanHi",
+  "partnership": "cyanHi",
+  "geopolitical": "coral",
+  "compliance": "coral",
+  "washington": "coral",
+  "shoulder": "coral"
+ },
+ "mood": [
+  [
+   0,
+   "tense"
+  ],
+  [
+   5.6,
+   "day"
+  ],
+  [
+   10.4,
+   "warm"
+  ],
+  [
+   20.6,
+   "tense"
+  ],
+  [
+   27.7,
+   "dusk"
+  ]
+ ],
+ "sets": [
+  "office",
+  "campus",
+  "plaza",
+  "office",
+  "mall"
+ ],
+ "ledger": [
+  [
+   "0.00-4.94",
+   "What that actually means for how NVIDIA operates from this day forward",
+   "scripted narration",
+   "Episode script (Act 4 part 2 SRT)",
+   "Cage frame goes up around Jensen"
+  ],
+  [
+   "5.76-9.0",
+   "For 33 years Jensen Huang ran NVIDIA with unmatched founder autonomy",
+   "scripted narration",
+   "Episode script (Act 4 part 2 SRT)",
+   "33-year counter, rising bars"
+  ],
+  [
+   "10.02-20.6",
+   "Moving billions of dollars of wafers across Taiwan, Singapore and global data centers at lightning speed",
+   "scripted narration",
+   "Episode script (Act 4 part 2 SRT)",
+   "Three sites, wafers flying between them"
+  ],
+  [
+   "20.6-30.0",
+   "Every major export license, sensitive partnership and geopolitical call runs through a board-mandated compliance apparatus",
+   "scripted narration",
+   "Episode script (Act 4 part 2 SRT)",
+   "Three items funnel through the compliance gate"
+  ],
+  [
+   "27.7-31.68",
+   "With Washington looking straight over his shoulder",
+   "scripted narration",
+   "Episode script (Act 4 part 2 SRT)",
+   "White House, Trump behind Jensen"
+  ]
+ ],
+ "cues": [
+  [
+   6.2,
+   "laser_trace",
+   "33 years"
+  ],
+  [
+   11.0,
+   "laser_trace",
+   "Wafers"
+  ],
+  [
+   21.0,
+   "stamp_impact",
+   "Compliance gate"
+  ],
+  [
+   25.8,
+   "mega_boom",
+   "Everything runs through it"
+  ],
+  [
+   30.0,
+   "stamp_impact",
+   "Over his shoulder"
+  ]
+ ],
+ "faces": [
+  [
+   0.8,
+   3.2,
+   [
+    0,
+    2.7,
+    3.4
+   ],
+   1
+  ],
+  [
+   6.4,
+   8.4,
+   [
+    26,
+    2.7,
+    3.4
+   ],
+   -1
+  ],
+  [
+   29.5,
+   31.5,
+   [
+    105.8,
+    2.8,
+    3.8
+   ],
+   1
+  ]
+ ],
+ "dress": [
+  [
+   "pulse",
+   0,
+   5.6,
+   [
+    0,
+    5.0
+   ],
+   11,
+   "#2C5BA8"
+  ],
+  [
+   "orbit",
+   0,
+   5.6,
+   [
+    0,
+    8.0,
+    3.0
+   ],
+   6.5,
+   6,
+   "#E2B857"
+  ],
+  [
+   "beam",
+   0,
+   5.6,
+   [
+    10.5,
+    6.0
+   ],
+   9,
+   "#2C5BA8"
+  ],
+  [
+   "rise",
+   5.6,
+   10.4,
+   [
+    15.5,
+    6.4
+   ],
+   7,
+   "#5E6F7A",
+   1.1
+  ],
+  [
+   "rise",
+   6.199999999999999,
+   10.4,
+   [
+    36.5,
+    6.4
+   ],
+   7,
+   "#76B900",
+   1.1
+  ],
+  [
+   "flow",
+   5.6,
+   10.4,
+   [
+    17.5,
+    1.8,
+    7.2
+   ],
+   [
+    34.5,
+    1.8,
+    7.2
+   ],
+   7,
+   "#F4F1EA",
+   0.6
+  ],
+  [
+   "flow",
+   10.4,
+   20.6,
+   [
+    41.5,
+    2.2,
+    6.2
+   ],
+   [
+    62.5,
+    3.2,
+    6.2
+   ],
+   9,
+   "#E2B857",
+   0.7
+  ],
+  [
+   "rise",
+   10.8,
+   20.6,
+   [
+    64.3,
+    7.0
+   ],
+   6,
+   "#76B900",
+   1.2
+  ],
+  [
+   "sparks",
+   10.4,
+   20.6,
+   [
+    40.5,
+    6.0
+   ],
+   3,
+   "#F2D58F",
+   6
+  ],
+  [
+   "pulse",
+   20.6,
+   27.7,
+   [
+    78,
+    4.5
+   ],
+   10,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   20.6,
+   27.7,
+   [
+    67.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   20.6,
+   27.7,
+   [
+    88.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "sparks",
+   20.900000000000002,
+   27.7,
+   [
+    78,
+    7.0
+   ],
+   9,
+   "#F0A39A",
+   7
+  ],
+  [
+   "pulse",
+   27.7,
+   32.2,
+   [
+    104,
+    5.0
+   ],
+   11,
+   "#2C5BA8"
+  ],
+  [
+   "orbit",
+   27.7,
+   32.2,
+   [
+    104,
+    8.0,
+    3.0
+   ],
+   6.5,
+   6,
+   "#E2B857"
+  ],
+  [
+   "beam",
+   27.7,
+   32.2,
+   [
+    114.5,
+    6.0
+   ],
+   9,
+   "#2C5BA8"
+  ]
+ ],
+ "rig3d": []
+}
