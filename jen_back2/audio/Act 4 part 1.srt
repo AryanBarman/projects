@@ -1,0 +1,59 @@
+1
+00:00:00,000 --> 00:00:04,100
+Look closely at what NVIDIA's board quietly built
+
+2
+00:00:04,100 --> 00:00:07,540
+around Jensen Huang before handing him back the keys.
+
+3
+00:00:08,560 --> 00:00:10,460
+Yes, Jensen got his title back.
+
+4
+00:00:11,080 --> 00:00:12,420
+He got his board seat back.
+
+5
+00:00:13,040 --> 00:00:15,720
+He got his cheering crowd of engineers back.
+
+6
+00:00:16,540 --> 00:00:19,800
+But look at the two new governance mechanisms NVIDIA
+
+7
+00:00:19,800 --> 00:00:22,300
+locked into place during those 11 days.
+
+8
+00:00:23,170 --> 00:00:25,640
+First, on November 17th,
+
+9
+00:00:25,700 --> 00:00:29,420
+the board created a permanent national security and export
+
+10
+00:00:29,420 --> 00:00:31,040
+control oversight committee.
+
+11
+00:00:31,940 --> 00:00:35,440
+Second, in the exact press release announcing Jensen's
+
+12
+00:00:35,440 --> 00:00:38,960
+return, NVIDIA announced it is hiring an independent
+
+13
+00:00:38,960 --> 00:00:43,060
+Chief Compliance Officer reporting directly to the board's
+
+14
+00:00:43,060 --> 00:00:45,780
+governance committee, while confirming that government
+
+15
+00:00:45,780 --> 00:00:48,060
+investigations are still ongoing.

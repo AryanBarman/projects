@@ -22,7 +22,8 @@ if (!A[0] || !A[1] || !dur) { console.log(fs.readFileSync(__filename, 'utf8').sp
 const CHROME = process.env.CHROME || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 let total = Math.round(dur * fps); if (maxF) total = Math.min(total, maxF);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const hasFF = !spawnSync('ffmpeg', ['-version']).error;
+const FFBIN = (() => { if (process.env.FFMPEG) return process.env.FFMPEG; const d = path.join(__dirname, '.ffvenv', 'Lib', 'site-packages', 'imageio_ffmpeg', 'binaries'); try { const f = fs.readdirSync(d).find(n => /^ffmpeg/.test(n)); if (f) return path.join(d, f); } catch (e) {} return 'ffmpeg'; })();   // project-local ffmpeg (tools/.ffvenv), see docs/VIDEO_EXPORT.md
+const hasFF = !spawnSync(FFBIN, ['-version']).error;
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'exp_'));
 const url = 'file:///' + page.replace(/\\/g, '/').split('/').map((s, i) => i === 0 ? s : encodeURIComponent(s)).join('/') + '?capture=1&t=0';
 
@@ -45,7 +46,7 @@ async function worker(id, f0, f1) {
   let ff = null;
   if (framesOnly || !hasFF) fs.mkdirSync(framesDir, { recursive: true });
   else {
-    ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', crf, '-pix_fmt', 'yuv420p', '-r', String(fps), '-an', segFile], { stdio: ['pipe', 'inherit', 'inherit'] });
+    ff = spawn(FFBIN, ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', crf, '-pix_fmt', 'yuv420p', '-r', String(fps), '-an', segFile], { stdio: ['pipe', 'inherit', 'inherit'] });
   }
   const ts = Date.now();
   for (let f = f0; f < f1; f++) {
@@ -75,7 +76,7 @@ async function worker(id, f0, f1) {
   }
   const list = path.join(tmp, 'list.txt'); fs.writeFileSync(list, res.map(r => `file '${r.seg.replace(/\\/g, '/')}'`).join('\n'));
   const ffArgs = ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', list].concat(audioArgs, ['-c:v', 'copy'], wav ? ['-c:a', 'aac', '-b:a', '192k', '-shortest'] : [], ['-movflags', '+faststart', out]);
-  const r = spawnSync('ffmpeg', ffArgs, { stdio: 'inherit' });
+  const r = spawnSync(FFBIN, ffArgs, { stdio: 'inherit' });
   console.log(r.status === 0 ? `DONE ${out}` : 'ffmpeg mux failed');
-  fs.rmSync(tmp, { recursive: true, force: true });
+  try { fs.rmSync(tmp, { recursive: true, force: true }); } catch (e) {}   // Chrome may still hold its profile files: harmless
 })().catch(e => { console.log('ERR', e.message); process.exit(1); });

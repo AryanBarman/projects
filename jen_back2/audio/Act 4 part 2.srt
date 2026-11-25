@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:02,940
+Think about what that actually means for how NVIDIA
+
+2
+00:00:02,940 --> 00:00:04,940
+operates from this day forward.
+
+3
+00:00:05,760 --> 00:00:10,020
+For 33 years, Jensen Wang ran NVIDIA with unmatched
+
+4
+00:00:10,020 --> 00:00:13,360
+founder autonomy, moving billions of dollars of wafers
+
+5
+00:00:13,360 --> 00:00:16,980
+across Taiwan, Singapore, and global data centers at
+
+6
+00:00:16,980 --> 00:00:20,600
+lightning speed. Now, every major export
+
+7
+00:00:20,600 --> 00:00:23,440
+license, every sensitive international partnership,
+
+8
+00:00:23,680 --> 00:00:27,220
+and every geopolitical call runs through a board -mandated
+
+9
+00:00:27,220 --> 00:00:30,820
+compliance apparatus, with Washington looking straight
+
+10
+00:00:30,820 --> 00:00:31,680
+over his shoulder.

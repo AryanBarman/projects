@@ -1,0 +1,151 @@
+{
+ "assets": true,
+ "dmin": 20,
+ "dmax": 42,
+ "portrait": true,
+ "clean": true,
+ "stick": true,
+ "audio_dir": "shorts2/audio",
+ "audio": "s2027",
+ "out": "s2027.html",
+ "out_dir": "shorts2",
+ "title": "The 2027 AI Cash Crunch Warning",
+ "dur": 39.5,
+ "rail": [
+  0.0,
+  6.9,
+  11.94,
+  21.96,
+  33.86,
+  39.5
+ ],
+ "stn": [
+  [
+   1000000000,
+   0
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ]
+ ],
+ "sets": [
+  "plaza"
+ ],
+ "fixes": {},
+ "keycol": {},
+ "mood": [
+  [
+   0,
+   "day"
+  ],
+  [
+   11.9,
+   "tense"
+  ]
+ ],
+ "faces": [],
+ "dress": [],
+ "models": {},
+ "punch": [
+  [
+   0.05,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   6.95,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   11.99,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   22.01,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   33.91,
+   4,
+   0.05,
+   0.12
+  ]
+ ],
+ "ledger": [
+  [
+   "0.00-6.04",
+   "Elon Musk just warned that AI companies are heading straight into a massive cash crunch in 2027.",
+   "scripted narration (unverified)",
+   "Story s2027",
+   ""
+  ],
+  [
+   "6.90-11.06",
+   "Everyone thinks the bottleneck in AI is getting enough Nvidia chips, but that's backwards.",
+   "scripted narration (unverified)",
+   "Story s2027",
+   ""
+  ],
+  [
+   "11.94-21.36",
+   "Tech giants are paying tens of billions up front for GPU clusters today, but you can ship a server rack in weeks while building the power plants to run it takes years.",
+   "scripted narration (unverified)",
+   "Story s2027",
+   ""
+  ],
+  [
+   "21.96-32.58",
+   "Therefore, billion-dollar data centers end up sitting dark, burning cash every single month while generating zero revenue. And here's how much cash Elon says that delay will cost.",
+   "scripted narration (unverified)",
+   "Story s2027",
+   ""
+  ],
+  [
+   "33.86-39.30",
+   "Hundreds of billions of dollars in working capital, which is why Elon Musk just warned that AI companies...",
+   "scripted narration (unverified)",
+   "Story s2027",
+   ""
+  ]
+ ],
+ "events": [
+  34.16
+ ],
+ "cues": [
+  [
+   0.0,
+   "stamp_impact",
+   "panic"
+  ],
+  [
+   7.6,
+   "stamp_impact",
+   "chips"
+  ],
+  [
+   12.64,
+   "stamp_impact",
+   "chips"
+  ],
+  [
+   22.66,
+   "stamp_impact",
+   "panic"
+  ],
+  [
+   34.56,
+   "stamp_impact",
+   "clause"
+  ]
+ ]
+}

@@ -1,0 +1,63 @@
+1
+00:00:00,000 --> 00:00:03,580
+Here is where the math and the lenders hit
+
+2
+00:00:03,580 --> 00:00:06,940
+a wall. First, look at the interest rates Wall
+
+3
+00:00:06,940 --> 00:00:10,400
+Street demanded. On subordinated tranches of that debt,
+
+4
+00:00:10,980 --> 00:00:13,720
+lenders forced SpaceX to pay yields as high as
+
+5
+00:00:13,720 --> 00:00:18,200
+8.36 % because GPUs depreciate
+
+6
+00:00:18,200 --> 00:00:21,640
+brutally fast every time Nvidia releases a newer chip.
+
+7
+00:00:22,880 --> 00:00:26,520
+Second, lenders noticed a terrifying loophole in
+
+8
+00:00:26,520 --> 00:00:27,760
+Musk's master plan.
+
+9
+00:00:28,360 --> 00:00:31,880
+SpaceX's entire pitch for orbital data centers relies
+
+10
+00:00:31,880 --> 00:00:35,260
+on launching Nvidia Vero Rubin chips into low -Earth
+
+11
+00:00:35,260 --> 00:00:38,900
+orbit. So institutional bondholders asked
+
+12
+00:00:38,900 --> 00:00:40,420
+a very simple question.
+
+13
+00:00:41,240 --> 00:00:45,180
+If SpaceX ever defaults on a $40 -plus billion
+
+14
+00:00:45,180 --> 00:00:49,080
+loan, how exactly do you repossess
+
+15
+00:00:49,080 --> 00:00:52,760
+a GPU floating 340 miles above
+
+16
+00:00:52,760 --> 00:00:53,140
+the Earth?

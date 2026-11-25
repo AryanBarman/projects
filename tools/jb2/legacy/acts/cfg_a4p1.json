@@ -1,0 +1,582 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 4 part 1",
+ "out": "act4_part1_built_around_jensen-3d.html",
+ "title": "Act 4 Part 1 \u2014 Built Around Jensen (3D)",
+ "dur": 48.6,
+ "rail": [
+  0,
+  8.4,
+  16.4,
+  23.0,
+  31.8,
+  38.9,
+  45.7,
+  48.6
+ ],
+ "stn": [
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   91,
+   78
+  ],
+  [
+   117,
+   104
+  ],
+  [
+   143,
+   130
+  ],
+  [
+   1000000000,
+   156
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ],
+  [
+   62,
+   -100
+  ],
+  [
+   18,
+   -84
+  ],
+  [
+   -22,
+   -110
+  ]
+ ],
+ "fixes": {
+  "Nvidia": "NVIDIA"
+ },
+ "keycol": {
+  "quietly": "coral",
+  "built": "coral",
+  "keys": "amberHi",
+  "title": "sageHi",
+  "seat": "sageHi",
+  "crowd": "sageHi",
+  "two": "amberHi",
+  "governance": "cyanHi",
+  "mechanisms": "amberHi",
+  "locked": "coral",
+  "11": "amberHi",
+  "november": "amberHi",
+  "permanent": "amberHi",
+  "national": "cyanHi",
+  "security": "cyanHi",
+  "export": "cyanHi",
+  "oversight": "cyanHi",
+  "committee": "cyanHi",
+  "independent": "sageHi",
+  "compliance": "sageHi",
+  "officer": "sageHi",
+  "investigations": "coral",
+  "ongoing": "coral",
+  "first": "amberHi",
+  "second": "amberHi"
+ },
+ "mood": [
+  [
+   0,
+   "tense"
+  ],
+  [
+   8.4,
+   "day"
+  ],
+  [
+   16.4,
+   "dusk"
+  ],
+  [
+   23.0,
+   "day"
+  ],
+  [
+   31.8,
+   "warm"
+  ],
+  [
+   38.9,
+   "tense"
+  ],
+  [
+   45.7,
+   "dusk"
+  ]
+ ],
+ "sets": [
+  "office",
+  "campus",
+  "plaza",
+  "office",
+  "campus",
+  "office",
+  "plaza"
+ ],
+ "ledger": [
+  [
+   "0.00-7.54",
+   "Look closely at what NVIDIA\u2019s board quietly built around Jensen Huang before handing him back the keys",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   "Bars rise around Jensen, key slides back"
+  ],
+  [
+   "8.56-15.72",
+   "Jensen got his title, his board seat and his cheering crowd of engineers back",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   "Checklist card, chair rises, engineers cheer"
+  ],
+  [
+   "16.54-22.30",
+   "Two new governance mechanisms locked into place during those 11 days",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   "Gate with two padlocks, 11-day counter"
+  ],
+  [
+   "23.17-31.04",
+   "First, on November 17th, the board created a permanent national security and export control oversight committee",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   "Committee table, typed list, PERMANENT stamp"
+  ],
+  [
+   "31.94-38.96",
+   "Second, in the press release announcing Jensen\u2019s return, NVIDIA announced it is hiring an independent Chief Compliance Officer",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   "Press-release card, compliance figure"
+  ],
+  [
+   "38.96-45.78",
+   "The Chief Compliance Officer reports directly to the board\u2019s governance committee",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   "Reporting line to the committee table"
+  ],
+  [
+   "45.78-48.06",
+   "Government investigations are still ongoing",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   "Radar sweep, STILL ONGOING stamp"
+  ]
+ ],
+ "cues": [
+  [
+   4.6,
+   "laser_trace",
+   "The keys"
+  ],
+  [
+   10.0,
+   "stamp_impact",
+   "His title"
+  ],
+  [
+   17.9,
+   "stamp_impact",
+   "Lock one"
+  ],
+  [
+   20.7,
+   "stamp_impact",
+   "Lock two"
+  ],
+  [
+   26.4,
+   "stamp_impact",
+   "Permanent"
+  ],
+  [
+   37.9,
+   "stamp_impact",
+   "Independent"
+  ],
+  [
+   47.0,
+   "mega_boom",
+   "Still ongoing"
+  ]
+ ],
+ "faces": [
+  [
+   0.8,
+   3.5,
+   [
+    0,
+    2.8,
+    3.4
+   ],
+   1
+  ],
+  [
+   9.4,
+   11.4,
+   [
+    21.8,
+    2.7,
+    3.4
+   ],
+   -1
+  ]
+ ],
+ "dress": [
+  [
+   "rise",
+   0,
+   8.4,
+   [
+    -10.5,
+    6.4
+   ],
+   7,
+   "#5E6F7A",
+   1.1
+  ],
+  [
+   "rise",
+   0.6,
+   8.4,
+   [
+    10.5,
+    6.4
+   ],
+   7,
+   "#76B900",
+   1.1
+  ],
+  [
+   "flow",
+   0,
+   8.4,
+   [
+    -8.5,
+    1.8,
+    7.2
+   ],
+   [
+    8.5,
+    1.8,
+    7.2
+   ],
+   7,
+   "#F4F1EA",
+   0.6
+  ],
+  [
+   "sparks",
+   8.4,
+   16.4,
+   [
+    26,
+    6.0
+   ],
+   16,
+   "#E2B857",
+   11
+  ],
+  [
+   "sparks",
+   8.4,
+   16.4,
+   [
+    26,
+    6.5
+   ],
+   16,
+   "#9BE01B",
+   11
+  ],
+  [
+   "beam",
+   8.4,
+   16.4,
+   [
+    15.5,
+    6.0
+   ],
+   10,
+   "#9BE01B"
+  ],
+  [
+   "beam",
+   8.4,
+   16.4,
+   [
+    36.5,
+    6.0
+   ],
+   10,
+   "#45B8AC"
+  ],
+  [
+   "pulse",
+   8.4,
+   16.4,
+   [
+    26,
+    4.5
+   ],
+   9,
+   "#76B900"
+  ],
+  [
+   "pulse",
+   16.4,
+   23,
+   [
+    52,
+    5.0
+   ],
+   11,
+   "#2C5BA8"
+  ],
+  [
+   "orbit",
+   16.4,
+   23,
+   [
+    52,
+    8.0,
+    3.0
+   ],
+   6.5,
+   6,
+   "#E2B857"
+  ],
+  [
+   "beam",
+   16.4,
+   23,
+   [
+    62.5,
+    6.0
+   ],
+   9,
+   "#2C5BA8"
+  ],
+  [
+   "flow",
+   23,
+   31.8,
+   [
+    67.5,
+    2.8,
+    6.0
+   ],
+   [
+    88.5,
+    3.6,
+    6.0
+   ],
+   8,
+   "#F4F1EA",
+   0.9
+  ],
+  [
+   "flow",
+   23.8,
+   31.8,
+   [
+    88.5,
+    1.6,
+    7.2
+   ],
+   [
+    67.5,
+    2.4,
+    7.2
+   ],
+   6,
+   "#E2B857",
+   0.7
+  ],
+  [
+   "orbit",
+   23,
+   31.8,
+   [
+    78,
+    7.5,
+    3.0
+   ],
+   5.0,
+   4,
+   "#2C5BA8"
+  ],
+  [
+   "flow",
+   31.8,
+   38.9,
+   [
+    93.5,
+    2.8,
+    6.0
+   ],
+   [
+    114.5,
+    3.6,
+    6.0
+   ],
+   8,
+   "#F4F1EA",
+   0.9
+  ],
+  [
+   "flow",
+   32.6,
+   38.9,
+   [
+    114.5,
+    1.6,
+    7.2
+   ],
+   [
+    93.5,
+    2.4,
+    7.2
+   ],
+   6,
+   "#E2B857",
+   0.7
+  ],
+  [
+   "orbit",
+   31.8,
+   38.9,
+   [
+    104,
+    7.5,
+    3.0
+   ],
+   5.0,
+   4,
+   "#2C5BA8"
+  ],
+  [
+   "orbit",
+   38.9,
+   45.7,
+   [
+    130,
+    3.6,
+    6.0
+   ],
+   8.5,
+   7,
+   "#45B8AC"
+  ],
+  [
+   "orbit",
+   38.9,
+   45.7,
+   [
+    130,
+    5.2,
+    6.0
+   ],
+   5.5,
+   5,
+   "#E2B857",
+   -1
+  ],
+  [
+   "flow",
+   38.9,
+   45.7,
+   [
+    119.5,
+    1.4,
+    7.0
+   ],
+   [
+    140.5,
+    1.4,
+    7.0
+   ],
+   8,
+   "#9BE01B",
+   0.6
+  ],
+  [
+   "pulse",
+   45.7,
+   48.6,
+   [
+    156,
+    4.5
+   ],
+   10,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   45.7,
+   48.6,
+   [
+    145.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   45.7,
+   48.6,
+   [
+    166.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "sparks",
+   46.0,
+   48.6,
+   [
+    156,
+    7.0
+   ],
+   9,
+   "#F0A39A",
+   7
+  ]
+ ]
+}

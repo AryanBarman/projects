@@ -1,0 +1,59 @@
+1
+00:00:00,000 --> 00:00:02,160
+Enter Washington, D.C.
+
+2
+00:00:02,520 --> 00:00:04,900
+Over the weekend before Monday's reversal,
+
+3
+00:00:05,440 --> 00:00:08,620
+the crisis stopped being a Silicon Valley boardroom fight
+
+4
+00:00:08,620 --> 00:00:11,880
+and became a national security emergency.
+
+5
+00:00:13,080 --> 00:00:14,240
+According to White House officials,
+
+6
+00:00:14,940 --> 00:00:17,400
+President Trump personally called key stakeholders,
+
+7
+00:00:17,820 --> 00:00:19,060
+while Vice President J.D.
+
+8
+00:00:19,260 --> 00:00:22,720
+Vance led a 72 -hour pressure campaign on NVIDIA's
+
+9
+00:00:22,720 --> 00:00:25,180
+board. Trump's message was blunt.
+
+10
+00:00:25,180 --> 00:00:27,960
+Jensen Huang was a national asset,
+
+11
+00:00:28,460 --> 00:00:31,340
+and America couldn't afford to cripple its leading AI
+
+12
+00:00:31,340 --> 00:00:33,400
+chipmaker while racing against China.
+
+13
+00:00:34,420 --> 00:00:36,460
+As White House Communications Director Stephen Chang
+
+14
+00:00:36,460 --> 00:00:39,400
+put it, President Trump was totally involved.
+
+15
+00:00:39,920 --> 00:00:41,680
+We have to protect our geniuses.

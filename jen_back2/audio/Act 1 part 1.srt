@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:03,720
+Eleven days after NVIDIA's board forced out Jensen
+
+2
+00:00:03,720 --> 00:00:07,340
+Huang, the White House intervened and forced
+
+3
+00:00:07,340 --> 00:00:08,960
+them to hire him back.
+
+4
+00:00:09,900 --> 00:00:12,780
+On the surface, it looks like a triumphant Silicon
+
+5
+00:00:12,780 --> 00:00:15,260
+Valley comeback. In reality,
+
+6
+00:00:15,960 --> 00:00:20,060
+the deal that saved Jensen's job just handed Washington
+
+7
+00:00:20,060 --> 00:00:23,220
+permanent control over AI's biggest monopoly.

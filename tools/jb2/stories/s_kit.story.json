@@ -1,0 +1,19 @@
+{
+  "title": "Room kit test", "audio": "short44", "out": "s_kit.html", "dur": 20,
+  "hook": { "t": [0, 0.01], "text": "ROOM KIT|TEST", "sub": "office hallway trading stage street", "accent": "cyan" },
+  "mood": [[0, "day"]],
+  "beats": [
+    { "name": "office", "t": [0, 4], "do": [["Room", "office", 0], ["Act", "analyst", -1.5, 3.4, 3, "explain", null, null, { "armR": [0.3, 0.55], "armRK": 1 }], ["Hold", "moneybag", -1.5, 3.4, 3, [0.3, 0.55], 0.9]] },
+    { "name": "hallway", "t": [4, 8], "do": [["Room", "hallway", 14], ["Act", "analyst", 12, 3.4, 3, "think"], ["Act", "elon", 16.5, 3.2, 3, "smug"]] },
+    { "name": "trading", "t": [8, 12], "do": [["Room", "trading", 28], ["Act", "analyst", 26, 3.4, 3, "panic"], ["Act", "banker", 31, 3.4, 3, "alarm", null, null, { "facing": -1 }]] },
+    { "name": "stage", "t": [12, 16], "do": [["Room", "stage", 42], ["Act", "analyst", 40, 3.4, 3, "celebrate"], { "do": ["Throw", "goldbars", [40, 3, 3.4], [47, 1, 3.4], 13, 14.6, 1.6, { "h": 3 }], "in": [13, 16] }] },
+    { "name": "street", "t": [16, 20], "do": [["Room", "street", 56], ["Act", "analyst", 54, 3.4, 3, "greedy"], ["Act", "factory", 58.5, 3.2, 3, "annoyed", null, null, { "facing": -1 }]] }
+  ],
+  "cam": [
+    [0, [0, 3.8, 3], 18, 0.08, 0.12, 50], [3.8, [0.5, 3.8, 3], 15, -0.06, 0.12, 50, "ease"],
+    [4.5, [14, 3.8, 3], 18, -0.06, 0.12, 50, "whip", 3.9], [7.8, [14.4, 3.8, 3], 14, 0.08, 0.12, 48, "ease"],
+    [8.5, [28, 3.8, 3], 18, 0.06, 0.12, 50, "whip", 7.9], [11.8, [28, 3.6, 3], 14, -0.08, 0.12, 48, "ease"],
+    [12.5, [42, 3.8, 3], 18, 0.06, 0.12, 50, "whip", 11.9], [15.8, [43, 3.6, 3], 14, -0.08, 0.12, 48, "ease"],
+    [16.5, [56, 3.8, 3], 18, -0.06, 0.12, 50, "whip", 15.9], [20, [56.4, 3.6, 3], 14, 0.08, 0.12, 48, "ease"]
+  ]
+}

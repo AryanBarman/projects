@@ -1,0 +1,312 @@
+{
+ "assets": true,
+ "dmin": 20,
+ "dmax": 42,
+ "portrait": true,
+ "clean": true,
+ "stick": true,
+ "audio_dir": "shorts2/audio",
+ "audio": "short44",
+ "out": "short44_story.html",
+ "out_dir": "shorts2",
+ "title": "The $44B Space Repo Loophole",
+ "dur": 42.2,
+ "rail": [
+  0.0,
+  1.9,
+  5.6,
+  16.2,
+  30.4,
+  42.2
+ ],
+ "stn": [
+  [
+   1000000000,
+   0
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ]
+ ],
+ "sets": [
+  "plaza"
+ ],
+ "fixes": {
+  "Nvidia": "NVIDIA"
+ },
+ "keycol": {
+  "$44": "amberHi",
+  "nvidia": "sageHi",
+  "panicking": "coral",
+  "collateral": "cyanHi",
+  "vera": "sageHi",
+  "rubin": "sageHi",
+  "orbit": "cyanHi",
+  "loophole": "coral",
+  "repo": "amberHi",
+  "340": "amberHi",
+  "clauses": "cyanHi",
+  "earth": "sageHi"
+ },
+ "mood": [
+  [
+   0,
+   "day"
+  ],
+  [
+   1.9,
+   "warm"
+  ],
+  [
+   5.6,
+   "tense"
+  ],
+  [
+   16.6,
+   "dusk"
+  ],
+  [
+   19.5,
+   "night"
+  ],
+  [
+   22.1,
+   "tense"
+  ],
+  [
+   30.4,
+   "tense"
+  ],
+  [
+   40,
+   "day"
+  ]
+ ],
+ "faces": [],
+ "dress": [],
+ "models": {
+  "connector": "assets3d/quaternius_ultimate_space_kit/glb/Connector.glb",
+  "dish": "assets3d/quaternius_ultimate_space_kit/glb/Roof_Radar.glb",
+  "earth": "assets3d/quaternius_ultimate_space_kit/glb/Planet-B7xd3SZq0z.glb",
+  "rover": "assets3d/quaternius_ultimate_space_kit/glb/Rover.glb"
+ },
+ "punch": [
+  [
+   0.05,
+   3,
+   0.03,
+   0
+  ],
+  [
+   3.3,
+   4,
+   0.05,
+   0.08
+  ],
+  [
+   8.4,
+   6,
+   0.07,
+   0.22
+  ],
+  [
+   14.2,
+   5,
+   0.06,
+   0.14
+  ],
+  [
+   17.9,
+   4,
+   0.04,
+   0.3
+  ],
+  [
+   22,
+   7,
+   0.08,
+   0.25
+  ],
+  [
+   28.8,
+   6,
+   0.06,
+   0.2
+  ],
+  [
+   37.4,
+   5,
+   0.05,
+   0.12
+  ]
+ ],
+ "ledger": [
+  [
+   "0.00-5.20",
+   "Wall Street banks just lent Elon Musk $44 billion to buy NVIDIA AI chips.",
+   "scripted narration (unverified)",
+   "Story s44c",
+   ""
+  ],
+  [
+   "5.98-10.28",
+   "Normally, banks love financing hardware, but this deal has lenders panicking.",
+   "scripted narration (unverified)",
+   "Story s44c",
+   ""
+  ],
+  [
+   "10.80-16.24",
+   "Apollo and Goldman Sachs use those physical NVIDIA Vera Rubin GPUs as the collateral backing the loan.",
+   "scripted narration (unverified)",
+   "Story s44c",
+   ""
+  ],
+  [
+   "16.74-21.46",
+   "But Elon's master plan is to blast AI data centers into low-Earth orbit.",
+   "scripted narration (unverified)",
+   "Story s44c",
+   ""
+  ],
+  [
+   "21.92-24.52",
+   "Therefore, bondholders realized a terrifying loophole.",
+   "scripted narration (unverified)",
+   "Story s44c",
+   ""
+  ],
+  [
+   "24.52-29.98",
+   "If SpaceX ever defaults, nobody can send a repo truck 340 miles into space.",
+   "scripted narration (unverified)",
+   "Story s44c",
+   ""
+  ],
+  [
+   "30.60-32.88",
+   "So how did Wall Street try to stop him?",
+   "scripted narration (unverified)",
+   "Story s44c",
+   ""
+  ],
+  [
+   "33.50-41.98",
+   "Lenders pushed for legal clauses barring those GPUs from leaving Earth, proving that even when Wall Street lends Elon Musk $44 billion to buy...",
+   "scripted narration (unverified)",
+   "Story s44c",
+   ""
+  ]
+ ],
+ "events": [
+  14.2,
+  17.9,
+  22,
+  27.2,
+  28.8,
+  33.6,
+  37.4
+ ],
+ "cues": [
+  [
+   0.0,
+   "stamp_impact",
+   "hook"
+  ],
+  [
+   3.3,
+   "laser_trace",
+   "chips"
+  ],
+  [
+   8.4,
+   "stamp_impact",
+   "panic"
+  ],
+  [
+   14.2,
+   "stamp_impact",
+   "lock"
+  ],
+  [
+   17.9,
+   "swell_boom",
+   "launch"
+  ],
+  [
+   22.0,
+   "mega_boom",
+   "loophole"
+  ],
+  [
+   28.8,
+   "stamp_impact",
+   "cannot repo"
+  ],
+  [
+   37.4,
+   "stamp_impact",
+   "barred"
+  ]
+ ],
+ "sfx": [
+  {
+   "t": 0.0,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 1.95,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 3.3,
+   "sfx": "draw",
+   "db": -3
+  },
+  {
+   "t": 5.3,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 8.4,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 14.2,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 17.9,
+   "sfx": "riser",
+   "db": -3
+  },
+  {
+   "t": 21.5,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 22.0,
+   "sfx": "impact",
+   "db": 0
+  },
+  {
+   "t": 28.8,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 37.4,
+   "sfx": "stamp",
+   "db": -2
+  }
+ ]
+}

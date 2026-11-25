@@ -1,0 +1,514 @@
+{
+ "audio": "Act 2 part 2",
+ "out": "act2_part2_musk_smells_blood-3d.html",
+ "title": "Act 2 Part 2 \u2014 Musk Smells Blood (3D)",
+ "dur": 68.12,
+ "assets": true,
+ "rail": [
+  0,
+  6.5,
+  15.3,
+  30.0,
+  47.5,
+  58.9,
+  68.12
+ ],
+ "stn": [
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   91,
+   78
+  ],
+  [
+   117,
+   104
+  ],
+  [
+   1000000000,
+   130
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ],
+  [
+   62,
+   -100
+  ],
+  [
+   18,
+   -84
+  ]
+ ],
+ "dmin": 16,
+ "dmax": 28,
+ "mood": [
+  [
+   0,
+   "tense"
+  ],
+  [
+   6.5,
+   "day"
+  ],
+  [
+   15.3,
+   "warm"
+  ],
+  [
+   30.0,
+   "night"
+  ],
+  [
+   47.5,
+   "tense"
+  ],
+  [
+   58.9,
+   "dusk"
+  ]
+ ],
+ "fixes": {
+  "Nvidia": "NVIDIA",
+  "Dealbook": "DealBook",
+  "TerraFap": "Terafab",
+  "Terafab": "Terafab"
+ },
+ "keycol": {
+  "elon": "amberHi",
+  "musk": "amberHi",
+  "blood": "coral",
+  "dealbook": "cyanHi",
+  "bulls": "coral",
+  "jordan": "amberHi",
+  "championship": "amberHi",
+  "jensen": "cyanHi",
+  "terrafab": "sageHi",
+  "119": "amberHi",
+  "billion": "amberHi",
+  "texas": "amberHi",
+  "nightmare": "coral",
+  "bleeding": "coral",
+  "defect": "coral",
+  "190,000": "amberHi",
+  "petition": "cyanHi",
+  "no": "coral",
+  "firm": "coral",
+  "leverage": "amberHi",
+  "surrender": "coral"
+ },
+ "ledger": [
+  [
+   "0.00-6.02",
+   "In the middle of that chaos Elon Musk smelled blood in the water",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   "Papers flying, shark fin, blood in the water"
+  ],
+  [
+   "6.66-14.74",
+   "At the DealBook Summit Musk compared NVIDIA's board to the Chicago Bulls firing Michael Jordan in the middle of a championship run",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   "Summit stage, typed comparison, trophy and FIRED stamp"
+  ],
+  [
+   "15.38-29.80",
+   "Musk publicly hinted that jobs were waiting for Jensen and top NVIDIA engineers at Terafab, his $119 billion semiconductor complex breaking ground in Grimes County, Texas",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   "Texas map, job cards, rising fab, UP TO $119B counter with $55B first-phase gauge"
+  ],
+  [
+   "30.04-46.72",
+   "The nightmare scenario on the boardroom table: stock bleeding hundreds of billions of dollars and the founder and best chip architects defecting to their largest customer",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   "Boardroom, bleeding counter, defection walk"
+  ],
+  [
+   "47.60-57.90",
+   "Shareholders panicked and 190,000 people signed a petition begging for Jensen's return, but the board stood firm and said no",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   "Panicking crowd, signer cards, petition torn by a NO stamp"
+  ],
+  [
+   "59.10-67.48",
+   "If the board refused Wall Street and its own engineers, who had enough leverage to force it to surrender",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   "Two closed doors crossed out, a third marked with a question"
+  ]
+ ],
+ "cues": [
+  [
+   3.6,
+   "laser_trace",
+   "Smelled blood"
+  ],
+  [
+   14.3,
+   "stamp_impact",
+   "Fired"
+  ],
+  [
+   22.9,
+   "gold_stack",
+   "$119 billion"
+  ],
+  [
+   30.3,
+   "mega_boom",
+   "Nightmare scenario"
+  ],
+  [
+   36.2,
+   "industrial_beat",
+   "Stock bleeding"
+  ],
+  [
+   43.0,
+   "ratchet_rise",
+   "Defection"
+  ],
+  [
+   55.2,
+   "stamp_impact",
+   "The board says no"
+  ],
+  [
+   65.1,
+   "swell_boom",
+   "Who has the leverage"
+  ]
+ ],
+ "sets": [
+  "plaza",
+  "office",
+  "texas",
+  "office",
+  "campus",
+  "plaza"
+ ],
+ "faces": [
+  [
+   2.4,
+   4.8,
+   [
+    -7.5,
+    2.5,
+    4.2
+   ],
+   1
+  ],
+  [
+   8.0,
+   11.0,
+   [
+    26,
+    2.6,
+    2.2
+   ],
+   -1
+  ],
+  [
+   19.0,
+   22.0,
+   [
+    45.5,
+    2.5,
+    3.6
+   ],
+   1
+  ]
+ ],
+ "dress": [
+  [
+   "pulse",
+   0,
+   6.5,
+   [
+    0,
+    4.5
+   ],
+   10,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   0,
+   6.5,
+   [
+    -10.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   0,
+   6.5,
+   [
+    10.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "sparks",
+   0.3,
+   6.5,
+   [
+    0,
+    7.0
+   ],
+   9,
+   "#F0A39A",
+   7
+  ],
+  [
+   "flow",
+   6.5,
+   15.3,
+   [
+    15.5,
+    2.8,
+    6.0
+   ],
+   [
+    36.5,
+    3.6,
+    6.0
+   ],
+   8,
+   "#F4F1EA",
+   0.9
+  ],
+  [
+   "flow",
+   7.3,
+   15.3,
+   [
+    36.5,
+    1.6,
+    7.2
+   ],
+   [
+    15.5,
+    2.4,
+    7.2
+   ],
+   6,
+   "#E2B857",
+   0.7
+  ],
+  [
+   "orbit",
+   6.5,
+   15.3,
+   [
+    26,
+    7.5,
+    3.0
+   ],
+   5.0,
+   4,
+   "#2C5BA8"
+  ],
+  [
+   "flow",
+   15.3,
+   30,
+   [
+    41.5,
+    2.2,
+    6.2
+   ],
+   [
+    62.5,
+    3.2,
+    6.2
+   ],
+   9,
+   "#E2B857",
+   0.7
+  ],
+  [
+   "rise",
+   15.700000000000001,
+   30,
+   [
+    64.3,
+    7.0
+   ],
+   6,
+   "#76B900",
+   1.2
+  ],
+  [
+   "sparks",
+   15.3,
+   30,
+   [
+    40.5,
+    6.0
+   ],
+   3,
+   "#F2D58F",
+   6
+  ],
+  [
+   "pulse",
+   30,
+   47.5,
+   [
+    78,
+    4.5
+   ],
+   10,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   30,
+   47.5,
+   [
+    67.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   30,
+   47.5,
+   [
+    88.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "sparks",
+   30.3,
+   47.5,
+   [
+    78,
+    7.0
+   ],
+   9,
+   "#F0A39A",
+   7
+  ],
+  [
+   "orbit",
+   47.5,
+   58.9,
+   [
+    104,
+    3.6,
+    6.0
+   ],
+   8.5,
+   7,
+   "#45B8AC"
+  ],
+  [
+   "orbit",
+   47.5,
+   58.9,
+   [
+    104,
+    5.2,
+    6.0
+   ],
+   5.5,
+   5,
+   "#E2B857",
+   -1
+  ],
+  [
+   "flow",
+   47.5,
+   58.9,
+   [
+    93.5,
+    1.4,
+    7.0
+   ],
+   [
+    114.5,
+    1.4,
+    7.0
+   ],
+   8,
+   "#9BE01B",
+   0.6
+  ],
+  [
+   "pulse",
+   58.9,
+   68.1,
+   [
+    130,
+    5.0
+   ],
+   11,
+   "#2C5BA8"
+  ],
+  [
+   "orbit",
+   58.9,
+   68.1,
+   [
+    130,
+    8.0,
+    3.0
+   ],
+   6.5,
+   6,
+   "#E2B857"
+  ],
+  [
+   "beam",
+   58.9,
+   68.1,
+   [
+    140.5,
+    6.0
+   ],
+   9,
+   "#2C5BA8"
+  ]
+ ]
+}

@@ -1,0 +1,6 @@
+
+# local ffmpeg venv and exported videos
+tools/.ffvenv/
+shorts2/*.mp4
+tools/jb2/_scratch/
+tools/jb2/audio/sfx/

@@ -1,0 +1,245 @@
+{
+ "assets": true,
+ "dmin": 20,
+ "dmax": 42,
+ "portrait": true,
+ "clean": true,
+ "stick": true,
+ "audio_dir": "shorts2/audio",
+ "out_dir": "shorts2",
+ "audio": "short44",
+ "out": "short44_space_repo_loophole-3d.html",
+ "title": "Short - The $44B Space Repo Loophole (9:16)",
+ "dur": 42.2,
+ "rail": [
+  0,
+  5.6,
+  16.6,
+  30.4,
+  42.2
+ ],
+ "stn": [
+  [
+   1000000000,
+   0
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ]
+ ],
+ "sets": [
+  "plaza"
+ ],
+ "fixes": {
+  "Nvidia": "NVIDIA"
+ },
+ "keycol": {
+  "$44": "amberHi",
+  "nvidia": "sageHi",
+  "panicking": "coral",
+  "collateral": "cyanHi",
+  "vera": "sageHi",
+  "rubin": "sageHi",
+  "orbit": "cyanHi",
+  "space": "cyanHi",
+  "loophole": "coral",
+  "defaults": "coral",
+  "repo": "amberHi",
+  "340": "amberHi",
+  "clauses": "cyanHi",
+  "earth": "sageHi",
+  "apollo": "amberHi",
+  "goldman": "amberHi"
+ },
+ "mood": [
+  [
+   0,
+   "day"
+  ],
+  [
+   5.6,
+   "tense"
+  ],
+  [
+   16.6,
+   "dusk"
+  ],
+  [
+   19.5,
+   "night"
+  ],
+  [
+   22.1,
+   "tense"
+  ],
+  [
+   30.4,
+   "tense"
+  ],
+  [
+   40.0,
+   "day"
+  ]
+ ],
+ "models": {
+  "earth": "assets3d/quaternius_ultimate_space_kit/glb/Planet-B7xd3SZq0z.glb",
+  "connector": "assets3d/quaternius_ultimate_space_kit/glb/Connector.glb",
+  "dish": "assets3d/quaternius_ultimate_space_kit/glb/Roof_Radar.glb",
+  "rover": "assets3d/quaternius_ultimate_space_kit/glb/Rover.glb"
+ },
+ "punch": [
+  [
+   0.05,
+   3,
+   0.03,
+   0
+  ],
+  [
+   3.35,
+   4,
+   0.05,
+   0.08
+  ],
+  [
+   8.45,
+   6,
+   0.07,
+   0.22
+  ],
+  [
+   14.2,
+   5,
+   0.05,
+   0.12
+  ],
+  [
+   17.9,
+   4,
+   0.04,
+   0.3
+  ],
+  [
+   22.0,
+   7,
+   0.08,
+   0.25
+  ],
+  [
+   28.8,
+   6,
+   0.06,
+   0.2
+  ],
+  [
+   37.4,
+   5,
+   0.05,
+   0.12
+  ]
+ ],
+ "faces": [],
+ "dress": [],
+ "ledger": [
+  [
+   "0.0-5.2",
+   "Wall Street banks just lent Elon Musk $44 billion to buy NVIDIA AI chips",
+   "scripted narration (unverified)",
+   "Short script (The $44B Space Repo Loophole SRT)",
+   "Banker and Elon, $44 BILLION counter, coins flow to a GPU stack"
+  ],
+  [
+   "5.98-10.28",
+   "Normally banks love financing hardware, but this deal has lenders panicking",
+   "scripted narration",
+   "Short script (The $44B Space Repo Loophole SRT)",
+   "Banker panics beside the stack; HARDWARE = SAFE LOAN turns into LENDERS PANICKING"
+  ],
+  [
+   "10.8-16.24",
+   "Apollo and Goldman Sachs use those physical NVIDIA Vera Rubin GPUs as the collateral backing the loan",
+   "scripted narration (unverified)",
+   "Short script (The $44B Space Repo Loophole SRT)",
+   "Loan link to the stack, COLLATERAL stamp"
+  ],
+  [
+   "16.74-21.46",
+   "Elon\u2019s master plan is to blast AI data centers into low-Earth orbit",
+   "scripted narration",
+   "Short script (The $44B Space Repo Loophole SRT)",
+   "Stack rides the rocket to orbit and becomes a satellite"
+  ],
+  [
+   "21.92-24.52",
+   "Bondholders realized a terrifying loophole",
+   "scripted narration",
+   "Short script (The $44B Space Repo Loophole SRT)",
+   "Re-hook band, bondholder reacts"
+  ],
+  [
+   "24.52-29.98",
+   "If SpaceX ever defaults, nobody can send a repo truck 340 miles into space",
+   "scripted narration (340 miles unverified)",
+   "Short script (The $44B Space Repo Loophole SRT)",
+   "Repo truck, dashed 340 MILES line to orbit, CAN\u2019T REPO"
+  ],
+  [
+   "30.6-32.88",
+   "So how did Wall Street try to stop him?",
+   "scripted narration",
+   "Short script (The $44B Space Repo Loophole SRT)",
+   "Banker thinks, ? stamp"
+  ],
+  [
+   "33.5-40.2",
+   "Lenders pushed for legal clauses barring those GPUs from leaving Earth",
+   "scripted narration",
+   "Short script (The $44B Space Repo Loophole SRT)",
+   "Loan clause card, BARRED FROM ORBIT, camera returns to the first frame (loop)"
+  ]
+ ],
+ "cues": [
+  [
+   0.0,
+   "stamp_impact",
+   "Hook"
+  ],
+  [
+   3.5,
+   "laser_trace",
+   "Chips"
+  ],
+  [
+   8.5,
+   "stamp_impact",
+   "Panic"
+  ],
+  [
+   14.2,
+   "stamp_impact",
+   "Collateral"
+  ],
+  [
+   17.9,
+   "swell_boom",
+   "Launch"
+  ],
+  [
+   22.0,
+   "mega_boom",
+   "Loophole"
+  ],
+  [
+   28.8,
+   "stamp_impact",
+   "Cannot repo"
+  ],
+  [
+   37.4,
+   "stamp_impact",
+   "Barred"
+  ]
+ ]
+}

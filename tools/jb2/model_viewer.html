@@ -1,0 +1,24 @@
+<!doctype html><meta charset=utf8><body style="margin:0;background:#C9D8DF"><canvas id=c width=1920 height=1080></canvas>
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="models_view.js"></script><script>
+// contact sheet of packed GLB models (dev tool): every model is centred, scaled to fit its cell, lit like the stage
+const cv = document.getElementById('c'), cols = 8, names = Object.keys(MODELS_B64), rows = Math.ceil(names.length / cols), cw = 1920 / cols, ch = 1080 / rows;
+const R = new THREE.WebGLRenderer({ canvas: cv, antialias: true, preserveDrawingBuffer: true }); R.setSize(1920, 1080, false); R.setScissorTest(true); R.outputEncoding = THREE.sRGBEncoding; R.setClearColor(0xC9D8DF);
+const loader = new THREE.GLTFLoader(), scenes = []; let left = names.length;
+const b64 = s => { const bin = atob(s), u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u.buffer; };
+names.forEach((n, i) => loader.parse(b64(MODELS_B64[n]), '', g => {
+  const sc = new THREE.Scene(); sc.add(new THREE.HemisphereLight(0xffffff, 0x8899aa, 0.9)); const dl = new THREE.DirectionalLight(0xffffff, 1.0); dl.position.set(-3, 5, 4); sc.add(dl);
+  const m = g.scene, box = new THREE.Box3().setFromObject(m), size = box.getSize(new THREE.Vector3()), ctr = box.getCenter(new THREE.Vector3()), k = 2 / Math.max(size.x, size.y, size.z);
+  m.position.sub(ctr); const w = new THREE.Group(); w.add(m); w.scale.setScalar(k); w.rotation.y = -0.6; sc.add(w);
+  const cam = new THREE.PerspectiveCamera(32, cw / ch, 0.1, 50); cam.position.set(0, 0.7, 5.2); cam.lookAt(0, 0, 0);
+  scenes[i] = { sc, cam, n, size: size.toArray().map(v => +v.toFixed(2)) }; if (--left === 0) draw();
+}, e => { console.log('ERR', n, e); if (--left === 0) draw(); }));
+function draw() {
+  scenes.forEach((s, i) => { if (!s) return; const x = (i % cols) * cw, y = 1080 - (Math.floor(i / cols) + 1) * ch; R.setViewport(x, y, cw, ch); R.setScissor(x, y, cw, ch); R.render(s.sc, s.cam); });
+  const g = document.createElement('canvas'); g.width = 1920; g.height = 1080; const x2 = g.getContext('2d'); x2.drawImage(cv, 0, 0); x2.fillStyle = '#0B191E'; x2.font = '700 15px Arial'; x2.textAlign = 'center';
+  scenes.forEach((s, i) => { if (s) x2.fillText(s.n, (i % cols) * cw + cw / 2, (Math.floor(i / cols)) * ch + 18); });
+  cv.getContext && 0; document.body.appendChild(g); g.style.cssText = 'position:absolute;left:0;top:0'; window.READY = true;
+}
+window.render = () => {};
+</script>

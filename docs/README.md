@@ -8,6 +8,7 @@ Start here in any new session or on any device. Read in this order:
 4. `SHORTS_GUIDE.md` — how to design vertical shorts (structure, mobile safe zones, text sizes, camera) and the shorts checklist.
 5. `CHARKIT.md` — hybrid character kit (sprite heads + procedural bodies, poses, props) used for the jen_back series.
 6. `JEN_BACK_STATUS.md` — the newer 15-part jen_back series: parts, what is correct, what needs fixing, how to continue.
+   (start with SHORT_RECIPE.md and STORY_SPEC.md; also DIRECTION_GUIDE.md, MOTION_PLAYBOOK.md, SCENE_MAP.md, ASSETS_3D.md, SYSTEM_V2.md, STICK3D_PACK_REVIEW.md: new work goes in tools/jb2, jb and jen_back are frozen)
 7. `../storyboard.txt` — the step-by-step method for turning an SRT into a storyboard before any code.
 8. `../tools/` — scripts, scene sources and configs. Paths inside them are hardcoded; see RUNBOOK section 0.
 

@@ -1,0 +1,281 @@
+{
+ "_doc": "Phrase -> recipe map used by new_short.py. First matching rule wins (on the lower-cased beat text). setup = story 'do' entries; {x} = beat centre, {t0}/{t1} = beat start/end (numeric expressions are evaluated when the story is generated). acting = a preset of recipes_jb.js ACTING; camera = the shot pattern.",
+ "rules": [
+  {
+   "name": "bank",
+   "words": [
+    "bank",
+    "lent",
+    "lend",
+    "loan",
+    "lender",
+    "credit"
+   ],
+   "setup": [
+    [
+     "SetBank",
+     "{x}",
+     0
+    ]
+   ],
+   "acting": "greedy",
+   "role": "analyst",
+   "dx": -5.0,
+   "camera": "wide-then-zoom"
+  },
+  {
+   "name": "panic",
+   "words": [
+    "panic",
+    "crash",
+    "collapse",
+    "fear",
+    "crunch",
+    "warning",
+    "default",
+    "terrif",
+    "exploded",
+    "crisis",
+    "burning",
+    "dark",
+    "idle",
+    "losing",
+    "bleed",
+    "sitting"
+   ],
+   "setup": [],
+   "acting": "panic",
+   "role": "analyst",
+   "dx": -2.4,
+   "camera": "face"
+  },
+  {
+   "name": "alarm",
+   "words": [
+    "realiz",
+    "discover",
+    "shock",
+    "suddenly",
+    "loophole",
+    "trap"
+   ],
+   "setup": [],
+   "acting": "alarm",
+   "role": "bondholder",
+   "dx": -1.8,
+   "camera": "face",
+   "crowd": 3
+  },
+  {
+   "name": "collateral",
+   "words": [
+    "collateral",
+    "secure",
+    "backing",
+    "lock",
+    "pledge"
+   ],
+   "setup": [
+    [
+     "Stack",
+     "{x}+1.6",
+     3.0,
+     6,
+     1
+    ],
+    [
+     "SetLock",
+     "{x}+1.6",
+     3.0,
+     "{t0}+1.5"
+    ]
+   ],
+   "acting": "point",
+   "role": "analyst",
+   "dx": -2.6,
+   "camera": "orbit"
+  },
+  {
+   "name": "chips",
+   "words": [
+    "chip",
+    "gpu",
+    "nvidia",
+    "hardware",
+    "data center",
+    "server"
+   ],
+   "setup": [
+    [
+     "SetCart",
+     "{x}+2.0",
+     3.2,
+     "{t0}",
+     4
+    ]
+   ],
+   "acting": "cart",
+   "role": "analyst",
+   "dx": -1.0,
+   "camera": "swing"
+  },
+  {
+   "name": "launch",
+   "words": [
+    "rocket",
+    "orbit",
+    "space",
+    "launch",
+    "satellite",
+    "blast"
+   ],
+   "setup": [
+    [
+     "SetLaunch",
+     "{x}",
+     3.0,
+     "{t0}+0.4",
+     "{t0}+2.2"
+    ]
+   ],
+   "acting": "explain",
+   "role": "analyst",
+   "dx": -4.0,
+   "camera": "crane",
+   "models": [
+    "earth",
+    "connector",
+    "dish"
+   ]
+  },
+  {
+   "name": "repo",
+   "words": [
+    "repo",
+    "truck",
+    "tow",
+    "seize",
+    "repossess"
+   ],
+   "setup": [
+    [
+     "SetRepo",
+     "{x}",
+     3.0
+    ],
+    [
+     "DashedGrow",
+     [
+      "{x}+3.4",
+      3.0,
+      3.0
+     ],
+     [
+      "{x}+3.8",
+      13.8,
+      3.0
+     ],
+     10,
+     "#E2B857",
+     8,
+     "{t0}+1.5",
+     "{t0}+2.9"
+    ],
+    [
+     "RedX",
+     "{x}+3.4",
+     10.4,
+     3.2,
+     1.6,
+     "{t0}+2.5"
+    ]
+   ],
+   "acting": "annoyed",
+   "role": "factory",
+   "dx": 6.0,
+   "camera": "crane",
+   "models": [
+    "rover"
+   ]
+  },
+  {
+   "name": "clause",
+   "words": [
+    "clause",
+    "legal",
+    "contract",
+    "law",
+    "rule",
+    "regulat",
+    "agreement",
+    "bill"
+   ],
+   "setup": [
+    [
+     "Doc",
+     {
+      "x": "{x}+1.4",
+      "y": 6.0,
+      "tag": "DOCUMENT",
+      "head": "CLAUSE",
+      "lines": [
+       "TODO line one",
+       "TODO line two"
+      ],
+      "hl": 1,
+      "t0": "{t0}+0.3",
+      "t1": "{t1}"
+     }
+    ]
+   ],
+   "acting": "point",
+   "role": "analyst",
+   "dx": -2.3,
+   "camera": "push"
+  },
+  {
+   "name": "question",
+   "words": [
+    "how ",
+    "why ",
+    "?"
+   ],
+   "setup": [],
+   "acting": "think",
+   "role": "analyst",
+   "dx": -1.0,
+   "camera": "face"
+  },
+  {
+   "name": "vault",
+   "words": [
+    "billion",
+    "cash",
+    "money",
+    "profit",
+    "revenue",
+    "invest"
+   ],
+   "setup": [
+    [
+     "SetVault",
+     "{x}",
+     0
+    ]
+   ],
+   "acting": "greedy",
+   "role": "analyst",
+   "dx": -1.4,
+   "camera": "face"
+  },
+  {
+   "name": "default",
+   "words": [],
+   "setup": [],
+   "acting": "explain",
+   "role": "analyst",
+   "dx": -1.0,
+   "camera": "push"
+  }
+ ]
+}

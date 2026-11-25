@@ -1,0 +1,452 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 3 part 1",
+ "out": "act3_part1_enter_washington-3d.html",
+ "title": "Act 3 Part 1 \u2014 Enter Washington (3D)",
+ "dur": 42.24,
+ "rail": [
+  0,
+  5.0,
+  12.4,
+  23.0,
+  34.0,
+  42.24
+ ],
+ "stn": [
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   91,
+   78
+  ],
+  [
+   1000000000,
+   104
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ],
+  [
+   62,
+   -100
+  ]
+ ],
+ "fixes": {
+  "Nvidia": "NVIDIA",
+  "Stephen Chang": "Steven Cheung",
+  "Stephen Cheung": "Steven Cheung"
+ },
+ "keycol": {
+  "washington": "cyanHi",
+  "national": "coral",
+  "security": "coral",
+  "emergency": "coral",
+  "trump": "amberHi",
+  "vance": "amberHi",
+  "72": "amberHi",
+  "pressure": "coral",
+  "asset": "sageHi",
+  "jensen": "cyanHi",
+  "china": "coral",
+  "involved": "amberHi",
+  "protect": "sageHi",
+  "geniuses": "sageHi",
+  "cripple": "coral"
+ },
+ "mood": [
+  [
+   0,
+   "day"
+  ],
+  [
+   5.0,
+   "tense"
+  ],
+  [
+   12.4,
+   "warm"
+  ],
+  [
+   23.0,
+   "day"
+  ],
+  [
+   34.0,
+   "dusk"
+  ]
+ ],
+ "sets": [
+  "mall",
+  "office",
+  "mall",
+  "campus",
+  "office"
+ ],
+ "ledger": [
+  [
+   "0.00-4.90",
+   "Enter Washington, D.C. Over the weekend before Monday\u2019s reversal",
+   "scripted narration",
+   "Episode script (Act 3 part 1 SRT)",
+   "Capitol and White House rise, WASHINGTON D.C. tag"
+  ],
+  [
+   "5.44-11.88",
+   "The crisis stopped being a boardroom fight and became a national security emergency",
+   "scripted narration",
+   "Episode script (Act 3 part 1 SRT)",
+   "Board argues, sirens, NATIONAL SECURITY EMERGENCY stamp"
+  ],
+  [
+   "13.08-25.18",
+   "White House officials: Trump called key stakeholders; Vance led a 72-hour pressure campaign on NVIDIA\u2019s board",
+   "scripted narration",
+   "Episode script (Act 3 part 1 SRT)",
+   "Trump calls four stakeholders, Vance and the board, 72-hour counter"
+  ],
+  [
+   "25.18-33.40",
+   "Jensen Huang was a national asset; America could not cripple its leading AI chipmaker while racing China",
+   "scripted narration",
+   "Episode script (Act 3 part 1 SRT)",
+   "NATIONAL ASSET stamp, chip tower cracks, USA vs China race"
+  ],
+  [
+   "34.42-41.68",
+   "Steven Cheung: Trump was totally involved; we have to protect our geniuses",
+   "scripted narration",
+   "Episode script (Act 3 part 1 SRT)",
+   "Cheung quote card, Jensen behind a shield, PROTECT stamp"
+  ]
+ ],
+ "cues": [
+  [
+   8.9,
+   "mega_boom",
+   "National security emergency"
+  ],
+  [
+   15.4,
+   "laser_trace",
+   "Trump called"
+  ],
+  [
+   19.6,
+   "ratchet_rise",
+   "72 hours"
+  ],
+  [
+   25.9,
+   "stamp_impact",
+   "National asset"
+  ],
+  [
+   31.2,
+   "laser_trace",
+   "Cripple"
+  ],
+  [
+   40.4,
+   "stamp_impact",
+   "Protect our geniuses"
+  ]
+ ],
+ "faces": [
+  [
+   14.5,
+   17.5,
+   [
+    46,
+    2.6,
+    3.4
+   ],
+   -1
+  ],
+  [
+   20.0,
+   22.6,
+   [
+    58.5,
+    2.6,
+    3.4
+   ],
+   1
+  ],
+  [
+   25.8,
+   28.5,
+   [
+    73.5,
+    2.6,
+    3.2
+   ],
+   -1
+  ],
+  [
+   36.0,
+   38.5,
+   [
+    99.8,
+    2.6,
+    3.2
+   ],
+   1
+  ],
+  [
+   40.5,
+   42.4,
+   [
+    109.6,
+    2.5,
+    3.4
+   ],
+   -1
+  ]
+ ],
+ "dress": [
+  [
+   "pulse",
+   0,
+   5,
+   [
+    0,
+    5.0
+   ],
+   11,
+   "#2C5BA8"
+  ],
+  [
+   "orbit",
+   0,
+   5,
+   [
+    0,
+    8.0,
+    3.0
+   ],
+   6.5,
+   6,
+   "#E2B857"
+  ],
+  [
+   "beam",
+   0,
+   5,
+   [
+    10.5,
+    6.0
+   ],
+   9,
+   "#2C5BA8"
+  ],
+  [
+   "pulse",
+   5,
+   12.4,
+   [
+    26,
+    4.5
+   ],
+   10,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   5,
+   12.4,
+   [
+    15.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "beam",
+   5,
+   12.4,
+   [
+    36.5,
+    6.0
+   ],
+   8,
+   "#D94E43"
+  ],
+  [
+   "sparks",
+   5.3,
+   12.4,
+   [
+    26,
+    7.0
+   ],
+   9,
+   "#F0A39A",
+   7
+  ],
+  [
+   "orbit",
+   12.4,
+   23,
+   [
+    52,
+    3.6,
+    6.0
+   ],
+   8.5,
+   7,
+   "#45B8AC"
+  ],
+  [
+   "orbit",
+   12.4,
+   23,
+   [
+    52,
+    5.2,
+    6.0
+   ],
+   5.5,
+   5,
+   "#E2B857",
+   -1
+  ],
+  [
+   "flow",
+   12.4,
+   23,
+   [
+    41.5,
+    1.4,
+    7.0
+   ],
+   [
+    62.5,
+    1.4,
+    7.0
+   ],
+   8,
+   "#9BE01B",
+   0.6
+  ],
+  [
+   "rise",
+   23,
+   34,
+   [
+    67.5,
+    6.4
+   ],
+   7,
+   "#5E6F7A",
+   1.1
+  ],
+  [
+   "rise",
+   23.6,
+   34,
+   [
+    88.5,
+    6.4
+   ],
+   7,
+   "#76B900",
+   1.1
+  ],
+  [
+   "flow",
+   23,
+   34,
+   [
+    69.5,
+    1.8,
+    7.2
+   ],
+   [
+    86.5,
+    1.8,
+    7.2
+   ],
+   7,
+   "#F4F1EA",
+   0.6
+  ],
+  [
+   "flow",
+   34,
+   42.3,
+   [
+    93.5,
+    2.8,
+    6.0
+   ],
+   [
+    114.5,
+    3.6,
+    6.0
+   ],
+   8,
+   "#F4F1EA",
+   0.9
+  ],
+  [
+   "flow",
+   34.8,
+   42.3,
+   [
+    114.5,
+    1.6,
+    7.2
+   ],
+   [
+    93.5,
+    2.4,
+    7.2
+   ],
+   6,
+   "#E2B857",
+   0.7
+  ],
+  [
+   "orbit",
+   34,
+   42.3,
+   [
+    104,
+    7.5,
+    3.0
+   ],
+   5.0,
+   4,
+   "#2C5BA8"
+  ]
+ ],
+ "rig3d": []
+}

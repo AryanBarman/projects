@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:04,040
+Lenders are now scrambling to force ironclad guarantees
+
+2
+00:00:04,040 --> 00:00:07,620
+that those financed Nvidia chips stay bolted to the
+
+3
+00:00:07,620 --> 00:00:08,740
+ground on Earth.
+
+4
+00:00:09,680 --> 00:00:12,380
+Even Musk himself warned on X this week that
+
+5
+00:00:12,380 --> 00:00:16,240
+AI infrastructure faces a massive 2027 cash
+
+6
+00:00:16,240 --> 00:00:20,020
+crunch because paying for GPUs months before power plants
+
+7
+00:00:20,020 --> 00:00:23,520
+and cooling systems are ready creates hundreds of billions
+
+8
+00:00:23,520 --> 00:00:25,600
+of dollars in working capital pain,
+
+9
+00:00:26,040 --> 00:00:29,860
+which leaves both Jensen Hwang and Elon Musk trapped
+
+10
+00:00:29,860 --> 00:00:32,460
+in the exact same structural reality.

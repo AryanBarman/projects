@@ -1,0 +1,29 @@
+<!doctype html><meta charset=utf8><body style="margin:0;background:#E6EEF2"><canvas id=c width=1920 height=1080></canvas>
+<script src="stickman.js"></script><script>
+const c = document.getElementById('c'), g = c.getContext('2d');
+const which = (new URLSearchParams(location.search)).get('sheet') || 'roles';
+let T0 = 0; window.render = function (T) {
+  g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#E6EEF2'; g.fillRect(0, 0, 1920, 1080);
+  g.fillStyle = '#C9D8DF'; g.fillRect(0, 0, 1920, 1080);
+  const lab = (s, x, y) => { g.fillStyle = '#0B191E'; g.font = '700 15px Arial'; g.textAlign = 'center'; g.fillText(s, x, y); };
+  if (which === 'roles') {
+    const R = ['jensen', 'elon', 'trump', 'vance', 'cheung', 'reed', 'kress', 'compliance', 'board', 'banker', 'bondholder', 'engineer', 'factory', 'supply', 'journalist', 'trader', 'employee', 'spacex'];
+    R.forEach((r, i) => { const x = 110 + (i % 9) * 205, y = 520 + Math.floor(i / 9) * 520; Stick.draw(g, r, x, y, 1.0, { pose: ['idle', 'talk', 'present', 'think'][i % 4], phase: i * 1.1 + 0.4, facing: 1, variant: i }, T); lab(r, x, y + 28); });
+  } else if (which === 'expr') {
+    const E = ['neutral', 'talk', 'concerned', 'think', 'happy', 'angry', 'shock', 'serious'], R = ['jensen', 'trump', 'kress'];
+    R.forEach((r, ri) => E.forEach((e, i) => { const x = 130 + i * 230, y = 330 + ri * 340; Stick.draw(g, r, x, y, 1.25, { pose: 'idle', expr: e, phase: 0.3 + ri }, T); lab(r + ' / ' + e, x, y + 26); }));
+  } else if (which === 'expr2') {
+    const E = ['sad', 'laughing', 'smirk', 'scared', 'panic', 'crying', 'determined', 'proud'], R = ['jensen', 'trump', 'kress'];
+    R.forEach((r, ri) => E.forEach((e, i) => { const x = 130 + i * 230, y = 330 + ri * 340; Stick.draw(g, r, x, y, 1.25, { pose: 'idle', expr: e, phase: 0.3 + ri }, T); lab(r + ' / ' + e, x, y + 26); }));
+  } else if (which === 'ik') {
+    const T = [[0.3, 0.55], [0.5, 0.8], [0.15, 1.0], [0.45, 0.3], [0.6, 0.6], [-0.3, 0.7]];
+    T.forEach((tg, i) => { const x = 200 + i * 300, y = 560, sc = 1.25; Stick.draw(g, 'analyst', x, y, sc, { pose: 'idle', armR: tg, expr: 'neutral', phase: 0.3 }, T0 = 1.0); const k = sc * 1.15; g.fillStyle = '#E02A33'; g.beginPath(); g.arc(x + tg[0] * 250 * k, y - tg[1] * 250 * k, 9, 0, 7); g.fill(); lab('armR [' + tg + ']', x, y + 30); });
+  } else if (which === 'poses') {
+    const P = Stick.poses; P.forEach((p, i) => { const x = 110 + (i % 8) * 232, y = 470 + Math.floor(i / 8) * 520; Stick.draw(g, ['jensen', 'elon', 'vance', 'kress'][i % 4], x, y, 1.0, { pose: p, phase: 0.2 + i, prop: p === 'hold' ? 'paper' : p === 'phone' ? 'phone' : '' }, T); lab(p, x, y + 28); });
+  } else if (which === 'close') {
+    ['jensen', 'elon', 'trump', 'vance', 'kress'].forEach((r, i) => { const x = 190 + i * 385, y = 1030; Stick.draw(g, r, x, y, 3.2, { pose: 'talk', expr: i % 2 ? 'concerned' : 'talk', phase: i }, T); });
+  }
+  document.title = 'done';
+};
+window.READY = true;
+</script>

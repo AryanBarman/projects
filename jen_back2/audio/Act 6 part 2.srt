@@ -1,0 +1,75 @@
+1
+00:00:00,000 --> 00:00:04,420
+Modern AI runs on a razor -thin physical chokepoint,
+
+2
+00:00:05,020 --> 00:00:07,380
+TSMC's leading -edge foundries in Taiwan,
+
+3
+00:00:08,040 --> 00:00:11,440
+ASML's extreme ultraviolet lithography machines in the
+
+4
+00:00:11,440 --> 00:00:14,900
+Netherlands, SK -Hynix's high -bandwidth memory stacks,
+
+5
+00:00:15,320 --> 00:00:17,420
+and multi -gigawatt electrical grids.
+
+6
+00:00:17,980 --> 00:00:20,780
+Those relationships aren't software code you can copy
+
+7
+00:00:20,780 --> 00:00:22,720
+-paste onto a new CEO's laptop.
+
+8
+00:00:23,320 --> 00:00:24,400
+And at the same time,
+
+9
+00:00:24,840 --> 00:00:27,700
+hyperscalers like Google, Amazon, and Broadcom,
+
+10
+00:00:28,040 --> 00:00:30,040
+plus Musk's own Texas terafab,
+
+11
+00:00:30,380 --> 00:00:33,860
+are spending tens of billions trying to break free
+
+12
+00:00:33,860 --> 00:00:36,280
+from NVIDIA's 75 % margins.
+
+13
+00:00:37,400 --> 00:00:39,200
+Jensen Huang won his job back,
+
+14
+00:00:39,320 --> 00:00:42,620
+because right now, he is the only person who
+
+15
+00:00:42,620 --> 00:00:46,460
+can hold that fragile supply chain together while defending
+
+16
+00:00:46,460 --> 00:00:49,980
+NVIDIA's moat. But his second act comes with a
+
+17
+00:00:49,980 --> 00:00:52,060
+permanent compliance leash in Washington,
+
+18
+00:00:52,520 --> 00:00:55,560
+and a wall of custom chip rivals closing in
+
+19
+00:00:55,560 --> 00:00:56,860
+from every direction.
