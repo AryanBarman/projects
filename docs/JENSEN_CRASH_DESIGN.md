@@ -103,3 +103,20 @@ Stations (mix): S1 3D + HQ Elon: warned, money bags SQUEEZED by two walls ("crun
 
 ## SHORT v2 final polish (2026-11-26)
 Crane thicker and inside the card, plant rises slowly (19.1 -> 24.2 s, about half height when "years" is spoken) with 10 calendar ticks, 2D cards raised (y 8.2), steel plates wider, the cost-of-delay scene starts with a stack and two bags at 31.4 s so it is never empty, loop checked (first frame 0.3 s and last 39.2 s are the same picture: Elon with the cash pile). Whole-short contact sheet reviewed (14 frames). Still stills only: not played, audio sync unchecked.
+
+## RE-MIX: Acts 1 and 2 (2026-11-26): numbers are now CASH, not paper charts
+Same pipeline, same timings; only the picture changed (helpers in tools\jc\assets_jb.js: cashArt, cashBurst, refLine, doorCard; see JC_DEPICTION_MAP.md "CASH ART").
+- c1p1: S2 a cash stack rises on "+31.5%" then shrinks twice in bursts of flying bills ("vanished", tens of billions); S3 three icon cards replace the text stamps (chained money bag = DEBT, rate gauge = RATE HIKE, magnifier over a paper = INVESTIGATION). c1p1 cfg dmax raised to 36 (camera had been clamped to 28, so pushes crushed the doors).
+- c1p2: S0 mirrors the new icon cards (connection kept); S1 an 11-box NOVEMBER 2026 tracker fills one day at a time; S2 cash pile grows on "+31.5%" and becomes a pyramid ("~$1 TRILLION BACK"), a rocket card rises on "unstoppable"; S3 the pile is squeezed by -6% and -4% with bursts, then TENS OF BILLIONS GONE.
+- c2p1: S1 October stack vs November stack that halves (-47%, HALF line); S2 the record-high ghost stack, the bounce stack still below it; S3 $100 / $53 / $70 stacks (the $53 stack drops, the $70 stack grows) with a dashed start line; S4 paper bars kept (sales/profit beat, stock fell: data).
+- c2p2: S1 chip-sales stack vs the tall stack investors want ("NOT ENOUGH"); S2-S4 unchanged (3D blocks, calm chart + invoices).
+Stills only; not played. Known: door cards are large and the left one touches the frame edge at the push; c1p2 S2 cash card sits small beside the boardroom; c2p2 S1 labels are small.
+
+## FIX after review: data + cash together, 11 days hit, NVIDIA breaks (2026-11-26)
+Graphs restored and combined with cash (`cashChart`) in c1p1 S2, c1p2 S3, c2p1 S2, c3p2 S1 (bond price), c5p2 S6; bars as cash stacks on graph paper with a dashed reference line in c2p1 S1/S3 and c2p2 S1. c1p2 S1: 11 ticks at 0.33 s (3.9 -> 7.5 s) each with a pop, ring and a red crack on NVIDIA's tower, then `brokenTower` drops the floors from 6.9 s ("falling apart") to 9.6 s. Checked similar cases across the 12 pages: c4p1 (rates chart + 3D bag/racks), c4p2, c6 S5 and c7 S3 already pair the graph with a depiction; c6 S5 could take a cashChart later (listed in JC_TODO). Stills only.
+
+## Act 3 pass (2026-11-26)
+Checked all stations of c3p1/c3p2 against the new rules: transaction boards kept (approved), bond-price chart already `cashChart`, $5B/$118B already 3D + 2D. Changed: c3p2 S3 (18% vs 4%) from paper bars to graph paper + cash stacks (18 vs 4 layers per $100 borrowed, burst on "18 percent", dashed safe-government line). Stills only.
+
+## Acts 4-7 pass (2026-11-26)
+Checked c4p1, c4p2, c5p1, c5p2, c6, c7 against the data+depiction / hit / mix rules. Changed: c6 S2 (sales/profits/tech lead) paper bars -> cash stacks on graph paper with STRONG tags; c6 S5 (priced for perfection) -> `cashChart` (line over the card, stack on top, bursts on "fast selling", crack kept); c4p1 S1 rate chart card enlarged. Already fine: c4p2 (calendar, arrow card, board with gauge), c5p1 (3D + documents), c5p2 (planner, boards, cashChart), c7 (location + ship metaphor + graph that forks). c7 was not re-rendered in this pass (build OK). Stills only.

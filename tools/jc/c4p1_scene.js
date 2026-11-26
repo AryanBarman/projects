@@ -26,7 +26,7 @@
 
     // ===== S1 (1.6 - 11.3) PAPER CHART + 3D: for three years (0.86) rates were FALLING (6.69) and the promise (4.25) was they would KEEP falling (dashed); so borrowing BILLIONS (8.77) was cheap (7.94): a money bag drops and GIANT DATA CENTERS (10.33) rise =====
     if (t >= 1.5 && t < 11.9) {
-      const C = 0; Card(C - 6.3, 7.4, 1.2, 12.5, 8.2, { kind: 'paint', rot: -0.015, t0: 1.7, t1: 0, paint: (g, pw, ph) => stepChart(g, pw, ph, [[2.0, 0.26], [6.2, 0.62, 4.2]], t, 'INTEREST RATES', [[6.7, 'FALLING', '#1F9D6B']], { sub: 'the last three years', col: '#1F9D6B', x: [[0.08, '2023'], [0.32, '2024'], [0.56, '2025']], proj: { t0: 5.2, t1: 7.4, y: 0.8 } }) }, t);
+      const C = 0; Card(C - 5.6, 7.6, 1.2, 15.0, 9.6, { kind: 'paint', rot: -0.015, t0: 1.7, t1: 0, paint: (g, pw, ph) => stepChart(g, pw, ph, [[2.0, 0.26], [6.2, 0.62, 4.2]], t, 'INTEREST RATES', [[6.7, 'FALLING', '#1F9D6B']], { sub: 'the last three years', col: '#1F9D6B', x: [[0.08, '2023'], [0.32, '2024'], [0.56, '2025']], proj: { t0: 5.2, t1: 7.4, y: 0.8 } }) }, t);
       Char('trader', C + 1.2, 3.4, 2.4, Object.assign({ facing: -1, phase: 1 }, trk([[0, 'think'], [4.25, 'point'], [8.41, 'cheer']])), 1.6, 11.9, t);
       if (t >= 8.41) { const d = easeOut(seg(t, 8.41, 9.3)); itemBag(C + 8.4, 0.2 + 7.0 * (1 - d), 2.0, 2.6); }
       rackRow(C + 3.8, -1.4, 6, [9.4, 9.8, 10.2, 10.6, 11.0, 11.4], t);

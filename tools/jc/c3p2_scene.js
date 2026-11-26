@@ -32,7 +32,7 @@
 
     // ===== S1 (5 - 17.9) PAPER CHART: on Monday CoreWeave's debt price ROSE with NVIDIA's rally (5.81); by Tuesday and Wednesday lenders DUMPED it (12.46) to record lows (14.94), about 75 to 77 cents on the dollar (17.54) =====
     if (t >= 4.9 && t < 18.4) {
-      const C = 0; paper(C, 5.0, (g, pw, ph) => stepChart(g, pw, ph, [[5.0, 0.5], [5.81, 0.3, 1.6], [12.46, 0.82, 0.7], [14.94, 0.88, 1.2]], t, 'COREWEAVE DEBT PRICE', [[6.4, 'RALLY', '#1F9D6B'], [12.7, 'LENDERS DUMP', '#D64545'], [17.54, '75-77 CENTS', '#D64545']], { sub: 'what lenders would pay for its bonds', refs: [{ y: 0.12, t0: 5.4, label: '100 CENTS = FACE VALUE', col: '#B8860B' }, { y: 0.9, t0: 14.94, label: 'RECORD LOW', col: '#D64545' }] }));
+      const C = 0; Card(C, 7.4, 1.2, 18.0, 10.4, { kind: 'paint', rot: -0.01, t0: 5.0, t1: 0, paint: (g, pw, ph) => cashChart(g, pw, ph, { keys: [[5.0, 0.5], [5.81, 0.3, 1.6], [12.46, 0.82, 0.7], [14.94, 0.88, 1.2]], title: 'COREWEAVE DEBT PRICE', tags: [[6.4, 'RALLY', '#1F9D6B'], [12.7, 'LENDERS DUMP', '#D64545'], [17.54, '75-77 CENTS', '#D64545']], opt: { sub: 'what lenders would pay for its bonds', refs: [{ y: 0.12, t0: 5.4, label: '100 CENTS = FACE VALUE', col: '#B8860B' }, { y: 0.9, t0: 14.94, label: 'RECORD LOW', col: '#D64545' }] }, n0: 2, n1: 15, t0: 5.0, bursts: [12.46, 13.2] }, t) }, t);
       who('banker', C, 4.8, 18.4, [[0, 'think'], [12.46, 'panic']]);
     }
 
@@ -45,7 +45,10 @@
 
     // ===== S3 (26 - 34.9) PAPER BARS: what 18% means in real life (26.7): safe U.S. government loans pay around 4% (31.9 / 33.83) =====
     if (t >= 25.9 && t < 35.4) {
-      const C = 52; paper(C, 26.0, (g, pw, ph) => paperBars(g, pw, ph, [{ label: 'COREWEAVE 2031 LOANS', col: '#D64545', keys: [[26.7, 0.9, 0.9]], text: [[27.2, '~18%']] }, { label: 'SAFE US GOVERNMENT LOANS', col: '#1F9D6B', keys: [[31.9, 0.22, 0.9]], text: [[33.83, '~4%']] }], t, 'INTEREST RATE', { sub: 'what lenders charge', y: [[0, '0%'], [0.22, '4%'], [0.9, '18%']] }));
+      const C = 52; Card(C, 7.6, 1.2, 15.0, 10.0, { kind: 'paint', rot: -0.01, t0: 26.0, t1: 0, paint: (g, pw, ph) => { paperSheet(g, pw, ph, 'INTEREST ON $100 BORROWED', 'what lenders charge each year'); const k = 0.075 * 0.19 * pw / ph, base = 0.83, u1 = seg(t, 26.7, 27.6), u2 = seg(t, 31.9, 32.6), n1 = 18 * easeOut(u1), n2 = 4 * easeOut(u2);
+        cashArt(g, pw, ph, [{ k: 'stack', x: 0.32, y: base, s: 0.19, n: Math.max(0.01, n1), t0: 26.7 }, { k: 'stack', x: 0.7, y: base, s: 0.19, n: Math.max(0.01, n2), t0: 31.9 }], t); cashBurst(g, pw, ph, 0.32, 0.45, t, 27.2, 8); refLine(g, pw, ph, base - 4 * k, '', '#2B8A6E', seg(t, 31.9, 32.7));
+        g.fillStyle = '#17252B'; g.font = '900 ' + ph * 0.045 + 'px' + FAM; g.textAlign = 'center'; g.textBaseline = 'top'; if (t >= 26.7) g.fillText('COREWEAVE', pw * 0.32, ph * 0.85); if (t >= 31.9) g.fillText('US GOVERNMENT', pw * 0.7, ph * 0.85);
+        if (t >= 27.2) pill(g, pw * 0.32, ph * (base - n1 * k) - ph * 0.1, '~18%', '#D64545', ph, easeOut(seg(t, 27.2, 27.6))); if (t >= 33.83) pill(g, pw * 0.7, ph * (base - 4 * k) - ph * 0.1, '~4%', '#1F9D6B', ph, easeOut(seg(t, 33.83, 34.2))); } }, t);
       who('trader', C, 25.9, 35.4, [[0, 'cross'], [31.9, 'point']]);
     }
 

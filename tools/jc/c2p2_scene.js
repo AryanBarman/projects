@@ -28,9 +28,10 @@
     // ===== S1 (3.9 - 13.4) already worth trillions (3.73), selling lots of chips isn't enough anymore (7.87); big investors realize something uncomfortable (11.31) on Tuesday morning (12.47) =====
     if (t >= 3.6 && t < 14.0) {
       hqTower(-6.4, -2, 0.62, 'NVIDIA');
-      Card(-6.4, 10.6, 1.6, 8.8, 3.0, { kind: 'counter', text: 'WORTH TRILLIONS', sub: 'already', fg: '#F2D58F', accent: '#E2B857', t0: 3.73, t1: 0, pulse: [4.0] }, t);
-      Card(7.0, 6.8, 1.6, 9.6, 6.4, { kind: 'paint', rot: -0.02, t0: 6.2, t1: 0, paint: (g, pw, ph) => paperBars(g, pw, ph, [
-        { label: 'CHIP SALES', col: '#1F9D6B', keys: [[7.0, 0.6, 0.8]], text: [[7.87, 'NOT ENOUGH']] }, { label: 'WHAT INVESTORS WANT', col: '#D9A93E', keys: [[7.4, 0.95, 0.8]], text: [] }], t, 'IS SELLING CHIPS ENOUGH?', { sub: 'for a company worth trillions', y: [[0, ''], [1, '']] }) }, t);
+      Card(-6.4, 12.6, 1.6, 8.8, 3.0, { kind: 'counter', text: 'WORTH TRILLIONS', sub: 'already', fg: '#F2D58F', accent: '#E2B857', t0: 3.73, t1: 0, pulse: [4.0] }, t);
+      Card(7.0, 6.9, 1.6, 11.4, 8.8, { kind: 'paint', rot: -0.01, t0: 6.2, t1: 0, paint: (g, pw, ph) => { const A = paperSheet(g, pw, ph, 'IS SELLING CHIPS ENOUGH?', 'for a company worth trillions'), k = 0.075 * 0.24 * pw / ph, base = 0.83; cashArt(g, pw, ph, [{ k: 'stack', x: 0.3, y: base, s: 0.24, n: 5, t0: 7.0 }, { k: 'stack', x: 0.7, y: base, s: 0.24, n: 14, t0: 7.4 }], t);
+        g.fillStyle = '#17252B'; g.font = '900 ' + ph * 0.05 + 'px' + FAM; g.textAlign = 'center'; g.textBaseline = 'top'; if (t >= 7.0) g.fillText('CHIP SALES', pw * 0.3, ph * 0.85); if (t >= 7.4) g.fillText('WHAT INVESTORS WANT', pw * 0.7, ph * 0.85);
+        refLine(g, pw, ph, base - 14 * k, '', '#B8860B', seg(t, 7.6, 8.4)); if (t >= 7.87) pill(g, pw * 0.3, ph * (base - 5 * k) - ph * 0.1, 'NOT ENOUGH', '#D64545', ph, easeOut(seg(t, 7.87, 8.3))); } }, t);
       Char('jensen', -2.0, 3.4, 2.6, Object.assign({ facing: 1, phase: 1 }, trk([[0, 'spr:cross'], [7.87, 'spr:think']])), 3.6, 14.0, t);
       Char('bondholder', 13.0, 3.0, 2.3, Object.assign({ facing: -1, phase: 0 }, trk([[0, 'cross'], [9.27, 'think'], [11.31, 'panic']])), 7.0, 14.0, t);
       Char('trader', -11.6, 3.0, 2.3, Object.assign({ facing: 1, phase: 1 }, trk([[0, 'cross'], [9.4, 'think'], [11.31, 'panic']])), 7.0, 14.0, t);

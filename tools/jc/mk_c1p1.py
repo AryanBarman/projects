@@ -11,7 +11,7 @@ for b in re.split(r'\n\s*\n', (P / 'jensen back with crash' / 'audio' / (AUD + '
     cur = [tsec(a), tsec(z), tx] if cur is None else [cur[0], tsec(z), cur[2] + ' ' + tx]
     if re.search(r'[.?!]$', tx): rows.append(cur); cur = None
 if cur: rows.append(cur)
-c = {'dmin': 16, 'dmax': 28, 'assets': True, 'audio': AUD, 'out': 'act1_part1_the_comeback_crash-3d.html', 'title': 'Act 1 Part 1 - The Comeback (3D)', 'dur': 24.68,
+c = {'dmin': 16, 'dmax': 36, 'assets': True, 'audio': AUD, 'out': 'act1_part1_the_comeback_crash-3d.html', 'title': 'Act 1 Part 1 - The Comeback (3D)', 'dur': 24.68,
  'rail': [0, 7.0, 15.1, 24.68], 'stn': [[13, 0], [39, 26], [1000000000, 52]], 'layout': [[0, 0], [40, -22], [82, -36]], 'fixes': {},
  'keycol': {'jensen': 'sageHi', 'back': 'sageHi', 'save': 'sageHi', 'trillion': 'amberHi', 'empire': 'amberHi', 'monday': 'amberHi', '31.5%': 'sageHi', 'jump': 'sageHi', 'proof': 'sageHi', 'wednesday': 'coral', 'billions': 'coral', 'vanished': 'coral',
             'debt': 'coral', 'crisis': 'coral', 'interest': 'coral', 'rate': 'coral', 'hike': 'coral', 'investigation': 'coral', 'government': 'cyanHi', 'ceo': 'amberHi'},

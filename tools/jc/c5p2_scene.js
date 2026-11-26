@@ -61,7 +61,7 @@
 
     // ===== S6 (45 - 50.9) PAPER CHART + INVESTORS: big INVESTORS (46.36) refuse to CHASE (48.01) Monday's 31.5% jump (49.40): they turn and walk away from the spike =====
     if (t >= 45.0) {
-      const C = 130; Card(C - 1.0, 7.6, 1.2, 14.0, 9.2, { kind: 'paint', rot: -0.015, t0: 45.3, t1: 0, paint: (g, pw, ph) => stepChart(g, pw, ph, [[45.4, 0.7], [46.4, 0.2, 1.4]], t, 'MONDAY\'S JUMP', [[47.0, '+31.5%', '#1F9D6B']], { sub: 'NVIDIA stock', col: '#1F9D6B' }) }, t);
+      const C = 130; Card(C - 0.4, 7.6, 1.2, 18.0, 10.2, { kind: 'paint', rot: -0.012, t0: 45.3, t1: 0, paint: (g, pw, ph) => cashChart(g, pw, ph, { keys: [[45.4, 0.7], [46.4, 0.2, 1.4]], title: 'MONDAY\'S JUMP', tags: [[47.0, '+31.5%', '#1F9D6B']], opt: { sub: 'NVIDIA stock', col: '#1F9D6B' }, n0: 2, n1: 15, t0: 45.4, bursts: [] }, t) }, t);
       [[C - 9.0, 'trader', 1], [C - 6.6, 'bondholder', 2], [C + 8.0, 'banker', 3]].forEach(([x, r, i]) => courier(r, [[45.0, x, 3.4], [48.0, x, 3.4], [50.4 + i * 0.1, x + (x < C ? -6.0 : 6.0), 3.4]], [], t, { face: x < C ? 1 : -1, idle: 'cross', phase: i }));
     }
 

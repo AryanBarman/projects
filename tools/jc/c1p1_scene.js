@@ -26,7 +26,7 @@
 
     // ===== S2 (7.2 - 14.6) Monday's 31.5% jump looked like proof, but by Wednesday tens of billions had already vanished =====
     if (t >= 7.1 && t < 15.1) {
-      Card(26, 7.2, 1.6, 10.8, 7.2, { kind: 'paint', rot: -0.02, t0: 7.4, t1: 0, paint: (g, pw, ph) => stepChart(g, pw, ph, [[7.3, 0.76], [8.3, 0.2, 1.2], [11.0, 0.52, 0.3], [13.8, 0.72, 0.5]], t, 'NVIDIA STOCK', [[9.4, '+31.5%']], { sub: 'Monday jump, Wednesday slide' }) }, t);
+      Card(26, 7.2, 1.6, 18.0, 9.6, { kind: 'paint', t0: 7.3, t1: 0, paint: (g, pw, ph) => cashChart(g, pw, ph, { keys: [[7.3, 0.76], [8.3, 0.2, 1.2], [11.0, 0.52, 0.3], [13.8, 0.72, 0.5]], title: 'NVIDIA STOCK', tags: [[9.4, '+31.5%']], opt: { sub: 'Monday jump, then the slide' }, n0: 2, n1: 15, t0: 7.4, bursts: [11.0, 13.83], pill: [13.83, 'BILLIONS GONE', '#D64545'] }, t) }, t);
       Char('trader', 22.4, 3.8, 2.4, Object.assign({ facing: 1, phase: 0 }, trk([[0, 'cheer'], [11.0, 'panic']])), 7.4, 15.1, t);
       Char('trader', 30.2, 3.8, 2.4, Object.assign({ facing: -1, phase: 1 }, trk([[0, 'cheer'], [11.1, 'panic']])), 7.5, 15.1, t);
       Char('jensen', 26, 4.6, 2.3, Object.assign({ facing: 1, phase: 2 }, trk([[0, 'spr:explain'], [11.0, 'spr:think']])), 7.6, 15.1, t);
@@ -36,8 +36,8 @@
     // ===== S3 (15.3 - 24.6) rehiring a CEO can't fix a partner's debt crisis, a December rate hike, or a government investigation =====
     if (t >= 15.2) {
       Box(52, 0, -2.4, 24, 7.4, 0.6, '#6B7F8F'); Box(52, 7.4, -2.4, 24.6, 0.6, 0.8, '#4E5F6C');
-      [[43.4, 19.58, 'DEBT CRISIS', '#D99B26', '#0B191E'], [52, 21.77, 'RATE HIKE', '#D94E43', '#F4F1EA'], [60.6, 23.24, 'INVESTIGATION', '#2C5BA8', '#F4F1EA']].forEach(([dx, t0, txt, bg, fg]) => {
-        door(dx, -1.9, true); if (t >= t0 - 0.1) { pop(txt, dx, 8.9, 3, 6.0, 1.2, bg, fg, t0, 0); hit(dx, 4.4, -1.2, t0 + 0.05, bg === '#2C5BA8' ? PAL.cyan : PAL.amberHi, 240); }
+      [[43.4, 19.58, 'debt', 'DEBT'], [52, 21.77, 'rate', 'RATE HIKE'], [60.6, 23.24, 'probe', 'INVESTIGATION']].forEach(([dx, t0, kd, lab]) => {
+        door(dx, -1.9, true); if (t >= t0 - 0.1) { Card(dx, 9.6, 1.6, 4.4, 4.4, { kind: 'paint', t0, t1: 0, paint: (g, pw, ph) => doorCard(g, pw, ph, kd, lab, t, t0) }, t); hit(dx, 4.4, -1.2, t0 + 0.05, kd === 'probe' ? PAL.cyan : PAL.amberHi, 240); }
       });
       Char('jensen', 52, 4.2, 2.6, Object.assign({ facing: 1, phase: 3 }, trk([[0, 'spr:explain'], [19.6, 'spr:overwhelmed'], [23.2, 'spr:think']])), 15.3, 25.0, t);
       Char('bondholder', 43.2, 4.4, 2.2, Object.assign({ facing: 1, phase: 1 }, trk([[0, 'cross'], [19.6, 'panic']])), 15.6, 25.0, t);

@@ -29,27 +29,28 @@
 
     // ===== S1 (5.3 - 15.5) Between its October high (6.78) and Jensen's exit (8.76) in November, NVIDIA had fallen more than 47% (13.16), nearly cut in half (14.67) =====
     if (t >= 5.2 && t < 16.0) {
-      Card(0, 7.2, 1.6, 10.8, 7.2, { kind: 'paint', rot: -0.02, t0: 5.6, t1: 0, paint: (g, pw, ph) => paperBars(g, pw, ph, [
-        { label: 'OCTOBER', col: '#1F9D6B', keys: [[6.4, 1.0, 0.8]], text: [[6.78, 'HIGH']] },
-        { label: 'NOVEMBER', col: '#D64545', keys: [[8.0, 1.0, 0.4], [8.9, 0.53, 3.4]], text: [[13.16, '-47%']] }], t, 'NVIDIA STOCK', { sub: 'indexed: October high = 100', y: [[0, '0'], [0.5, '50'], [1, '100']], refs: [{ v: 0.5, t0: 14.67, label: 'HALF', col: '#B8860B' }] }) }, t);
-      if (t >= 14.67) { pop('NEARLY CUT IN HALF', 0, 2.0, 4.6, 10.2, 1.2, '#D99B26', '#0B191E', 14.67, 0); }
+      Card(0, 7.2, 1.6, 12.6, 8.8, { kind: 'paint', rot: -0.01, t0: 5.6, t1: 0, paint: (g, pw, ph) => { const A = paperSheet(g, pw, ph, 'NVIDIA STOCK', 'October high = 100'), k = 0.075 * 0.28 * pw / ph, f = easeInOut(seg(t, 8.9, 12.6)), n = 14 - 6.6 * f, base = 0.83;
+        refLine(g, pw, ph, base - 14 * k, 'OCTOBER HIGH', '#B8860B', seg(t, 6.78, 7.4)); cashArt(g, pw, ph, [{ k: 'stack', x: 0.32, y: base, s: 0.28, n: 14, t0: 6.4 }, { k: 'stack', x: 0.7, y: base, s: 0.28, n, t0: 8.0 }], t); cashBurst(g, pw, ph, 0.7, 0.5, t, 9.4, 8);
+        g.fillStyle = '#17252B'; g.font = '900 ' + ph * 0.05 + 'px' + FAM; g.textAlign = 'center'; g.textBaseline = 'top'; g.fillText('OCTOBER', pw * 0.32, ph * 0.85); if (t >= 8.0) g.fillText('NOVEMBER', pw * 0.7, ph * 0.85);
+        if (t >= 13.16) pill(g, pw * 0.7, ph * (base - n * k) - ph * 0.1, '-47%', '#D64545', ph, easeOut(seg(t, 13.16, 13.5))); refLine(g, pw, ph, base - 7 * k, 'HALF', '#2B8A6E', seg(t, 14.67, 15.3)); } }, t);
+      if (t >= 14.67) { pop('NEARLY CUT IN HALF', 0, 1.2, 4.6, 10.2, 1.2, '#D99B26', '#0B191E', 14.67, 0); }
       Char('jensen', lerp(8.2, 14.4, easeInOut(seg(t, 8.76, 11.4))), 2.6, 2.6, Object.assign({ facing: 1, phase: 1 }, trk([[0, 'spr:cross'], [8.76, 'spr:walk']])), 5.4, 16.0, t);
       Char('trader', -9.4, 3.0, 2.3, Object.assign({ facing: 1, phase: 0 }, trk([[0, 'cross'], [9.6, 'panic']])), 5.6, 16.0, t);
     }
 
     // ===== S2 (15.5 - 23.8) Even after jumping 31.5% on Monday (17.79), the stock was still more than 30% (22.17) below its record high (23.03) =====
     if (t >= 15.4 && t < 24.4) {
-      Card(26, 7.2, 1.6, 10.8, 7.2, { kind: 'paint', rot: 0.02, t0: 15.6, t1: 0, paint: (g, pw, ph) => stepChart(g, pw, ph, [[15.8, 0.76], [17.79, 0.5, 0.45], [24.2, 0.5]], t, 'NVIDIA STOCK', [[17.95, '+31.5%'], [22.17, '-30%+ BELOW', '#D64545']], { sub: 'Monday jump vs the record high', refs: [{ y: 0.1, t0: 23.03, label: 'RECORD HIGH', col: '#B8860B' }] }) }, t);
+      Card(26, 7.2, 1.6, 18.0, 9.6, { kind: 'paint', t0: 15.6, t1: 0, paint: (g, pw, ph) => cashChart(g, pw, ph, { keys: [[15.8, 0.76], [17.79, 0.5, 0.45], [24.2, 0.5]], title: 'NVIDIA STOCK', tags: [[17.95, '+31.5%'], [22.17, '-30%+ BELOW', '#D64545']], opt: { sub: 'Monday jump vs the record high', refs: [{ y: 0.1, t0: 23.03, label: 'RECORD HIGH', col: '#B8860B' }] }, n0: 2, n1: 14, ghost: 13, t0: 15.8, bursts: [] }, t) }, t);
       Char('jensen', 21.0, 2.8, 2.5, Object.assign({ facing: 1, phase: 1 }, trk([[0, 'spr:cheer'], [19.8, 'spr:think']])), 15.6, 24.4, t);
       Char('trader', 31.2, 2.8, 2.4, Object.assign({ facing: -1, phase: 2 }, trk([[0, 'cheer'], [19.8, 'panic']])), 15.8, 24.4, t);
     }
 
     // ===== S3 (24 - 36) If a $100 stock drops to $53 (28.61), a 31% bounce (29.98) only brings it back to about $70 (33.11): still way below where you started (~34.1) =====
     if (t >= 24.0 && t < 36.6) {
-      Card(52, 7.2, 1.6, 10.8, 7.2, { kind: 'paint', rot: -0.015, t0: 24.4, t1: 0, paint: (g, pw, ph) => paperBars(g, pw, ph, [
-        { label: 'START', col: '#1F9D6B', keys: [[25.8, 1.0, 0.5]], text: [[25.97, '$100']] },
-        { label: 'AFTER THE DROP', col: '#D64545', keys: [[27.0, 1.0, 0.3], [27.4, 0.53, 1.2]], text: [[28.61, '$53']] },
-        { label: 'AFTER +31%', col: '#1F9D6B', keys: [[29.9, 0.53, 0.3], [30.0, 0.7, 3.1]], text: [[33.11, '$70']] }], t, 'ONE $100 STOCK', { sub: 'a 31% bounce is not a full recovery', y: [[0, '0'], [0.53, '53'], [0.7, '70'], [1, '100']], refs: [{ v: 1.0, t0: 26.2, label: 'WHERE YOU STARTED', col: '#B8860B' }] }) }, t);
+      Card(52, 7.2, 1.6, 14.0, 9.4, { kind: 'paint', rot: -0.01, t0: 24.4, t1: 0, paint: (g, pw, ph) => { const A = paperSheet(g, pw, ph, 'ONE $100 STOCK', 'a 31% bounce is not a full recovery'), k = 0.075 * 0.2 * pw / ph, d = easeInOut(seg(t, 27.4, 28.6)), u = easeInOut(seg(t, 30.0, 33.1)), n2 = 14 - 6.6 * d, n3 = 7.4 + 2.4 * u, base = 0.83;
+        refLine(g, pw, ph, base - 14 * k, '', '#B8860B', seg(t, 26.2, 26.9)); cashArt(g, pw, ph, [{ k: 'stack', x: 0.28, y: base, s: 0.2, n: 14, t0: 25.8 }, { k: 'stack', x: 0.55, y: base, s: 0.2, n: n2, t0: 27.0 }, { k: 'stack', x: 0.82, y: base, s: 0.2, n: n3, t0: 29.9 }], t); cashBurst(g, pw, ph, 0.55, 0.5, t, 27.4, 7);
+        g.fillStyle = '#17252B'; g.font = '900 ' + ph * 0.045 + 'px' + FAM; g.textAlign = 'center'; g.textBaseline = 'top'; g.fillText('START', pw * 0.28, ph * 0.85); if (t >= 27.0) g.fillText('AFTER THE DROP', pw * 0.55, ph * 0.85); if (t >= 29.9) g.fillText('AFTER +31%', pw * 0.82, ph * 0.85);
+        if (t >= 25.97) pill(g, pw * 0.28, ph * (base - 14 * k) - ph * 0.1, '$100', '#17252B', ph, easeOut(seg(t, 25.97, 26.3))); if (t >= 28.61) pill(g, pw * 0.55, ph * (base - n2 * k) - ph * 0.1, '$53', '#D64545', ph, easeOut(seg(t, 28.61, 28.95))); if (t >= 33.11) pill(g, pw * 0.82, ph * (base - n3 * k) - ph * 0.1, '$70', '#1F9D6B', ph, easeOut(seg(t, 33.11, 33.45))); } }, t);
       if (t >= 34.1) { pop('STILL BELOW', 52, 12.4, 4, 8.4, 1.2, '#D94E43', '#F4F1EA', 34.1, 0); if (t < 34.6) hit(52, 9.6, 3.4, 34.15, PAL.coral, 240); }
       Char('banker', 43.4, 2.8, 2.5, Object.assign({ facing: 1, phase: 1 }, trk([[0, 'think'], [25.9, 'present'], [33.1, 'cross']])), 24.0, 36.6, t);
       Char('trader', 61.0, 2.8, 2.4, Object.assign({ facing: -1, phase: 2 }, trk([[0, 'cross'], [28.6, 'panic'], [34.1, 'shrug']])), 24.2, 36.6, t);
