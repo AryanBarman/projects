@@ -1,0 +1,207 @@
+{
+ "dmin": 22,
+ "dmax": 40,
+ "assets": true,
+ "audio": "s2027",
+ "out": "short_2027_cash_crunch_v2.html",
+ "out_dir": "shorts2",
+ "portrait": true,
+ "title": "The 2027 AI Cash Crunch (short)",
+ "dur": 39.32,
+ "rail": [
+  0,
+  6.7,
+  11.9,
+  17.2,
+  22.0,
+  31.2,
+  39.32
+ ],
+ "stn": [
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   91,
+   78
+  ],
+  [
+   117,
+   104
+  ],
+  [
+   1000000000,
+   130
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ],
+  [
+   62,
+   -100
+  ],
+  [
+   18,
+   -84
+  ]
+ ],
+ "fixes": {},
+ "keycol": {
+  "crunch": "coral",
+  "2027": "amberHi",
+  "bottleneck": "amberHi",
+  "backwards": "coral",
+  "billions": "amberHi",
+  "weeks": "sageHi",
+  "years": "coral",
+  "dark": "coral",
+  "burning": "coral",
+  "zero": "coral",
+  "revenue": "coral",
+  "hundreds": "amberHi",
+  "capital": "cyanHi"
+ },
+ "mood": [
+  [
+   0,
+   "tense"
+  ],
+  [
+   6.7,
+   "day"
+  ],
+  [
+   11.9,
+   "warm"
+  ],
+  [
+   17.2,
+   "day"
+  ],
+  [
+   22.0,
+   "night"
+  ],
+  [
+   31.2,
+   "dusk"
+  ],
+  [
+   38.3,
+   "tense"
+  ]
+ ],
+ "sets": [
+  "office",
+  "plaza",
+  "office",
+  "plaza",
+  "market",
+  "office"
+ ],
+ "ledger": [
+  [
+   "0.00-6.04",
+   "Elon Musk just warned that AI companies are heading straight into a massive cash crunch in 2027.",
+   "scripted narration",
+   "Episode script (Short 2027 SRT)",
+   ""
+  ],
+  [
+   "6.90-11.06",
+   "Everyone thinks the bottleneck in AI is getting enough NVIDIA chips, but that's backwards.",
+   "scripted narration",
+   "Episode script (Short 2027 SRT)",
+   ""
+  ],
+  [
+   "11.94-21.36",
+   "Tech giants are paying tens of billions up front for GPU clusters today, but you can ship a server rack in weeks while building the power plants to run it takes years.",
+   "scripted narration",
+   "Episode script (Short 2027 SRT)",
+   ""
+  ],
+  [
+   "21.96-32.58",
+   "Therefore, billion-dollar data centers end up sitting dark, burning cash every single month while generating zero revenue. And here's how much cash Elon says that delay will cost.",
+   "scripted narration",
+   "Episode script (Short 2027 SRT)",
+   ""
+  ],
+  [
+   "33.86-39.30",
+   "Hundreds of billions of dollars in working capital, which is why Elon Musk just warned that AI companies...",
+   "scripted narration",
+   "Episode script (Short 2027 SRT)",
+   ""
+  ]
+ ],
+ "cues": [
+  [
+   0.9,
+   "whoosh",
+   "Warning"
+  ],
+  [
+   5.0,
+   "mega_boom",
+   "Crunch"
+  ],
+  [
+   10.45,
+   "stamp_impact",
+   "Backwards"
+  ],
+  [
+   13.16,
+   "stamp_impact",
+   "Tens of billions"
+  ],
+  [
+   17.92,
+   "stamp_impact",
+   "Weeks"
+  ],
+  [
+   20.87,
+   "stamp_impact",
+   "Years"
+  ],
+  [
+   27.66,
+   "stamp_impact",
+   "Zero revenue"
+  ],
+  [
+   33.86,
+   "mega_boom",
+   "Hundreds of billions"
+  ]
+ ],
+ "faces": [],
+ "dress": []
+}

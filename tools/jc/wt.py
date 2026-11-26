@@ -8,7 +8,7 @@ corr = json.load(open(H / 'corrections.json', encoding='utf8'))
 tsec = lambda x: (lambda h, m, r: int(h) * 3600 + int(m) * 60 + int(r.split(',')[0]) + int(r.split(',')[1]) / 1000)(*x.split(':'))
 def words(clip):
     out = []
-    for b in re.split(r'\n\s*\n', (P / 'jensen back with crash' / 'audio' / (clip + '.srt')).read_bytes().decode('utf-8-sig').replace('\r', '').strip()):
+    for b in re.split(r'\n\s*\n', (P / __import__('os').environ.get('WT_DIR', 'jensen back with crash/audio') / (clip + '.srt')).read_bytes().decode('utf-8-sig').replace('\r', '').strip()):
         L = b.split('\n'); a, z = (tsec(x) for x in L[1].split(' --> ')); tx = ' '.join(L[2:]).strip()
         for pat, rep in corr: tx = re.sub(pat, rep, tx)
         ws = tx.split(); n = sum(len(w) + 1 for w in ws); c = 0

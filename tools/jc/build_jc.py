@@ -10,6 +10,7 @@ Output : jensen back with crash/<out>  (audio is read from jen_back/audio/<audio
 import re, json, sys, pathlib, subprocess
 T = pathlib.Path(__file__).resolve().parent.parent; P = T.parent; J = P / 'jensen back with crash'; H = pathlib.Path(__file__).resolve().parent
 name = sys.argv[1]; cfg = json.load(open(H / ('cfg_%s.json' % name), encoding='utf8'))
+if cfg.get('out_dir'): J = P / cfg['out_dir']      # shorts: build into another folder (audio in <out_dir>/audio)
 INF = 1e9
 CORR = json.load(open(H / 'corrections.json', encoding='utf8'))
 s = open(P / 'act7_full_conclusion-3d.html', encoding='utf8', newline='').read().replace('\r\n', '\n')
@@ -95,6 +96,8 @@ s = s.replace('act7_full_conclusion-3d', base)
 # the old page carried ~2 MB of stickman sprite data; the new rig does not need it
 assert 'clamp((vel - 7) / 22, 0, 0.2)' in s; s = s.replace('clamp((vel - 7) / 22, 0, 0.2)', 'clamp((vel - 18) / 34, 0, 0.12)')   # the living camera moves all the time: smear only on real flights
 a = s.index('const SPRITE_DATA = '); b = s.index('\n', a); s = s[:a] + 'const SPRITE_DATA = {};' + s[b:]
+if cfg.get('portrait'):      # 9:16 (1080x1920) via the jb2 portrait conversion (24 asserted replacements, safe zones, captions)
+    sys.path.insert(0, str(P / 'tools' / 'jb2')); from portrait_build import to_portrait; s, _plog = to_portrait(s, cfg); print('portrait: %d replacements' % len(_plog))
 out = J / cfg['out']; open(out, 'w', encoding='utf8', newline='\n').write(s)
 print('built', out.name, len(s) // 1024, 'KB', len(subs), 'captions', len(klines), 'camera keys')
 # ---- 5. rig
