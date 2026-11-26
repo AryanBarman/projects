@@ -28,8 +28,8 @@
 
     // ===== S1 (3.9 - 11.9) 11 days in November 2026: NVIDIA looks like it is falling apart after its founder steps down =====
     if (t >= 3.6 && t < 12.4) {
-      hqTower(0, -2, 0.62, 'NVIDIA'); const fl = easeInOut(seg(t, 4.2, 10.4));
-      [0, 1, 2, 3, 4, 5].forEach(i => Box(-12.5 + i * 1.3, 0, 4.6, 1.0, Math.max(0.05, (3.6 - (i % 3) * 0.4) * (1 - 0.78 * fl)), 1.2, fl > 0.05 ? '#D94E43' : '#2B8A6E'));
+      hqTower(0, -2, 0.62, 'NVIDIA');
+      Card(10.0, 6.6, 1.6, 8.8, 5.8, { kind: 'paint', rot: 0.02, t0: 4.2, t1: 0, paint: (g, pw, ph) => stepChart(g, pw, ph, [[4.2, 0.22], [10.6, 0.82, 6.2]], t, 'NVIDIA STOCK', [], { sub: 'the 11 days' }) }, t);
       if (t >= 4.0) Card(-7, 9.2, 1.6, 7.6, 3.0, { kind: 'counter', text: 'DAY ' + Math.min(11, 1 + Math.floor(10 * seg(t, 4.2, 10.4))) + ' OF 11', sub: 'November 2026', fg: '#F2D58F', accent: '#E2B857', t0: 4.0, t1: 0 }, t);
       Char('jensen', lerp(3.0, -5.0, easeInOut(seg(t, 10.83, 12.2))), 3.6, 2.7, Object.assign({ facing: -1, phase: 1 }, trk([[0, 'spr:cross'], [10.83, 'spr:walk']])), 3.6, 12.4, t);
       [8.2, 10.4].forEach((bx, i) => Char(i ? 'employee' : 'engineer', bx, 4.0 + i * 0.6, 2.2, Object.assign({ phase: i * 0.7 }, trk([[0, 'cross'], [6.9 + i * 0.3, 'panic']])), 3.6, 12.4, t));
@@ -50,13 +50,11 @@
 
     // ===== S3 (29.5 - 40.4) except over the next two days: -6% Tuesday (on "6%"), -4% Wednesday (on "4%"), tens of billions gone =====
     if (t >= 29.4 && t < 41.0) {
-      Card(52, 7.4, 1.6, 9.6, 5.6, { kind: 'paint', paint: (g, pw, ph, u) => stepChart(g, pw, ph, [[29.8, 0.14], [33.7, 0.36, 0.28], [35.46, 0.5, 0.28], [38.4, 0.62, 1.4]], t, 'NVIDIA STOCK', [[33.75, '-6%', '#FF6B5E'], [35.5, '-4%', '#FF6B5E']]), t0: 29.6, t1: 0 }, t);
+      Card(52, 7.2, 1.6, 10.8, 7.2, { kind: 'paint', rot: -0.015, t0: 29.6, t1: 0, paint: (g, pw, ph) => stepChart(g, pw, ph, [[29.8, 0.16], [33.7, 0.36, 0.28], [35.46, 0.5, 0.28], [38.4, 0.64, 1.4]], t, 'NVIDIA STOCK', [[33.75, '-6%', '#D64545'], [35.5, '-4%', '#D64545']], { sub: 'Tuesday and Wednesday' }) }, t);
       const fall = 0.4 * easeOut(seg(t, 33.7, 34.0)) + 0.35 * easeOut(seg(t, 35.46, 35.76)) + 0.25 * easeInOut(seg(t, 38.4, 39.8));
-      [44.2, 57.6].forEach(bx0 => [0, 1, 2, 3, 4].forEach(i => Box(bx0 + i * 1.5, 0, 0.4, 1.1, Math.max(0.05, 3.2 * (1 - 0.8 * fall)), 1.4, fall > 0.02 ? '#D94E43' : '#2B8A6E')));
       Char('jensen', 52, 2.4, 2.5, Object.assign({ facing: 1, phase: 1 }, trk([[0, 'spr:cheer'], [33.7, 'spr:overwhelmed']])), 29.6, 41.0, t);
       Char('trader', 47.6, 2.6, 2.4, Object.assign({ facing: 1, phase: 0 }, trk([[0, 'cheer'], [33.7, 'panic']])), 29.8, 41.0, t);
       Char('trader', 56.6, 2.6, 2.4, Object.assign({ facing: -1, phase: 1 }, trk([[0, 'cheer'], [35.46, 'panic']])), 29.9, 41.0, t);
-      if (t >= 33.7 && t < 34.2) hit(52, 7.4, 3, 33.72, PAL.coral, 280); if (t >= 35.46 && t < 36.0) hit(52, 7.4, 3, 35.5, PAL.coral, 280);
       if (t >= 38.39) Card(52, 3.0, 2.6, 8.6, 2.2, { kind: 'counter', text: 'TENS OF BILLIONS GONE', sub: 'in gains', fg: '#FF9A8F', accent: '#D94E43', t0: 38.39, t1: 0 }, t);
     }
 

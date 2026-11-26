@@ -1698,7 +1698,7 @@ function drawSpriteChar(c, p, sc, t) {
   function Card(x, y, z, w, h, o, t) {
     window.__fitName = (o.text || o.head || o.tag || o.kind || 'card');
     const t0 = o.t0 || 0, u = t - t0; if (u < 0) return; const t1 = o.t1 || 0, out = t1 ? 1 - Math.max(0, Math.min(1, (t - t1) / 0.35)) : 1; if (out <= 0.01) return;
-    const kind = o.kind || 'tag', slam = kind === 'stamp', en = slam ? 1 + 0.9 * Math.pow(Math.max(0, 1 - u / 0.16), 2) : springOut(u / 0.45), sc = slam ? en : Math.max(0.05, en);
+    const kind = o.kind || 'tag', slam = kind === 'stamp', en = slam ? 1 + 0.35 * Math.pow(Math.max(0, 1 - u / 0.16), 2) : springOut(u / 0.45), sc = slam ? en : Math.max(0.05, en);
     const shake = slam && u < 0.3 ? Math.sin(u * 90) * 0.012 * (1 - u / 0.3) : 0, bob = kind === 'doc' ? Math.sin(u * 1.5) * 0.07 : 0, rot = ((o.rot !== undefined ? o.rot : slam ? -4 : 0) * Math.PI) / 180 + shake;
     const a = Math.min(1, u / (slam ? 0.08 : 0.15)) * out, pul = (o.pulse || []).reduce((q, pt) => t >= pt ? q + 0.12 * Math.exp(-(t - pt) * 9) : q, 0);
     const paint = (g, pw, ph) => {
@@ -1919,24 +1919,50 @@ function drawSpriteChar(c, p, sc, t) {
   // =========================================================================
   // ASSET LIBRARY (spliced before every jen_back scene by build_jb.py). Reusable world objects; each takes world coords and a progress u (0..1)
   // so scenes only decide WHEN. See docs/ASSET_LIBRARY.md for the narration-phrase -> asset -> camera-type mapping.
-  // stepChart(g, pw, ph, keys, t, title, tags): clean stock chart painted into a Card kind:'paint'. keys = [[time, y 0..1 (0 = top), rampSeconds?], ...]: at `time` the line MOVES to y over rampSeconds (default 0.35), so a drop can start exactly on the spoken word.
-  // Smooth thick line (green rising, red falling), soft area fill, glowing head dot, no wobble. tags = [[time, 'TEXT', colour]] pills that pop at the head.
-  const stepChart = (g, pw, ph, keys, t, title, tags) => {
-    const m = pw * 0.03, X0 = pw * 0.09, X1 = pw * 0.95, Y0 = ph * 0.24, Y1 = ph * 0.86, T0 = keys[0][0], T1 = keys[keys.length - 1][0] + (keys[keys.length - 1][2] || 0.35);
-    g.save(); g.shadowColor = 'rgba(11,25,30,0.4)'; g.shadowBlur = pw * 0.03; g.shadowOffsetY = pw * 0.012; rrect(g, m, m, pw - 2 * m, ph - 2 * m, ph * 0.07); g.fillStyle = '#0F2229'; g.fill(); g.restore();
-    g.fillStyle = '#F4F1EA'; g.textAlign = 'left'; g.textBaseline = 'alphabetic'; g.font = '900 ' + ph * 0.075 + 'px' + FAM; g.fillText(title, X0, ph * 0.15);
-    g.strokeStyle = 'rgba(255,255,255,0.07)'; g.lineWidth = 2; for (let i = 0; i < 4; i++) { g.beginPath(); g.moveTo(X0, Y0 + i * (Y1 - Y0) / 3); g.lineTo(X1, Y0 + i * (Y1 - Y0) / 3); g.stroke(); }
-    const val = tt => { let y = keys[0][1]; for (let i = 1; i < keys.length; i++) { const r = keys[i][2] || 0.35, u = Math.max(0, Math.min(1, (tt - keys[i][0]) / r)); y = lerp(y, keys[i][1], u * u * (3 - 2 * u)); if (tt < keys[i][0]) break; } return y; };
-    const px = tt => X0 + (X1 - X0) * (tt - T0) / (T1 - T0), py = y => Y0 + (Y1 - Y0) * y, te = Math.min(t, T1), N = 90, pts = [];
-    for (let i = 0; i <= N; i++) { const tt = T0 + (te - T0) * i / N; pts.push([px(tt), py(val(tt))]); }
+  // ===== PAPER CHARTS (charts and graphs are drawn on a sheet of graph paper and shown as a Card kind:'paint'; Manim rule: everything is placed through ONE coordinate mapping) =====
+  const paperSheet = (g, pw, ph, title, sub) => {
+    const m = pw * 0.03, X0 = pw * 0.15, X1 = pw * 0.93, Y0 = ph * 0.4, Y1 = ph * 0.83;
+    g.save(); g.shadowColor = 'rgba(11,25,30,0.38)'; g.shadowBlur = pw * 0.035; g.shadowOffsetY = pw * 0.014; rrect(g, m, m, pw - 2 * m, ph - 2 * m, ph * 0.02); g.fillStyle = '#FBF8EF'; g.fill(); g.restore();
+    g.save(); rrect(g, m, m, pw - 2 * m, ph - 2 * m, ph * 0.02); g.clip(); g.strokeStyle = 'rgba(120,160,190,0.22)'; g.lineWidth = 1.5; const st = ph * 0.05;
+    for (let x = m; x < pw; x += st) { g.beginPath(); g.moveTo(x, m); g.lineTo(x, ph); g.stroke(); } for (let y = m; y < ph; y += st) { g.beginPath(); g.moveTo(m, y); g.lineTo(pw, y); g.stroke(); }
+    g.fillStyle = '#E8E0CB'; g.beginPath(); g.moveTo(pw - m - ph * 0.1, m); g.lineTo(pw - m, m); g.lineTo(pw - m, m + ph * 0.1); g.closePath(); g.fill(); g.restore();                 // folded corner
+    g.fillStyle = '#17252B'; g.textAlign = 'left'; g.textBaseline = 'alphabetic'; g.font = '900 ' + ph * 0.075 + 'px' + FAM; g.fillText(title, X0 - ph * 0.02, ph * 0.17);
+    if (sub) { g.fillStyle = '#5B6B76'; g.font = '700 ' + ph * 0.042 + 'px' + FAM; g.fillText(sub, X0 - ph * 0.02, ph * 0.235); }
+    g.strokeStyle = '#17252B'; g.lineWidth = ph * 0.009; g.lineCap = 'round'; g.beginPath(); g.moveTo(X0, Y0 - ph * 0.02); g.lineTo(X0, Y1); g.lineTo(X1 + ph * 0.02, Y1); g.stroke();   // axes
+    return { X0, X1, Y0, Y1 };
+  };
+  const paperAxes = (g, ph, A, yt, xt) => {
+    g.fillStyle = '#4A5A68'; g.font = '700 ' + ph * 0.04 + 'px' + FAM; g.textBaseline = 'middle'; g.textAlign = 'right';
+    (yt || []).forEach(q => { const y = A.Y1 - (A.Y1 - A.Y0) * q[0]; g.fillText(q[1], A.X0 - ph * 0.03, y); g.strokeStyle = 'rgba(23,37,43,0.12)'; g.lineWidth = 2; g.beginPath(); g.moveTo(A.X0, y); g.lineTo(A.X1, y); g.stroke(); });
+    g.textAlign = 'center'; g.textBaseline = 'top'; (xt || []).forEach(q => g.fillText(q[1], A.X0 + (A.X1 - A.X0) * q[0], A.Y1 + ph * 0.025));
+  };
+  const keyVal = (keys, tt) => { let y = keys[0][1]; for (let i = 1; i < keys.length; i++) { const r = keys[i][2] || 0.35, u = Math.max(0, Math.min(1, (tt - keys[i][0]) / r)); y = lerp(y, keys[i][1], u * u * (3 - 2 * u)); if (tt < keys[i][0]) break; } return y; };
+  const pill = (g, x, y, txt, col, ph, sc) => { g.save(); g.translate(x, y); g.scale(sc, sc); g.font = '900 ' + ph * 0.075 + 'px' + FAM; const w = g.measureText(txt).width + ph * 0.16; rrect(g, -w / 2, -ph * 0.06, w, ph * 0.12, ph * 0.04); g.fillStyle = col; g.fill(); g.fillStyle = '#FFFFFF'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(txt, 0, ph * 0.004); g.restore(); };
+  // stepChart(g, pw, ph, keys, t, title, tags, opt): LINE chart on paper. keys = [[time, y 0..1 (0 = top), rampSeconds?], ...]: at `time` the line MOVES to y over rampSeconds (default 0.35) so a drop STARTS on the spoken word. opt = { sub, y:[[frac,'label']], x:[[frac,'label']], refs:[{y, t0, label, col}] }
+  const stepChart = (g, pw, ph, keys, t, title, tags, opt) => {
+    opt = opt || {}; const A = paperSheet(g, pw, ph, title, opt.sub), T0 = keys[0][0], T1 = keys[keys.length - 1][0] + (keys[keys.length - 1][2] || 0.35); paperAxes(g, ph, A, opt.y, opt.x);
+    const px = tt => A.X0 + ph * 0.03 + (A.X1 - A.X0 - ph * 0.06) * (tt - T0) / (T1 - T0), py = y => A.Y0 + (A.Y1 - A.Y0) * y, te = Math.min(t, T1), N = 90, pts = [];
+    (opt.refs || []).forEach(r => { if (t < r.t0) return; const u = easeOut(Math.min(1, (t - r.t0) / 0.6)), y = py(r.y); g.save(); g.setLineDash([ph * 0.03, ph * 0.02]); g.strokeStyle = r.col || '#B8860B'; g.lineWidth = ph * 0.011; g.beginPath(); g.moveTo(A.X0, y); g.lineTo(A.X0 + (A.X1 - A.X0) * u, y); g.stroke(); g.restore(); g.fillStyle = r.col || '#B8860B'; g.font = '900 ' + ph * 0.045 + 'px' + FAM; g.textAlign = 'right'; g.textBaseline = 'bottom'; g.globalAlpha = u; g.fillText(r.label, A.X1, y - ph * 0.01); g.globalAlpha = 1; });
+    for (let i = 0; i <= N; i++) { const tt = T0 + (te - T0) * i / N; pts.push([px(tt), py(keyVal(keys, tt))]); }
     if (pts.length > 1) {
-      g.beginPath(); g.moveTo(pts[0][0], Y1); pts.forEach(q => g.lineTo(q[0], q[1])); g.lineTo(pts[pts.length - 1][0], Y1); g.closePath(); const gr = g.createLinearGradient(0, Y0, 0, Y1); gr.addColorStop(0, 'rgba(79,224,165,0.22)'); gr.addColorStop(1, 'rgba(79,224,165,0)'); g.fillStyle = gr; g.fill();
-      g.lineJoin = 'round'; g.lineCap = 'round'; g.lineWidth = ph * 0.026;
-      for (let i = 1; i < pts.length; i++) { g.strokeStyle = pts[i][1] > pts[i - 1][1] + 0.05 ? '#FF6B5E' : '#4FE0A5'; g.beginPath(); g.moveTo(pts[i - 1][0], pts[i - 1][1]); g.lineTo(pts[i][0], pts[i][1]); g.stroke(); }
-      const h = pts[pts.length - 1]; g.fillStyle = 'rgba(255,255,255,0.25)'; g.beginPath(); g.arc(h[0], h[1], ph * 0.055, 0, 7); g.fill(); g.fillStyle = '#FFFFFF'; g.beginPath(); g.arc(h[0], h[1], ph * 0.03, 0, 7); g.fill();
+      g.beginPath(); g.moveTo(pts[0][0], A.Y1); pts.forEach(q => g.lineTo(q[0], q[1])); g.lineTo(pts[pts.length - 1][0], A.Y1); g.closePath(); g.fillStyle = 'rgba(31,157,107,0.12)'; g.fill();
+      g.lineJoin = 'round'; g.lineCap = 'round'; g.lineWidth = ph * 0.024;
+      for (let i = 1; i < pts.length; i++) { g.strokeStyle = pts[i][1] > pts[i - 1][1] + 0.05 ? '#D64545' : '#1F9D6B'; g.beginPath(); g.moveTo(pts[i - 1][0], pts[i - 1][1]); g.lineTo(pts[i][0], pts[i][1]); g.stroke(); }
+      const h = pts[pts.length - 1]; g.fillStyle = '#FBF8EF'; g.strokeStyle = '#17252B'; g.lineWidth = ph * 0.012; g.beginPath(); g.arc(h[0], h[1], ph * 0.028, 0, 7); g.fill(); g.stroke();
     }
-    (tags || []).forEach((a, ti) => { const u = (t - a[0]) / 0.25; if (u < 0) return; const sc = u < 1 ? 0.6 + 0.4 * Math.sin(Math.min(1, u) * 1.57) : 1, yv = val(a[0] + 0.3), cx = Math.min(X1 - ph * 0.3, px(Math.min(a[0] + 0.3, T1))), cy = py(yv) + (yv < 0.5 ? ph * 0.16 : -ph * 0.16) + (ti % 2 ? ph * 0.2 : 0);
-      g.save(); g.translate(cx, cy); g.scale(sc, sc); g.font = '900 ' + ph * 0.1 + 'px' + FAM; const w = g.measureText(a[1]).width + ph * 0.18; rrect(g, -w / 2, -ph * 0.075, w, ph * 0.15, ph * 0.05); g.fillStyle = a[2] || '#4FE0A5'; g.fill(); g.fillStyle = '#0B191E'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(a[1], 0, ph * 0.005); g.restore(); });
+    (tags || []).forEach((a, ti) => { const u = (t - a[0]) / 0.25; if (u < 0) return; const sc = u < 1 ? 0.7 + 0.3 * Math.sin(Math.min(1, u) * 1.57) : 1, yv = keyVal(keys, a[0] + 0.3), cx = Math.min(A.X1 - ph * 0.12, px(Math.min(a[0] + 0.3, T1))), cy = py(yv) + (yv < 0.5 ? ph * 0.13 : -ph * 0.13) + (ti % 2 ? ph * 0.24 : 0); pill(g, cx, cy, a[1], a[2] || '#1F9D6B', ph, sc); });
+  };
+  // paperBars(g, pw, ph, bars, t, title, opt): BAR chart on paper. bars = [{ label, col, keys:[[time, v 0..1, ramp?], ...], text:[[time,'$100'], ...] }] (a bar exists from its first key; its value text pops at the given times).
+  // opt = { sub, y:[[frac,'label']], refs:[{ v, t0, label, col }] }
+  const paperBars = (g, pw, ph, bars, t, title, opt) => {
+    opt = opt || {}; const A = paperSheet(g, pw, ph, title, opt.sub); paperAxes(g, ph, A, opt.y, null); const n = bars.length, gap = (A.X1 - A.X0) / n, bw = gap * 0.56, py = v => A.Y1 - (A.Y1 - A.Y0) * v;
+    (opt.refs || []).forEach(r => { if (t < r.t0) return; const u = easeOut(Math.min(1, (t - r.t0) / 0.6)), y = py(r.v); g.save(); g.setLineDash([ph * 0.03, ph * 0.02]); g.strokeStyle = r.col || '#B8860B'; g.lineWidth = ph * 0.011; g.beginPath(); g.moveTo(A.X0, y); g.lineTo(A.X0 + (A.X1 - A.X0) * u, y); g.stroke(); g.restore(); g.fillStyle = r.col || '#B8860B'; g.font = '900 ' + ph * 0.045 + 'px' + FAM; g.textAlign = 'right'; g.textBaseline = 'bottom'; g.globalAlpha = u; g.fillText(r.label, A.X1, y - ph * 0.01); g.globalAlpha = 1; });
+    bars.forEach((b, i) => {
+      const cx = A.X0 + gap * (i + 0.5); g.fillStyle = '#4A5A68'; g.font = '800 ' + ph * 0.042 + 'px' + FAM; g.textAlign = 'center'; g.textBaseline = 'top'; g.fillText(b.label, cx, A.Y1 + ph * 0.025);
+      if (t < b.keys[0][0]) return; const v = keyVal(b.keys, t) * Math.min(1, (t - b.keys[0][0]) / 0.5 + 0.0001), y = py(v);
+      rrect(g, cx - bw / 2, y, bw, A.Y1 - y, ph * 0.012); g.fillStyle = b.col; g.fill();
+      let tx = null; (b.text || []).forEach(q => { if (t >= q[0]) tx = q; }); if (tx) { const u = Math.min(1, (t - tx[0]) / 0.25); pill(g, cx, y - ph * 0.075, tx[1], '#17252B', ph, 0.7 + 0.3 * Math.sin(u * 1.57)); }
+    });
   };
   const pad = (x0, z0, x1, z1, col) => groundPoly([[x0, z0], [x1, z0], [x1, z1], [x0, z1]], 0.01, col, null, 0);
   const rndA = i => { const v = Math.sin(i * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
@@ -1993,8 +2019,8 @@ function drawSpriteChar(c, p, sc, t) {
 
     // ===== S1 (3.9 - 11.9) 11 days in November 2026: NVIDIA looks like it is falling apart after its founder steps down =====
     if (t >= 3.6 && t < 12.4) {
-      hqTower(0, -2, 0.62, 'NVIDIA'); const fl = easeInOut(seg(t, 4.2, 10.4));
-      [0, 1, 2, 3, 4, 5].forEach(i => Box(-12.5 + i * 1.3, 0, 4.6, 1.0, Math.max(0.05, (3.6 - (i % 3) * 0.4) * (1 - 0.78 * fl)), 1.2, fl > 0.05 ? '#D94E43' : '#2B8A6E'));
+      hqTower(0, -2, 0.62, 'NVIDIA');
+      Card(10.0, 6.6, 1.6, 8.8, 5.8, { kind: 'paint', rot: 0.02, t0: 4.2, t1: 0, paint: (g, pw, ph) => stepChart(g, pw, ph, [[4.2, 0.22], [10.6, 0.82, 6.2]], t, 'NVIDIA STOCK', [], { sub: 'the 11 days' }) }, t);
       if (t >= 4.0) Card(-7, 9.2, 1.6, 7.6, 3.0, { kind: 'counter', text: 'DAY ' + Math.min(11, 1 + Math.floor(10 * seg(t, 4.2, 10.4))) + ' OF 11', sub: 'November 2026', fg: '#F2D58F', accent: '#E2B857', t0: 4.0, t1: 0 }, t);
       Char('jensen', lerp(3.0, -5.0, easeInOut(seg(t, 10.83, 12.2))), 3.6, 2.7, Object.assign({ facing: -1, phase: 1 }, trk([[0, 'spr:cross'], [10.83, 'spr:walk']])), 3.6, 12.4, t);
       [8.2, 10.4].forEach((bx, i) => Char(i ? 'employee' : 'engineer', bx, 4.0 + i * 0.6, 2.2, Object.assign({ phase: i * 0.7 }, trk([[0, 'cross'], [6.9 + i * 0.3, 'panic']])), 3.6, 12.4, t));
@@ -2015,13 +2041,11 @@ function drawSpriteChar(c, p, sc, t) {
 
     // ===== S3 (29.5 - 40.4) except over the next two days: -6% Tuesday (on "6%"), -4% Wednesday (on "4%"), tens of billions gone =====
     if (t >= 29.4 && t < 41.0) {
-      Card(52, 7.4, 1.6, 9.6, 5.6, { kind: 'paint', paint: (g, pw, ph, u) => stepChart(g, pw, ph, [[29.8, 0.14], [33.7, 0.36, 0.28], [35.46, 0.5, 0.28], [38.4, 0.62, 1.4]], t, 'NVIDIA STOCK', [[33.75, '-6%', '#FF6B5E'], [35.5, '-4%', '#FF6B5E']]), t0: 29.6, t1: 0 }, t);
+      Card(52, 7.2, 1.6, 10.8, 7.2, { kind: 'paint', rot: -0.015, t0: 29.6, t1: 0, paint: (g, pw, ph) => stepChart(g, pw, ph, [[29.8, 0.16], [33.7, 0.36, 0.28], [35.46, 0.5, 0.28], [38.4, 0.64, 1.4]], t, 'NVIDIA STOCK', [[33.75, '-6%', '#D64545'], [35.5, '-4%', '#D64545']], { sub: 'Tuesday and Wednesday' }) }, t);
       const fall = 0.4 * easeOut(seg(t, 33.7, 34.0)) + 0.35 * easeOut(seg(t, 35.46, 35.76)) + 0.25 * easeInOut(seg(t, 38.4, 39.8));
-      [44.2, 57.6].forEach(bx0 => [0, 1, 2, 3, 4].forEach(i => Box(bx0 + i * 1.5, 0, 0.4, 1.1, Math.max(0.05, 3.2 * (1 - 0.8 * fall)), 1.4, fall > 0.02 ? '#D94E43' : '#2B8A6E')));
       Char('jensen', 52, 2.4, 2.5, Object.assign({ facing: 1, phase: 1 }, trk([[0, 'spr:cheer'], [33.7, 'spr:overwhelmed']])), 29.6, 41.0, t);
       Char('trader', 47.6, 2.6, 2.4, Object.assign({ facing: 1, phase: 0 }, trk([[0, 'cheer'], [33.7, 'panic']])), 29.8, 41.0, t);
       Char('trader', 56.6, 2.6, 2.4, Object.assign({ facing: -1, phase: 1 }, trk([[0, 'cheer'], [35.46, 'panic']])), 29.9, 41.0, t);
-      if (t >= 33.7 && t < 34.2) hit(52, 7.4, 3, 33.72, PAL.coral, 280); if (t >= 35.46 && t < 36.0) hit(52, 7.4, 3, 35.5, PAL.coral, 280);
       if (t >= 38.39) Card(52, 3.0, 2.6, 8.6, 2.2, { kind: 'counter', text: 'TENS OF BILLIONS GONE', sub: 'in gains', fg: '#FF9A8F', accent: '#D94E43', t0: 38.39, t1: 0 }, t);
     }
 

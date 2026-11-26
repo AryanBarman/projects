@@ -1,0 +1,291 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 3 part 2",
+ "out": "act3_part2_the_price_of_borrowing-3d.html",
+ "title": "Act 3 Part 2 - The Price of Borrowing (3D)",
+ "dur": 77.9,
+ "rail": [
+  0,
+  5.0,
+  18.2,
+  26.0,
+  35.1,
+  45.2,
+  52.1,
+  62.0,
+  68.9,
+  77.9
+ ],
+ "stn": [
+  [
+   -13,
+   -26
+  ],
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   91,
+   78
+  ],
+  [
+   117,
+   104
+  ],
+  [
+   143,
+   130
+  ],
+  [
+   169,
+   156
+  ],
+  [
+   1000000000,
+   182
+  ]
+ ],
+ "layout": [
+  [
+   -40,
+   20
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ],
+  [
+   62,
+   -100
+  ],
+  [
+   18,
+   -84
+  ],
+  [
+   -22,
+   -110
+  ],
+  [
+   -60,
+   -90
+  ]
+ ],
+ "fixes": {},
+ "keycol": {
+  "debt": "coral",
+  "dumped": "coral",
+  "record": "coral",
+  "cents": "coral",
+  "2031": "amberHi",
+  "18": "coral",
+  "percent": "coral",
+  "safe": "sageHi",
+  "government": "cyanHi",
+  "worried": "coral",
+  "$5": "amberHi",
+  "2027": "amberHi",
+  "borrowing": "coral",
+  "buying": "amberHi",
+  "$118": "coral",
+  "guarantees": "coral",
+  "inflation": "amberHi",
+  "expensive": "coral"
+ },
+ "mood": [
+  [
+   0,
+   "day"
+  ],
+  [
+   5.0,
+   "tense"
+  ],
+  [
+   18.2,
+   "day"
+  ],
+  [
+   26.0,
+   "warm"
+  ],
+  [
+   35.1,
+   "tense"
+  ],
+  [
+   45.2,
+   "day"
+  ],
+  [
+   52.1,
+   "tense"
+  ],
+  [
+   62.0,
+   "dusk"
+  ],
+  [
+   68.9,
+   "tense"
+  ]
+ ],
+ "sets": [
+  "office",
+  "market",
+  "office",
+  "plaza",
+  "campus",
+  "office",
+  "plaza",
+  "market",
+  "office"
+ ],
+ "ledger": [
+  [
+   "0.00-4.92",
+   "Now, look at what happened to CoreWeave's loans right after Jensen Huang returned.",
+   "scripted narration",
+   "Episode script (Act 3 part 2 SRT)",
+   ""
+  ],
+  [
+   "5.60-25.44",
+   "On Monday, CoreWeave's debt prices rose alongside NVIDIA's rally. By Tuesday and Wednesday, lenders dumped CoreWeave's debt down to record lows, around 75 to 77 cents on the dollar, which pushed the interest rate on its 2031 loans up to nearly 18 percent.",
+   "scripted narration",
+   "Episode script (Act 3 part 2 SRT)",
+   ""
+  ],
+  [
+   "26.26-30.94",
+   "Stop and think about what an 18 percent interest rate means in real life.",
+   "scripted narration",
+   "Episode script (Act 3 part 2 SRT)",
+   ""
+  ],
+  [
+   "31.90-32.38",
+   "Safe U.S.",
+   "scripted narration",
+   "Episode script (Act 3 part 2 SRT)",
+   ""
+  ],
+  [
+   "32.52-34.34",
+   "government loans pay around 4 percent.",
+   "scripted narration",
+   "Episode script (Act 3 part 2 SRT)",
+   ""
+  ],
+  [
+   "35.06-51.66",
+   "When big lenders demand nearly 18 percent interest to lend money to an AI company, even with NVIDIA backing it, they are shouting that they're worried about getting paid back. CoreWeave expects to need up to $5 billion in fresh cash through 2027.",
+   "scripted narration",
+   "Episode script (Act 3 part 2 SRT)",
+   ""
+  ],
+  [
+   "52.06-61.46",
+   "If borrowing money costs nearly 18 percent, how do debt-heavy AI companies keep buying tens of billions of dollars in NVIDIA chips?",
+   "scripted narration",
+   "Episode script (Act 3 part 2 SRT)",
+   ""
+  ],
+  [
+   "62.12-68.74",
+   "And what happens to NVIDIA's $118 billion in guarantees if a big partner runs short on cash?",
+   "scripted narration",
+   "Episode script (Act 3 part 2 SRT)",
+   ""
+  ],
+  [
+   "69.68-77.26",
+   "And right as lenders started asking that question, the government released an inflation report that made borrowing even more expensive.",
+   "scripted narration",
+   "Episode script (Act 3 part 2 SRT)",
+   ""
+  ]
+ ],
+ "cues": [
+  [
+   5.81,
+   "whoosh",
+   "Rally"
+  ],
+  [
+   12.46,
+   "mega_boom",
+   "Lenders dump"
+  ],
+  [
+   22.4,
+   "stamp_impact",
+   "Rate up"
+  ],
+  [
+   26.7,
+   "stamp_impact",
+   "18 percent"
+  ],
+  [
+   33.83,
+   "stamp_impact",
+   "4 percent"
+  ],
+  [
+   43.1,
+   "stamp_impact",
+   "Shouting"
+  ],
+  [
+   48.44,
+   "stamp_impact",
+   "$5 billion"
+  ],
+  [
+   58.38,
+   "stamp_impact",
+   "Buying"
+  ],
+  [
+   65.86,
+   "stamp_impact",
+   "$118 billion"
+  ],
+  [
+   67.84,
+   "mega_boom",
+   "Short on cash"
+  ],
+  [
+   74.12,
+   "stamp_impact",
+   "Inflation report"
+  ]
+ ],
+ "faces": [],
+ "dress": []
+}

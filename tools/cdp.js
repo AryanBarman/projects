@@ -2,6 +2,7 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 const S = process.env.SCR;
+try { for (const d of require('fs').readdirSync(S)) if (/^prof\d+$/.test(d)) require('fs').rmSync(S + '/' + d, { recursive: true, force: true }); } catch (e) {}   // remove the headless-Chrome profiles of earlier runs (they are ~30 MB each; they filled the disk once)
 const file = process.argv[2], times = process.argv[3].split(','), prefix = process.argv[4] || 'e';
 const port = 9300 + Math.floor(Math.random() * 500);
 const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', [

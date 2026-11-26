@@ -2,6 +2,7 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 const S = process.env.SCR, file = process.argv[2], expr = fs.readFileSync(process.argv[3], 'utf8');
+try { for (const d of fs.readdirSync(S)) if (/^prof[0-9]+$/.test(d)) fs.rmSync(S + '/' + d, { recursive: true, force: true }); } catch (e) {}   // remove headless-Chrome profiles of earlier runs
 const port = 9300 + Math.floor(Math.random() * 500);
 const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--hide-scrollbars', '--window-size=1920,1080', `--remote-debugging-port=${port}`, '--user-data-dir=' + S + '/prof' + port, 'about:blank'], { stdio: 'ignore' });
 const sleep = ms => new Promise(r => setTimeout(r, ms));

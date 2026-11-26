@@ -1,0 +1,178 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 7",
+ "out": "act7_the_verdict-3d.html",
+ "title": "Act 7 - The Verdict (3D)",
+ "dur": 34.1,
+ "rail": [
+  0,
+  2.0,
+  12.0,
+  27.6,
+  34.1
+ ],
+ "stn": [
+  [
+   -13,
+   -26
+  ],
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   1000000000,
+   52
+  ]
+ ],
+ "layout": [
+  [
+   -40,
+   20
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ]
+ ],
+ "fixes": {},
+ "keycol": {
+  "jensen": "sageHi",
+  "relief": "sageHi",
+  "rally": "sageHi",
+  "founder": "amberHi",
+  "disaster": "coral",
+  "captain": "amberHi",
+  "storm": "coral",
+  "december": "amberHi",
+  "washington": "coral",
+  "coreweave": "cyanHi",
+  "federal": "cyanHi",
+  "expensive": "coral",
+  "tighter": "coral",
+  "boom": "amberHi",
+  "growing": "sageHi"
+ },
+ "mood": [
+  [
+   0,
+   "dusk"
+  ],
+  [
+   2.0,
+   "warm"
+  ],
+  [
+   12.0,
+   "night"
+  ],
+  [
+   27.6,
+   "dusk"
+  ]
+ ],
+ "sets": [
+  "market",
+  "plaza",
+  "plaza",
+  "office"
+ ],
+ "ledger": [
+  [
+   "0.02-2.08",
+   "Let's come back to where we started.",
+   "scripted narration",
+   "Episode script (Act 7 SRT)",
+   ""
+  ],
+  [
+   "2.98-12.16",
+   "Bringing Jensen Huang back gave NVIDIA a huge 31 .5% relief rally on Monday, because losing its founder would have been a disaster.",
+   "scripted narration",
+   "Episode script (Act 7 SRT)",
+   ""
+  ],
+  [
+   "12.96-16.96",
+   "But putting the captain back at the wheel doesn't stop the storm outside the ship.",
+   "scripted narration",
+   "Episode script (Act 7 SRT)",
+   ""
+  ],
+  [
+   "18.00-33.62",
+   "Between Jensen Huang's December 1 and December 3 questioning in Washington, CoreWeave's loan troubles, and the Federal Reserve's December 8 rate decision, the next two weeks will show whether the AI boom can keep growing when money gets expensive and rules get tighter.",
+   "scripted narration",
+   "Episode script (Act 7 SRT)",
+   ""
+  ]
+ ],
+ "cues": [
+  [
+   2.98,
+   "whoosh",
+   "Jensen back"
+  ],
+  [
+   7.12,
+   "stamp_impact",
+   "Rally"
+  ],
+  [
+   11.68,
+   "mega_boom",
+   "Disaster"
+  ],
+  [
+   15.9,
+   "mega_boom",
+   "Storm"
+  ],
+  [
+   19.24,
+   "stamp_impact",
+   "Dec 1 and 3"
+  ],
+  [
+   22.16,
+   "stamp_impact",
+   "CoreWeave"
+  ],
+  [
+   24.56,
+   "stamp_impact",
+   "Fed"
+  ],
+  [
+   29.6,
+   "stamp_impact",
+   "The boom?"
+  ],
+  [
+   31.91,
+   "stamp_impact",
+   "Expensive"
+  ],
+  [
+   33.21,
+   "stamp_impact",
+   "Tighter"
+  ]
+ ],
+ "faces": [],
+ "dress": []
+}

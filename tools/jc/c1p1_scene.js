@@ -26,13 +26,11 @@
 
     // ===== S2 (7.2 - 14.6) Monday's 31.5% jump looked like proof, but by Wednesday tens of billions had already vanished =====
     if (t >= 7.1 && t < 15.1) {
-      Card(26, 7.4, 1.6, 9.6, 5.6, { kind: 'paint', paint: (g, pw, ph, u) => stepChart(g, pw, ph, [[7.3, 0.74], [8.3, 0.18, 1.2], [11.0, 0.5, 0.3], [13.8, 0.72, 0.5]], t, 'NVIDIA STOCK', [[9.4, '+31.5%']]), t0: 7.4, t1: 0 }, t);
-      const rise = easeOut(seg(t, 8.3, 9.5)), fall = 0.55 * easeOut(seg(t, 11.0, 11.35)) + 0.45 * easeOut(seg(t, 13.8, 14.3));
-      [19.2, 32.6].forEach(bx0 => [0, 1, 2, 3, 4].forEach(i => { const base = 2.6 + (i % 3) * 0.6; Box(bx0 + i * 1.5, 0, 0.4, 1.1, Math.max(0.05, base * (0.35 + 0.65 * rise) * (1 - 0.8 * fall)), 1.4, t > 11.0 ? '#D94E43' : '#2B8A6E'); }));
+      Card(26, 7.2, 1.6, 10.8, 7.2, { kind: 'paint', rot: -0.02, t0: 7.4, t1: 0, paint: (g, pw, ph) => stepChart(g, pw, ph, [[7.3, 0.76], [8.3, 0.2, 1.2], [11.0, 0.52, 0.3], [13.8, 0.72, 0.5]], t, 'NVIDIA STOCK', [[9.4, '+31.5%']], { sub: 'Monday jump, Wednesday slide' }) }, t);
       Char('trader', 22.4, 3.8, 2.4, Object.assign({ facing: 1, phase: 0 }, trk([[0, 'cheer'], [11.0, 'panic']])), 7.4, 15.1, t);
       Char('trader', 30.2, 3.8, 2.4, Object.assign({ facing: -1, phase: 1 }, trk([[0, 'cheer'], [11.1, 'panic']])), 7.5, 15.1, t);
       Char('jensen', 26, 4.6, 2.3, Object.assign({ facing: 1, phase: 2 }, trk([[0, 'spr:explain'], [11.0, 'spr:think']])), 7.6, 15.1, t);
-      if (t >= 11.0 && t < 11.5) hit(26, 8.6, 3, 11.02, PAL.coral, 260); if (t >= 13.83 && t < 14.3) hit(26, 8.6, 3, 13.88, PAL.coral, 240);
+      
     }
 
     // ===== S3 (15.3 - 24.6) rehiring a CEO can't fix a partner's debt crisis, a December rate hike, or a government investigation =====

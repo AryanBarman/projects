@@ -1,0 +1,229 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 5 part 2",
+ "out": "act5_part2_the_schedule-3d.html",
+ "title": "Act 5 Part 2 - The Schedule (3D)",
+ "dur": 50.9,
+ "rail": [
+  0,
+  1.6,
+  19.4,
+  25.6,
+  35.0,
+  38.1,
+  45.0,
+  50.9
+ ],
+ "stn": [
+  [
+   -13,
+   -26
+  ],
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   91,
+   78
+  ],
+  [
+   117,
+   104
+  ],
+  [
+   1000000000,
+   130
+  ]
+ ],
+ "layout": [
+  [
+   -40,
+   20
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ],
+  [
+   62,
+   -100
+  ],
+  [
+   18,
+   -84
+  ]
+ ],
+ "fixes": {},
+ "keycol": {
+  "schedule": "amberHi",
+  "december": "amberHi",
+  "closed": "coral",
+  "questioning": "coral",
+  "lawyer": "cyanHi",
+  "live": "coral",
+  "senate": "cyanHi",
+  "export": "amberHi",
+  "lead": "sageHi",
+  "china": "coral",
+  "military": "coral",
+  "sec": "coral",
+  "accounting": "coral",
+  "independent": "amberHi",
+  "reversing": "coral",
+  "investors": "amberHi",
+  "chase": "coral"
+ },
+ "mood": [
+  [
+   0,
+   "dusk"
+  ],
+  [
+   1.6,
+   "tense"
+  ],
+  [
+   19.4,
+   "day"
+  ],
+  [
+   25.6,
+   "tense"
+  ],
+  [
+   35.0,
+   "dusk"
+  ],
+  [
+   38.1,
+   "tense"
+  ],
+  [
+   45.0,
+   "day"
+  ]
+ ],
+ "sets": [
+  "plaza",
+  "office",
+  "office",
+  "plaza",
+  "office",
+  "office",
+  "market"
+ ],
+ "ledger": [
+  [
+   "0.00-12.72",
+   "Look at Jensen Huang's schedule for the first week of December. On December 1, Huang has to sit for a closed-door questioning session with those three House committees, followed by NVIDIA's top lawyer on December 2.",
+   "scripted narration",
+   "Episode script (Act 5 part 2 SRT)",
+   ""
+  ],
+  [
+   "13.48-21.88",
+   "Then, on December 3, Huang will appear in a live-streamed public hearing before the Senate Banking Committee, focused directly on U.S.",
+   "scripted narration",
+   "Episode script (Act 5 part 2 SRT)",
+   ""
+  ],
+  [
+   "22.06-24.92",
+   "export rules and protecting America's AI lead.",
+   "scripted narration",
+   "Episode script (Act 5 part 2 SRT)",
+   ""
+  ],
+  [
+   "25.84-37.30",
+   "Lawmakers from both parties want to know how advanced NVIDIA chips allegedly ended up in China, including for military use, on top of a reported SEC review of NVIDIA's accounting.",
+   "scripted narration",
+   "Episode script (Act 5 part 2 SRT)",
+   ""
+  ],
+  [
+   "38.28-50.52",
+   "Add in questions about whether NVIDIA's board is truly independent after reversing its own decision in just 11 days, and you can see why big investors refuse to chase Monday's 31.5% jump.",
+   "scripted narration",
+   "Episode script (Act 5 part 2 SRT)",
+   ""
+  ]
+ ],
+ "cues": [
+  [
+   4.7,
+   "stamp_impact",
+   "Dec 1"
+  ],
+  [
+   12.56,
+   "stamp_impact",
+   "Dec 2"
+  ],
+  [
+   14.72,
+   "stamp_impact",
+   "Dec 3"
+  ],
+  [
+   23.0,
+   "stamp_impact",
+   "Protects"
+  ],
+  [
+   31.21,
+   "mega_boom",
+   "China"
+  ],
+  [
+   32.95,
+   "stamp_impact",
+   "Military"
+  ],
+  [
+   36.55,
+   "stamp_impact",
+   "SEC review"
+  ],
+  [
+   42.03,
+   "stamp_impact",
+   "Reversed"
+  ],
+  [
+   44.0,
+   "stamp_impact",
+   "11 days"
+  ],
+  [
+   49.4,
+   "stamp_impact",
+   "31.5"
+  ]
+ ],
+ "faces": [],
+ "dress": []
+}

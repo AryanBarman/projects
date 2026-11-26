@@ -1,0 +1,215 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 2 part 1",
+ "out": "act2_part1_the_basic_math-3d.html",
+ "title": "Act 2 Part 1 - The Basic Math (3D)",
+ "dur": 45.3,
+ "rail": [
+  0,
+  5.4,
+  15.5,
+  24.0,
+  36.0,
+  45.3
+ ],
+ "stn": [
+  [
+   -13,
+   -26
+  ],
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   1000000000,
+   78
+  ]
+ ],
+ "layout": [
+  [
+   -40,
+   20
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ]
+ ],
+ "fixes": {},
+ "keycol": {
+  "math": "cyanHi",
+  "october": "amberHi",
+  "high": "amberHi",
+  "exit": "coral",
+  "fallen": "coral",
+  "47%": "coral",
+  "half": "coral",
+  "31.5%": "sageHi",
+  "30%": "coral",
+  "record": "amberHi",
+  "$100": "amberHi",
+  "$53": "coral",
+  "31%": "sageHi",
+  "$70": "sageHi",
+  "below": "coral",
+  "sales": "sageHi",
+  "profit": "sageHi",
+  "beaten": "sageHi",
+  "expectations": "sageHi",
+  "stay": "coral",
+  "up": "coral"
+ },
+ "mood": [
+  [
+   0,
+   "day"
+  ],
+  [
+   5.4,
+   "tense"
+  ],
+  [
+   15.5,
+   "day"
+  ],
+  [
+   24.0,
+   "warm"
+  ],
+  [
+   36.0,
+   "dusk"
+  ]
+ ],
+ "sets": [
+  "office",
+  "office",
+  "market",
+  "office",
+  "plaza"
+ ],
+ "ledger": [
+  [
+   "0.00-5.40",
+   "Before we look at the hidden problems, look at the basic math behind Monday's big jump.",
+   "scripted narration",
+   "Episode script (Act 2 part 1 SRT)",
+   ""
+  ],
+  [
+   "6.04-15.14",
+   "Between its October high and Jensen Huang's exit in November, NVIDIA's stock had fallen more than 47%, nearly cut in half.",
+   "scripted narration",
+   "Episode script (Act 2 part 1 SRT)",
+   ""
+  ],
+  [
+   "16.00-23.82",
+   "Even after jumping 31.5% on Monday, the stock was still sitting more than 30% below its record high.",
+   "scripted narration",
+   "Episode script (Act 2 part 1 SRT)",
+   ""
+  ],
+  [
+   "24.38-25.44",
+   "Here is why that matters.",
+   "scripted narration",
+   "Episode script (Act 2 part 1 SRT)",
+   ""
+  ],
+  [
+   "25.44-44.86",
+   "If a $100 stock drops down to $53, a 31% bounce only brings it back to about $70, you are still way below where you started. Even worse, NVIDIA's latest sales and profit numbers had already beaten expectations, yet the stock still couldn't stay up.",
+   "scripted narration",
+   "Episode script (Act 2 part 1 SRT)",
+   ""
+  ]
+ ],
+ "cues": [
+  [
+   3.63,
+   "stamp_impact",
+   "The math"
+  ],
+  [
+   5.4,
+   "whoosh",
+   "October high"
+  ],
+  [
+   13.16,
+   "stamp_impact",
+   "Minus 47"
+  ],
+  [
+   14.67,
+   "stamp_impact",
+   "Cut in half"
+  ],
+  [
+   17.79,
+   "whoosh",
+   "Plus 31.5"
+  ],
+  [
+   22.17,
+   "stamp_impact",
+   "Minus 30"
+  ],
+  [
+   25.97,
+   "stamp_impact",
+   "$100"
+  ],
+  [
+   28.61,
+   "stamp_impact",
+   "$53"
+  ],
+  [
+   33.11,
+   "stamp_impact",
+   "$70"
+  ],
+  [
+   34.1,
+   "stamp_impact",
+   "Still below"
+  ],
+  [
+   38.8,
+   "stamp_impact",
+   "Sales"
+  ],
+  [
+   43.87,
+   "mega_boom",
+   "Still fell"
+  ]
+ ],
+ "faces": [],
+ "dress": []
+}

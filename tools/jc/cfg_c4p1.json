@@ -1,0 +1,196 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 4 part 1",
+ "out": "act4_part1_the_promise_hit-3d.html",
+ "title": "Act 4 Part 1 - The Promise Takes a Hit (3D)",
+ "dur": 41.7,
+ "rail": [
+  0,
+  1.8,
+  11.4,
+  18.0,
+  35.1,
+  41.7
+ ],
+ "stn": [
+  [
+   -13,
+   -26
+  ],
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   1000000000,
+   78
+  ]
+ ],
+ "layout": [
+  [
+   -40,
+   20
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ]
+ ],
+ "fixes": {},
+ "keycol": {
+  "promise": "amberHi",
+  "falling": "sageHi",
+  "cheap": "sageHi",
+  "billions": "amberHi",
+  "data": "cyanHi",
+  "november": "amberHi",
+  "hit": "coral",
+  "inflation": "coral",
+  "3.8": "coral",
+  "core": "amberHi",
+  "3.3": "amberHi",
+  "highest": "coral",
+  "4.3": "sageHi",
+  "survey": "cyanHi",
+  "climbing": "coral"
+ },
+ "mood": [
+  [
+   0,
+   "tense"
+  ],
+  [
+   1.8,
+   "day"
+  ],
+  [
+   11.4,
+   "dusk"
+  ],
+  [
+   18.0,
+   "tense"
+  ],
+  [
+   35.1,
+   "dusk"
+  ]
+ ],
+ "sets": [
+  "office",
+  "campus",
+  "office",
+  "market",
+  "plaza"
+ ],
+ "ledger": [
+  [
+   "0.00-11.06",
+   "Over the last three years, the AI boom ran on one big promise — that interest rates would keep falling, making it cheap to borrow billions of dollars for giant data centers.",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   ""
+  ],
+  [
+   "11.88-17.62",
+   "On Wednesday, November 25, 2026, that promise took a direct hit.",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   ""
+  ],
+  [
+   "18.44-19.70",
+   "New numbers from the U.S.",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   ""
+  ],
+  [
+   "19.90-31.66",
+   "government showed overall inflation jumped to 3.8 percent in October, while core inflation hit 3.3 percent, its highest level in nearly three years, and the U.S.",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   ""
+  ],
+  [
+   "32.06-34.84",
+   "economy grew at a fast 4.3 percent pace.",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   ""
+  ],
+  [
+   "35.70-41.22",
+   "At the same time, a Federal Reserve survey warned that businesses expect prices to keep climbing.",
+   "scripted narration",
+   "Episode script (Act 4 part 1 SRT)",
+   ""
+  ]
+ ],
+ "cues": [
+  [
+   0.9,
+   "whoosh",
+   "Back three years"
+  ],
+  [
+   8.41,
+   "stamp_impact",
+   "Cheap billions"
+  ],
+  [
+   14.07,
+   "stamp_impact",
+   "Nov 25"
+  ],
+  [
+   17.3,
+   "mega_boom",
+   "The hit"
+  ],
+  [
+   22.93,
+   "stamp_impact",
+   "3.8"
+  ],
+  [
+   27.02,
+   "stamp_impact",
+   "3.3"
+  ],
+  [
+   33.62,
+   "stamp_impact",
+   "4.3"
+  ],
+  [
+   40.63,
+   "stamp_impact",
+   "Climbing"
+  ]
+ ],
+ "faces": [],
+ "dress": []
+}

@@ -1,0 +1,217 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 6",
+ "out": "act6_the_money_system-3d.html",
+ "title": "Act 6 - The Money System (3D)",
+ "dur": 54.4,
+ "rail": [
+  0,
+  1.8,
+  12.0,
+  18.4,
+  27.6,
+  45.6,
+  54.4
+ ],
+ "stn": [
+  [
+   -13,
+   -26
+  ],
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   65,
+   52
+  ],
+  [
+   91,
+   78
+  ],
+  [
+   1000000000,
+   104
+  ]
+ ],
+ "layout": [
+  [
+   -40,
+   20
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ],
+  [
+   104,
+   -76
+  ],
+  [
+   62,
+   -100
+  ]
+ ],
+ "fixes": {},
+ "keycol": {
+  "demand": "sageHi",
+  "massive": "sageHi",
+  "sales": "sageHi",
+  "profits": "sageHi",
+  "technology": "sageHi",
+  "changed": "amberHi",
+  "money": "amberHi",
+  "system": "amberHi",
+  "investors": "cyanHi",
+  "three": "coral",
+  "roadblocks": "coral",
+  "lenders": "coral",
+  "central": "coral",
+  "congress": "coral",
+  "priced": "amberHi",
+  "crack": "coral",
+  "selling": "coral"
+ },
+ "mood": [
+  [
+   0,
+   "day"
+  ],
+  [
+   1.8,
+   "day"
+  ],
+  [
+   12.0,
+   "warm"
+  ],
+  [
+   18.4,
+   "day"
+  ],
+  [
+   27.6,
+   "tense"
+  ],
+  [
+   45.6,
+   "dusk"
+  ]
+ ],
+ "sets": [
+  "market",
+  "campus",
+  "office",
+  "office",
+  "plaza",
+  "market"
+ ],
+ "ledger": [
+  [
+   "0.18-12.00",
+   "Step back from the daily ups and downs on the stock chart and look at what is really happening here. Inside NVIDIA's labs and factories, demand for AI chips is still massive.",
+   "scripted narration",
+   "Episode script (Act 6 SRT)",
+   ""
+  ],
+  [
+   "12.64-21.98",
+   "NVIDIA's sales, profits, and technology lead haven't disappeared overnight. What has changed is the money system supporting the AI boom.",
+   "scripted narration",
+   "Episode script (Act 6 SRT)",
+   ""
+  ],
+  [
+   "22.72-27.26",
+   "For two years, investors treated NVIDIA as if nothing could slow it down.",
+   "scripted narration",
+   "Episode script (Act 6 SRT)",
+   ""
+  ],
+  [
+   "28.02-32.70",
+   "Now, three real-world roadblocks are hitting at the exact same time.",
+   "scripted narration",
+   "Episode script (Act 6 SRT)",
+   ""
+  ],
+  [
+   "33.36-45.38",
+   "Lenders charging nearly 18% interest to fund leveraged AI buyers, a central bank getting ready to raise rates on December 8, and Congress putting NVIDIA's chip exports onto a public spotlight.",
+   "scripted narration",
+   "Episode script (Act 6 SRT)",
+   ""
+  ],
+  [
+   "46.18-53.92",
+   "When a stock is priced as if nothing can ever go wrong, even a small crack in credit or government rules triggers fast selling.",
+   "scripted narration",
+   "Episode script (Act 6 SRT)",
+   ""
+  ]
+ ],
+ "cues": [
+  [
+   0.4,
+   "whoosh",
+   "Step back"
+  ],
+  [
+   9.44,
+   "stamp_impact",
+   "Demand"
+  ],
+  [
+   13.26,
+   "stamp_impact",
+   "Strengths"
+  ],
+  [
+   19.62,
+   "stamp_impact",
+   "Money system"
+  ],
+  [
+   33.36,
+   "stamp_impact",
+   "Roadblock one"
+  ],
+  [
+   37.75,
+   "stamp_impact",
+   "Roadblock two"
+  ],
+  [
+   41.55,
+   "stamp_impact",
+   "Roadblock three"
+  ],
+  [
+   50.37,
+   "mega_boom",
+   "Crack"
+  ],
+  [
+   53.13,
+   "stamp_impact",
+   "Selling"
+  ]
+ ],
+ "faces": [],
+ "dress": []
+}

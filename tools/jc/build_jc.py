@@ -32,6 +32,8 @@ for b in re.split(r'\n\s*\n', raw.strip()):
     txt = re.sub(r'(\w) -(\w)', r'\1-\2', txt); txt = re.sub(r'\s+\.', '.', txt)
     for k, v in cfg.get('fixes', {}).items(): txt = txt.replace(k, v)
     for pat, rep in CORR: txt = re.sub(pat, rep, txt)   # spelling corrections shared with the series (corrections.json)
+    if subs and re.match(r'\.\d', txt) and re.search(r'\d$', subs[-1][2]):      # '... a huge 31' + '.5 % relief ...' -> keep the number whole: move it to the next caption
+        m0 = re.search(r'(\d+)$', subs[-1][2]); subs[-1] = (subs[-1][0], subs[-1][1], subs[-1][2][:m0.start()].rstrip()); txt = m0.group(1) + txt
     subs.append((tsec(a1), tsec(b1), txt))
 gen = {
  "  const SUBS = [": ("\n  ];\n", "  const SUBS = [\n" + ",\n".join("    { start: %.3f, end: %.3f, text: %s }" % (a, b, json.dumps(t)) for a, b, t in subs) + "\n  ];\n"),

@@ -1,0 +1,192 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 2 part 2",
+ "out": "act2_part2_the_first_warning-3d.html",
+ "title": "Act 2 Part 2 - The First Warning Sign (3D)",
+ "dur": 34.1,
+ "rail": [
+  0,
+  3.9,
+  13.7,
+  24.6,
+  34.1
+ ],
+ "stn": [
+  [
+   -13,
+   -26
+  ],
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   1000000000,
+   52
+  ]
+ ],
+ "layout": [
+  [
+   -40,
+   20
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ]
+ ],
+ "fixes": {},
+ "keycol": {
+  "trillions": "amberHi",
+  "chips": "amberHi",
+  "enough": "coral",
+  "investors": "amberHi",
+  "uncomfortable": "coral",
+  "tuesday": "coral",
+  "leadership": "sageHi",
+  "fixed": "sageHi",
+  "three": "coral",
+  "money": "coral",
+  "government": "cyanHi",
+  "first": "amberHi",
+  "warning": "coral",
+  "stock": "cyanHi",
+  "unpaid": "coral",
+  "bills": "coral",
+  "closest": "amberHi",
+  "partner": "amberHi"
+ },
+ "mood": [
+  [
+   0,
+   "dusk"
+  ],
+  [
+   3.9,
+   "tense"
+  ],
+  [
+   13.7,
+   "warm"
+  ],
+  [
+   19.44,
+   "tense"
+  ],
+  [
+   24.6,
+   "dusk"
+  ]
+ ],
+ "sets": [
+  "plaza",
+  "office",
+  "market",
+  "office"
+ ],
+ "ledger": [
+  [
+   "0.05-13.49",
+   "Why? Because when a company is already worth trillions of dollars, simply selling lots of chips isn't enough anymore. Big investors realized something uncomfortable on Tuesday morning.",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   ""
+  ],
+  [
+   "14.21-17.57",
+   "Bringing Jensen Huang back fixed NVIDIA's leadership problem.",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   ""
+  ],
+  [
+   "17.95-24.11",
+   "It did not fix the three huge money and government problems closing in on the AI industry.",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   ""
+  ],
+  [
+   "24.79-29.05",
+   "And the first warning sign didn't even show up on NVIDIA's stock chart.",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   ""
+  ],
+  [
+   "29.35-33.61",
+   "It showed up in the unpaid bills of NVIDIA's closest partner.",
+   "scripted narration",
+   "Episode script (Act 2 part 2 SRT)",
+   ""
+  ]
+ ],
+ "cues": [
+  [
+   3.73,
+   "stamp_impact",
+   "Trillions"
+  ],
+  [
+   7.87,
+   "stamp_impact",
+   "Not enough"
+  ],
+  [
+   12.47,
+   "stamp_impact",
+   "Tuesday morning"
+  ],
+  [
+   15.67,
+   "stamp_impact",
+   "Leadership fixed"
+  ],
+  [
+   19.44,
+   "stamp_impact",
+   "Debt"
+  ],
+  [
+   20.3,
+   "stamp_impact",
+   "Rates"
+  ],
+  [
+   21.09,
+   "stamp_impact",
+   "Government"
+  ],
+  [
+   28.64,
+   "whoosh",
+   "Calm chart"
+  ],
+  [
+   30.76,
+   "stamp_impact",
+   "Unpaid"
+  ],
+  [
+   32.53,
+   "mega_boom",
+   "Closest partner"
+  ]
+ ],
+ "faces": [],
+ "dress": []
+}

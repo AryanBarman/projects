@@ -1,0 +1,165 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 4 part 2",
+ "out": "act4_part2_the_rate_hike-3d.html",
+ "title": "Act 4 Part 2 - The Rate Hike (3D)",
+ "dur": 38.1,
+ "rail": [
+  0,
+  1.8,
+  15.0,
+  32.0,
+  38.1
+ ],
+ "stn": [
+  [
+   -13,
+   -26
+  ],
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   1000000000,
+   52
+  ]
+ ],
+ "layout": [
+  [
+   -40,
+   20
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ]
+ ],
+ "fixes": {},
+ "keycol": {
+  "nervous": "coral",
+  "cutting": "sageHi",
+  "raise": "coral",
+  "december": "amberHi",
+  "borrowing": "coral",
+  "expensive": "coral",
+  "squeezing": "coral",
+  "coreweave": "cyanHi",
+  "costs": "coral",
+  "attractive": "coral",
+  "overnight": "coral",
+  "urgent": "coral"
+ },
+ "mood": [
+  [
+   0,
+   "dusk"
+  ],
+  [
+   1.8,
+   "tense"
+  ],
+  [
+   15.0,
+   "day"
+  ],
+  [
+   32.0,
+   "dusk"
+  ]
+ ],
+ "sets": [
+  "plaza",
+  "market",
+  "office",
+  "office"
+ ],
+ "ledger": [
+  [
+   "0.00-14.28",
+   "Put those numbers together and you see why investors got nervous. Instead of cutting interest rates to help tech stocks, the Federal Reserve is now widely expected to raise interest rates when it meets on December 8 and 9.",
+   "scripted narration",
+   "Episode script (Act 4 part 2 SRT)",
+   ""
+  ],
+  [
+   "15.12-16.44",
+   "Think about what happens next.",
+   "scripted narration",
+   "Episode script (Act 4 part 2 SRT)",
+   ""
+  ],
+  [
+   "17.16-31.16",
+   "When the central bank raises rates, borrowing money gets more expensive for everyone, squeezing debt-heavy AI builders like CoreWeave, raising costs for big tech buyers, and making tech stocks less attractive overnight.",
+   "scripted narration",
+   "Episode script (Act 4 part 2 SRT)",
+   ""
+  ],
+  [
+   "32.38-37.58",
+   "Yet even higher interest rates weren't the most urgent problem waiting for Jensen Huang in December.",
+   "scripted narration",
+   "Episode script (Act 4 part 2 SRT)",
+   ""
+  ]
+ ],
+ "cues": [
+  [
+   3.53,
+   "stamp_impact",
+   "Nervous"
+  ],
+  [
+   8.6,
+   "stamp_impact",
+   "Cut crossed out"
+  ],
+  [
+   10.71,
+   "stamp_impact",
+   "Hike"
+  ],
+  [
+   13.36,
+   "stamp_impact",
+   "Dec 8"
+  ],
+  [
+   18.3,
+   "stamp_impact",
+   "Raises rates"
+  ],
+  [
+   22.74,
+   "stamp_impact",
+   "Squeezed"
+  ],
+  [
+   29.96,
+   "stamp_impact",
+   "Less attractive"
+  ],
+  [
+   35.16,
+   "mega_boom",
+   "Bigger problem"
+  ]
+ ],
+ "faces": [],
+ "dress": []
+}

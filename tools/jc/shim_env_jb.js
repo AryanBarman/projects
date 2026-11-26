@@ -219,7 +219,7 @@
   function Card(x, y, z, w, h, o, t) {
     window.__fitName = (o.text || o.head || o.tag || o.kind || 'card');
     const t0 = o.t0 || 0, u = t - t0; if (u < 0) return; const t1 = o.t1 || 0, out = t1 ? 1 - Math.max(0, Math.min(1, (t - t1) / 0.35)) : 1; if (out <= 0.01) return;
-    const kind = o.kind || 'tag', slam = kind === 'stamp', en = slam ? 1 + 0.9 * Math.pow(Math.max(0, 1 - u / 0.16), 2) : springOut(u / 0.45), sc = slam ? en : Math.max(0.05, en);
+    const kind = o.kind || 'tag', slam = kind === 'stamp', en = slam ? 1 + 0.35 * Math.pow(Math.max(0, 1 - u / 0.16), 2) : springOut(u / 0.45), sc = slam ? en : Math.max(0.05, en);
     const shake = slam && u < 0.3 ? Math.sin(u * 90) * 0.012 * (1 - u / 0.3) : 0, bob = kind === 'doc' ? Math.sin(u * 1.5) * 0.07 : 0, rot = ((o.rot !== undefined ? o.rot : slam ? -4 : 0) * Math.PI) / 180 + shake;
     const a = Math.min(1, u / (slam ? 0.08 : 0.15)) * out, pul = (o.pulse || []).reduce((q, pt) => t >= pt ? q + 0.12 * Math.exp(-(t - pt) * 9) : q, 0);
     const paint = (g, pw, ph) => {
