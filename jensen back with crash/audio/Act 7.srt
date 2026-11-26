@@ -1,0 +1,47 @@
+1
+00:00:00,020 --> 00:00:02,080
+Let's come back to where we started.
+
+2
+00:00:02,980 --> 00:00:06,780
+Bringing Jensen Huang back gave NVIDIA a huge 31
+
+3
+00:00:06,780 --> 00:00:09,160
+.5 % relief rally on Monday,
+
+4
+00:00:09,520 --> 00:00:12,160
+because losing its founder would have been a disaster.
+
+5
+00:00:12,960 --> 00:00:15,420
+But putting the captain back at the wheel doesn't
+
+6
+00:00:15,420 --> 00:00:16,960
+stop the storm outside the ship.
+
+7
+00:00:18,000 --> 00:00:21,300
+Between Jensen Huang's December 1 and December 3 questioning
+
+8
+00:00:21,300 --> 00:00:23,720
+in Washington, Corweave's loan troubles,
+
+9
+00:00:24,180 --> 00:00:26,680
+and the Federal Reserve's December 8 rate decision,
+
+10
+00:00:27,120 --> 00:00:29,600
+the next two weeks will show whether the AI
+
+11
+00:00:29,600 --> 00:00:32,760
+boom can keep growing when money gets expensive and
+
+12
+00:00:32,760 --> 00:00:33,620
+rules get tighter.

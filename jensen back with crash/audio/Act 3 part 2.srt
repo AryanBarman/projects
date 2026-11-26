@@ -1,0 +1,103 @@
+1
+00:00:00,000 --> 00:00:03,440
+Now, look at what happened to Corweave's loans right
+
+2
+00:00:03,440 --> 00:00:04,920
+after Jensen Huang returned.
+
+3
+00:00:05,600 --> 00:00:09,680
+On Monday, Corweave's debt prices rose alongside Nvidia's
+
+4
+00:00:09,680 --> 00:00:11,940
+rally. By Tuesday and Wednesday,
+
+5
+00:00:12,460 --> 00:00:15,740
+lenders dumped Corweave's debt down to record lows,
+
+6
+00:00:16,280 --> 00:00:19,200
+around 75 to 77 cents on the dollar,
+
+7
+00:00:19,520 --> 00:00:22,600
+which pushed the interest rate on its 2031 loans
+
+8
+00:00:22,600 --> 00:00:25,440
+up to nearly 18 percent.
+
+9
+00:00:26,260 --> 00:00:29,280
+Stop and think about what an 18 percent interest
+
+10
+00:00:29,280 --> 00:00:30,940
+rate means in real life.
+
+11
+00:00:31,900 --> 00:00:32,380
+Safe U.S.
+
+12
+00:00:32,520 --> 00:00:34,340
+government loans pay around 4 percent.
+
+13
+00:00:35,060 --> 00:00:38,640
+When big lenders demand nearly 18 percent interest to
+
+14
+00:00:38,640 --> 00:00:40,440
+lend money to an AI company,
+
+15
+00:00:40,920 --> 00:00:42,640
+even with Nvidia backing it,
+
+16
+00:00:42,820 --> 00:00:45,060
+they are shouting that they're worried about getting
+
+17
+00:00:45,060 --> 00:00:48,680
+paid back. Corweave expects to need up to $5
+
+18
+00:00:48,680 --> 00:00:51,660
+billion in fresh cash through 2027.
+
+19
+00:00:52,060 --> 00:00:55,460
+If borrowing money costs nearly 18 percent,
+
+20
+00:00:56,140 --> 00:00:59,120
+how do debt -heavy AI companies keep buying tens
+
+21
+00:00:59,120 --> 00:01:01,460
+of billions of dollars in Nvidia chips?
+
+22
+00:01:02,120 --> 00:01:05,860
+And what happens to Nvidia's $118 billion in
+
+23
+00:01:05,860 --> 00:01:08,740
+guarantees if a big partner runs short on cash?
+
+24
+00:01:09,680 --> 00:01:12,320
+And right as lenders started asking that question,
+
+25
+00:01:12,780 --> 00:01:15,460
+the government released an inflation report that made
+
+26
+00:01:15,460 --> 00:01:17,260
+borrowing even more expensive.

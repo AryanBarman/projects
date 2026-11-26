@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:02,860
+Look at Jensen Hwang's schedule for the first week
+
+2
+00:00:02,860 --> 00:00:04,920
+of December. On December 1,
+
+3
+00:00:05,480 --> 00:00:07,620
+Hwang has to sit for a closed -door questioning
+
+4
+00:00:07,620 --> 00:00:09,680
+session with those three House committees,
+
+5
+00:00:10,280 --> 00:00:12,720
+followed by NVIDIA's top lawyer on December 2.
+
+6
+00:00:13,480 --> 00:00:16,520
+Then, on December 3, Hwang will appear in a
+
+7
+00:00:16,520 --> 00:00:19,220
+live -streamed public hearing before the Senate Banking
+
+8
+00:00:19,220 --> 00:00:21,880
+Committee, focused directly on U.S.
+
+9
+00:00:22,060 --> 00:00:24,920
+export rules and protecting America's AI lead.
+
+10
+00:00:25,840 --> 00:00:28,980
+Lawmakers from both parties want to know how advanced
+
+11
+00:00:28,980 --> 00:00:31,660
+NVIDIA chips allegedly ended up in China,
+
+12
+00:00:32,080 --> 00:00:35,120
+including for military use, on top of a reported
+
+13
+00:00:35,120 --> 00:00:37,300
+SEC review of NVIDIA's accounting.
+
+14
+00:00:38,280 --> 00:00:41,020
+Add in questions about whether NVIDIA's board is truly
+
+15
+00:00:41,020 --> 00:00:44,000
+independent after reversing its own decision in just
+
+16
+00:00:44,000 --> 00:00:47,080
+11 days, and you can see why big investors
+
+17
+00:00:47,080 --> 00:00:50,520
+refuse to chase Monday's 31.5 % jump.

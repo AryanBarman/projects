@@ -1,0 +1,59 @@
+1
+00:00:00,000 --> 00:00:02,160
+Before we look at the hidden problems,
+
+2
+00:00:02,600 --> 00:00:05,400
+look at the basic math behind Monday's big jump.
+
+3
+00:00:06,040 --> 00:00:09,260
+Between its October high and Jensen Wong's exit in
+
+4
+00:00:09,260 --> 00:00:13,580
+November, NVIDIA's stock had fallen more than 47%,
+
+5
+00:00:13,580 --> 00:00:15,140
+nearly cut in half.
+
+6
+00:00:16,000 --> 00:00:19,400
+Even after jumping 31.5 % on Monday,
+
+7
+00:00:19,840 --> 00:00:22,420
+the stock was still sitting more than 30 %
+
+8
+00:00:22,420 --> 00:00:23,820
+below its record high.
+
+9
+00:00:24,380 --> 00:00:25,440
+Here is why that matters.
+
+10
+00:00:25,440 --> 00:00:29,140
+If a $100 stock drops down to $53,
+
+11
+00:00:29,820 --> 00:00:32,680
+a 31 % bounce only brings it back to
+
+12
+00:00:32,680 --> 00:00:35,920
+about $70, you are still way below where you
+
+13
+00:00:35,920 --> 00:00:39,580
+started. Even worse, NVIDIA's latest sales and
+
+14
+00:00:39,580 --> 00:00:42,340
+profit numbers had already beaten expectations,
+
+15
+00:00:42,760 --> 00:00:44,860
+yet the stock still couldn't stay up.
