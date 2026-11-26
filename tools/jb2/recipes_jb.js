@@ -59,11 +59,15 @@
                props: [['desk', -5.5, -0.8, 3.4], ['monitor', -6.2, -0.8, 1.5, 1.28], ['monitor', -5.0, -0.8, 1.5, 1.28], ['desk', 5.5, -0.8, 3.4], ['monitor', 4.8, -0.8, 1.5, 1.28], ['monitor', 6.0, -0.8, 1.5, 1.28], ['chair', -5.5, 1.1, 1.9], ['chair', 5.5, 1.1, 1.9], ['plant', -8.0, -3.0, 2.4], ['plant', 8.0, -3.0, 2.4], ['cabinet', 0.0, -3.3, 2.6]] },
     stage:   { floor: ['plank', '#7A4A24', '#5F3A1C'], wall: ['panel', '#7B2D8E', '#5A1F6B'], trim: '#E2B857', curtain: true, rug: '#C8232D', shaft: [0, -1.0],
                props: [['plant', -7.2, -2.6, 2.6], ['plant', 7.2, -2.6, 2.6], ['lamp', -8.0, -1.0, 3.8], ['lamp', 8.0, -1.0, 3.8], ['desk', 0.0, -1.2, 2.2], ['chair', -4.6, 1.5, 1.9], ['chair', 4.6, 1.5, 1.9]] },
+    boardroom: { floor: ['plank', '#5B3A24', '#47301D'], wall: ['panel', '#2C3E50', '#1F2D3B'], trim: '#C9A24B', door: [6.2, '#2A1D12'], rug: '#243447', glow: '#FFE9B0', shaft: [-1.5, -1.0],
+               props: [['plant', -7.8, -3.0, 2.6], ['plant', 7.8, -3.0, 2.6], ['lamp', -8.4, -2.6, 3.8], ['frame', -5.0, -3.85, 1.9, 3.8], ['frame', 3.0, -3.85, 1.9, 3.8], ['cabinet', -2.0, -3.3, 2.6]] },
     street:  { floor: ['asphalt', '#3A3F46', '#E8E8EE'], wall: ['plain', '#C4CCD6', '#9AA6B4'], trim: '#2A2E36', buildings: true,
                props: [['lamp', -6.0, -2.4, 3.8], ['lamp', 6.0, -2.4, 3.8], ['plant', -3.0, -2.6, 2.2], ['plant', 3.0, -2.6, 2.2], ['cabinet', 7.5, -2.0, 2.4]] }
   };
   function SetRoom(kind, x, z, t, t0) {
-    const R = ROOMS[kind]; if (!R || t < t0) return; const W = 9, D0 = -4.4, D1 = 7.2, wy = 8.6, wz = z + D0, wc = R.wall[1], dw = 2.6;
+    let R = ROOMS[kind]; if (!R || t < t0) return;
+    { const m = moodAt(t), f = Math.pow(Math.min(1, m.h), 1.3), tn = h => '#' + [1, 3, 5].map((i, c) => Math.round(Math.min(255, parseInt(h.substr(i, 2), 16) * Math.min(1.08, m.t[c] * 1.15) * f)).toString(16).padStart(2, '0')).join(''), dm = v => typeof v === 'string' && /^#[0-9a-fA-F]{6}$/.test(v) ? tn(v) : Array.isArray(v) ? v.map(dm) : (v && typeof v === 'object') ? Object.keys(v).reduce((o, k) => (o[k] = dm(v[k]), o), {}) : v; if (f < 0.97 || m.t[0] < 0.97) R = dm(R); }   // rooms follow the mood: night/dusk darken floor, walls and trim (hex colours only)
+ const W = 9, D0 = -4.4, D1 = 7.2, wy = 8.6, wz = z + D0, wc = R.wall[1], dw = 2.6;
     pad(x - W, z + D0, x + W, z + D1, R.floor[1]);
     if (R.floor[0] === 'tile') { for (let i = -W; i <= W; i += 1.8) Line3([x + i, 0.05, z + D0], [x + i, 0.05, z + D1], R.floor[2], 5, 1); for (let k = D0; k <= D1; k += 1.8) Line3([x - W, 0.05, z + k], [x + W, 0.05, z + k], R.floor[2], 5, 1); }
     else if (R.floor[0] === 'plank') { for (let k = D0; k <= D1; k += 0.9) Line3([x - W, 0.05, z + k], [x + W, 0.05, z + k], R.floor[2], 5, 1); }
@@ -87,3 +91,57 @@
   const HandWorld = (x, z, hW, tgt) => [x + tgt[0] * hW * 1.32, tgt[1] * hW * 1.32, z + 0.3];          // world position of an IK hand target [fx, fy] (figure heights from the body centre / feet)
   function Hold(model, x, z, hW, tgt, size, t, o) { const p = HandWorld(x, z, hW, tgt); return Model(model, p[0], p[1] - size * 0.25, p[2], size, o); }   // a model that stays in a character's hand
   function Throw(model, p0, p1, t0, t1, size, t, o) { if (t < t0 || t > t1 + 0.4) return; o = o || {}; const u = seg(t, t0, t1), h = o.h || 2.5; return Model(model, lerp(p0[0], p1[0], u), lerp(p0[1], p1[1], u) + 4 * h * u * (1 - u), lerp(p0[2], p1[2], u), size, { ry: t * 7, rz: t * 5 }); }   // a parabolic throw with spin
+  // =========================================================================
+  // JC PROPS (Jensen-crash series, reusable): immediate-mode, animated by t, built from Box/Cyl/Line3. Story: ["Stockline", ...] etc. (docs/JC_ACT1_STORYBOARD.md)
+  // =========================================================================
+  const vt = (pts, t) => { if (t <= pts[0][0]) return pts[0][1]; for (let i = 0; i < pts.length - 1; i++) if (t < pts[i + 1][0]) return lerp(pts[i][1], pts[i + 1][1], easeInOut(seg(t, pts[i][0], pts[i + 1][0]))); return pts[pts.length - 1][1]; };
+  // Stockline(x, y0, z, w, h, pts [[time, value 0..1]], t, {n bars, detach:[fromBar, tStart], tags:[[time,text]], board:false}): a BAR chart standing in the world (physical, green rising / red falling) with a line over the bar tops; bars from `detach[0]` fall off one after another from `detach[1]`.
+  function Stockline(x, y0, z, w, h, pts, t, o) {
+    o = o || {}; const N = o.n || 14, ta = pts[0][0], tb = pts[pts.length - 1][0], gap = w / N, bw = gap * 0.74, G = '#4FD6A0', R = '#E0524A';
+    if (t < ta - 0.05) return;
+    if (o.board !== false) { Box(x - w / 2 - 0.35, y0 - 0.35, z - 0.45, w + 0.7, h + 1.0, 0.3, '#0E1A22'); for (let k = 1; k < 4; k++) Line3([x - w / 2, y0 + h * k / 4, z - 0.28], [x + w / 2, y0 + h * k / 4, z - 0.28], '#2A3E4A', 3, 0.8); }
+    let pv = null, last = null; const dt = o.detach;
+    for (let i = 0; i < N; i++) {
+      const ti = ta + (tb - ta) * i / (N - 1); if (ti > t) break; const v = vt(pts, ti), up = pv === null ? true : v >= pv, bx = x - w / 2 + gap * i + gap / 2; pv = v;
+      let dy = 0, a = 1; if (dt && i >= dt[0] && t > dt[1] + (i - dt[0]) * 0.12) { const f = t - dt[1] - (i - dt[0]) * 0.12; dy = -(0.4 + 9 * f * f); a = 1 - seg(f, 0.55, 1.0); }
+      const bh = Math.max(0.2, v * h); if (a > 0.03) { Box(bx - bw / 2, y0 + dy, z, bw, bh, 0.9, up ? G : R, { emis: 0.35, a }); if (last && dy === 0) Line3([last[0], last[1], z + 0.5], [bx, y0 + bh, z + 0.5], '#F4F1EA', 7, 1); }
+      last = [bx, y0 + bh];
+    }
+    (o.tags || []).forEach(g => { if (last && t >= g[0] && t < g[0] + 2.4) Card(last[0], last[1] + 1.2, z + 0.9, 2.6, 0.9, { kind: 'counter', text: g[1], sub: '', fg: '#F4F1EA', accent: g[2] || '#4FD6A0', t0: g[0], t1: g[0] + 2.4, scramble: 0 }, t); });
+  }
+  // Panel(x, z, gauge 0..1, sag 0..1, lights 0 ok | 1 warn | 2 dark, t, {doc:true}): the financial control panel Jensen operates; the problems act ON it (gauge needle to red, sag = pulled down by chains, flicker).
+  function ControlPanel(x, z, g, sag, st, t, o) {
+    o = o || {}; const dy = -sag * 0.7, fl = st === 2 ? (Math.sin(t * 38) > 0.3 ? 1 : 0.15) : 1, on = st === 2 ? fl > 0.5 : true;
+    Box(x - 3, 0, z - 0.8, 6, 1.7 + dy, 1.6, '#2B3A4A'); Box(x - 3, 1.7 + dy, z - 0.8, 6, 0.5, 1.0, '#3A4D60'); Box(x - 3, 2.2 + dy, z - 0.9, 6, 3.4, 0.3, st === 2 ? '#0B141B' : '#16232E');
+    const cx = x - 1.5, cy = 3.7 + dy, r = 1.15; Box(cx - 1.4, cy - 1.4, z - 0.62, 2.8, 2.8, 0.08, '#F4EFE2', { lw: 0 }); Box(cx - 1.55, cy - 1.55, z - 0.7, 3.1, 3.1, 0.08, '#E2B857', { lw: 0 });
+    for (let i = 0; i <= 10; i++) { const a = lerp(Math.PI * 1.15, -Math.PI * 0.15, i / 10); Line3([cx + Math.cos(a) * r * 0.78, cy + Math.sin(a) * r * 0.78, z - 0.5], [cx + Math.cos(a) * r, cy + Math.sin(a) * r, z - 0.5], i >= 7 ? '#D94E43' : '#2A3E4A', 6, 1); }
+    const na = lerp(Math.PI * 1.15, -Math.PI * 0.15, g + (st === 2 ? 0 : 0.012 * Math.sin(t * 20))); Line3([cx, cy, z - 0.45], [cx + Math.cos(na) * r * 0.86, cy + Math.sin(na) * r * 0.86, z - 0.45], '#101010', 13, 1); Cyl(cx, cy - 0.15, z - 0.5, 0.17, 0.3, '#101010');
+    for (let i = 0; i < 5; i++) { const col = st === 0 ? '#4FD6A0' : st === 1 ? (i < 3 ? '#F2B84B' : '#D94E43') : '#D94E43'; Box(x + 0.4 + i * 0.5, 2.17 + dy, z - 0.2, 0.3, 0.2, 0.3, on ? col : '#33414C', { emis: on ? 0.8 : 0, lw: 0 }); }
+    for (let k = 0; k < 4; k++) Box(x + 0.4 + k * 0.62, 3.0 + dy, z - 0.62, 0.45, 1.7 * (0.3 + 0.6 * Math.abs(Math.sin(k * 1.7 + g * 3))), 0.08, on ? '#4FD6A0' : '#33414C', { emis: on ? 0.5 : 0, lw: 0 });
+    if (o.doc) { Box(x + 0.5, 2.25 + dy, z - 0.45, 2.2, 1.3, 0.05, '#F4F1EA', { lw: 0 }); for (let k = 0; k < 4; k++) Line3([x + 0.7, 3.25 + dy - k * 0.25, z - 0.4], [x + 2.5 - (k % 2) * 0.5, 3.25 + dy - k * 0.25, z - 0.4], '#9AA6B4', 4, 1); Box(x + 0.7, 2.45 + dy, z - 0.42, 1.5, 0.22, 0.02, '#FFE066', { emis: 0.6, lw: 0, a: 0.8 }); }
+  }
+  // Magnifier(x, y, z, r, t, a): a gold ring with a faint blue lens and handle (facing the camera); grow r to fill the frame for a transition.
+  function Magnifier(x, y, z, r, t, a) {
+    a = a === undefined ? 1 : a; const n = 28; for (let i = 0; i < n; i++) { const a0 = i / n * 6.2832, a1 = (i + 1) / n * 6.2832; Line3([x + Math.cos(a0) * r, y + Math.sin(a0) * r, z], [x + Math.cos(a1) * r, y + Math.sin(a1) * r, z], '#E2B857', 10, a); }
+    Box(x - r * 0.92, y - r * 0.92, z - 0.05, r * 1.84, r * 1.84, 0.04, '#BFE3FF', { a: 0.22 * a, lw: 0, emis: 0.2 }); Line3([x + r * 0.72, y - r * 0.72, z], [x + r * 1.7, y - r * 1.7, z], '#7A4A24', 16, a);
+  }
+  // CeoChair(x, z, {col}): leather high-back chair with a gold nameplate: the recurring anchor (empty in S4, filled in S5).
+  function CeoChair(x, z, o) {
+    o = o || {}; const c = o.col || '#7A1F2B', d = dk(c, 0.7); Cyl(x, 0, z, 0.75, 0.15, '#2A2E36'); Cyl(x, 0.15, z, 0.14, 1.15, '#4A4F58'); Box(x - 0.85, 1.3, z - 0.7, 1.7, 0.35, 1.5, c); Box(x - 0.85, 1.65, z - 0.9, 1.7, 2.5, 0.35, c); Box(x - 1.0, 1.65, z - 0.6, 0.18, 0.9, 1.1, d); Box(x + 0.82, 1.65, z - 0.6, 0.18, 0.9, 1.1, d);
+    Box(x - 0.45, 3.4, z - 0.55, 0.9, 0.3, 0.08, '#E2B857', { emis: 0.45 });
+  }
+  // Ledger(x, y, z, w, t, t0): an open ledger; rows write in from t0 and one row is highlighted (the "Monday morning" entry for the Act 1 -> Act 2 hand-off).
+  function Ledger(x, y, z, w, t, t0) {
+    window.__NC = 1; const h = w * 0.7; Box(x - w / 2 - 0.12, y - 0.1, z - 0.1, w + 0.24, h + 0.2, 0.16, '#5A2E18'); Box(x - w / 2, y, z, w / 2 - 0.03, h, 0.08, '#F4F1EA', { lw: 0 }); Box(x + 0.03, y, z, w / 2 - 0.03, h, 0.08, '#F4F1EA', { lw: 0 });
+    for (let i = 0; i < 9; i++) { const u = seg(t, t0 + i * 0.12, t0 + i * 0.12 + 0.4), yy = y + h - 0.35 - i * h / 10.5; if (u > 0) { Line3([x - w / 2 + 0.25, yy, z + 0.06], [lerp(x - w / 2 + 0.25, x - 0.25, u * (0.7 + 0.3 * ((i * 7) % 3) / 2)), yy, z + 0.06], '#2A3947', 4, 1); Line3([x + 0.25, yy, z + 0.06], [lerp(x + 0.25, x + w / 2 - 0.25, u * (0.6 + 0.4 * ((i * 5) % 3) / 2)), yy, z + 0.06], '#2A3947', 4, 1); } }
+    const hu = seg(t, t0 + 0.8, t0 + 1.3); if (hu > 0) Box(x - w / 2 + 0.12, y + h - 0.35 - 4 * h / 10.5 - 0.17, z + 0.07, (w - 0.24) * hu, 0.34, 0.03, '#FFD94A', { emis: 0.7, lw: 0, a: 0.85 });
+    window.__NC = 0;
+  }
+  // Crown(x, y, z, s): gold crown (5 spikes + gems). Calendar(x, y, z, days, t, t0, t1): 2-week wall calendar, one day crossed out per step between t0 and t1 (no digits needed).
+  function Crown(x, y, z, s) { Box(x - s * 0.9, y, z - s * 0.3, s * 1.8, s * 0.35, s * 0.6, '#D9A93E', { emis: 0.15 }); for (let i = 0; i < 5; i++) { Cyl(x - s * 0.7 + i * s * 0.35, y + s * 0.35, z, s * 0.09, s * (i % 2 ? 0.5 : 0.75), '#E2B857', { emis: 0.12 }); Box(x - s * 0.7 + i * s * 0.35 - s * 0.07, y + s * (i % 2 ? 0.85 : 1.1), z - s * 0.07, s * 0.14, s * 0.14, s * 0.14, i === 2 ? '#D94E43' : '#6EE7A8', { emis: 0.8, lw: 0 }); } }
+  function Calendar(x, y, z, days, t, t0, t1) {
+    const w = 3.6, h = 2.6; Box(x - w / 2, y, z, w, h, 0.12, '#F4F1EA'); Box(x - w / 2, y + h - 0.55, z + 0.01, w, 0.55, 0.14, '#D94E43');
+    for (let k = 0; k < 14; k++) { const cx = x - w / 2 + 0.3 + (k % 7) * (w - 0.6) / 6.2, cy = y + 0.25 + (1 - Math.floor(k / 7)) * 0.75; Box(cx - 0.17, cy, z + 0.08, 0.34, 0.5, 0.02, '#DDE3F0', { lw: 0 }); if (k < days && t > t0 + (t1 - t0) * k / Math.max(1, days)) { Line3([cx - 0.17, cy, z + 0.12], [cx + 0.17, cy + 0.5, z + 0.12], '#D94E43', 7, 1); Line3([cx - 0.17, cy + 0.5, z + 0.12], [cx + 0.17, cy, z + 0.12], '#D94E43', 7, 1); } }
+  }
+  // BoardTable(x, z, len): long boardroom table with chairs down both sides.
+  function BoardTable(x, z, len) { Box(x - len / 2, 2.2, z - 1.2, len, 0.3, 2.4, '#5A2E18'); Box(x - len / 2 + 0.6, 0, z - 0.8, 0.5, 2.2, 1.6, '#3A1F10'); Box(x + len / 2 - 1.1, 0, z - 0.8, 0.5, 2.2, 1.6, '#3A1F10'); const n = Math.max(2, Math.round(len / 2.4)); for (let i = 0; i < n; i++) { const cx = x - len / 2 + (i + 0.5) * len / n; Model('chair', cx, 0, z - 2.3, 2.1, { ry: 3.14 }); Model('chair', cx, 0, z + 2.3, 2.1); } }

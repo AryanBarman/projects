@@ -35,3 +35,6 @@ Acting presets, roles, expressions, props: `docs\SCENE_MAP.md`. New recipe = a f
 - Props added to PROC: plant, lamp, chair, cooler, cabinet, bookshelf, frame, monitor, desk.
 - Story top-level `"caption_style": "big"` = 1-2 words, 100 px, white with black stroke at y~69% (pack style). Default stays one-line boxed.
 - Unverified: Hold hand mapping (`HandWorld` factor) vs the real hand position; moneybag looked low in s_kit.
+
+## JC props (Jensen-crash series, 2026-11-26) — landscape: story `"portrait": false` (uses camera v2 via cfg `cam2`)
+`["Stockline", x, y0, z, w, h, [[t,v0..1]...], {n, detach:[fromBar,tStart], tags:[[t,"+31.5%"]]}]` bar chart (green up / red down, bars fall) · `["Panel", x, z, gauge, sag, state 0|1|2, {doc}]` control panel (needle to red, sag, flicker) · `["Magnifier", x, y, z, r, a]` · `["CeoChair", x, z, {col}]` · `["Ledger", x, y, z, w, t0]` · `["Crown", x, y, z, s]` · `["Calendar", x, y, z, days, t0, t1]` · `["BoardTable", x, z, len]` · Room `boardroom`. Test story: `stories/jc_props.story.json`. Base page `act7_full_conclusion-3d.html` (project root) is required by build_jb.py: it was deleted from disk and restored from git on 2026-11-26.

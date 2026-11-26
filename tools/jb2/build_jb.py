@@ -41,7 +41,7 @@ for start, (end, new) in gen.items():
     a, b = blk(start, end); s = s[:a] + new + s[b:]
 
 # ---- 2. camera block
-cam = open(H / ('shim_cam_port.js' if cfg.get('portrait') else 'shim_cam_jb.js'), encoding='utf8').read()   # portrait: literal-key camera
+cam = open(H / ('shim_cam_port.js' if (cfg.get('portrait') or cfg.get('cam2')) else 'shim_cam_jb.js'), encoding='utf8').read()   # portrait: literal-key camera
 keys = open(H / (name + '_keys.js'), encoding='utf8').read()
 klines = [re.sub(r'\s*//.*$', '', l) for l in keys.split('\n') if re.match(r'^\s*K\(.*\);\s*(//.*)?$', l)]   # trailing // comments are allowed
 stn = [{'b': b, 'c': c} for b, c in cfg['stn']]

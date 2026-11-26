@@ -37,3 +37,7 @@ node export_video.js "..\shorts2\short_2027_cash_crunch.html" "..\shorts2\short_
   - Verify `SetPowerPlant` vs `SetServerRack` framing at `17.5–21.2s` on a phone screen (check that `WEEKS` and `YEARS` counters don't overlap the top headline or bottom caption box).
   - Verify `FireBurn` particle density and `$0 REVENUE` / `SITTING DARK` card spacing at `22.8–28.4s`.
   - Note: `short_2027_cash_crunch.html` uses the existing `RigKit` hybrid characters (not the `hq_sheets` 4-frame Jensen sprite sheets yet).
+
+## 2026-11-26 REPLACEMENT (story-file version)
+The notes above describe a hand-built page that is not reproducible here (its build script and audio mix are not in the repo, and its recipe names differ from the file). The rebuildable version is `tools/jb2/stories/s2027.story.json` (6 beats, 3 text cards, characters in every beat, room kits: trading/office/street/hallway/trading/stage). Rebuild: `python tools/jb2/check_short.py s2027` -> `shorts2/s2027.html`; export: `python tools/jb2/make_video.py s2027` (not run).
+Known: night section does not look dark (mood `night` barely affects room colours); motivation.py still prints 2 DEAD flags; end loop frame is a whip landing. No card-cap check or colour pass built yet.

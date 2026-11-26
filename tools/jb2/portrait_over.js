@@ -15,7 +15,13 @@
     if (subTag) { ctx.font = '600 ' + s2 + 'px' + fam; ctx.fillStyle = PAL.amberHi; ctx.fillText(subTag, 540 + 14, y0 + hh - 38); }
     ctx.restore();
   }
-  function drawRail(time, S) { }
+  // colour grade (premium pass), drawn right after the 3D frame and before captions: vignette (stronger at night), darker bottom for caption legibility, a faint warm key from the top. One cached gradient set; no per-video data.
+  const _gr = {};
+  function drawRail(time, S) {
+    const m = window.__moodAt ? window.__moodAt(time) : { h: 1 }, nt = 1 - Math.min(1, m.h), v = 0.30 + 0.25 * nt; ctx.save(); ctx.globalAlpha = 1;
+    if (!_gr.v) { _gr.v = ctx.createRadialGradient(540, 900, 380, 540, 960, 1250); _gr.v.addColorStop(0, 'rgba(6,12,26,0)'); _gr.v.addColorStop(1, 'rgba(6,12,26,1)'); _gr.b = ctx.createLinearGradient(0, 1150, 0, 1920); _gr.b.addColorStop(0, 'rgba(6,12,26,0)'); _gr.b.addColorStop(1, 'rgba(6,12,26,0.5)'); _gr.w = ctx.createLinearGradient(0, 0, 0, 700); _gr.w.addColorStop(0, 'rgba(255,214,150,0.10)'); _gr.w.addColorStop(1, 'rgba(255,214,150,0)'); }
+    ctx.globalAlpha = v / 0.55; ctx.fillStyle = _gr.v; ctx.fillRect(0, 0, 1080, 1920); ctx.globalAlpha = 1; ctx.fillStyle = _gr.b; ctx.fillRect(0, 1150, 1080, 770); ctx.globalAlpha = 1 - nt; ctx.fillStyle = _gr.w; ctx.fillRect(0, 0, 1080, 700); ctx.restore();
+  }
   // captions: ONE short line at a time (chunks of up to ~22 characters, cut from the SRT line by its word times), low on the screen (box bottom y 1470)
   const CAPBIG = __CAPBIG__;   // cfg caption_style 'big': 1-2 words, 96 px, white with a black stroke, no box (the Stick3D-pack caption style); default = one ~22-character line in a box
   const _capChunks = new Map();

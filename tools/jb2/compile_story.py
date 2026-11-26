@@ -32,7 +32,7 @@ for b in S['beats']:
         elif n == 'SetLock': events.append(num(e[3]))
         elif n == 'SetLaunch': events.append(num(e[3]))
 events = sorted({x for x in events if x})
-cfg = {'assets': True, 'dmin': 20, 'dmax': 42, 'portrait': True, 'clean': True, 'stick': True, 'audio_dir': adir, 'audio': audio, 'out': S.get('out', pid + '.html'), 'out_dir': S.get('out_dir', 'shorts2'),
+cfg = {'assets': True, 'dmin': 20, 'dmax': 42, 'portrait': S.get('portrait', True), 'cam2': True, 'clean': True, 'stick': True, 'audio_dir': adir, 'audio': audio, 'out': S.get('out', pid + '.html'), 'out_dir': S.get('out_dir', 'shorts2'),
        'title': S.get('title', pid), 'dur': dur, 'rail': [0.0] + [b['t'][0] for b in S['beats'][1:]] + [dur], 'stn': [[1000000000, 0]], 'layout': [[0, 0]], 'sets': ['plaza'], 'fixes': S.get('fixes', {}), 'keycol': S.get('keycol', {}),
        'mood': S.get('mood', [[0, 'day']]), 'faces': [], 'dress': [], 'models': {m: 'assets3d/quaternius_ultimate_space_kit/glb/%s.glb' % MODEL_FILES[m] for m in sorted(models)},
        'punch': S.get('punch') or [[b['t'][0] + 0.05, 4, 0.05, 0.12] for b in S['beats']], 'ledger': ledger, 'events': events, 'cues': S.get('cues') or [[round(b['t'][0] + (1.3 if i else 0.0), 2), 'stamp_impact', b.get('name', '')] for i, b in enumerate(S['beats'])]}

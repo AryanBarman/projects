@@ -1,0 +1,23 @@
+<!doctype html><meta charset=utf8><body style="margin:0;background:#cfe3ea"><canvas id=c width=1900 height=1250></canvas>
+<script src="rigkit.js"></script><script src="sprites_meta.js"></script><script>
+const c=document.getElementById('c'),g=c.getContext('2d');
+const q=new URLSearchParams(location.search), T=parseFloat(q.get('t')||'1.3');
+RigKit.load('heads_atlas.webp',{cell:96},()=>RigKit.loadExtra('heads_expr10.webp','poses_atlas.webp',SMETA,go));
+function go(){
+ g.fillStyle='#cfe3ea';g.fillRect(0,0,1900,1250);
+ const R=RigKit.ORDER; // 16 heads
+ const poses=['idle','talk','point','think','cross','cheer','walk','sit'];
+ // row A: all 16 roles, front idle/talk mix
+ R.forEach((r,i)=>{RigKit.draw(g,r,70+i*115,300,0.78,{pose:['talk','idle','point','think'][i%4],phase:i,facing:i%2?-1:1,prop:['','','','paper'][i%4]},T);g.fillStyle='#222';g.font='12px Arial';g.fillText(r,45+i*115,320)});
+ // row B: one role x all poses
+ poses.forEach((p,i)=>{RigKit.draw(g,'jensen',110+i*230,700,1,{pose:p,facing:1,phase:0.5},T);g.fillStyle='#222';g.font='14px Arial';g.fillText(p,90+i*230,725)});
+ // row C: props + views + extra poses
+ const extra=[['kress','hold','paper'],['journalist','hold','mic'],['trader','phone','phone'],['elon','present','laptop'],['trump','point','gavel'],['reed','panic',''],['factory','cheer','flag'],['engineer','walk','case'],['employee','clap',''],['compliance','hold','clipboard'],['cheung','shrug','']];
+ extra.forEach((e,i)=>{RigKit.draw(g,e[0],90+i*165,1010,0.86,{pose:e[1],prop:e[2],facing:i%3==0?-1:1,phase:i},T)});
+ // views
+ ['front','q','side','back'].forEach((v,i)=>RigKit.draw(g,'vance',1250+i*150,1190,0.62,{pose:'idle',view:v,facing:1},T));
+ // row D: sprite poses
+ ['jensen:spr:point','kress:spr:podium','trump:spr:rally','elon:spr:present','vance:spr:think','reed:spr:walk','cheung:spr:call','board:spr:explain'].forEach((e,i)=>{const [r,,p]=e.split(':');RigKit.draw(g,r,900+i*120,1230,0.45,{pose:'spr:'+p,phase:i,expr:'happy'},T)});
+ document.title='done';
+}
+</script>

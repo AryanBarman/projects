@@ -1,0 +1,285 @@
+{
+ "assets": true,
+ "dmin": 20,
+ "dmax": 42,
+ "portrait": false,
+ "cam2": true,
+ "clean": true,
+ "stick": true,
+ "audio_dir": "jensen back with crash/out",
+ "audio": "jc_a1",
+ "out": "jc_a1.html",
+ "out_dir": "jensen back with crash/out",
+ "title": "Jensen back with crash - Act 1",
+ "dur": 79.4,
+ "rail": [
+  0.0,
+  7.2,
+  15.3,
+  24.7,
+  37.1,
+  52.0,
+  65.7,
+  79.4
+ ],
+ "stn": [
+  [
+   1000000000,
+   0
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ]
+ ],
+ "sets": [
+  "plaza"
+ ],
+ "fixes": {},
+ "keycol": {},
+ "mood": [
+  [
+   0,
+   "warm"
+  ],
+  [
+   7,
+   "day"
+  ],
+  [
+   15,
+   "tense"
+  ],
+  [
+   24.7,
+   "dusk"
+  ],
+  [
+   37,
+   "day"
+  ],
+  [
+   56.5,
+   "tense"
+  ],
+  [
+   60,
+   "dusk"
+  ],
+  [
+   65.5,
+   "day"
+  ]
+ ],
+ "faces": [],
+ "dress": [],
+ "models": {},
+ "punch": [
+  [
+   0.05,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   7.25,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   15.350000000000001,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   24.75,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   37.15,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   52.05,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   65.75,
+   4,
+   0.05,
+   0.12
+  ]
+ ],
+ "ledger": [
+  [
+   "0.02-6.30",
+   "Bringing Jensen Huang back was supposed to save NVIDIA's $4 trillion empire.",
+   "scripted narration (unverified)",
+   "Story jc_a1",
+   ""
+  ],
+  [
+   "7.24-14.54",
+   "Monday's 31.5% jump looked like proof, but by Wednesday, tens of billions had already vanished.",
+   "scripted narration (unverified)",
+   "Story jc_a1",
+   ""
+  ],
+  [
+   "15.28-24.10",
+   "It turns out, rehiring your CEO can't fix a partner's debt crisis, a December interest rate hike, or a government investigation.",
+   "scripted narration (unverified)",
+   "Story jc_a1",
+   ""
+  ],
+  [
+   "24.68-36.38",
+   "But think about what you just watched happen on your screen. For 11 days in November 2026, NVIDIA looked like it was falling apart after its founder, Jensen Huang, stepped down.",
+   "scripted narration (unverified)",
+   "Story jc_a1",
+   ""
+  ],
+  [
+   "37.10-53.94",
+   "Then, on Monday, November 23rd, NVIDIA's board brought him back and the stock shot up 31.5% in a single day, adding nearly a trillion dollars back to the company's value. If you only saw Monday's news, you'd think NVIDIA was unstoppable again.",
+   "scripted narration (unverified)",
+   "Story jc_a1",
+   ""
+  ],
+  [
+   "54.62-64.82",
+   "Except over the next two days, NVIDIA dropped nearly 6% on Tuesday and another 4% on Wednesday, wiping out tens of billions of dollars in gains.",
+   "scripted narration (unverified)",
+   "Story jc_a1",
+   ""
+  ],
+  [
+   "65.66-71.30",
+   "Why would big investors cheer Jensen Huang's return on Monday and sell the stock two days later?",
+   "scripted narration (unverified)",
+   "Story jc_a1",
+   ""
+  ],
+  [
+   "71.92-78.94",
+   "To see what they spotted behind the scenes, you have to follow the money, starting with the simple math most people missed on Monday morning.",
+   "scripted narration (unverified)",
+   "Story jc_a1",
+   ""
+  ]
+ ],
+ "events": [
+  4.2,
+  46
+ ],
+ "cues": [
+  [
+   0.0,
+   "stamp_impact",
+   "empire"
+  ],
+  [
+   8.5,
+   "stamp_impact",
+   "monday"
+  ],
+  [
+   16.6,
+   "stamp_impact",
+   "problems"
+  ],
+  [
+   26.0,
+   "stamp_impact",
+   "eleven days"
+  ],
+  [
+   38.4,
+   "stamp_impact",
+   "board returns"
+  ],
+  [
+   53.3,
+   "stamp_impact",
+   "collapse again"
+  ],
+  [
+   67.0,
+   "stamp_impact",
+   "follow the money"
+  ]
+ ],
+ "sfx": [
+  {
+   "t": 0.0,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 7.0,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 8.5,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 15.2,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 16.6,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 24.5,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 26.0,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 36.6,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 38.4,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 53.3,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 65.2,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 67.0,
+   "sfx": "stamp",
+   "db": -2
+  }
+ ],
+ "caption_style": "line"
+}

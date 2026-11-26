@@ -121,7 +121,7 @@
     const e = grab('box', () => { const m = new THREE.Mesh(X.uBox, new THREE.MeshStandardMaterial({ roughness: 0.5, metalness: 0.15 })); m.castShadow = true; m.receiveShadow = true; const l = new THREE.LineSegments(X.uEdge, new THREE.LineBasicMaterial({ color: 0x071318, transparent: true, opacity: 0.55 })); m.add(l); const hl = new THREE.Mesh(X.uBox, hullMat()); hl.visible = false; m.add(hl); return { m, l, hl }; });
     e.m.position.set(P[0], P[1], P[2]); e.m.scale.set(w, h, d); setCol(e.m.material, col, o.emis, a); e.l.visible = o.lw !== 0;
     if (PROTO) { const ol = a >= 0.95 && o.lw !== 0, th = 0.07; e.hl.visible = ol; if (ol) { e.hl.scale.set(Math.min(4, 1 + 2 * th / w), Math.min(4, 1 + 2 * th / h), Math.min(4, 1 + 2 * th / d)); e.l.visible = false; } }
-    if (e.m.position.distanceTo(camera.position) < NEARCULL) e.m.visible = false;
+    if (!o.nocull && !window.__NC && e.m.position.distanceTo(camera.position) < NEARCULL) e.m.visible = false;   // window.__NC = a recipe that is meant to be seen close up (Ledger) switches the near-cull off
   }
   function Cyl(x, y0, z, r, h, col, o) {
     o = o || {}; if (h <= 0.001 || (o.a !== undefined && o.a <= 0.02)) return; const P = mp(x, y0 + h / 2, z), a = o.a === undefined ? 1 : o.a;
@@ -187,7 +187,7 @@
   function deepCol(c) { const k = new THREE.Color(c), h = {}; k.getHSL(h); k.setHSL(h.h, Math.min(1, h.s * 1.35 + 0.04), Math.max(0.2, h.l * 0.86)); return k; }
   function groundPoly(pts, y, fill, stroke, lw, a) {
     if (!pts.length) return; const P0 = mp(pts[0][0], y, pts[0][1]), c = STN.length ? STN[stIdx(pts[0][0])].c : 0, zo = P0[2] - pts[0][1], ox = P0[0] - pts[0][0] + c; a = a === undefined ? 1 : a; if (a <= 0.02) return;
-    const key = JSON.stringify(pts) + y;
+    const key = JSON.stringify(pts) + y + fill + (stroke || "");   // colour is part of the cache key (else a floor first drawn during a mood fade keeps its day colour)
     const e = grab('poly', () => { const g = new THREE.Group(); return { m: g, key: '' }; });
     if (e.key !== key) {
       while (e.m.children.length) { const ch = e.m.children[0]; e.m.remove(ch); if (ch.geometry) ch.geometry.dispose(); }
@@ -361,15 +361,16 @@
   function Char(role, x, z, hW, opts, t0, t1, t) { if (t < t0 || (t1 !== undefined && t >= t1)) return; const P = mp(x, 0, z); if (window.__FITON) { camera.updateMatrixWorld(); const f = fitProj(P[0], 0, P[2]), hd = fitProj(P[0], hW * 1.2, P[2]); if (f[2] < 1 && hd[2] < 1) { const hw = Math.abs(f[1] - hd[1]) * 0.25; (window.__FIT = window.__FIT || []).push({ name: 'char:' + role, kind: 'char', x0: f[0] - hw, x1: f[0] + hw, y0: Math.min(f[1], hd[1]), y1: Math.max(f[1], hd[1]) }); } } if (r3Ok(role)) { r3Draw(role, P, hW, opts || {}, t); return; } CAST.push({ role, wx: P[0], wy: 0, wz: P[2], h: hW * 1.2, t0, t1, o: opts }); }
   function S(x, y, z) { const P = mp(x, y, z), v = new THREE.Vector3(P[0], P[1], P[2]); const cz = v.clone().applyMatrix4(camera.matrixWorldInverse).z; if (cz > -0.5) return null; v.project(camera); const dist = camera.position.distanceTo(new THREE.Vector3(P[0], P[1], P[2])); return { x: (v.x * 0.5 + 0.5) * 1920, y: (-v.y * 0.5 + 0.5) * 1080, z: dist, k: 540 / (dist * Math.tan(camera.fov * Math.PI / 360)) }; }
   // ---- mood: tints sky, fog, ground, skyline and sun over time (day / warm / dusk / night / tense), lerped between track keys
-  const MOODS = { day: { t: [1, 1, 1], f: 0xC4E3F1, h: 1.0, sun: 0xFFFFFF }, warm: { t: [1, 0.9, 0.76], f: 0xF2DFC4, h: 0.98, sun: 0xFFD9A0 }, dusk: { t: [1.0, 0.76, 0.74], f: 0xE6A9A0, h: 0.95, sun: 0xFF9A6A }, night: { t: [0.5, 0.56, 0.86], f: 0x2A3D6E, h: 0.8, sun: 0xA8B8F0 }, tense: { t: [0.9, 0.92, 1.0], f: 0xB4CEE0, h: 0.95, sun: 0xFFE8D0 } };
+  const MOODS = { day: { t: [1, 1, 1], f: 0xC4E3F1, h: 1.0, sun: 0xFFFFFF }, warm: { t: [1, 0.9, 0.76], f: 0xF2DFC4, h: 0.98, sun: 0xFFD9A0 }, dusk: { t: [1.0, 0.76, 0.74], f: 0xE6A9A0, h: 0.86, sun: 0xFF9A6A }, night: { t: [0.34, 0.4, 0.72], f: 0x1B2850, h: 0.52, sun: 0xA8B8F0 }, tense: { t: [0.9, 0.92, 1.0], f: 0xB4CEE0, h: 0.95, sun: 0xFFE8D0 } };
   const MOOD_TRACK = __MOOD__;
   const _mc1 = new THREE.Color(), _mc2 = new THREE.Color();
   function moodAt(t) { let i = 0; while (i < MOOD_TRACK.length - 1 && t >= MOOD_TRACK[i + 1][0]) i++; const cur = MOODS[MOOD_TRACK[i][1]], prev = MOODS[MOOD_TRACK[Math.max(0, i - 1)][1]], u = i === 0 ? 1 : Math.max(0, Math.min(1, (t - MOOD_TRACK[i][0]) / 1.4)), k = u * u * (3 - 2 * u); return { t: cur.t.map((v, c) => prev.t[c] + (v - prev.t[c]) * k), f: _mc1.set(prev.f).lerp(_mc2.set(cur.f), k).getHex(), h: prev.h + (cur.h - prev.h) * k, sun: _mc1.set(prev.sun).lerp(_mc2.set(cur.sun), k).getHex() }; }
+  window.__moodAt = moodAt;   // debug hook: moodAt(t) from the console / cdp_eval
   function applyMood(t) {
     const m = moodAt(t); scene.fog.color.setHex(m.f); scene.background.setHex(m.f);
     X.sky.material.color.setRGB(m.t[0], m.t[1], m.t[2]); X.ground.material.color.setRGB(m.t[0] * 0.86, m.t[1] * 0.88, m.t[2] * 0.92);
     X.bMats.forEach(b => b.color.setRGB(Math.min(1, m.t[0] * 1.05), Math.min(1, m.t[1] * 1.05), Math.min(1, m.t[2] * 1.05)));
-    X.sun.material.color.setHex(m.sun); hemiLight.intensity = 0.82 * m.h; dirLight.intensity = 1.05 * m.h;
+    X.sun.material.color.setHex(m.sun); hemiLight.intensity = 0.82 * m.h; dirLight.intensity = 1.05 * m.h; hemiLight.color.setRGB(Math.min(1, 0.55 + m.t[0] * 0.45), Math.min(1, 0.55 + m.t[1] * 0.45), Math.min(1, 0.55 + m.t[2] * 0.45));
   }
   // ---- beat dressing (data from cfg 'dress', authored by tools/jb/dress.py): flows, orbits, growing stacks, pulses, beams, sparks
   const DRESS = __DRESS__;

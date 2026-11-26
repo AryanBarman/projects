@@ -1,0 +1,9 @@
+[
+  ["\\bJensen (?:Wong|Hwang)\\b", "Jensen Huang"],
+  ["\\b(?:Wong|Hwang)\\b", "Huang"],
+  ["\\bCorweave\\b", "CoreWeave"],
+  ["\\bNvidia\\b", "NVIDIA"],
+  ["(\\d) %", "\\1%"],
+  ["(\\w) -(\\w)", "\\1-\\2"],
+  ["\\s*\ufffd\\s*", " \u2014 "]
+]

@@ -1,0 +1,158 @@
+{
+ "dmin": 16,
+ "dmax": 28,
+ "assets": true,
+ "audio": "Act 1 part 1",
+ "out": "act1_part1_the_comeback_crash-3d.html",
+ "title": "Act 1 Part 1 - The Comeback (3D)",
+ "dur": 24.68,
+ "rail": [
+  0,
+  7.0,
+  15.1,
+  24.68
+ ],
+ "stn": [
+  [
+   13,
+   0
+  ],
+  [
+   39,
+   26
+  ],
+  [
+   1000000000,
+   52
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   -22
+  ],
+  [
+   82,
+   -36
+  ]
+ ],
+ "fixes": {},
+ "keycol": {
+  "jensen": "sageHi",
+  "back": "sageHi",
+  "save": "sageHi",
+  "trillion": "amberHi",
+  "empire": "amberHi",
+  "monday": "amberHi",
+  "31.5%": "sageHi",
+  "jump": "sageHi",
+  "proof": "sageHi",
+  "wednesday": "coral",
+  "billions": "coral",
+  "vanished": "coral",
+  "debt": "coral",
+  "crisis": "coral",
+  "interest": "coral",
+  "rate": "coral",
+  "hike": "coral",
+  "investigation": "coral",
+  "government": "cyanHi",
+  "ceo": "amberHi"
+ },
+ "mood": [
+  [
+   0,
+   "warm"
+  ],
+  [
+   7.0,
+   "day"
+  ],
+  [
+   15.1,
+   "tense"
+  ]
+ ],
+ "sets": [
+  "plaza",
+  "market",
+  "office"
+ ],
+ "ledger": [
+  [
+   "0.02-6.30",
+   "Bringing Jensen Huang back was supposed to save NVIDIA's $4 trillion empire.",
+   "scripted narration",
+   "Episode script (Act 1 part 1 SRT)",
+   ""
+  ],
+  [
+   "7.24-14.54",
+   "Monday's 31.5% jump looked like proof, but by Wednesday, tens of billions had already vanished.",
+   "scripted narration",
+   "Episode script (Act 1 part 1 SRT)",
+   ""
+  ],
+  [
+   "15.28-24.10",
+   "It turns out, rehiring your CEO can't fix a partner's debt crisis, a December interest rate hike, or a government investigation.",
+   "scripted narration",
+   "Episode script (Act 1 part 1 SRT)",
+   ""
+  ]
+ ],
+ "cues": [
+  [
+   1.4,
+   "whoosh",
+   "Tower rises"
+  ],
+  [
+   3.9,
+   "stamp_impact",
+   "$4 trillion"
+  ],
+  [
+   8.8,
+   "stamp_impact",
+   "Monday jump"
+  ],
+  [
+   11.8,
+   "stamp_impact",
+   "Wednesday"
+  ],
+  [
+   16.4,
+   "stamp_impact",
+   "Debt"
+  ],
+  [
+   19.4,
+   "stamp_impact",
+   "Rate hike"
+  ],
+  [
+   22.2,
+   "stamp_impact",
+   "Investigation"
+  ]
+ ],
+ "faces": [
+  [
+   0.8,
+   3.3,
+   [
+    -7.4,
+    2.9,
+    3.4
+   ],
+   1
+  ]
+ ],
+ "dress": []
+}

@@ -1,0 +1,193 @@
+{
+ "assets": true,
+ "dmin": 20,
+ "dmax": 42,
+ "portrait": false,
+ "cam2": true,
+ "clean": true,
+ "stick": true,
+ "audio_dir": "shorts2/audio",
+ "audio": "short44",
+ "out": "jc_props.html",
+ "out_dir": "shorts2",
+ "title": "JC props test",
+ "dur": 24,
+ "rail": [
+  0.0,
+  6.5,
+  13,
+  19,
+  24
+ ],
+ "stn": [
+  [
+   1000000000,
+   0
+  ]
+ ],
+ "layout": [
+  [
+   0,
+   0
+  ]
+ ],
+ "sets": [
+  "plaza"
+ ],
+ "fixes": {},
+ "keycol": {},
+ "mood": [
+  [
+   0,
+   "day"
+  ]
+ ],
+ "faces": [],
+ "dress": [],
+ "models": {},
+ "punch": [
+  [
+   0.05,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   6.55,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   13.05,
+   4,
+   0.05,
+   0.12
+  ],
+  [
+   19.05,
+   4,
+   0.05,
+   0.12
+  ]
+ ],
+ "ledger": [
+  [
+   "0.00-5.20",
+   "Wall Street banks just lent Elon Musk $44 billion to buy NVIDIA AI chips.",
+   "scripted narration (unverified)",
+   "Story jc_props",
+   ""
+  ],
+  [
+   "5.98-10.28",
+   "Normally, banks love financing hardware, but this deal has lenders panicking.",
+   "scripted narration (unverified)",
+   "Story jc_props",
+   ""
+  ],
+  [
+   "10.80-16.24",
+   "Apollo and Goldman Sachs use those physical NVIDIA Vera Rubin GPUs as the collateral backing the loan.",
+   "scripted narration (unverified)",
+   "Story jc_props",
+   ""
+  ],
+  [
+   "16.74-21.46",
+   "But Elon's master plan is to blast AI data centers into low-Earth orbit.",
+   "scripted narration (unverified)",
+   "Story jc_props",
+   ""
+  ],
+  [
+   "21.92-24.52",
+   "Therefore, bondholders realized a terrifying loophole.",
+   "scripted narration (unverified)",
+   "Story jc_props",
+   ""
+  ],
+  [
+   "24.52-29.98",
+   "If SpaceX ever defaults, nobody can send a repo truck 340 miles into space.",
+   "scripted narration (unverified)",
+   "Story jc_props",
+   ""
+  ],
+  [
+   "30.60-32.88",
+   "So how did Wall Street try to stop him?",
+   "scripted narration (unverified)",
+   "Story jc_props",
+   ""
+  ],
+  [
+   "33.50-41.98",
+   "Lenders pushed for legal clauses barring those GPUs from leaving Earth, proving that even when Wall Street lends Elon Musk $44 billion to buy...",
+   "scripted narration (unverified)",
+   "Story jc_props",
+   ""
+  ]
+ ],
+ "events": [],
+ "cues": [
+  [
+   0.0,
+   "stamp_impact",
+   "chart"
+  ],
+  [
+   7.8,
+   "stamp_impact",
+   "panel"
+  ],
+  [
+   14.3,
+   "stamp_impact",
+   "chair"
+  ],
+  [
+   20.3,
+   "stamp_impact",
+   "ledger"
+  ]
+ ],
+ "sfx": [
+  {
+   "t": 0.0,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 6.5,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 7.8,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 13.4,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 14.3,
+   "sfx": "stamp",
+   "db": -2
+  },
+  {
+   "t": 19.1,
+   "sfx": "whoosh",
+   "db": -4
+  },
+  {
+   "t": 20.3,
+   "sfx": "stamp",
+   "db": -2
+  }
+ ],
+ "caption_style": "line"
+}

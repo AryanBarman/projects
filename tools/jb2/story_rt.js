@@ -16,6 +16,8 @@
       Station: (a) => Station(a[0], a[1], a[2], d0(a[3], 1.1)), SetRepo: (a, t, t0) => SetRepo(a[0], a[1], t, d0(a[2], t0)),
       Act: (a, t, t0, t1) => Act(a[0], a[1], a[2], a[3], a[4], d0(a[5], t0), d0(a[6], t1 + 0.4), t, a[7]),
       Room: (a, t, t0) => SetRoom(a[0], a[1], d0(a[2], 0), t, d0(a[3], t0)), Hold: (a, t) => Hold(a[0], a[1], a[2], a[3], a[4], a[5], t, a[6]), Throw: (a, t) => Throw(a[0], a[1], a[2], a[3], a[4], a[5], t, a[6]),
+      Stockline: (a, t) => Stockline(a[0], a[1], a[2], a[3], a[4], a[5], t, a[6]), Panel: (a, t) => ControlPanel(a[0], a[1], a[2], a[3], a[4], t, a[5]), Magnifier: (a, t) => Magnifier(a[0], a[1], a[2], a[3], t, a[4]),
+      CeoChair: (a) => CeoChair(a[0], a[1], a[2]), Ledger: (a, t, t0) => Ledger(a[0], a[1], a[2], a[3], t, d0(a[4], t0)), Crown: (a) => Crown(a[0], a[1], a[2], a[3]), Calendar: (a, t, t0, t1) => Calendar(a[0], a[1], a[2], a[3], t, d0(a[4], t0), d0(a[5], t1)), BoardTable: (a) => BoardTable(a[0], a[1], a[2]),
       Stack: (a) => gpuStack(a[0], a[1], a[2] || 6, d0(a[3], 1), 1, a[4]), Dashed: (a) => dashed(a[0], a[1], a[2] || 10, a[3] || '#E2B857', a[4] || 8), RedX: (a, t) => redX(a[0], a[1], a[2], a[3], t, a[4]),
       Model: (a) => Model(a[0], a[1], a[2], a[3], a[4], a[5]), Card: (a, t) => Card(a[0], a[1], a[2], a[3], a[4], a[5], t),
       Counter: (a, t) => { const o = a[0]; Card(o.x, o.y, d0(o.z, 2.5), o.w, o.h, { kind: 'counter', text: o.text, sub: o.sub, fg: '#F2D58F', accent: '#E2B857', t0: o.t0, t1: o.t1 || 0, scramble: 0 }, t); },

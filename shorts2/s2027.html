@@ -62,7 +62,7 @@
   <button id="b-play">Play</button>
   <button id="b-rst">Restart</button>
   <input id="scrubber" type="range" min="0" max="39.50" step="0.01" value="0" list="scenes" aria-label="Timeline" />
-  <datalist id="scenes"><option value="0.00"></option><option value="6.90"></option><option value="11.94"></option><option value="21.96"></option><option value="33.86"></option></datalist>
+  <datalist id="scenes"><option value="0.00"></option><option value="6.90"></option><option value="11.94"></option><option value="17.20"></option><option value="21.96"></option><option value="33.86"></option></datalist>
   <span id="tc">00.00 / 39.50s</span>
   <button id="b-vo" class="active">VO: ON</button>
   <button id="b-load">Load Audio</button>
@@ -707,6 +707,10 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
     c.save(); c.translate(P.sway || 0, bodyY + bob); if (P.kick > 0) c.scale(1 + 0.05 * P.kick, 1 - 0.06 * P.kick);
     const shR = [fx * sw * 0.92, SHY], shL = [-fx * sw * 0.92, SHY], suitCuff = S.suit || S.zip, sleeve = S.vest || S.polo ? S.skin : S.j;
     const arm = (sh, a, e, col) => { const ex = sh[0] + Math.sin(a) * UA * fx, ey = sh[1] + Math.cos(a) * UA, fa = a + e, hx = ex + Math.sin(fa) * FA * fx, hy = ey + Math.cos(fa) * FA, bare = S.polo || S.vest; limb(c, [[sh[0], sh[1]], [ex, ey]], 13.5, bare ? S.j : col); limb(c, [[ex, ey], [hx, hy]], 12, bare ? S.skin : col); if (suitCuff) { c.save(); c.strokeStyle = S.suit ? '#F4F1EA' : shade(col, 1.4); c.lineWidth = 3; c.lineCap = 'round'; const dx = hx - ex, dy = hy - ey, L = Math.hypot(dx, dy) || 1; c.beginPath(); c.moveTo(hx - dx / L * 9 - dy / L * 6, hy - dy / L * 9 + dx / L * 6); c.lineTo(hx - dx / L * 9 + dy / L * 6, hy - dy / L * 9 - dx / L * 6); c.stroke(); c.restore(); } hand(c, hx, hy, S.skin); return [hx, hy]; };
+    const ik = (sh, tg) => { const FH = 250, tx = tg[0] * FH * fx, ty = -tg[1] * FH, dx = tx - sh[0], dy = ty - sh[1]; let d = Math.hypot(dx, dy); d = Math.max(Math.abs(UA - FA) + 0.5, Math.min(UA + FA - 0.5, d));
+      const th = Math.atan2(dx * fx, dy), be = Math.acos(cl((UA * UA + d * d - FA * FA) / (2 * UA * d), -1, 1)), a = th - be, exx = sh[0] + Math.sin(a) * UA * fx, eyy = sh[1] + Math.cos(a) * UA, fa = Math.atan2((tx - exx) * fx, ty - eyy); return [a, fa - a]; };
+    if (o.armR) { const q = ik(shR, o.armR), k = o.armRK === undefined ? 1 : o.armRK; P.aR = lerp(P.aR, q[0], k); P.eR = lerp(P.eR, q[1], k); }
+    if (o.armL) { const q = ik(shL, o.armL), k = o.armLK === undefined ? 1 : o.armLK; P.aL = lerp(P.aL, q[0], k); P.eL = lerp(P.eL, q[1], k); }
     const hl = arm(shL, P.aL, P.eL, shade(sleeve, 0.85));
     c.save(); c.translate(0, HIPY); c.rotate(P.lean); c.scale(1, breathe); c.translate(0, -HIPY); torso(c, S, sw, hw, side); c.restore();
     // neck + head (the head follows a moment behind the body)
@@ -787,11 +791,12 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
   ];
 
   const CUE_SHEET = [
-    { t: 0.00, name: "stamp_impact", desc: "panic" },
-    { t: 7.60, name: "stamp_impact", desc: "chips" },
-    { t: 12.64, name: "stamp_impact", desc: "chips" },
-    { t: 22.66, name: "stamp_impact", desc: "panic" },
-    { t: 34.56, name: "stamp_impact", desc: "clause" }
+    { t: 0.00, name: "stamp_impact", desc: "alarm" },
+    { t: 8.20, name: "stamp_impact", desc: "chips" },
+    { t: 13.24, name: "stamp_impact", desc: "capex" },
+    { t: 18.50, name: "stamp_impact", desc: "race" },
+    { t: 23.26, name: "stamp_impact", desc: "dark" },
+    { t: 35.16, name: "stamp_impact", desc: "cost" }
   ];
 
   // =========================================================================
@@ -873,28 +878,32 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
   const STN = [{"b": 1000000000, "c": 0}];
   const LAYOUT = [[0, 0]];
   const DMIN = 20, DMAX = 42, FACES = [];
-  const PUNCH = [[0.05, 4, 0.05, 0.12], [6.95, 4, 0.05, 0.12], [11.99, 4, 0.05, 0.12], [22.01, 4, 0.05, 0.12], [33.91, 4, 0.05, 0.12]];
+  const PUNCH = [[0.05, 4, 0.05, 0.12], [6.95, 4, 0.05, 0.12], [11.99, 4, 0.05, 0.12], [17.25, 4, 0.05, 0.12], [22.01, 4, 0.05, 0.12], [33.91, 4, 0.05, 0.12]];
   window.__GUARD = false; window.__ADJREADY = !window.__GUARD;   // the automatic framing guard (zooms out to keep labels in frame) fights authored close-ups, so it is off unless cfg guard:true
   function stIdx(x) { for (let i = 0; i < STN.length; i++) if (x < STN[i].b) return i; return STN.length - 1; }
   function mp(x, y, z) { if (!STN.length) return [x, y, z]; const k = stIdx(x), L = LAYOUT[k] || [0, -30 * k]; return [x - STN[k].c + L[0], y, z + L[1]]; }
   const CAM_KEYS = [];
   const K = (t, L, d, yaw, pit, fov, type, leave, opt) => { const F = mp(L[0], L[1], L[2]); opt = opt || {}; CAM_KEYS.push({ t, type: type || 'ease', leave, curve: opt.curve || 'io', roll: opt.roll || 0, p: [F[0], F[1], F[2], d, yaw, pit, fov, opt.roll || 0] }); };
-  K(0, [0, 3.4, 3], 20, 0.12, 0.12, 50);
-  K(2.82, [-2.4, 3.5, 3], 7.6, 0.12, 0.08, 42, 'ease', undefined, {"roll": 0.04});
-  K(6.04, [1, 3.2, 3], 12.5, 0.06, 0.1, 46, 'ease');
-  K(6.85, [14, 3.4, 3], 17, 0, 0.14, 50, 'fly', 6.09);
-  K(9.18, [15, 3.2, 3], 11.5, -0.1, 0.1, 46, 'ease');
-  K(11.06, [15, 3.2, 3], 12.5, 0.06, 0.1, 46, 'ease');
-  K(11.89, [28, 3.4, 3], 17, 0, 0.14, 50, 'whip', 11.11);
-  K(16.85, [29, 3.2, 3], 11.5, -0.1, 0.1, 46, 'ease');
-  K(21.36, [29, 3.2, 3], 12.5, 0.06, 0.1, 46, 'ease');
-  K(21.91, [42, 3.4, 3], 17, 0, 0.14, 50, 'fly', 21.41);
-  K(27.07, [39.6, 3.5, 3], 7.6, 0.12, 0.08, 42, 'ease', undefined, {"roll": 0.04});
-  K(32.58, [43, 3.2, 3], 12.5, 0.06, 0.1, 46, 'ease');
-  K(33.81, [56, 3.4, 3], 17, 0, 0.14, 50, 'whip', 32.63);
-  K(36.78, [57, 3.2, 3], 11.5, -0.1, 0.1, 46, 'ease');
-  K(39.3, [57, 3.2, 3], 12.5, 0.06, 0.1, 46, 'ease');
-  K(39.5, [57, 3.2, 3], 12, 0.08, 0.1, 46, 'ease');
+  K(0, [0, 3.8, 3], 18, 0.08, 0.12, 50);
+  K(2.9, [-2.4, 3.6, 3], 9, 0.12, 0.08, 42, 'ease', undefined, {"roll": 0.04});
+  K(5.4, [1, 3.8, 3], 15, -0.06, 0.12, 50, 'ease');
+  K(7.2, [14, 3.8, 3], 18, -0.06, 0.12, 50, 'whip', 6.7);
+  K(9.0, [12.6, 3.6, 3], 9, 0.1, 0.08, 42, 'ease');
+  K(10.8, [16, 3.8, 3], 14, -0.06, 0.1, 48, 'ease');
+  K(12.3, [28, 3.8, 3], 18, 0.06, 0.12, 50, 'whip', 11.8);
+  K(14.4, [26.4, 3.6, 3], 9, -0.1, 0.08, 42, 'ease');
+  K(16.6, [30, 3.8, 3], 14, 0.08, 0.1, 48, 'ease');
+  K(17.5, [42, 3.8, 3], 20, 0.06, 0.12, 52, 'whip', 17.2);
+  K(19.6, [39, 3.6, 3], 10, -0.08, 0.08, 44, 'ease');
+  K(21.0, [46, 3.6, 3], 12, 0.08, 0.1, 46, 'ease');
+  K(22.4, [56, 3.8, 3], 18, -0.06, 0.12, 50, 'whip', 21.8);
+  K(25, [54, 3.6, 3], 9, 0.12, 0.08, 42, 'ease', undefined, {"roll": -0.04});
+  K(28.5, [56, 3.8, 3], 14, -0.06, 0.1, 48, 'ease');
+  K(31.5, [58.4, 3.6, 3], 9, 0.1, 0.08, 42, 'ease');
+  K(34.1, [70, 3.8, 3], 18, 0.06, 0.12, 50, 'whip', 33.6);
+  K(36, [68.4, 3.6, 3], 9, -0.1, 0.08, 42, 'ease');
+  K(37.6, [71, 3.8, 3], 14, 0.06, 0.1, 48, 'ease');
+  K(39.3, [0, 3.8, 3], 18, 0.08, 0.12, 50, 'cut');
   const cl01 = u => Math.max(0, Math.min(1, u));
   const CURVE = { io: u => u * u * u * (u * (u * 6 - 15) + 10), in: u => u * u * u, out: u => 1 - Math.pow(1 - u, 3), snap: u => { u = cl01(u); return u < 0.5 ? 8 * u * u * u * u : 1 - Math.pow(-2 * u + 2, 4) / 2; } };
   let _roll = 0, _whip = 0;
@@ -1909,7 +1918,7 @@ function drawSpriteChar(c, p, sc, t) {
   function deepCol(c) { const k = new THREE.Color(c), h = {}; k.getHSL(h); k.setHSL(h.h, Math.min(1, h.s * 1.35 + 0.04), Math.max(0.2, h.l * 0.86)); return k; }
   function groundPoly(pts, y, fill, stroke, lw, a) {
     if (!pts.length) return; const P0 = mp(pts[0][0], y, pts[0][1]), c = STN.length ? STN[stIdx(pts[0][0])].c : 0, zo = P0[2] - pts[0][1], ox = P0[0] - pts[0][0] + c; a = a === undefined ? 1 : a; if (a <= 0.02) return;
-    const key = JSON.stringify(pts) + y;
+    const key = JSON.stringify(pts) + y + fill + (stroke || "");   // colour is part of the cache key (else a floor first drawn during a mood fade keeps its day colour)
     const e = grab('poly', () => { const g = new THREE.Group(); return { m: g, key: '' }; });
     if (e.key !== key) {
       while (e.m.children.length) { const ch = e.m.children[0]; e.m.remove(ch); if (ch.geometry) ch.geometry.dispose(); }
@@ -2083,15 +2092,16 @@ function drawSpriteChar(c, p, sc, t) {
   function Char(role, x, z, hW, opts, t0, t1, t) { if (t < t0 || (t1 !== undefined && t >= t1)) return; const P = mp(x, 0, z); if (window.__FITON) { camera.updateMatrixWorld(); const f = fitProj(P[0], 0, P[2]), hd = fitProj(P[0], hW * 1.2, P[2]); if (f[2] < 1 && hd[2] < 1) { const hw = Math.abs(f[1] - hd[1]) * 0.25; (window.__FIT = window.__FIT || []).push({ name: 'char:' + role, kind: 'char', x0: f[0] - hw, x1: f[0] + hw, y0: Math.min(f[1], hd[1]), y1: Math.max(f[1], hd[1]) }); } } if (r3Ok(role)) { r3Draw(role, P, hW, opts || {}, t); return; } CAST.push({ role, wx: P[0], wy: 0, wz: P[2], h: hW * 1.2, t0, t1, o: opts }); }
   function S(x, y, z) { const P = mp(x, y, z), v = new THREE.Vector3(P[0], P[1], P[2]); const cz = v.clone().applyMatrix4(camera.matrixWorldInverse).z; if (cz > -0.5) return null; v.project(camera); const dist = camera.position.distanceTo(new THREE.Vector3(P[0], P[1], P[2])); return { x: (v.x * 0.5 + 0.5) * 1080, y: (-v.y * 0.5 + 0.5) * 1920, z: dist, k: 960 / (dist * Math.tan(camera.fov * Math.PI / 360)) }; }
   // ---- mood: tints sky, fog, ground, skyline and sun over time (day / warm / dusk / night / tense), lerped between track keys
-  const MOODS = { day: { t: [1, 1, 1], f: 0xC4E3F1, h: 1.0, sun: 0xFFFFFF }, warm: { t: [1, 0.9, 0.76], f: 0xF2DFC4, h: 0.98, sun: 0xFFD9A0 }, dusk: { t: [1.0, 0.76, 0.74], f: 0xE6A9A0, h: 0.95, sun: 0xFF9A6A }, night: { t: [0.5, 0.56, 0.86], f: 0x2A3D6E, h: 0.8, sun: 0xA8B8F0 }, tense: { t: [0.9, 0.92, 1.0], f: 0xB4CEE0, h: 0.95, sun: 0xFFE8D0 } };
-  const MOOD_TRACK = [[0, "day"], [11.9, "tense"]];
+  const MOODS = { day: { t: [1, 1, 1], f: 0xC4E3F1, h: 1.0, sun: 0xFFFFFF }, warm: { t: [1, 0.9, 0.76], f: 0xF2DFC4, h: 0.98, sun: 0xFFD9A0 }, dusk: { t: [1.0, 0.76, 0.74], f: 0xE6A9A0, h: 0.86, sun: 0xFF9A6A }, night: { t: [0.34, 0.4, 0.72], f: 0x1B2850, h: 0.52, sun: 0xA8B8F0 }, tense: { t: [0.9, 0.92, 1.0], f: 0xB4CEE0, h: 0.95, sun: 0xFFE8D0 } };
+  const MOOD_TRACK = [[0, "day"], [6.9, "day"], [11.9, "warm"], [17.2, "day"], [21.9, "night"], [33.8, "dusk"], [38.4, "day"]];
   const _mc1 = new THREE.Color(), _mc2 = new THREE.Color();
   function moodAt(t) { let i = 0; while (i < MOOD_TRACK.length - 1 && t >= MOOD_TRACK[i + 1][0]) i++; const cur = MOODS[MOOD_TRACK[i][1]], prev = MOODS[MOOD_TRACK[Math.max(0, i - 1)][1]], u = i === 0 ? 1 : Math.max(0, Math.min(1, (t - MOOD_TRACK[i][0]) / 1.4)), k = u * u * (3 - 2 * u); return { t: cur.t.map((v, c) => prev.t[c] + (v - prev.t[c]) * k), f: _mc1.set(prev.f).lerp(_mc2.set(cur.f), k).getHex(), h: prev.h + (cur.h - prev.h) * k, sun: _mc1.set(prev.sun).lerp(_mc2.set(cur.sun), k).getHex() }; }
+  window.__moodAt = moodAt;   // debug hook: moodAt(t) from the console / cdp_eval
   function applyMood(t) {
     const m = moodAt(t); scene.fog.color.setHex(m.f); scene.background.setHex(m.f);
     X.sky.material.color.setRGB(m.t[0], m.t[1], m.t[2]); X.ground.material.color.setRGB(m.t[0] * 0.86, m.t[1] * 0.88, m.t[2] * 0.92);
     X.bMats.forEach(b => b.color.setRGB(Math.min(1, m.t[0] * 1.05), Math.min(1, m.t[1] * 1.05), Math.min(1, m.t[2] * 1.05)));
-    X.sun.material.color.setHex(m.sun); hemiLight.intensity = 0.82 * m.h; dirLight.intensity = 1.05 * m.h;
+    X.sun.material.color.setHex(m.sun); hemiLight.intensity = 0.82 * m.h; dirLight.intensity = 1.05 * m.h; hemiLight.color.setRGB(Math.min(1, 0.55 + m.t[0] * 0.45), Math.min(1, 0.55 + m.t[1] * 0.45), Math.min(1, 0.55 + m.t[2] * 0.45));
   }
   // ---- beat dressing (data from cfg 'dress', authored by tools/jb/dress.py): flows, orbits, growing stacks, pulses, beams, sparks
   const DRESS = [];
@@ -2182,7 +2192,27 @@ function drawSpriteChar(c, p, sc, t) {
       const g = new THREE.Group(), m = new THREE.MeshStandardMaterial({ color: '#E2B857', roughness: 0.3, metalness: 0.7, emissive: 0x4A3A08, emissiveIntensity: 0.4 });
       [[-0.7, 0, 0], [0.7, 0, 0], [0, 0.42, 0], [-0.7, 0, 0.7], [0.7, 0, 0.7], [0, 0.42, 0.7]].forEach(p => { const b = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.4, 0.62), m); b.position.set(p[0], 0.2 + p[1], p[2]); g.add(b); });
       return { obj: g };
-    }
+    }    ,
+    // ---- room props (see ROOMS in recipes_jb.js). Bottom-centre origin; Model('plant', x, 0, z, size)
+    plant() { const g = new THREE.Group(), M = c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.6 }); const pot = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.42, 0.8, 18), M('#C98B5A')); pot.position.y = 0.4; g.add(pot);
+      [[0, 1.5, 0, 0.8, '#3FA362'], [-0.45, 1.15, 0.1, 0.5, '#4DB872'], [0.45, 1.2, -0.1, 0.55, '#37935A']].forEach(s => { const m = new THREE.Mesh(new THREE.SphereGeometry(s[3], 16, 12), M(s[4])); m.position.set(s[0], s[1], s[2]); g.add(m); }); return { obj: g }; },
+    lamp() { const g = new THREE.Group(), M = (c, o) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: 0.5 }, o || {})); const b = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.45, 0.12, 16), M('#3A3F46')); b.position.y = 0.06; g.add(b);
+      const p = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 3.2, 8), M('#3A3F46')); p.position.y = 1.7; g.add(p); const s = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.7, 0.8, 18, 1, true), M('#FFE9A0', { emissive: 0xFFC850, emissiveIntensity: 0.8, side: THREE.DoubleSide })); s.position.y = 3.4; g.add(s); return { obj: g }; },
+    chair() { const g = new THREE.Group(), M = c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.6 }), B = (w, h, d, x, y, z, c) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), M(c)); m.position.set(x, y, z); g.add(m); };
+      B(1.1, 0.18, 1.1, 0, 0.8, 0, '#2C5BA8'); B(1.1, 1.0, 0.16, 0, 1.4, -0.5, '#2C5BA8'); [[-0.45, -0.45], [0.45, -0.45], [-0.45, 0.45], [0.45, 0.45]].forEach(p => B(0.1, 0.8, 0.1, p[0], 0.4, p[1], '#1B2A31')); return { obj: g }; },
+    cooler() { const g = new THREE.Group(), M = (c, o) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: 0.4 }, o || {})); const b = new THREE.Mesh(new THREE.BoxGeometry(0.9, 1.6, 0.9), M('#EEF3F6')); b.position.y = 0.8; g.add(b);
+      const j = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.34, 0.9, 18), M('#7FC8F2', { transparent: true, opacity: 0.8 })); j.position.y = 2.05; g.add(j); const t = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.12, 0.1), M('#D94E43')); t.position.set(0, 1.25, 0.47); g.add(t); return { obj: g }; },
+    cabinet() { const g = new THREE.Group(), M = c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.5, metalness: 0.2 }); const b = new THREE.Mesh(new THREE.BoxGeometry(1.4, 2.6, 0.9), M('#9AA6AE')); b.position.y = 1.3; g.add(b);
+      [0.5, 1.3, 2.1].forEach(y => { const d = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.7, 0.05), M('#B8C2C9')); d.position.set(0, y, 0.46); g.add(d); const h = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.08, 0.08), M('#1B2A31')); h.position.set(0, y, 0.52); g.add(h); }); return { obj: g }; },
+    bookshelf() { const g = new THREE.Group(), M = c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.6 }), B = (w, h, d, x, y, z, c) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), M(c)); m.position.set(x, y, z); g.add(m); };
+      B(2.4, 3.6, 0.6, 0, 1.8, -0.15, '#6B4A2B'); [0.5, 1.5, 2.5].forEach((y, r) => { let x = -1.0; for (let i = 0; i < 7; i++) { const w = 0.18 + ((i * 7 + r * 3) % 5) * 0.04, h = 0.55 + ((i * 5 + r) % 4) * 0.1; B(w, h, 0.4, x + w / 2, y + h / 2, 0.05, ['#D94E43', '#2C5BA8', '#E2B857', '#3FA362', '#7B3FA0'][(i + r) % 5]); x += w + 0.06; } }); return { obj: g }; },
+    frame() { const g = new THREE.Group(), M = (c, o) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: 0.6 }, o || {})); const f = new THREE.Mesh(new THREE.BoxGeometry(2.0, 1.5, 0.14), M('#EDEDED')); f.position.y = 0.75; g.add(f);
+      const s = new THREE.Mesh(new THREE.BoxGeometry(1.7, 1.2, 0.05), M('#BFE6F5', { emissive: 0x3A6A8C, emissiveIntensity: 0.3 })); s.position.set(0, 0.75, 0.08); g.add(s);
+      const m = new THREE.Mesh(new THREE.ConeGeometry(0.6, 0.7, 3), M('#3A7BD5')); m.position.set(-0.2, 0.62, 0.12); m.scale.z = 0.1; g.add(m); const o = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.05, 16), M('#D94E43')); o.rotation.x = Math.PI / 2; o.position.set(0.45, 1.0, 0.12); g.add(o); return { obj: g }; },
+    monitor() { const g = new THREE.Group(), M = (c, o) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: 0.4 }, o || {})); const s = new THREE.Mesh(new THREE.BoxGeometry(1.6, 1.0, 0.1), M('#1B2A31')); s.position.y = 0.95; g.add(s);
+      const d = new THREE.Mesh(new THREE.BoxGeometry(1.45, 0.85, 0.05), M('#7FE8FF', { emissive: 0x2FA0C0, emissiveIntensity: 0.7 })); d.position.set(0, 0.95, 0.06); g.add(d); const n = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.4, 0.15), M('#1B2A31')); n.position.y = 0.25; g.add(n); const b = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.06, 0.4), M('#1B2A31')); b.position.y = 0.03; g.add(b); return { obj: g }; },
+    desk() { const g = new THREE.Group(), M = c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.55 }), B = (w, h, d, x, y, z, c) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), M(c)); m.position.set(x, y, z); g.add(m); };
+      B(3.2, 0.16, 1.5, 0, 1.2, 0, '#D9F1F5'); [[-1.5, -0.65], [1.5, -0.65], [-1.5, 0.65], [1.5, 0.65]].forEach(p => B(0.14, 1.2, 0.14, p[0], 0.6, p[1], '#7AA9B4')); B(1.2, 0.5, 0.6, 1.0, 0.9, 0, '#B8D6DC'); return { obj: g }; }
   };
   function normModel(obj) {
     const g = new THREE.Group(); g.add(obj); const box = new THREE.Box3().setFromObject(obj), sz = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
@@ -2369,6 +2399,52 @@ function drawSpriteChar(c, p, sc, t) {
   function SetOrbit(cx, z, t, spin) { Model('earth', cx + 1.2, 15.6 - 18.0 - 13.0, z - 6.0, 26.0, { ry: t * 0.06, rx: 0.3 }); Station(cx + 1.2, 15.6, z, spin); groundPoly(ringPts(cx + 1.2, z, 4.6), 14.0, null, '#E2B857', 3, 0.9); }
   function SetRepo(x, z, t, t0) { if (t < t0) return; const tx = lerp(x + 11, x + 3.2, easeOut(seg(t, t0, t0 + 1.1))); Model('rover', tx, Math.sin(t * 16) * 0.05 * (t < t0 + 1.1 ? 1 : 0), z, 4.6, { ry: -0.5, tint: '#F2EDE0' }); return tx; }   // the repo truck drives in from the right
   // =========================================================================
+  // ROOM KITS (jb2, adopted from the Stick3D pack's idea of "15-20 props, textured floor, door walls, depth layers", rebuilt on our outlined primitives).
+  // SetRoom(kind, x, z, t, t0): floor + wall (with a REAL doorway) + side walls + props. Add a room = add a row to ROOMS (data). Story: ["Room", "office", x].
+  //   floor [pattern 'tile'|'plank'|'asphalt', colour, line colour] - wall [pattern 'panel'|'plain', colour, line colour] - trim - door [dx, leaf colour] | null - rug - glow (light behind the door) - led (trading wall) - curtain (stage) - buildings (street)
+  //   props [[model, dx, dz, size, y?]]: any Model() name (plant lamp chair cooler cabinet bookshelf frame monitor desk bank vault ...)
+  // =========================================================================
+  const dk = (h, f) => '#' + [1, 3, 5].map(i => Math.round(parseInt(h.substr(i, 2), 16) * f).toString(16).padStart(2, '0')).join('');
+  const ROOMS = {
+    office:  { floor: ['plank', '#A0602F', '#85491F'], wall: ['panel', '#C07A40', '#8E5A2E'], trim: '#5A2E18', door: [5.4, '#7B3FA0'], rug: '#C8232D', glow: '#FFE2A0', shaft: [-1.5, -1.5],
+               props: [['bookshelf', -6.4, -3.4, 3.8], ['plant', -3.8, -3.2, 2.4], ['frame', -1.0, -3.85, 1.9, 3.6], ['cooler', 2.2, -3.2, 2.8], ['lamp', 7.9, -3.0, 3.8], ['desk', -5.0, -0.6, 3.4], ['monitor', -5.6, -0.6, 1.5, 1.28], ['chair', -3.6, 1.0, 1.9], ['plant', 7.4, 4.4, 2.2], ['cabinet', 1.0, -3.3, 2.6]] },
+    hallway: { floor: ['tile', '#DDE3F0', '#A9B5CF'], wall: ['plain', '#B7C6E6', '#9DB0D8'], trim: '#2C5BA8', door: [0, '#1F4FD8'], rug: '#C8232D', glow: '#FFD36B', shaft: [4.5, -1.5],
+               props: [['plant', -6.6, -3.2, 2.6], ['frame', -4.4, -3.85, 1.9, 3.6], ['cabinet', -2.8, -3.4, 2.8], ['frame', 4.4, -3.85, 1.9, 3.6], ['plant', 6.8, -3.2, 2.5], ['lamp', -7.9, -3.0, 3.8], ['lamp', 7.9, -3.0, 3.8], ['cooler', 3.2, -3.2, 2.8]] },
+    trading: { floor: ['tile', '#12505C', '#0F4450'], wall: ['plain', '#0D3A48', '#0A2E3A'], trim: '#061E26', led: true,
+               props: [['desk', -5.5, -0.8, 3.4], ['monitor', -6.2, -0.8, 1.5, 1.28], ['monitor', -5.0, -0.8, 1.5, 1.28], ['desk', 5.5, -0.8, 3.4], ['monitor', 4.8, -0.8, 1.5, 1.28], ['monitor', 6.0, -0.8, 1.5, 1.28], ['chair', -5.5, 1.1, 1.9], ['chair', 5.5, 1.1, 1.9], ['plant', -8.0, -3.0, 2.4], ['plant', 8.0, -3.0, 2.4], ['cabinet', 0.0, -3.3, 2.6]] },
+    stage:   { floor: ['plank', '#7A4A24', '#5F3A1C'], wall: ['panel', '#7B2D8E', '#5A1F6B'], trim: '#E2B857', curtain: true, rug: '#C8232D', shaft: [0, -1.0],
+               props: [['plant', -7.2, -2.6, 2.6], ['plant', 7.2, -2.6, 2.6], ['lamp', -8.0, -1.0, 3.8], ['lamp', 8.0, -1.0, 3.8], ['desk', 0.0, -1.2, 2.2], ['chair', -4.6, 1.5, 1.9], ['chair', 4.6, 1.5, 1.9]] },
+    street:  { floor: ['asphalt', '#3A3F46', '#E8E8EE'], wall: ['plain', '#C4CCD6', '#9AA6B4'], trim: '#2A2E36', buildings: true,
+               props: [['lamp', -6.0, -2.4, 3.8], ['lamp', 6.0, -2.4, 3.8], ['plant', -3.0, -2.6, 2.2], ['plant', 3.0, -2.6, 2.2], ['cabinet', 7.5, -2.0, 2.4]] }
+  };
+  function SetRoom(kind, x, z, t, t0) {
+    let R = ROOMS[kind]; if (!R || t < t0) return;
+    { const m = moodAt(t), f = Math.pow(Math.min(1, m.h), 1.3), tn = h => '#' + [1, 3, 5].map((i, c) => Math.round(Math.min(255, parseInt(h.substr(i, 2), 16) * Math.min(1.08, m.t[c] * 1.15) * f)).toString(16).padStart(2, '0')).join(''), dm = v => typeof v === 'string' && /^#[0-9a-fA-F]{6}$/.test(v) ? tn(v) : Array.isArray(v) ? v.map(dm) : (v && typeof v === 'object') ? Object.keys(v).reduce((o, k) => (o[k] = dm(v[k]), o), {}) : v; if (f < 0.97 || m.t[0] < 0.97) R = dm(R); }   // rooms follow the mood: night/dusk darken floor, walls and trim (hex colours only)
+ const W = 9, D0 = -4.4, D1 = 7.2, wy = 8.6, wz = z + D0, wc = R.wall[1], dw = 2.6;
+    pad(x - W, z + D0, x + W, z + D1, R.floor[1]);
+    if (R.floor[0] === 'tile') { for (let i = -W; i <= W; i += 1.8) Line3([x + i, 0.05, z + D0], [x + i, 0.05, z + D1], R.floor[2], 5, 1); for (let k = D0; k <= D1; k += 1.8) Line3([x - W, 0.05, z + k], [x + W, 0.05, z + k], R.floor[2], 5, 1); }
+    else if (R.floor[0] === 'plank') { for (let k = D0; k <= D1; k += 0.9) Line3([x - W, 0.05, z + k], [x + W, 0.05, z + k], R.floor[2], 5, 1); }
+    else if (R.floor[0] === 'asphalt') { for (let i = -6; i <= 6; i += 2) pad(x + i - 0.5, z + 2.4, x + i + 0.5, z + 5.6, R.floor[2]); pad(x - W, z + 0.6, x + W, z + 0.8, '#E2B857'); }
+    if (R.rug) { pad(x - 3.8, z - 1.0, x + 3.8, z + 6.2, '#E2B857'); pad(x - 3.4, z - 0.6, x + 3.4, z + 5.8, R.rug); }
+    if (R.buildings) { ['#8E5A4E', '#4E6E8E', '#B89A4E', '#6E4E8E', '#4E8E7A', '#8E4E5E'].forEach((c, i) => { const bx = x - W + i * 3.2, bh = 7 + (i * 5 % 4) * 1.6; Box(bx, 0, wz - 0.4 - (i % 2) * 0.6, 3.0, bh, 1.6, c);
+        for (let r = 0; r < 3; r++) for (let q = 0; q < 2; q++) Box(bx + 0.4 + q * 1.3, 1.6 + r * 2.0, wz + 0.45 - (i % 2) * 0.6, 0.9, 0.9, 0.1, '#FFE9A8', { emis: 0.7, lw: 0 }); }); }
+    else if (R.door) { const dx = x + R.door[0]; Box(x - W, 0, wz, dx - dw / 2 - (x - W), wy, 0.5, wc); Box(dx + dw / 2, 0, wz, x + W - (dx + dw / 2), wy, 0.5, wc); Box(dx - dw / 2, 4.4, wz, dw, wy - 4.4, 0.5, wc);
+      Box(dx - dw / 2, 0, wz - 0.2, dw, 4.4, 0.2, R.glow, { emis: 0.9, lw: 0 }); Box(dx - dw / 2, 0, wz + 0.4, 0.6, 4.3, 0.18, R.door[1]); Box(dx - dw / 2 - 0.16, 0, wz + 0.3, 0.16, 4.55, 0.25, '#F4F1EA'); Box(dx + dw / 2, 0, wz + 0.3, 0.16, 4.55, 0.25, '#F4F1EA'); Box(dx - dw / 2 - 0.16, 4.4, wz + 0.3, dw + 0.32, 0.18, 0.25, '#F4F1EA'); }
+    else Box(x - W, 0, wz, 2 * W, wy, 0.5, wc);
+    Box(x - W, 0, wz + 0.5, 2 * W, 0.7, 0.2, R.trim);
+    if (R.wall[0] === 'panel' && !R.curtain) for (let i = -W + 0.8; i < W; i += 1.5) { if (R.door && Math.abs(i - R.door[0]) < dw / 2 + 0.3) continue; Line3([x + i, 0.9, wz + 0.55], [x + i, 8.2, wz + 0.55], R.wall[2], 5, 1); }
+    if (R.curtain) for (let i = 0; i < 12; i++) Box(x - W + i * 1.5, 0.7, wz + 0.52, 1.5, 7.9, 0.25, i % 2 ? R.wall[1] : R.wall[2], { lw: 0 });
+    if (R.led) { Box(x - 4.6, 2.2, wz + 0.5, 9.2, 4.6, 0.25, '#06141C'); Box(x - 4.4, 2.4, wz + 0.72, 8.8, 4.2, 0.1, '#0A2A3A', { emis: 0.5, lw: 0 });
+      const pts = [[0.03, 0.55], [0.15, 0.48], [0.27, 0.38], [0.4, 0.28], [0.5, 0.45], [0.62, 0.6], [0.74, 0.72], [0.86, 0.82], [0.97, 0.9]]; for (let i = 0; i < pts.length - 1; i++) Line3([x - 4.4 + pts[i][0] * 8.8, 2.4 + (1 - pts[i][1]) * 4.2, wz + 0.85], [x - 4.4 + pts[i + 1][0] * 8.8, 2.4 + (1 - pts[i + 1][1]) * 4.2, wz + 0.85], i < 4 ? '#2FD46A' : '#FF2B3B', 18, 1); }
+    Box(x - W - 0.5, 0, wz, 0.5, wy, D1 - D0, dk(wc, 0.82)); Box(x + W, 0, wz, 0.5, wy, D1 - D0, dk(wc, 0.82));
+    if (R.shaft) Box(x + R.shaft[0] - 1.2, 0, z + R.shaft[1], 2.4, 7.5, 3.2, '#FFF3B8', { a: 0.1, lw: 0, emis: 0.6 });
+    R.props.forEach(p => Model(p[0], x + p[1], p[4] || 0, z + p[2], p[3]));
+  }
+  // ---- held / thrown objects (IK hands + props that stay in the hand + ballistic throws)
+  const HandWorld = (x, z, hW, tgt) => [x + tgt[0] * hW * 1.32, tgt[1] * hW * 1.32, z + 0.3];          // world position of an IK hand target [fx, fy] (figure heights from the body centre / feet)
+  function Hold(model, x, z, hW, tgt, size, t, o) { const p = HandWorld(x, z, hW, tgt); return Model(model, p[0], p[1] - size * 0.25, p[2], size, o); }   // a model that stays in a character's hand
+  function Throw(model, p0, p1, t0, t1, size, t, o) { if (t < t0 || t > t1 + 0.4) return; o = o || {}; const u = seg(t, t0, t1), h = o.h || 2.5; return Model(model, lerp(p0[0], p1[0], u), lerp(p0[1], p1[1], u) + 4 * h * u * (1 - u), lerp(p0[2], p1[2], u), size, { ry: t * 7, rz: t * 5 }); }   // a parabolic throw with spin
+  // =========================================================================
   // STORY RUNTIME (jb2): plays a declarative story (stories/<id>.story.json, embedded by compile_story.py). A video = DATA, no per-video JavaScript. Schema: docs/STORY_SPEC.md
   //   beat = { t:[from,to], again:[from,to]?, space:[from,to]?, pad:[before,after]?, do:[ ["Recipe", args...] | { do:["Recipe", args...], in:[from,to] } ] }
   //   args: numbers, strings, objects; a string starting with "=" is an expression (variables: t, t0, t1 = the beat range, every track by name, lerp, seg, easeInOut, easeOut, easeIn, hand, Math).
@@ -2385,6 +2461,7 @@ function drawSpriteChar(c, p, sc, t) {
       SetLock: (a, t) => SetLock(a[0], a[1], t, a[2]), SetLaunch: (a, t) => SetLaunch(a[0], a[1], t, a[2], a[3], a[4]), SetOrbit: (a, t) => SetOrbit(a[0], a[1], t, d0(a[2], t * 0.18)),
       Station: (a) => Station(a[0], a[1], a[2], d0(a[3], 1.1)), SetRepo: (a, t, t0) => SetRepo(a[0], a[1], t, d0(a[2], t0)),
       Act: (a, t, t0, t1) => Act(a[0], a[1], a[2], a[3], a[4], d0(a[5], t0), d0(a[6], t1 + 0.4), t, a[7]),
+      Room: (a, t, t0) => SetRoom(a[0], a[1], d0(a[2], 0), t, d0(a[3], t0)), Hold: (a, t) => Hold(a[0], a[1], a[2], a[3], a[4], a[5], t, a[6]), Throw: (a, t) => Throw(a[0], a[1], a[2], a[3], a[4], a[5], t, a[6]),
       Stack: (a) => gpuStack(a[0], a[1], a[2] || 6, d0(a[3], 1), 1, a[4]), Dashed: (a) => dashed(a[0], a[1], a[2] || 10, a[3] || '#E2B857', a[4] || 8), RedX: (a, t) => redX(a[0], a[1], a[2], a[3], t, a[4]),
       Model: (a) => Model(a[0], a[1], a[2], a[3], a[4], a[5]), Card: (a, t) => Card(a[0], a[1], a[2], a[3], a[4], a[5], t),
       Counter: (a, t) => { const o = a[0]; Card(o.x, o.y, d0(o.z, 2.5), o.w, o.h, { kind: 'counter', text: o.text, sub: o.sub, fg: '#F2D58F', accent: '#E2B857', t0: o.t0, t1: o.t1 || 0, scramble: 0 }, t); },
@@ -2410,8 +2487,8 @@ function drawSpriteChar(c, p, sc, t) {
     }
     return { run, REG };
   })();
-  const HEADS = [[0, 2.3, "TODO HOOK LINE ONE|TODO HOOK LINE TWO", "TODO one-line subtitle", PAL.coral]];
-  const SPEC = {"beats":[{"name":"panic","t":[0.0,6.04],"do":[["Act","analyst",-2.4,3.2,3.0,"panic",0.0,6.44,{"phase":0.0}]],"_say":"Elon Musk just warned that AI companies are heading straight into a massive cash"},{"name":"chips","t":[6.9,11.06],"do":[["SetCart",16.0,3.2,6.9,4],["Act","analyst",13.0,3.2,3.0,"cart",6.9,11.46,{"phase":1.7}]],"_say":"Everyone thinks the bottleneck in AI is getting enough Nvidia chips, but that's "},{"name":"chips","t":[11.94,21.36],"do":[["SetCart",30.0,3.2,11.94,4],["Act","analyst",27.0,3.2,3.0,"cart",11.94,21.76,{"phase":3.4}]],"_say":"Tech giants are paying tens of billions up front for GPU clusters today, but you"},{"name":"panic","t":[21.96,32.58],"do":[["Act","analyst",39.6,3.2,3.0,"panic",21.96,32.98,{"phase":5.1}]],"_say":"Therefore, billion-dollar data centers end up sitting dark, burning cash every s"},{"name":"clause","t":[33.86,39.3],"do":[["Doc",{"x":57.4,"y":6.0,"tag":"DOCUMENT","head":"CLAUSE","lines":["TODO line one","TODO line two"],"hl":1,"t0":34.16,"t1":39.3}],["Act","analyst",53.7,3.2,3.0,"point",33.86,39.7,{"phase":6.8}]],"_say":"Hundreds of billions of dollars in working capital, which is why Elon Musk just "}]};
+  const HEADS = [[0, 2.4, "2027|CASH CRUNCH", "Elon's warning to AI companies", PAL.coral]];
+  const SPEC = {"beats":[{"name":"alarm","t":[0,6.04],"again":[38.6,39.5],"do":[["Room","trading",0],["Act","elon",-2.6,3.4,3,"alarm",null,null,{"facing":1}],["Act","analyst",2.6,3.4,3,"panic",null,null,{"facing":-1}],{"do":["Coins",[2,3,3.2],[-2.6,0.4,3.4],5,1.1],"in":[3.2,6.04]}]},{"name":"chips","t":[6.9,11.06],"do":[["Room","office",14],["Stack",16.3,3.2,8,1],["Act","analyst",11.8,3.4,3,"think",null,null,{"facing":1}],["Act","engineer",18.4,3.4,3,"annoyed",9.06,null,{"facing":-1}]]},{"name":"capex","t":[11.94,17.2],"do":[["Room","street",28],["SetBank",30.2,2.6],["Act","banker",26,3.4,3,"greedy",null,null,{"facing":1}],["Act","engineer",32.6,3.4,3,"cart",null,null,{"facing":-1}],["Coins",[30.2,3,3.2],[26.8,1,3.4],4,1]]},{"name":"race","t":[17.2,21.36],"do":[["Room","hallway",42],["Stack",40.4,3.2,4,1],["Act","engineer",38.6,3.4,3,"celebrate",null,null,{"facing":1}],["Act","factory",46,3.4,3,"annoyed",null,null,{"facing":-1}],["DashedGrow",[42.5,1.2,3.2],[49.5,1.2,3.2],12,"#E2B857",8,19.6,21.2]]},{"name":"dark","t":[21.96,32.58],"do":[["Room","trading",56],["Act","bondholder",53.4,3.4,3,"panic",null,null,{"facing":1}],["Act","analyst",58.8,3.4,3,"worried",null,null,{"facing":-1}],["Coins",[56,3.4,3.2],[56,0.3,3.4],5,0.9],["Counter",{"x":56,"y":5.6,"w":5,"h":1.6,"text":"$0 REVENUE","sub":"burning cash monthly","t0":28.2,"t1":32.4}]]},{"name":"cost","t":[33.86,38.4],"do":[["Room","stage",70],["SetVault",72.6,2.8],["Act","elon",68.4,3.4,3,"point",null,null,{"facing":1}],["Act","analyst",66.2,3.4,3,"alarm",null,null,{"facing":1}],["Counter",{"x":68.6,"y":5.5,"w":4.4,"h":1.5,"text":"$100B+","sub":"capital trapped","t0":34.7,"t1":38}]]}]};
   function renderShots(t) {
     beginFrame(t);
     Story.run(t, SPEC);
@@ -2441,7 +2518,7 @@ function drawSpriteChar(c, p, sc, t) {
     const gf = Math.floor(time * 12);
     grainPat.setTransform(new DOMMatrix([1, 0, 0, 1, Math.floor(hash(gf * 5 + 3) * 256), Math.floor(hash(gf * 5 + 4) * 256)]));
     ctx.fillStyle = grainPat; ctx.fillRect(0, 0, 1080, 1920);
-    if (!showSheet) drawRail(time, [0.00, 6.90, 11.94, 21.96, 33.86, 39.50]);
+    if (!showSheet) drawRail(time, [0.00, 6.90, 11.94, 17.20, 21.96, 33.86, 39.50]);
     drawCaptions(time);
   }
 
@@ -2462,12 +2539,19 @@ function drawSpriteChar(c, p, sc, t) {
     if (subTag) { ctx.font = '600 ' + s2 + 'px' + fam; ctx.fillStyle = PAL.amberHi; ctx.fillText(subTag, 540 + 14, y0 + hh - 38); }
     ctx.restore();
   }
-  function drawRail(time, S) { }
+  // colour grade (premium pass), drawn right after the 3D frame and before captions: vignette (stronger at night), darker bottom for caption legibility, a faint warm key from the top. One cached gradient set; no per-video data.
+  const _gr = {};
+  function drawRail(time, S) {
+    const m = window.__moodAt ? window.__moodAt(time) : { h: 1 }, nt = 1 - Math.min(1, m.h), v = 0.30 + 0.25 * nt; ctx.save(); ctx.globalAlpha = 1;
+    if (!_gr.v) { _gr.v = ctx.createRadialGradient(540, 900, 380, 540, 960, 1250); _gr.v.addColorStop(0, 'rgba(6,12,26,0)'); _gr.v.addColorStop(1, 'rgba(6,12,26,1)'); _gr.b = ctx.createLinearGradient(0, 1150, 0, 1920); _gr.b.addColorStop(0, 'rgba(6,12,26,0)'); _gr.b.addColorStop(1, 'rgba(6,12,26,0.5)'); _gr.w = ctx.createLinearGradient(0, 0, 0, 700); _gr.w.addColorStop(0, 'rgba(255,214,150,0.10)'); _gr.w.addColorStop(1, 'rgba(255,214,150,0)'); }
+    ctx.globalAlpha = v / 0.55; ctx.fillStyle = _gr.v; ctx.fillRect(0, 0, 1080, 1920); ctx.globalAlpha = 1; ctx.fillStyle = _gr.b; ctx.fillRect(0, 1150, 1080, 770); ctx.globalAlpha = 1 - nt; ctx.fillStyle = _gr.w; ctx.fillRect(0, 0, 1080, 700); ctx.restore();
+  }
   // captions: ONE short line at a time (chunks of up to ~22 characters, cut from the SRT line by its word times), low on the screen (box bottom y 1470)
+  const CAPBIG = false;   // cfg caption_style 'big': 1-2 words, 96 px, white with a black stroke, no box (the Stick3D-pack caption style); default = one ~22-character line in a box
   const _capChunks = new Map();
   function capChunks(cue) {
     let ch = _capChunks.get(cue); if (ch) return ch; ch = []; let cur = [], len = 0;
-    cue.words.forEach(w => { if (cur.length && len + 1 + w.w.length > 22) { ch.push(cur); cur = []; len = 0; } cur.push(w); len += (len ? 1 : 0) + w.w.length; }); if (cur.length) ch.push(cur);
+    cue.words.forEach(w => { if (cur.length && (CAPBIG ? (cur.length >= 2 || len + 1 + w.w.length > 17) : len + 1 + w.w.length > 22)) { ch.push(cur); cur = []; len = 0; } cur.push(w); len += (len ? 1 : 0) + w.w.length; }); if (cur.length) ch.push(cur);
     _capChunks.set(cue, ch); return ch;
   }
   function drawCaptions(time) {
@@ -2475,6 +2559,11 @@ function drawSpriteChar(c, p, sc, t) {
     const cue = CAPS.find(c => time >= c.start && time < c.hideAt); if (!cue) return;
     const chunks = capChunks(cue); let k = 0; while (k < chunks.length - 1 && time >= chunks[k + 1][0].t0) k++;
     const words = chunks[k], t0c = words[0].t0, fam = ' system-ui, -apple-system, "Segoe UI", sans-serif';
+    if (CAPBIG) {
+      ctx.save(); ctx.font = '900 100px' + fam; const sp = ctx.measureText(' ').width, wd = words.map(w => ctx.measureText(w.w).width), tw = wd.reduce((a, b) => a + b, 0) + sp * (words.length - 1), k = easeOut(seg(time, t0c, t0c + 0.12)), sc = 0.8 + 0.2 * k;
+      ctx.globalAlpha = Math.min(seg(time, t0c, t0c + 0.06), cue.fades ? 1 - seg(time, cue.end, cue.end + 0.12) : 1); ctx.translate(540, 1320); ctx.scale(sc, sc); ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round'; ctx.lineWidth = 18; let cx = -tw / 2;
+      words.forEach((w, i) => { const hot = w.col && time >= w.t0; ctx.strokeStyle = '#000'; ctx.strokeText(w.w, cx, 0); ctx.fillStyle = hot ? w.col : '#fff'; ctx.fillText(w.w, cx, 0); cx += wd[i] + sp; }); ctx.restore(); return;
+    }
     ctx.save(); ctx.font = '900 70px' + fam; const space = ctx.measureText(' ').width, ww = words.map(w => ctx.measureText(w.w).width), lw = ww.reduce((a, b) => a + b, 0) + space * (words.length - 1);
     const boxH = 112, by = 1470 - boxH, boxW = Math.min(1000, lw + 90), bx0 = 540 - boxW / 2, fadeIn = seg(time, t0c, t0c + 0.1), fadeOut = cue.fades ? 1 - seg(time, cue.end, cue.end + 0.16) : 1, A = Math.min(fadeIn, fadeOut);
     ctx.globalAlpha = A; ctx.translate(0, (1 - easeOut(fadeIn)) * 10); ctx.fillStyle = 'rgba(8,17,21,0.9)'; ctx.beginPath(); ctx.roundRect(bx0, by, boxW, boxH, 30); ctx.fill();
@@ -2628,7 +2717,7 @@ function drawSpriteChar(c, p, sc, t) {
   let lastNow = performance.now();
   let rate = 1;
   const RATES = [0.5, 1, 2];
-  const SCENE_STARTS = [0.00, 6.90, 11.94, 21.96, 33.86];
+  const SCENE_STARTS = [0.00, 6.90, 11.94, 17.20, 21.96, 33.86];
 
   if (CAPTURE_MODE) hud.classList.add('hidden');
 

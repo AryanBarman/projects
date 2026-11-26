@@ -142,3 +142,9 @@ After the user worried about writing thousands of lines: the reusable engine is 
 
 ## Stick3D adoption (2026-11-25)
 Adopted: room kits, IK hands, Hold/Throw, big-caption option, mp4+SFX pipeline (make_video.py, not run). Not adopted: per-video TSX, 3-ideas ritual, Remotion. Still open: word-level timing, room keyword rules in recipes_map.json, Hold mapping check. See STICK3D_PACK_REVIEW.md, VIDEO_EXPORT.md.
+
+## Night fix + colour grade (2026-11-26)
+- Night bug root cause: `groundPoly` cached by points only, so a floor first drawn during the 1.4 s mood fade kept its day colour. Colour is now in the cache key (shim_env_jb.js). Night sky tint darkened; rooms follow the mood (`SetRoom` tints hex colours by `moodAt`).
+- Colour grade (portrait): `drawRail` in portrait_over.js now draws vignette (stronger at night), darker bottom for captions, faint warm top key. Automatic for every portrait short; no story data needed. Debug: `window.__moodAt(t)`.
+- `budget.py` story mode: fails > 3 text cards per short or a beat with no character.
+- Affects jb2 pages only (jb/jen_back untouched). Re-check old jb2 shorts (short44) if you rebuild them: their night/dusk will now be darker.
