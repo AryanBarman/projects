@@ -1,0 +1,99 @@
+1
+00:00:00,000 --> 00:00:03,680
+Why? Because a data center shell is just concrete,
+
+2
+00:00:04,020 --> 00:00:05,380
+copper and cooling pipes.
+
+3
+00:00:05,920 --> 00:00:08,400
+The real cost sits inside the racks,
+
+4
+00:00:08,840 --> 00:00:11,180
+and silicon rots on a two -year clock.
+
+5
+00:00:11,960 --> 00:00:14,820
+Boston Consulting Group notes that new GPU generations
+
+6
+00:00:14,820 --> 00:00:16,760
+ship roughly every two years,
+
+7
+00:00:17,200 --> 00:00:20,100
+rapidly eroding the residual value of the chips already
+
+8
+00:00:20,100 --> 00:00:23,800
+installed. Therefore, you cannot build an AI data center
+
+9
+00:00:23,800 --> 00:00:25,040
+once and walk away.
+
+10
+00:00:25,500 --> 00:00:27,400
+You have to gut the building and buy the
+
+11
+00:00:27,400 --> 00:00:29,100
+silicon all over again.
+
+12
+00:00:29,880 --> 00:00:33,040
+PwC projects that chips and information technology equipment
+
+13
+00:00:33,040 --> 00:00:35,800
+will swell from 70 % of data center investment
+
+14
+00:00:35,800 --> 00:00:38,740
+today to 93 % by 2050.
+
+15
+00:00:40,460 --> 00:00:43,080
+Roughly half of that $31.6 trillion,
+
+16
+00:00:43,800 --> 00:00:47,140
+$15.1 trillion, is projected to land in the
+
+17
+00:00:47,140 --> 00:00:50,300
+United States, with another $8.2 trillion in Asia
+
+18
+00:00:50,300 --> 00:00:52,180
+Pacific, led by China and India.
+
+19
+00:00:53,500 --> 00:00:56,540
+But if tech giants are spending $800 billion a
+
+20
+00:00:56,540 --> 00:00:58,120
+year just to keep up with demand,
+
+21
+00:00:58,520 --> 00:01:01,120
+you would assume every single chip inside those buildings
+
+22
+00:01:01,120 --> 00:01:03,400
+is running at 100 % capacity,
+
+23
+00:01:03,680 --> 00:01:05,320
+24 hours a day, right?
+
+24
+00:01:06,660 --> 00:01:09,880
+Look at the utilization logs inside those server rooms,
+
+25
+00:01:10,080 --> 00:01:12,020
+because the math breaks down immediately.

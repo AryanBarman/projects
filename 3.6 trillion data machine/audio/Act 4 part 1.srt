@@ -1,0 +1,71 @@
+1
+00:00:00,000 --> 00:00:03,800
+PwC's 2026 outlook ranked the five forces
+
+2
+00:00:03,800 --> 00:00:07,400
+deciding where that $31.6 trillion in
+
+3
+00:00:07,400 --> 00:00:09,700
+global AI capital will actually land.
+
+4
+00:00:10,300 --> 00:00:13,820
+Connectivity, security, community consent, and even GPU
+
+5
+00:00:13,820 --> 00:00:15,380
+access all made the list.
+
+6
+00:00:15,960 --> 00:00:19,320
+At the very top, number one was electricity.
+
+7
+00:00:20,160 --> 00:00:24,100
+Affordable, reliable, low -carbon power at scale is the
+
+8
+00:00:24,100 --> 00:00:26,740
+single hardest bottleneck on the planet to deliver.
+
+9
+00:00:26,740 --> 00:00:29,400
+You can fabricate a chip in Taiwan and fly
+
+10
+00:00:29,400 --> 00:00:30,800
+it anywhere in 24 hours.
+
+11
+00:00:31,340 --> 00:00:34,360
+You cannot fly a gigawatt power plant across an
+
+12
+00:00:34,360 --> 00:00:37,540
+ocean. That is why in October 2025,
+
+13
+00:00:37,940 --> 00:00:40,360
+NVIDIA, the Electric Power Research Institute,
+
+14
+00:00:40,620 --> 00:00:43,860
+and grid operator PJM Interconnection teamed up on a
+
+15
+00:00:43,860 --> 00:00:45,880
+facility called Aurora in Virginia,
+
+16
+00:00:46,300 --> 00:00:48,820
+deploying software that throttles a data center's energy
+
+17
+00:00:48,820 --> 00:00:51,780
+draw in real time so it does not destabilize
+
+18
+00:00:51,780 --> 00:00:52,580
+the local power grid.

@@ -1,0 +1,91 @@
+1
+00:00:00,000 --> 00:00:03,820
+By 2024, CUDA had locked in 5 million
+
+2
+00:00:03,820 --> 00:00:07,120
+developers, powering over 80 % of the AI GPU
+
+3
+00:00:07,120 --> 00:00:09,980
+market and more than 75 % of the world's
+
+4
+00:00:09,980 --> 00:00:11,640
+top 500 supercomputers.
+
+5
+00:00:12,200 --> 00:00:15,100
+That software tollbooth turned a company that was once
+
+6
+00:00:15,100 --> 00:00:18,340
+30 days from bankruptcy, kept alive in the 1990s
+
+7
+00:00:18,340 --> 00:00:21,200
+only by a $5 million lifeline from Sega,
+
+8
+00:00:21,560 --> 00:00:25,760
+into the first $5 trillion corporation in October 2025,
+
+9
+00:00:26,220 --> 00:00:30,420
+generating $215.9 billion in fiscal 2026
+
+10
+00:00:30,420 --> 00:00:34,120
+revenue. Therefore, rivals have realized they cannot
+
+11
+00:00:34,120 --> 00:00:36,160
+beat NVIDIA on raw silicon alone.
+
+12
+00:00:36,600 --> 00:00:40,300
+As Kuver Labs documents, AMD is attacking inference workloads
+
+13
+00:00:40,300 --> 00:00:43,460
+with its MI300 accelerators and open -source ROCM stack,
+
+14
+00:00:43,760 --> 00:00:46,180
+winning deployments at Microsoft Azure and Oracle Cloud
+
+15
+00:00:46,180 --> 00:00:47,020
+on price performance.
+
+16
+00:00:47,760 --> 00:00:50,400
+Meanwhile, McKinsey's architecture analysis highlights
+
+17
+00:00:50,400 --> 00:00:54,220
+how custom, workload -specific ASICs like Google's TPUs
+
+18
+00:00:54,220 --> 00:00:56,800
+are built to take share from general -purpose GPUs
+
+19
+00:00:56,800 --> 00:00:59,820
+and CPUs across both training and everyday inference.
+
+20
+00:01:00,580 --> 00:01:02,940
+But even if AMD, custom silicon,
+
+21
+00:01:03,120 --> 00:01:05,700
+and open -source software crack the CUDA monopoly wide
+
+22
+00:01:05,700 --> 00:01:08,840
+open, there is one wall nobody can code their
+
+23
+00:01:08,840 --> 00:01:09,280
+way around.

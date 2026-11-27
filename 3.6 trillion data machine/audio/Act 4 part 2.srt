@@ -1,0 +1,103 @@
+1
+00:00:00,000 --> 00:00:02,940
+And layered directly on top of the power grid
+
+2
+00:00:02,940 --> 00:00:05,120
+is a geopolitical border wall.
+
+3
+00:00:05,720 --> 00:00:09,160
+In September 2025, China's internet regulator banned
+
+4
+00:00:09,160 --> 00:00:12,440
+domestic tech giants like ByteDance and Alibaba from
+
+5
+00:00:12,440 --> 00:00:14,700
+buying Nvidia's China -specific chips,
+
+6
+00:00:15,180 --> 00:00:17,380
+pushing Beijing's self -sufficiency drive.
+
+7
+00:00:18,000 --> 00:00:19,980
+PwC modeled what happens next,
+
+8
+00:00:20,160 --> 00:00:21,500
+and the split is stark.
+
+9
+00:00:21,940 --> 00:00:25,280
+While national sovereign AI pushes merely shift where
+
+10
+00:00:25,280 --> 00:00:27,680
+money gets spent without shrinking the global pie,
+
+11
+00:00:28,120 --> 00:00:31,320
+tighter export controls that fracture chip supply chains
+
+12
+00:00:31,320 --> 00:00:34,500
+cut annual investment roughly in half by 2030,
+
+13
+00:00:35,140 --> 00:00:38,600
+wiping out $6 trillion in cumulative global spending
+
+14
+00:00:38,600 --> 00:00:42,420
+and shrinking the $31.6 trillion build -out down
+
+15
+00:00:42,420 --> 00:00:44,240
+to $25.5 trillion.
+
+16
+00:00:44,820 --> 00:00:47,560
+So look again at that armored truck from the
+
+17
+00:00:47,560 --> 00:00:48,420
+beginning of this story.
+
+18
+00:00:48,880 --> 00:00:51,780
+The chips inside are only the visible tip of
+
+19
+00:00:51,780 --> 00:00:55,720
+the spear. Behind them sits a $31.6 trillion
+
+20
+00:00:55,720 --> 00:00:58,940
+data center trap built on silicon that expires every
+
+21
+00:00:58,940 --> 00:01:03,220
+two years, a $2.3 trillion compute market financializing
+
+22
+00:01:03,220 --> 00:01:05,920
+like crude oil, a 20 -year software moat under
+
+23
+00:01:05,920 --> 00:01:08,760
+siege and a physical ceiling built out of megawatts
+
+24
+00:01:08,760 --> 00:01:09,980
+and national borders.
+
+25
+00:01:10,820 --> 00:01:14,060
+Whoever controls the power and the grid controls the
+
+26
+00:01:14,060 --> 00:01:15,820
+chokepoint of the AI economy.

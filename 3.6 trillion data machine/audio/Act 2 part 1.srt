@@ -1,0 +1,71 @@
+1
+00:00:00,000 --> 00:00:03,500
+According to Boston Consulting Group's July 2026 market
+
+2
+00:00:03,500 --> 00:00:06,940
+analysis, global data center vacancy has hit a razor
+
+3
+00:00:06,940 --> 00:00:08,500
+-thin 1%.
+
+4
+00:00:08,500 --> 00:00:11,940
+And roughly 92 % of all new capacity is
+
+5
+00:00:11,940 --> 00:00:15,300
+already pre -committed before the concrete is even poured.
+
+6
+00:00:15,760 --> 00:00:18,460
+On paper, it is the tightest real estate market
+
+7
+00:00:18,460 --> 00:00:22,440
+on earth. But Cast.ai utilization logs
+
+8
+00:00:22,440 --> 00:00:26,280
+cited by BCG show some enterprise GPU clusters running
+
+9
+00:00:26,280 --> 00:00:28,800
+at just 5%.
+
+10
+00:00:28,800 --> 00:00:30,640
+99 % leased.
+
+11
+00:00:31,380 --> 00:00:32,640
+5 % used.
+
+12
+00:00:33,400 --> 00:00:34,200
+How is that possible?
+
+13
+00:00:34,820 --> 00:00:37,920
+Because AI labs and corporations are terrified of being
+
+14
+00:00:37,920 --> 00:00:40,400
+caught without compute when the next model drops.
+
+15
+00:00:40,780 --> 00:00:43,600
+Therefore, they hoard capacity in long -term,
+
+16
+00:00:43,700 --> 00:00:46,600
+opaque bilateral contracts years in advance,
+
+17
+00:00:46,940 --> 00:00:50,500
+paying for massive clusters that sit largely idle just
+
+18
+00:00:50,500 --> 00:00:52,540
+to ensure against missing out.

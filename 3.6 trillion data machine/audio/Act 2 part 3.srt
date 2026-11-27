@@ -1,0 +1,119 @@
+1
+00:00:00,000 --> 00:00:03,760
+Independent benchmarks, including the Orn H100 Index,
+
+2
+00:00:04,160 --> 00:00:06,380
+the Silicon Data H100 Rental Index,
+
+3
+00:00:06,680 --> 00:00:08,800
+and the Compute Desk Copper US Index,
+
+4
+00:00:09,080 --> 00:00:12,500
+have already begun tracking GPU hours on Bloomberg terminals,
+
+5
+00:00:12,780 --> 00:00:15,840
+though their methodologies still diverged by up to 41
+
+6
+00:00:15,840 --> 00:00:17,320
+% over 19 months.
+
+7
+00:00:18,080 --> 00:00:21,640
+BCG estimates that turning opaque GPU rentals into a
+
+8
+00:00:21,640 --> 00:00:24,820
+liquid, tradable market, complete with standardized benchmarks,
+
+9
+00:00:25,200 --> 00:00:27,120
+secondary resale and futures contracts,
+
+10
+00:00:27,480 --> 00:00:30,800
+could unlock up to 140 billion dollars a year
+
+11
+00:00:30,800 --> 00:00:31,940
+in dark value.
+
+12
+00:00:32,440 --> 00:00:35,920
+That combines up to $97 billion in annual trading
+
+13
+00:00:35,920 --> 00:00:39,500
+arbitrage, with roughly $26 billion a year in interest
+
+14
+00:00:39,500 --> 00:00:42,760
+savings, simply by letting lenders hedge chip depreciation
+
+15
+00:00:42,760 --> 00:00:45,940
+and cut borrowing rates by nearly two full percentage
+
+16
+00:00:45,940 --> 00:00:49,020
+points. But here is the catch that breaks the
+
+17
+00:00:49,020 --> 00:00:50,680
+AI -as -the -new -oil comparison.
+
+18
+00:00:51,360 --> 00:00:53,260
+Oil moves on tankers and pipelines,
+
+19
+00:00:53,600 --> 00:00:55,640
+so a barrel in Houston trades within a few
+
+20
+00:00:55,640 --> 00:00:57,000
+dollars of a barrel in Rotterdam.
+
+21
+00:00:57,580 --> 00:00:59,700
+AI compute cannot move like oil.
+
+22
+00:01:00,280 --> 00:01:02,540
+Workloads must sit near their data and run at
+
+23
+00:01:02,540 --> 00:01:03,240
+the speed of light.
+
+24
+00:01:03,820 --> 00:01:06,820
+A GPU in Virginia cannot easily replace a GPU
+
+25
+00:01:06,820 --> 00:01:09,180
+in Frankfurt. Like wholesale electricity,
+
+26
+00:01:09,480 --> 00:01:11,420
+AI compute is trapped by geography.
+
+27
+00:01:12,200 --> 00:01:13,860
+Which raises an obvious question.
+
+28
+00:01:14,340 --> 00:01:16,800
+If compute is turning into a standardized commodity,
+
+29
+00:01:17,320 --> 00:01:19,300
+why can't tech giants just swap out the chips
+
+30
+00:01:19,300 --> 00:01:21,260
+inside those racks for cheaper alternatives?

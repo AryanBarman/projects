@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:03,140
+Think about how every major infrastructure boom in history
+
+2
+00:00:03,140 --> 00:00:05,080
+has worked. In the 1800s,
+
+3
+00:00:05,080 --> 00:00:06,760
+you laid down steel railroad tracks,
+
+4
+00:00:06,940 --> 00:00:09,140
+and once the line connected New York to Chicago,
+
+5
+00:00:09,620 --> 00:00:10,920
+capital spending collapsed.
+
+6
+00:00:11,400 --> 00:00:12,900
+The asset sat in the ground for decades.
+
+7
+00:00:13,440 --> 00:00:16,860
+In the late 1990s, telecom giants buried millions of
+
+8
+00:00:16,860 --> 00:00:18,320
+miles of fiber optic glass.
+
+9
+00:00:18,760 --> 00:00:19,760
+Once the trench was filled,
+
+10
+00:00:20,100 --> 00:00:21,640
+the building spree was over.
+
+11
+00:00:22,080 --> 00:00:25,120
+But AI infrastructure breaks that law completely.
+
+12
+00:00:25,700 --> 00:00:29,380
+According to PwC's September 2026 global data center
+
+13
+00:00:29,380 --> 00:00:32,820
+outlook, global data center capital expenditure is forecast
+
+14
+00:00:32,820 --> 00:00:35,820
+to climb from roughly $800 billion a year in
+
+15
+00:00:35,820 --> 00:00:39,420
+2026 to $1.8 trillion a year by
+
+16
+00:00:39,420 --> 00:00:41,920
+2050. It does not taper off.
+
+17
+00:00:42,280 --> 00:00:43,420
+It accelerates.

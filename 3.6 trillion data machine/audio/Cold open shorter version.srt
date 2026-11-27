@@ -1,0 +1,87 @@
+1
+00:00:00,000 --> 00:00:02,720
+Look at what is inside this armored truck.
+
+2
+00:00:03,100 --> 00:00:05,360
+It is not gold bullion and it is not
+
+3
+00:00:05,360 --> 00:00:08,180
+cash. According to Cisco's Chief Information Officer,
+
+4
+00:00:08,780 --> 00:00:11,600
+this is how NVIDIA's AI chips now travel to
+
+5
+00:00:11,600 --> 00:00:12,500
+AI data centers.
+
+6
+00:00:12,960 --> 00:00:16,380
+In Palo Alto, Oracle's Larry Ellison and Tesla's Elon
+
+7
+00:00:16,380 --> 00:00:19,340
+Musk once spent an hour over sushi at Nobu,
+
+8
+00:00:19,720 --> 00:00:22,280
+literally begging Jensen Huang for a bigger allocation.
+
+9
+00:00:22,820 --> 00:00:25,520
+That scarcity has triggered the largest capital build
+
+10
+00:00:25,520 --> 00:00:26,760
+-out in modern history.
+
+11
+00:00:26,760 --> 00:00:30,560
+$31.6 trillion in global AI data center
+
+12
+00:00:30,560 --> 00:00:32,520
+and infrastructure spending through 2050,
+
+13
+00:00:32,880 --> 00:00:33,960
+according to PwC.
+
+14
+00:00:34,380 --> 00:00:36,980
+But unlike railroads or fiber optic cables,
+
+15
+00:00:37,360 --> 00:00:40,800
+this $31.6 trillion build -out is a trap
+
+16
+00:00:40,800 --> 00:00:42,420
+that never stops charging.
+
+17
+00:00:42,940 --> 00:00:44,120
+By the end of this video,
+
+18
+00:00:44,360 --> 00:00:46,720
+you will see why 99 % of data center
+
+19
+00:00:46,720 --> 00:00:49,820
+space is already spoken for while huge clusters sit
+
+20
+00:00:49,820 --> 00:00:53,000
+nearly empty. And why the real choke point controlling
+
+21
+00:00:53,000 --> 00:00:56,840
+that $31.6 trillion sits outside the server rack
+
+22
+00:00:56,840 --> 00:00:57,460
+altogether.

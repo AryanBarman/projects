@@ -1,0 +1,79 @@
+1
+00:00:00,000 --> 00:00:03,240
+Meanwhile, the bill is quietly shifting onto everyone
+
+2
+00:00:03,240 --> 00:00:07,300
+else. For years, flat -rate subscriptions insulated enterprise
+
+3
+00:00:07,300 --> 00:00:09,840
+buyers from what AI compute actually cost.
+
+4
+00:00:10,380 --> 00:00:13,280
+That era ended in the spring of 2026.
+
+5
+00:00:14,040 --> 00:00:15,940
+Between March and April 2026,
+
+6
+00:00:16,400 --> 00:00:18,440
+Windsurf imposed hard weekly limits.
+
+7
+00:00:18,780 --> 00:00:20,820
+OpenAI moved Codex to token metering,
+
+8
+00:00:21,380 --> 00:00:24,180
+GitHub tightened copilot caps, and Anthropic shifted
+
+9
+00:00:24,180 --> 00:00:27,020
+enterprise customers to a $20 -per -seat base fee
+
+10
+00:00:27,020 --> 00:00:30,700
+plus paper token rates, explicitly blaming the deepening
+
+11
+00:00:30,700 --> 00:00:31,880
+crunch for AI compute.
+
+12
+00:00:32,660 --> 00:00:35,680
+BCG projects the total market for AI computing power
+
+13
+00:00:35,680 --> 00:00:39,740
+will surge from $360 billion in 2025 to
+
+14
+00:00:39,740 --> 00:00:42,800
+roughly $2.3 trillion by 2030.
+
+15
+00:00:43,420 --> 00:00:46,180
+And when a market hits $2.3 trillion with
+
+16
+00:00:46,180 --> 00:00:49,880
+wild price swings, H100 rental rates crashed from roughly
+
+17
+00:00:49,880 --> 00:00:53,560
+$8 an hour in early 2024 to $1.96
+
+18
+00:00:53,560 --> 00:00:54,680
+in late 2025.
+
+19
+00:00:54,680 --> 00:00:58,340
+Before snapping back to $2.64 in April 2026,
+
+20
+00:00:59,100 --> 00:00:59,860
+Wall Street shows up.

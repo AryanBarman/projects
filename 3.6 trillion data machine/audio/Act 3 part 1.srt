@@ -1,0 +1,91 @@
+1
+00:00:00,000 --> 00:00:03,000
+To understand why nobody can simply swap chips,
+
+2
+00:00:03,360 --> 00:00:05,240
+you have to go back to 2006.
+
+3
+00:00:06,080 --> 00:00:09,160
+That year, Nvidia launched a software layer called CUDA,
+
+4
+00:00:09,440 --> 00:00:12,320
+allowing researchers to harness graphics chips for general
+
+5
+00:00:12,320 --> 00:00:13,480
+-purpose parallel math.
+
+6
+00:00:13,800 --> 00:00:16,260
+It roughly doubled the cost of Nvidia's hardware.
+
+7
+00:00:16,680 --> 00:00:18,440
+And when Jensen Huang unveiled it,
+
+8
+00:00:18,640 --> 00:00:20,460
+the market's verdict was brutal.
+
+9
+00:00:21,100 --> 00:00:24,440
+When I launched CUDA, the audience was complete silence,
+
+10
+00:00:24,660 --> 00:00:25,440
+Huang later recalled.
+
+11
+00:00:25,880 --> 00:00:26,760
+Nobody wanted it.
+
+12
+00:00:27,060 --> 00:00:28,000
+Nobody asked for it.
+
+13
+00:00:28,000 --> 00:00:29,920
+Nobody understood it.
+
+14
+00:00:30,180 --> 00:00:33,560
+Nvidia's valuation collapsed from $12 billion to somewhere
+
+15
+00:00:33,560 --> 00:00:35,440
+between $2 billion and $3 billion.
+
+16
+00:00:36,120 --> 00:00:39,440
+But Huang endured the silence because he understood what
+
+17
+00:00:39,440 --> 00:00:42,020
+McKinsey semiconductor research later quantified.
+
+18
+00:00:42,360 --> 00:00:45,060
+In the PC era, chip makers captured just 20
+
+19
+00:00:45,060 --> 00:00:46,840
+to 30 percent of the tech stack's value.
+
+20
+00:00:47,220 --> 00:00:49,820
+In smartphones, they captured 10 to 20 percent.
+
+21
+00:00:50,280 --> 00:00:53,120
+In AI, McKinsey found, hardware companies that control
+
+22
+00:00:53,120 --> 00:00:56,500
+the software ecosystem can capture 40 to 50 percent
+
+23
+00:00:56,500 --> 00:00:57,540
+of the entire stack.
