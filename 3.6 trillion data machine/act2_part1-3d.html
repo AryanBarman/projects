@@ -689,13 +689,39 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
   const CAM_KEYS = [];
   const K = (t, p, l, fov, x) => CAM_KEYS.push({ t, v: [p[0], p[1], p[2], l[0], l[1], l[2], fov], cut: x === true, type: typeof x === 'string' ? x : 'auto' });
 
-  K(0.00, [0, 7.0, 28.0], [0, 3.2, -1.0], 46, 'fly');
-  K(8.50, [0, 6.2, 22.0], [0, 3.2, -1.0], 45, 'push');
-  K(18.45, [26, 4.8, 20.0], [26, 3.4, -1.0], 44, 'fly');
-  K(26.20, [26, 4.4, 16.5], [26, 3.4, -1.0], 42, 'hold');
-  K(33.35, [52, 6.4, 26.0], [52, 3.4, 0.0], 46, 'fly');
-  K(43.60, [52, 6.0, 23.0], [52, 3.4, 0.0], 45, 'arc');
-  K(52.40, [52, 6.0, 23.0], [52, 3.4, 0.0], 45, 'hold');
+  K(0.00, [-6.5, 11.5, 22.0], [0.0, 2.2, -3.5], 45, 'fly');
+  K(3.50, [0.0, 6.2, 16.5], [0.0, 2.2, -2.5], 42, 'push');
+  K(5.20, [0.0, 4.4, 12.0], [0.0, 2.8, -1.8], 40, 'push');
+  K(8.50, [-4.2, 2.4, 12.8], [-1.2, 2.8, -1.8], 42, 'arc');
+  K(11.94, [2.2, 4.2, 13.6], [1.8, 3.0, -1.5], 41, 'push');
+  K(13.60, [0.0, 2.8, 10.6], [0.0, 1.8, -1.5], 40, 'arc');
+  K(15.60, [2.6, 3.4, 11.4], [0.0, 2.0, -1.5], 41, 'arc');
+  // Beat 3 (15.76 - 28.80): Aerial Data Center Panorama -> Facade Cutaway -> 5% Utilization Corridor
+  K(15.76, [26.0, 7.6, 18.0], [26.0, 2.2, -2.5], 45, 'fly');
+  K(18.80, [26.0, 3.4,  8.2], [26.0, 2.5, -2.2], 42, 'push');
+  K(22.44, [22.5, 3.2,  6.8], [25.5, 2.6, -2.2], 40, 'arc');
+  K(28.70, [27.5, 3.4,  8.4], [26.0, 2.8, -1.8], 40, 'hold');
+  // Beat 4 (28.80 - 33.40): 99% Leased -> 5% Used -> Leased != Utilized Split
+  K(28.80, [26.0, 4.2, 12.8], [26.0, 3.8, -1.0], 42, true);
+  K(30.64, [26.0, 4.2, 11.4], [26.0, 3.8, -1.0], 40, 'push');
+  K(31.38, [26.0, 4.2,  9.8], [26.0, 3.8, -0.8], 38, true);
+  K(32.64, [26.0, 4.4, 14.5], [26.0, 3.2, -1.2], 44, true);
+  // Beat 5 (33.40 - 40.40): Why? -> Contested Capacity Pool -> Next Model Arrives
+  K(33.40, [52.0, 4.0, 12.2], [52.0, 2.8, -1.8], 42, true);
+  K(34.70, [52.0, 3.2,  8.6], [52.0, 2.6, -2.4], 38, 'push');
+  K(34.82, [49.4, 3.3,  9.6], [52.4, 3.4, -0.4], 42, 'arc');
+  K(37.80, [51.6, 3.8, 10.6], [52.0, 3.6, -0.4], 40, 'push');
+  K(37.92, [52.0, 4.2, 11.4], [52.0, 3.2, -1.2], 41, 'push');
+  K(40.40, [54.2, 4.4, 13.6], [52.0, 3.0, -1.2], 43, 'pull');
+  // Beat 6 (40.78 - 52.54): Long-Term Contracts -> Bilateral Table -> Paying for Idle -> Protective Shield
+  K(40.78, [46.5, 2.6,  9.2], [52.0, 2.6, -2.4], 41, 'arc');
+  K(43.50, [52.0, 3.8, 11.6], [52.0, 2.8, -2.0], 42, 'arc');
+  K(43.70, [49.2, 3.1,  8.8], [52.0, 2.3,  0.8], 40, true);
+  K(46.50, [53.2, 3.2,  8.6], [52.0, 2.3,  0.8], 39, 'arc');
+  K(46.94, [49.4, 3.6, 10.2], [52.0, 2.6, -1.5], 38, 'arc');
+  K(50.85, [52.8, 3.8, 10.8], [52.0, 2.6, -1.5], 39, 'arc');
+  K(52.10, [52.0, 4.1, 11.4], [52.0, 2.7, -1.6], 39, 'pull');
+  K(52.80, [52.0, 4.5, 12.4], [52.0, 2.7, -1.6], 40, 'pull');
 
   const ORB_YAW = [-0.55, 0.5, -0.28, 0.62, -0.42, 0.34, -0.6, 0.22];
   const ORB_PIT = [0.12, 0.3, 0.07, 0.46, 0.16, 0.36, 0.1, 0.26];
@@ -1653,6 +1679,16 @@ function drawSpriteChar(c, p, sc, t) {
     X.world = new THREE.Group(); scene.add(X.world);
     X.uBox = THREE.RoundedBoxGeometry ? new THREE.RoundedBoxGeometry(1, 1, 1, 3, 0.09) : new THREE.BoxGeometry(1, 1, 1);
     X.uEdge = new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1, 1)); X.uCyl = new THREE.CylinderGeometry(1, 1, 1, 18); X.uPlane = new THREE.PlaneGeometry(1, 1);
+    X.maxAniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+    {
+      const sc = document.createElement('canvas'); sc.width = sc.height = 128;
+      const sg = sc.getContext('2d'), rg = sg.createRadialGradient(64, 64, 6, 64, 64, 62);
+      rg.addColorStop(0, 'rgba(7, 19, 24, 0.65)');
+      rg.addColorStop(0.55, 'rgba(7, 19, 24, 0.28)');
+      rg.addColorStop(1, 'rgba(7, 19, 24, 0.0)');
+      sg.fillStyle = rg; sg.fillRect(0, 0, 128, 128);
+      X.shadowTex = new THREE.CanvasTexture(sc);
+    }
   }
 
   // =========================================================================
@@ -1661,8 +1697,8 @@ function drawSpriteChar(c, p, sc, t) {
   const eBack = u => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(u - 1, 3) + c1 * Math.pow(u - 1, 2); };
   const eIn = u => u * u * u;
   let GROUND = [], ITEMS = [], OVER = [], CAST = [];
-  const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0 };
-  const LBL = new Map(), NEARCULL = 9;
+  const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [], shadow: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0, shadow: 0 };
+  const LBL = new Map(), NEARCULL = 9, _lX = new THREE.Vector3(1, 0, 0), _lD = new THREE.Vector3();
   function grab(type, make) { const p = POOL[type]; let o = p[CNT[type]]; if (!o) { o = make(); X.world.add(o.m); p.push(o); } CNT[type]++; o.m.visible = true; return o; }
   function setCol(mat, col, em, a) { mat.color.set(col); if (mat.emissive) { mat.emissive.set(col); mat.emissiveIntensity = (em || 0) * 0.8; } const tr = a < 1; mat.opacity = a; if (mat.transparent !== tr) { mat.transparent = tr; mat.depthWrite = !tr; mat.needsUpdate = true; } }
   function paleCol(c) { const n = parseInt(String(c).replace('#', ''), 16) || 0, r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255; if (r + g + b > 330) return c; const f = 0.3; return 'rgb(' + Math.round(r + (255 - r) * f) + ',' + Math.round(g + (255 - g) * f) + ',' + Math.round(b + (255 - b) * f) + ')'; }
@@ -1683,7 +1719,7 @@ function drawSpriteChar(c, p, sc, t) {
     const cw = Math.max(256, Math.min(1024, Math.round(w * 120))), ch = Math.max(64, Math.round(cw * h / w)), c = document.createElement('canvas'); c.width = cw; c.height = ch; const g = c.getContext('2d');
     if (bg) { g.fillStyle = bg; g.strokeStyle = line || '#0B161C'; g.lineWidth = Math.max(2, ch * 0.06); g.beginPath(); g.roundRect(g.lineWidth / 2, g.lineWidth / 2, cw - g.lineWidth, ch - g.lineWidth, ch * 0.18); g.fill(); g.stroke(); }
     g.fillStyle = fg; g.textAlign = 'center'; g.textBaseline = 'middle'; let sz = ch * 0.62; const fam = ' system-ui, "Segoe UI", sans-serif'; g.font = '900 ' + sz + 'px' + fam; while (g.measureText(text).width > cw * 0.86 && sz > 8) { sz *= 0.93; g.font = '900 ' + sz + 'px' + fam; }
-    g.fillText(text, cw / 2, ch / 2 + ch * 0.03); t = new THREE.CanvasTexture(c); t.anisotropy = 4; LBL.set(key, t); return t;
+    g.fillText(text, cw / 2, ch / 2 + ch * 0.03); t = new THREE.CanvasTexture(c); t.anisotropy = X.maxAniso || 4; t.encoding = THREE.sRGBEncoding; LBL.set(key, t); return t;
   }
   function billboard(m, rot) { m.quaternion.copy(camera.quaternion); if (rot) m.rotateZ(-rot); }
   // ---- frame-fit log (read by tools/jb/fitcheck.js): screen rect of every label / panel / character this frame
@@ -1725,8 +1761,11 @@ function drawSpriteChar(c, p, sc, t) {
   function Panel(x, y, z, w, h, paint, o) {
     o = o || {}; const sx = o.sx === undefined ? 1 : o.sx, sy = o.sy === undefined ? 1 : o.sy; if (sx <= 0.02 || sy <= 0.02) return; const P = mp(x, y, z);
     const cw = o.cw || 512, ch = Math.max(64, Math.min(1024, Math.round(cw * h / w)));
-    const e = grab('panel', () => { const c = document.createElement('canvas'); const tex = new THREE.CanvasTexture(c); const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthTest: false, fog: false, toneMapped: false })); m.renderOrder = 19; return { m, c, tex }; });
-    if (e.c.width !== cw || e.c.height !== ch) { e.c.width = cw; e.c.height = ch; } const g = e.c.getContext('2d'); g.clearRect(0, 0, cw, ch); g.save(); paint(g, cw, ch); g.restore(); e.tex.needsUpdate = true;
+    const e = grab('panel', () => { const c = document.createElement('canvas'); const tex = new THREE.CanvasTexture(c); tex.anisotropy = X.maxAniso || 4; tex.encoding = THREE.sRGBEncoding; const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthTest: false, fog: false, toneMapped: false })); m.renderOrder = 19; return { m, c, tex, key: undefined }; });
+    if (e.c.width !== cw || e.c.height !== ch || o.key === undefined || e.key !== o.key) {
+      if (e.c.width !== cw || e.c.height !== ch) { e.c.width = cw; e.c.height = ch; }
+      const g = e.c.getContext('2d'); g.clearRect(0, 0, cw, ch); g.save(); paint(g, cw, ch); g.restore(); e.tex.needsUpdate = true; e.key = o.key;
+    }
     e.m.material.opacity = o.a === undefined ? 1 : o.a; e.m.position.set(P[0], P[1], P[2]); e.m.scale.set(w * sx, h * sy, 1); billboard(e.m, o.rot); nudge(e.m); fitRec(window.__fitName || 'panel', 'panel', e.m); window.__fitName = null;
   }
   function satBoost(c, k) { const h = {}; c.getHSL(h); c.setHSL(h.h, Math.min(1, h.s * k), h.l); return c; }
@@ -1754,10 +1793,20 @@ function drawSpriteChar(c, p, sc, t) {
       const e = segMesh(); e.m.position.set((A[0] + B[0]) / 2, y + 0.06, (A[2] + B[2]) / 2); e.m.scale.set(len, 0.08, Math.max(0.12, lw * 0.045)); e.m.rotation.set(0, -Math.atan2(dz, dx), 0); e.m.material.color.set(stroke);
     }
   }
+  function Shadow(x, z, w, d, a) {
+    if (!X.shadowTex) return;
+    const P = mp(x, 0.015, z);
+    const e = grab('shadow', () => {
+      const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: X.shadowTex, transparent: true, depthWrite: false, fog: false }));
+      m.rotation.x = -Math.PI / 2; m.renderOrder = 1; return { m };
+    });
+    e.m.position.set(P[0], P[1], P[2]); e.m.scale.set(w, d, 1); e.m.material.opacity = a === undefined ? 0.40 : a;
+  }
   function Line3(a, b, col, lw, al) {
     const A = mp(a[0], a[1], a[2]), B = mp(b[0], b[1], b[2]), dx = B[0] - A[0], dy = B[1] - A[1], dz = B[2] - A[2], len = Math.hypot(dx, dy, dz); if (len < 0.01) return;
     const e = grab('seg', () => ({ m: new THREE.Mesh(X.uBox, new THREE.MeshBasicMaterial()) })); e.m.position.set((A[0] + B[0]) / 2, (A[1] + B[1]) / 2, (A[2] + B[2]) / 2);
-    e.m.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), new THREE.Vector3(dx, dy, dz).normalize()); const th = Math.max(0.06, lw * 0.022); e.m.scale.set(len, th, th); e.m.material.color.set(col);
+    _lD.set(dx, dy, dz).normalize();
+    e.m.quaternion.setFromUnitVectors(_lX, _lD); const th = Math.max(0.06, lw * 0.022); e.m.scale.set(len, th, th); e.m.material.color.set(col);
   }
 
   // =========================================================================
@@ -2269,54 +2318,366 @@ function drawSpriteChar(c, p, sc, t) {
     [33.35, 52.60, 'CAPACITY HOARDING', 'Bilateral contracts lock up idle clusters', PAL.cyan]
   ];
 
+  function ensureA2P1Racks() {
+    if (X.a2p1Racks) return;
+    const RB = (w, h, d, r) => THREE.RoundedBoxGeometry ? new THREE.RoundedBoxGeometry(w, h, d, 3, r || 0.05) : new THREE.BoxGeometry(w, h, d);
+    const cv = document.createElement('canvas'); cv.width = 256; cv.height = 512;
+    const g = cv.getContext('2d');
+    g.fillStyle = '#14232A'; g.fillRect(0, 0, 256, 512);
+    for (let i = 0; i < 8; i++) {
+      const y = 16 + i * 60;
+      g.fillStyle = '#0D181D'; g.fillRect(18, y, 220, 48);
+      g.strokeStyle = '#2B4552'; g.lineWidth = 2; g.strokeRect(18, y, 220, 48);
+      g.fillStyle = '#243B46';
+      for (let x = 28; x < 196; x += 10) g.fillRect(x, y + 10, 5, 28);
+    }
+    const rackTex = new THREE.CanvasTexture(cv);
+    rackTex.anisotropy = X.maxAniso || 4; rackTex.encoding = THREE.sRGBEncoding;
+
+    const grp = new THREE.Group(), count = 13;
+    const rackMesh = new THREE.InstancedMesh(RB(1.45, 4.6, 1.8, 0.05), new THREE.MeshStandardMaterial({ map: rackTex, roughness: 0.65, metalness: 0.22 }), count);
+    const ledMesh = new THREE.InstancedMesh(new THREE.BoxGeometry(0.92, 0.55, 0.10), new THREE.MeshBasicMaterial(), count);
+    const d = new THREE.Object3D(), col = new THREE.Color();
+    let idx = 0;
+    const pushRack = (rx, rz, faceZ) => {
+      const PR = mp(rx, 2.3, rz), PL = mp(rx, 2.55, faceZ);
+      d.position.set(PR[0], PR[1], PR[2]); d.updateMatrix(); rackMesh.setMatrixAt(idx, d.matrix);
+      d.position.set(PL[0], PL[1], PL[2]); d.updateMatrix(); ledMesh.setMatrixAt(idx, d.matrix);
+      idx++;
+    };
+    for (let i = 0; i < 8; i++) pushRack(19.0 + i * 2.0, -2.2, -1.25); // S2: 0..7
+    for (let i = 0; i < 5; i++) pushRack(47.0 + i * 2.5, -2.8, -1.85); // S3: 8..12
+    rackMesh.instanceMatrix.needsUpdate = true; ledMesh.instanceMatrix.needsUpdate = true;
+    grp.add(rackMesh, ledMesh); scene.add(grp);
+    grp.setStates = (t) => {
+      for (let i = 0; i < 8; i++) {
+        const isFive = (i === 3 && t >= 26.25);
+        ledMesh.setColorAt(i, col.set(isFive ? PAL.coral : '#1B3540'));
+      }
+      for (let i = 0; i < 5; i++) {
+        const isIdleBeat = (t < 34.82) || (t >= 46.94);
+        const lit = isIdleBeat ? (i === 2 && Math.sin(t * 9) > 0) : (t >= 40.78 && t < 43.70);
+        ledMesh.setColorAt(8 + i, col.set(lit ? (isIdleBeat ? PAL.coral : PAL.cyan) : '#162A33'));
+      }
+      ledMesh.instanceColor.needsUpdate = true;
+    };
+    X.a2p1Racks = grp;
+  }
+
   function renderShots(t) {
     beginFrame(t);
+    ensureA2P1Racks();
+    X.a2p1Racks.visible = (t >= 18.0);
+    X.a2p1Racks.setStates(t);
     const hit = (x, y, z, ht, col, r) => { const p = S(x, y, z); if (p) OVER.push(() => hitFx(p.x, p.y, t, ht, { color: col, r: r || 240, rays: 14 })); };
     const pop = (txt, x, y, z, w, h, bg, fg, t0, t1, o) => Card(x, y, z, w, h, Object.assign({ kind: /^#(D94E43|2B8A6E|D99B26)$/i.test(bg) ? 'stamp' : 'tag', text: txt, bg, fg, accent: /^#(0B1A22|0B191E)$/i.test(bg) ? '#45B8AC' : fg, t0, t1: t1 || 0 }, o || {}), t);
     for (let k = 0; k < 3; k++) pad(-16 + k * 26, -12, 14 + k * 26, 14, '#12262E');
 
-    // ===== S1 (0, 0.00 - 18.45): 1% Vacancy & 92% Pre-committed =====
-    if (t < 18.6) {
-      for (let i = 0; i < 8; i++) {
-        const rx = -7.0 + i * 2.0;
-        Box(rx, 0, -2.2, 1.4, 4.6, 1.8, PAL.steel);
-        const locked = (i < 7 || t >= 8.5);
-        Box(rx, 2.4, -1.25, 0.9, 0.9, 0.14, locked ? PAL.cyan : PAL.ink, { lw: 0, emis: locked ? 0.55 : 0 });
+    // ===== BEAT 1 & 2 (0, 0.00 - 15.76): Data Center Shortage (1% Vacancy) -> Sold Before Construction (92%) =====
+    if (t < 15.80) {
+      // Beat 1 (0.00 - 8.50): Aerial Data Center Campus + Cranes + Trucks -> 100-Cell 1% Vacancy Grid
+      if (t < 8.55) {
+        // Access roads & campus buildings stretching toward horizon
+        Box(0.0, 0.02, 2.8, 22.0, 0.06, 1.8, '#0B191E', { lw: 0 });
+        for (let r = 0; r < 2; r++) {
+          for (let c = -2; c <= 2; c++) {
+            const bx = c * 3.4, bz = -1.6 - r * 4.4;
+            const occupied = !(r === 1 && c === 2 && t >= 3.5);
+            const lit = t >= 3.50 ? (r * 5 + (c + 2) < 9) : true;
+            Box(bx, 0, bz, 2.4, 2.2 + (r % 2) * 0.6, 2.6, '#1B3540');
+            Shadow(bx, bz, 3.0, 3.2, 0.36);
+            Box(bx, 1.0, bz + 1.32, 1.9, 0.9, 0.08, lit && occupied ? PAL.cyan : '#0B191E', { lw: 0, emis: lit && occupied ? 0.65 : 0 });
+          }
+        }
+        // Cooling towers with faint rising vapor + rotating construction cranes + moving road trucks
+        [-7.5, 7.5].forEach((cx, ci) => {
+          Cyl(cx, 0, -5.5, 0.95, 2.8, PAL.steel, { seg: 14 });
+          Shadow(cx, -5.5, 2.4, 2.4, 0.36);
+          for (let sp = 0; sp < 3; sp++) {
+            const q = (t * 0.45 + sp * 0.33 + ci * 0.2) % 1;
+            Cyl(cx + Math.sin(q * 3) * 0.15, 2.9 + q * 1.6, -5.5, 0.32 + q * 0.4, 0.32, PAL.ivory, { a: (1 - q) * 0.45, seg: 10 });
+          }
+          // Rotating crane boom
+          const ang = t * 0.45 + ci * 1.5;
+          Box(cx, 0, -1.8, 0.45, 5.4, 0.45, PAL.amber);
+          Line3([cx, 5.3, -1.8], [cx + Math.cos(ang) * 3.2, 5.3, -1.8 + Math.sin(ang) * 3.2], PAL.amberHi, 5, 1);
+        });
+        // Trucks moving along access road
+        for (let tr = 0; tr < 2; tr++) {
+          const tx = lerp(-9.5, 9.5, (t * 0.22 + tr * 0.5) % 1);
+          Box(tx, 0.12, 2.8, 1.6, 0.75, 0.85, PAL.ivory);
+          Shadow(tx, 2.8, 2.0, 1.2, 0.32);
+        }
+        if (t < 3.65) {
+          pop('BCG · JULY 2026', -5.2, 5.8, 1.2, 4.4, 0.82, PAL.ink, PAL.cyanHi, 0.35, 3.55, { accent: PAL.cyan });
+          pop('GLOBAL DATA CENTER MARKET', 1.8, 5.8, 1.2, 6.8, 0.88, PAL.ink, PAL.ivory, 0.65, 3.55, { accent: PAL.cyan });
+        }
+        // Shot 2 (3.50 - 8.50): 100-Cell Capacity Grid (99 illuminate in fast cascade; 1 isolated empty)
+        if (t >= 3.50) {
+          const fillN = Math.min(99, Math.floor(easeOut(seg(t, 4.10, 7.60)) * 99.5));
+          Card(0.0, 3.8, 1.8, 7.6, 5.0, {
+            kind: 'paint', cw: 1024, key: 'vac_' + fillN, t0: 3.50, t1: 8.45,
+            paint: (g, pw, ph) => {
+              g.fillStyle = 'rgba(11,25,30,0.95)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+              g.strokeStyle = PAL.cyan; g.lineWidth = 4; g.stroke();
+              g.fillStyle = PAL.ivory; g.font = '900 34px' + FAM; g.textAlign = 'left';
+              g.fillText('GLOBAL CAPACITY OCCUPIED', 48, 54);
+              g.fillStyle = PAL.cyanHi; g.textAlign = 'right';
+              g.fillText('1% VACANCY', pw - 48, 54);
+              const gx0 = 132, gy0 = 96, cw = 68, ch = 46, gap = 8;
+              for (let r = 0; r < 10; r++) {
+                for (let c = 0; c < 10; c++) {
+                  const i = r * 10 + c;
+                  const on = i < fillN;
+                  const isEmpty1 = (i === 99);
+                  g.fillStyle = isEmpty1 ? '#071115' : (on ? PAL.cyan : '#1B3540');
+                  rrect(g, gx0 + c * (cw + gap), gy0 + r * (ch + gap), cw, ch, 6); g.fill();
+                  if (isEmpty1) { g.strokeStyle = PAL.coral; g.lineWidth = 3; g.stroke(); }
+                }
+              }
+            }
+          }, t);
+          if (t >= 7.60 && t < 8.15) hit(2.6, 2.2, 2.0, 7.62, PAL.coral, 260);
+        }
       }
-      Char('banker', -4.2, 2.8, 1.50, { facing: 1, pose: 'hold', prop: 'folder', phase: 0.4 }, 0.3, 18.5, t);
-      Char('board', 4.2, 2.8, 1.52, { facing: -1, pose: 'cross', phase: 1.1 }, 0.5, 18.5, t);
-      pop('1% VACANCY', 0, 7.2, -1.0, 6.8, 1.1, PAL.ink, PAL.ivory, 6.9, 18.4, { accent: PAL.cyan });
-      if (t >= 6.90) hit(0, 4.6, -1.2, 6.94, PAL.cyanHi, 240);
+
+      // Beat 2 (8.50 - 18.45): Incomplete Steel Skeleton + 92% Pre-Committed -> Exposed Foundation + Future Hall Outlines
+      if (t >= 8.50) {
+        if (t < 12.10) {
+          // Incomplete steel skeleton on left (x = -3.8) + background crane
+          for (let sx = -5.6; sx <= -2.0; sx += 1.8) {
+            Box(sx, 0, -2.0, 0.18, 3.8, 0.18, PAL.steel);
+            Box(sx, 0, -0.2, 0.18, 3.8, 0.18, PAL.steel);
+          }
+          Box(-3.8, 3.6, -1.1, 4.0, 0.18, 2.0, PAL.steel);
+          Box(-3.8, 1.9, -1.1, 4.0, 0.14, 2.0, '#2B4552');
+          Shadow(-3.8, -1.1, 4.8, 2.8, 0.35);
+          // Background crane
+          Box(-7.2, 0, -4.5, 0.45, 5.8, 0.45, PAL.amber);
+          Line3([-7.2, 5.7, -4.5], [-3.8, 5.7, -3.5], PAL.amberHi, 5, 1);
+
+          // 100-unit capacity diagram beside site (x = +3.2): 92 units fill with reservation markers
+          const resN = Math.min(92, Math.floor(easeOut(seg(t, 8.85, 11.45)) * 92.5));
+          Card(3.2, 3.6, -0.2, 6.8, 4.8, {
+            kind: 'paint', cw: 1024, key: 'pre_' + resN, t0: 8.50, t1: 12.00,
+            paint: (g, pw, ph) => {
+              g.fillStyle = 'rgba(11,25,30,0.95)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+              g.strokeStyle = PAL.cyan; g.lineWidth = 4; g.stroke();
+              g.fillStyle = PAL.ivory; g.font = '900 34px' + FAM; g.textAlign = 'left';
+              g.fillText('NEW CAPACITY PIPELINE', 44, 54);
+              g.fillStyle = PAL.cyanHi; g.textAlign = 'right';
+              g.fillText('92% PRE-COMMITTED', pw - 44, 54);
+              const gx0 = 112, gy0 = 96, cw = 72, ch = 46, gap = 8;
+              for (let r = 0; r < 10; r++) {
+                for (let c = 0; c < 10; c++) {
+                  const i = r * 10 + c;
+                  g.fillStyle = i < resN ? PAL.cyan : '#1B3540';
+                  rrect(g, gx0 + c * (cw + gap), gy0 + r * (ch + gap), cw, ch, 6); g.fill();
+                }
+              }
+            }
+          }, t);
+        } else {
+          // Shot 2 (11.94 - 18.45): Exposed dirt/rebar foundation (concrete not yet poured) + rising wireframe hall + contract tags
+          Box(0.0, 0.02, -1.6, 10.2, 0.16, 5.4, '#4A3827'); // exposed earth foundation
+          for (let rx = -4.2; rx <= 4.2; rx += 1.4) Line3([rx, 0.20, -3.8], [rx, 0.20, 0.6], '#5B6A74', 2.5, 1);
+          for (let rz = -3.6; rz <= 0.4; rz += 1.0) Line3([-4.6, 0.20, rz], [4.6, 0.20, rz], '#5B6A74', 2.5, 1);
+          // Transparent outlines of future server halls rising from empty foundation
+          const riseU = easeOut(seg(t, 12.10, 14.00));
+          const hOut = 3.8 * riseU;
+          if (hOut > 0.08) {
+            Box(-2.2, 0.18, -1.6, 3.8, hOut, 3.6, PAL.cyan, { a: 0.16 });
+            Box(2.2, 0.18, -1.6, 3.8, hOut, 3.6, PAL.cyan, { a: 0.16 });
+            Line3([-4.1, 0.18 + hOut, -3.4], [4.1, 0.18 + hOut, -3.4], PAL.cyanHi, 3, 1);
+            Line3([-4.1, 0.18 + hOut, 0.2], [4.1, 0.18 + hOut, 0.2], PAL.cyanHi, 3, 1);
+          }
+          // Contract documents & reservation tags snapping onto building outlines before construction
+          pop('CONTRACT · RESERVED', -2.3, 3.4, 0.6, 4.6, 0.85, PAL.ivory, PAL.ink, 12.80, 18.30, { accent: PAL.cyan });
+          pop('SOLD BEFORE IT EXISTS', 2.4, 3.4, 0.6, 5.2, 0.90, PAL.ink, PAL.cyanHi, 13.60, 18.30, { accent: PAL.cyan });
+          if (t >= 12.80 && t < 13.35) hit(-2.3, 3.4, 0.6, 12.84, PAL.cyanHi, 220);
+          if (t >= 13.60 && t < 14.20) hit(2.4, 3.4, 0.6, 13.64, PAL.cyanHi, 240);
+        }
+      }
     }
 
-    // ===== S2 (26, 18.45 - 33.35): 5% Used (Silence Shock) =====
-    if (t >= 18.2 && t < 33.5) {
-      for (let i = 0; i < 8; i++) {
-        const rx = 19.0 + i * 2.0;
-        Box(rx, 0, -2.2, 1.4, 4.6, 1.8, PAL.ink);
-        const isFive = (i === 3 && t >= 26.25);
-        Box(rx, 2.4, -1.25, 0.9, 0.35, 0.12, isFive ? PAL.coral : PAL.steel, { lw: 0, emis: isFive ? 0.8 : 0 });
+    // ===== BEAT 3 & BEAT 4 (26, 15.76 - 33.40): Empty Compute (5% Used) & 99% Leased vs 5% Used =====
+    if (t >= 15.70 && t < 33.50) {
+      Shadow(26.0, -2.2, 16.5, 2.8, 0.42);
+
+      // Beat 3 Shot 1 (15.76 - 22.44): Data-center panorama + translucent exterior transition into server aisle
+      if (t < 22.50) {
+        const extA = t < 18.40 ? 0.92 : Math.max(0.06, 0.92 - easeOut(seg(t, 18.40, 21.80)) * 0.86);
+        // Surrounding reserved campus buildings
+        [18.2, 33.8].forEach(bx => {
+          Box(bx, 0, -5.2, 4.2, 3.2, 3.2, '#1B3540');
+          Box(bx, 1.2, -3.55, 3.2, 1.2, 0.08, PAL.cyan, { lw: 0, emis: 0.55 });
+        });
+        // Central facility shell becoming transparent during dolly-in
+        Box(26.0, 0, -2.2, 16.2, 4.9, 4.0, '#1B3540', { a: extA });
+        if (t < 21.9) pop('FULLY COMMITTED', 26.0, 6.2, -1.0, 6.2, 0.95, PAL.ink, PAL.cyanHi, 16.10, 21.90, { accent: PAL.cyan });
       }
-      const shock = t >= 26.25;
-      Card(26, 7.4, -0.5, 8.2, 3.0, {
-        kind: 'counter', text: shock ? '5% USED' : '99% LEASED', sub: 'Cast.ai utilization logs',
-        fg: shock ? PAL.coral : PAL.ivory, accent: shock ? PAL.coral : PAL.steel, t0: 18.6, t1: 0, pulse: [26.28, 31.38]
-      }, t);
-      if (shock) hit(26, 7.4, 0.0, 26.28, PAL.coral, 280);
+
+      // Beat 3 Shot 2 (22.44 - 28.80): Long server corridor (flickering 5% active) + Cast.ai 5% Utilization Meter
+      if (t >= 22.40 && t < 28.80) {
+        const meterU = easeOut(seg(t, 23.00, 26.50));
+        const pct = Math.round(meterU * 5);
+        Card(30.4, 3.8, 0.2, 5.4, 4.6, {
+          kind: 'paint', cw: 1024, key: 'b3m_' + pct, t0: 22.44, t1: 28.75,
+          paint: (g, pw, ph) => {
+            g.fillStyle = 'rgba(11,25,30,0.95)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+            g.strokeStyle = PAL.coral; g.lineWidth = 4; g.stroke();
+            g.fillStyle = PAL.ivory; g.font = '900 32px' + FAM; g.textAlign = 'left';
+            g.fillText('ENTERPRISE GPU CLUSTERS', 44, 54);
+            g.fillStyle = PAL.coral; g.font = '900 72px' + FAM;
+            g.fillText(pct + '%', 44, 134);
+            g.fillStyle = '#B8C2C7'; g.font = '800 24px' + FAM;
+            g.fillText('UTILIZATION (CAST.AI LOGS)', 195, 132);
+            // Vertical meter: 95% dark, 5% illuminated at bottom
+            const mx = 44, my = 190, mw = pw - 88, mh = 180;
+            g.fillStyle = '#071115'; rrect(g, mx, my, mw, mh, 16); g.fill();
+            g.strokeStyle = '#1B3540'; g.lineWidth = 3; g.stroke();
+            g.fillStyle = PAL.coral; rrect(g, mx + 6, my + 6, Math.max(18, (mw - 12) * 0.05 * meterU), mh - 12, 12); g.fill();
+          }
+        }, t);
+      }
+
+      // Beat 4 (28.80 - 33.40): 99% Leased (Amber Grid) -> 5% Used (Coral Meter) -> Split (LEASED != UTILIZED)
+      if (t >= 28.80) {
+        if (t < 31.38) {
+          const fill99 = Math.min(99, Math.floor(easeOut(seg(t, 28.85, 30.20)) * 99.5));
+          Card(26.0, 4.0, -0.4, 8.2, 5.2, {
+            kind: 'paint', cw: 1024, key: 'b4_99_' + fill99, t0: 28.80, t1: 31.35,
+            paint: (g, pw, ph) => {
+              g.fillStyle = 'rgba(11,25,30,0.95)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+              g.strokeStyle = PAL.amber; g.lineWidth = 5; g.stroke();
+              g.fillStyle = PAL.amberHi; g.font = '900 46px' + FAM; g.textAlign = 'center';
+              g.fillText('99% LEASED', pw / 2, 56);
+              const gx0 = 132, gy0 = 100, cw = 68, ch = 46, gap = 8;
+              for (let r = 0; r < 10; r++) for (let c = 0; c < 10; c++) {
+                const i = r * 10 + c;
+                g.fillStyle = i < fill99 ? PAL.amber : '#1B3540';
+                rrect(g, gx0 + c * (cw + gap), gy0 + r * (ch + gap), cw, ch, 6); g.fill();
+              }
+            }
+          }, t);
+        } else if (t < 32.64) {
+          Card(26.0, 4.0, 0.2, 8.2, 4.2, {
+            kind: 'counter', text: '5% USED', sub: 'Cast.ai utilization logs',
+            fg: PAL.coral, accent: PAL.coral, t0: 31.38, t1: 0, pulse: [31.42]
+          }, t);
+          if (t < 31.95) hit(26.0, 4.0, 0.4, 31.40, PAL.coral, 300);
+        } else {
+          // Shot 3 (32.64 - 33.40): Symmetrical split — Left: fully leased building; Right: mostly idle racks
+          Box(21.5, 0, -1.8, 4.4, 3.8, 3.2, '#1B3540');
+          Box(21.5, 1.2, -0.15, 3.6, 1.4, 0.10, PAL.amberHi, { lw: 0, emis: 0.75 });
+          pop('99% LEASED', 21.5, 5.2, 0.4, 4.2, 0.85, PAL.ink, PAL.amberHi, 32.64, 33.40, { accent: PAL.amber });
+          pop('5% USED', 30.5, 5.2, 0.4, 4.0, 0.85, PAL.ink, PAL.coral, 32.64, 33.40, { accent: PAL.coral });
+          pop('LEASED \u2260 UTILIZED', 26.0, 6.8, 0.8, 6.4, 1.0, PAL.coral, PAL.ivory, 32.64, 33.40);
+        }
+      }
     }
 
-    // ===== S3 (52, 33.35 - 52.96): Capacity Hoarding =====
-    if (t >= 33.1) {
-      for (let i = 0; i < 5; i++) {
-        const rx = 47.0 + i * 2.5;
-        Box(rx, 0, -2.8, 1.6, 4.6, 1.8, PAL.ink);
-        Box(rx, 2.4, -1.85, 0.7, 0.7, 0.14, PAL.cyan, { lw: 0, emis: 0.45 });
-        Line3([rx, 2.4, -1.8], [52, 2.2, 2.2], PAL.cyan, 4, 1);
+    // ===== BEAT 5 & BEAT 6 (52, 33.40 - 52.96): Why Hoard? -> Next Model -> Contracts -> Paying for Idle -> Shield =====
+    if (t >= 33.30) {
+      Shadow(52.0, -2.8, 13.5, 2.8, 0.42);
+
+      // Beat 5 Shot 1 (33.40 - 34.82): Push into dark idle GPU racks + 5% meter + WHY?
+      if (t < 34.85) {
+        pop('5% UTILIZATION', 55.8, 3.2, -0.4, 4.2, 0.78, PAL.ink, PAL.coral, 33.40, 34.80, { accent: PAL.coral });
+        pop('WHY?', 52.0, 5.4, -1.6, 2.8, 1.05, PAL.coral, PAL.ivory, 33.50, 34.80);
       }
-      Char('banker', 48.0, 2.8, 1.50, { facing: 1, pose: 'hold', prop: 'folder', phase: 0.2 }, 33.5, 53.0, t);
-      Char('board', 56.0, 2.8, 1.52, { facing: -1, pose: 'talk', phase: 1.0 }, 33.7, 53.0, t);
-      pop('CAPACITY HOARDING', 52, 7.4, -1.0, 7.8, 1.1, PAL.ink, PAL.ivory, 40.7, 52.8, { accent: PAL.cyan });
-      if (t >= 43.65) hit(52, 2.4, 2.2, 43.70, PAL.cyanHi, 220);
+
+      // Beat 5 Shot 2 (34.82 - 37.92): Executive over-the-shoulder + contested AI compute pool shrinking
+      if (t >= 34.82 && t < 37.95) {
+        Char('board', 48.2, 2.2, 1.50, { facing: 1, pose: 'point', expr: 'concerned' }, 34.82, 37.95, t);
+        const poolLeft = Math.max(8, Math.round(lerp(88, 8, easeOut(seg(t, 35.00, 37.60)))));
+        Card(52.6, 3.9, -0.2, 7.2, 4.4, {
+          kind: 'paint', cw: 1024, key: 'pool_' + poolLeft, t0: 34.82, t1: 37.90,
+          paint: (g, pw, ph) => {
+            g.fillStyle = 'rgba(11,25,30,0.95)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+            g.strokeStyle = PAL.amber; g.lineWidth = 4; g.stroke();
+            g.fillStyle = PAL.ivory; g.font = '900 30px' + FAM; g.textAlign = 'left';
+            g.fillText('AVAILABLE GPU CAPACITY POOL', 42, 50);
+            g.fillStyle = poolLeft < 25 ? PAL.coral : PAL.amberHi; g.textAlign = 'right';
+            g.fillText(poolLeft + '% LEFT', pw - 42, 50);
+            // Shrinking bar + 4 competing silhouettes reaching for blocks
+            g.fillStyle = '#071115'; rrect(g, 42, 92, pw - 84, 64, 14); g.fill();
+            g.fillStyle = poolLeft < 25 ? PAL.coral : PAL.cyan;
+            rrect(g, 48, 98, Math.max(24, (pw - 96) * (poolLeft / 100)), 52, 10); g.fill();
+            ['LAB A', 'LAB B', 'CORP C', 'CORP D'].forEach((lbl, idx) => {
+              const bx = 68 + idx * 230;
+              g.fillStyle = '#1B3540'; rrect(g, bx, 210, 180, 120, 14); g.fill();
+              g.strokeStyle = PAL.cyan; g.lineWidth = 2.5; g.stroke();
+              g.fillStyle = PAL.ivory; g.font = '800 22px' + FAM; g.textAlign = 'center';
+              g.fillText(lbl, bx + 90, 270);
+            });
+          }
+        }, t);
+      }
+
+      // Beat 5 Shot 3 (37.92 - 40.78): Next-gen AI model core expands; unreserved companies denied (coral)
+      if (t >= 37.92 && t < 40.78) {
+        const expU = easeOut(seg(t, 38.00, 39.80));
+        const mSz = 1.1 + expU * 1.4;
+        Box(52.0, 2.0, -0.6, mSz, mSz, mSz, PAL.cyan, { emis: 0.75 });
+        Box(52.0, 2.0 - mSz * 0.1, -0.6, mSz * 1.35, 0.25, mSz * 1.35, PAL.sage, { lw: 0, emis: 0.65, a: 0.7 });
+        [-4.8, 4.8].forEach((ox, oi) => {
+          Box(52.0 + ox, 0.2, -3.2, 2.0, 2.2, 1.4, '#1B3540');
+          Box(52.0 + ox, 1.6, -2.45, 1.4, 0.35, 0.1, PAL.coral, { lw: 0, emis: 0.85 });
+          Line3([52.0, 2.6, -0.6], [52.0 + ox, 1.8, -2.8], PAL.coral, 3.5, 1);
+          pop('ACCESS DENIED', 52.0 + ox, 3.2, -2.8, 3.4, 0.68, PAL.coral, PAL.ivory, 38.60, 40.70);
+        });
+        pop("WHAT IF WE CAN'T GET COMPUTE?", 52.0, 6.2, 0.4, 8.0, 0.96, PAL.ink, PAL.coral, 38.10, 40.70, { accent: PAL.coral });
+        if (t >= 38.60 && t < 39.20) hit(52.0, 2.6, -0.6, 38.65, PAL.coral, 280);
+      }
+
+      // Beat 6 Shot 1 (40.78 - 43.70): Corporate contracts locking around GPU cluster like chains
+      if (t >= 40.78 && t < 43.70) {
+        const lockU = easeOut(seg(t, 41.00, 42.90));
+        for (let i = 0; i < 4; i++) {
+          const cx = 48.2 + i * 2.5;
+          Line3([cx, 0.4, -1.8], [cx, 4.8 * lockU, -1.8], PAL.amberHi, 4, 1);
+          pop('CONTRACT #' + (i + 1), cx, 5.1, -1.2, 2.6, 0.62, PAL.ivory, PAL.ink, 41.10 + i * 0.25, 43.65, { accent: PAL.cyan });
+        }
+        Line3([46.8, 4.2 * lockU, -1.6], [57.2, 4.2 * lockU, -1.6], PAL.cyanHi, 5, 1);
+        pop('LONG-TERM CAPACITY RESERVATIONS', 52.0, 6.6, -0.4, 8.2, 0.96, PAL.ink, PAL.ivory, 40.95, 43.65, { accent: PAL.cyan });
+      }
+
+      // Beat 6 Shot 2 (43.70 - 46.94): Two silhouettes across dark negotiation table + redacted folder + future years
+      if (t >= 43.70 && t < 46.94) {
+        Box(52.0, 0.0, 0.8, 5.4, 1.0, 2.2, '#0B191E');
+        Shadow(52.0, 0.8, 6.2, 2.8, 0.42);
+        const slideX = lerp(50.8, 52.4, easeOut(seg(t, 44.00, 45.20)));
+        Box(slideX, 1.0, 0.8, 1.2, 0.12, 0.9, PAL.ivory);
+        Box(slideX, 1.12, 0.8, 0.75, 0.04, 0.25, PAL.ink, { lw: 0 }); // redacted bar
+        Char('banker', 48.6, 1.2, 1.50, { facing: 1, pose: 'hold', prop: 'folder' }, 43.70, 46.94, t);
+        Char('board', 55.4, 1.2, 1.50, { facing: -1, pose: 'talk' }, 43.70, 46.94, t);
+        pop('2026  →  2028  →  2030', 52.0, 3.6, 0.4, 5.6, 0.78, PAL.ink, PAL.cyanHi, 44.60, 46.90, { accent: PAL.cyan });
+        pop('PRIVATE DEALS · YEARS AHEAD', 52.0, 5.4, 0.4, 7.0, 0.92, PAL.ink, PAL.ivory, 43.85, 46.90, { accent: PAL.amber });
+      }
+
+      // Beat 6 Shot 3 (46.94 - 50.50): Payment stream flowing into mostly idle server hall
+      if (t >= 46.94 && t < 50.50) {
+        Line3([46.0, 1.4, 1.4], [52.0, 1.8, -1.6], PAL.amberHi, 4.5, 1);
+        for (let p = 0; p < 4; p++) {
+          const pq = (t * 0.95 + p * 0.25) % 1;
+          Box(lerp(46.0, 52.0, pq), lerp(1.4, 1.8, pq), lerp(1.4, -1.6, pq), 0.42, 0.26, 0.30, PAL.amberHi, { lw: 0, emis: 0.85 });
+        }
+        pop('PAYING FOR CAPACITY', 52.0, 6.2, -0.4, 6.4, 0.96, PAL.ink, PAL.amberHi, 47.05, 50.45, { accent: PAL.amber });
+        pop('5% UTILIZATION', 55.8, 3.2, -0.4, 4.2, 0.78, PAL.ink, PAL.coral, 47.20, 50.45, { accent: PAL.coral });
+      }
+
+      // Beat 6 Shot 4 (50.85 - 52.96): Tight mobile-first shield lock around reserved cluster; competitors just outside
+      if (t >= 50.85) {
+        const shU = easeOut(seg(t, 50.90, 52.05));
+        Box(52.0, 0.0, -2.8, 11.2, 4.9 * shU, 3.4, PAL.cyan, { a: 0.18 });
+        Line3([46.4, 4.9 * shU, -1.1], [57.6, 4.9 * shU, -1.1], PAL.cyanHi, 4, 1);
+        Box(45.2, 0.0, 0.2, 1.3, 2.2, 1.2, '#1B3540');
+        Box(58.8, 0.0, 0.2, 1.3, 2.2, 1.2, '#1B3540');
+        pop('5% USED', 52.0, 3.3, -0.6, 3.4, 0.76, PAL.ink, PAL.coral, 50.90, 52.90, { accent: PAL.coral });
+        pop('INSURANCE AGAINST NOT HAVING COMPUTE', 52.0, 6.0, -0.4, 8.6, 0.94, PAL.ink, PAL.ivory, 50.95, 52.90, { accent: PAL.cyan });
+        if (t >= 51.80 && t < 52.35) hit(52.0, 3.0, -1.1, 51.85, PAL.cyanHi, 260);
+      }
     }
 
     endFrame(t);

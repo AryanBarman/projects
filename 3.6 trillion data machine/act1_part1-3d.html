@@ -739,6 +739,25 @@
     return mesh;
   }
 
+  // Soft Radial Contact Shadow Helper (y = 0.015)
+  const _shadowTex = (() => {
+    const cv = document.createElement('canvas'); cv.width = cv.height = 128;
+    const g = cv.getContext('2d'), rg = g.createRadialGradient(64, 64, 8, 64, 64, 62);
+    rg.addColorStop(0, 'rgba(11, 25, 30, 0.55)');
+    rg.addColorStop(0.6, 'rgba(11, 25, 30, 0.22)');
+    rg.addColorStop(1, 'rgba(11, 25, 30, 0.0)');
+    g.fillStyle = rg; g.fillRect(0, 0, 128, 128);
+    return new THREE.CanvasTexture(cv);
+  })();
+  function makeContactShadow(w, d, opacity = 0.32) {
+    const m = new THREE.Mesh(
+      new THREE.PlaneGeometry(w * 1.35, d * 1.35),
+      new THREE.MeshBasicMaterial({ map: _shadowTex, transparent: true, opacity, depthWrite: false })
+    );
+    m.rotation.x = -Math.PI / 2; m.position.y = 0.015;
+    return m;
+  }
+
   // World-Space CanvasTexture Card Builder
   function makeCard(width, height, drawFn) {
     const cv = document.createElement('canvas');
@@ -747,7 +766,7 @@
     drawFn(g, cv.width, cv.height);
     const tex = new THREE.CanvasTexture(cv);
     tex.encoding = THREE.sRGBEncoding;
-    tex.anisotropy = 4;
+    tex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
     const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true });
     const mesh = new THREE.Mesh(new THREE.PlaneGeometry(width, height), mat);
     return { mesh, canvas: cv, ctx: g, tex };
@@ -804,6 +823,7 @@
   const gTruck = new THREE.Group();
   gTruck.position.set(-1.6, 0.35, 0.6);
   gTruck.rotation.y = 0.28;
+  gTruck.add(makeContactShadow(5.4, 2.8, 0.34));
   gS0.add(gTruck);
   addInkBox(gTruck, 4.2, 2.0, 2.1, matSteel, -0.5, 1.38, 0, true); // armored cargo box
   addInkBox(gTruck, 1.7, 1.55, 1.95, matInk, 2.35, 1.15, 0, true); // cab
@@ -1263,9 +1283,28 @@
   gS3.add(gS3Campus);
 
   const ledStrips = [];
+  const _rackFrontTex = (() => {
+    const cv = document.createElement('canvas'); cv.width = 256; cv.height = 512;
+    const g = cv.getContext('2d');
+    g.fillStyle = '#14232A'; g.fillRect(0, 0, 256, 512);
+    for (let i = 0; i < 8; i++) {
+      const y = 16 + i * 60;
+      g.fillStyle = '#0D181D'; g.fillRect(18, y, 220, 48);
+      g.strokeStyle = '#2B4552'; g.lineWidth = 2; g.strokeRect(18, y, 220, 48);
+      g.fillStyle = '#243B46';
+      for (let x = 28; x < 196; x += 10) g.fillRect(x, y + 10, 5, 28);
+    }
+    const tx = new THREE.CanvasTexture(cv); tx.encoding = THREE.sRGBEncoding;
+    tx.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+    return tx;
+  })();
+  const _rackFrontMat = new THREE.MeshStandardMaterial({ map: _rackFrontTex, roughness: 0.72, metalness: 0.25 });
   function buildRack(w = 1.15, h = 4.2, d = 1.25) {
     const rg = new THREE.Group();
     addInkBox(rg, w, h, d, matInk, 0, h / 2, 0, true);
+    const front = new THREE.Mesh(new THREE.PlaneGeometry(w * 0.86, h * 0.90), _rackFrontMat);
+    front.position.set(0, h / 2, d / 2 + 0.01); rg.add(front);
+    rg.add(makeContactShadow(w, d, 0.34));
     const rows = 8;
     for (let r = 0; r < rows; r++) {
       const strip = new THREE.Mesh(
@@ -1351,6 +1390,7 @@
   // Full 3D Editorial Chart Stage (Right 65% of S3: 2026 to 2050, $0 to $2.0T/yr)
   const gChart = new THREE.Group();
   gChart.position.set(3.2, 0, 0.2);
+  gChart.add(makeContactShadow(14.5, 6.8, 0.32));
   gS3.add(gChart);
 
   addInkBox(gChart, 13.8, 0.45, 6.2, matSteel, 0, 0.22, 0.2, true);

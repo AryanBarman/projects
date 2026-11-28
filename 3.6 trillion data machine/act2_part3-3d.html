@@ -61,7 +61,7 @@
 <div id="hud">
   <button id="b-play">Play</button>
   <button id="b-rst">Restart</button>
-  <input id="scrubber" type="range" min="0" max="24.68" step="0.01" value="0" list="scenes" aria-label="Timeline" />
+  <input id="scrubber" type="range" min="0" max="81.76" step="0.01" value="0" list="scenes" aria-label="Timeline" />
   <datalist id="scenes"><option value="0.00"></option><option value="7.00"></option><option value="15.10"></option></datalist>
   <span id="tc">00.00 / 24.68s</span>
   <button id="b-vo" class="active">VO: ON</button>
@@ -766,13 +766,45 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
   const CAM_KEYS = [];
   const K = (t, p, l, fov, x) => CAM_KEYS.push({ t, v: [p[0], p[1], p[2], l[0], l[1], l[2], fov], cut: x === true, type: typeof x === 'string' ? x : 'auto' });
 
-  K(0.00, [-26, 5.4, 19.0], [-26, 5.0, 1.0], 43, 'hold');
-  K(2.40, [0, 5.8, 22.0], [0, 5.2, 0.5], 44, 'fly');
-  K(12.75, [0, 5.4, 19.0], [0, 5.2, 0.5], 43, 'hold');
-  K(18.05, [26, 6.0, 24.0], [26, 5.4, 1.0], 45, 'fly');
-  K(27.45, [26, 6.2, 20.5], [26, 5.6, 1.0], 44, 'hold');
-  K(49.00, [52, 7.2, 27.0], [52, 3.6, 0.0], 46, 'fly');
-  K(57.55, [52, 6.6, 23.0], [52, 3.6, 0.0], 45, 'hold');
+  // Beat 1 (0.00 - 18.08, c = -26): Mobile-First H100 Benchmark Terminal -> Brief Floor Pull -> Tight 41% Divergence
+  K(0.00, [-26.0, 4.2, 11.2], [-26.0, 3.8,  0.4], 38, 'hold');
+  K(4.16, [-25.6, 4.2, 10.6], [-26.0, 3.8,  0.4], 38, 'push');
+  K(6.80, [-26.0, 4.2, 10.8], [-26.0, 3.8,  0.4], 38, 'arc');
+  K(9.08, [-26.0, 4.3, 11.4], [-26.0, 3.8,  0.4], 39, 'pull');
+  K(10.40,[-26.0, 4.4, 12.6], [-26.0, 3.6,  0.2], 40, 'pull');
+  K(12.20,[-26.0, 4.4, 10.2], [-26.0, 4.0,  0.4], 38, 'push');
+  K(12.78,[-26.0, 4.4,  9.8], [-26.0, 4.0,  0.4], 37, 'push');
+  K(17.32,[-26.0, 4.4,  9.6], [-26.0, 4.0,  0.4], 37, 'hold');
+  // Beat 2 (18.08 - 32.44, c = 0): Standardized Benchmark -> Resale & Futures -> $140B Dark Value
+  K(18.08,[  0.0, 4.4, 11.4], [  0.0, 3.8,  0.2], 39, 'fly');
+  K(21.64,[  0.0, 4.2, 10.4], [  0.0, 3.8,  0.2], 38, 'push');
+  K(24.40,[ -1.4, 4.2, 10.6], [  0.0, 3.8,  0.2], 39, 'arc');
+  K(27.12,[  1.4, 4.2, 10.6], [  0.0, 3.8,  0.2], 39, 'arc');
+  K(27.48,[  0.0, 4.6, 12.0], [  0.0, 4.0,  0.2], 40, 'pull');
+  K(31.94,[  0.0, 4.4, 10.6], [  0.0, 4.2,  0.2], 38, 'push');
+  // Beat 3 (32.44 - 51.36, c = 26): $140B Breakdown ($97B Arbitrage + $26B Interest) -> Hedge -> Rate Drop -> AI != Oil
+  K(32.44,[ 23.8, 4.4, 11.0], [ 23.8, 3.8,  0.2], 39, 'fly');
+  K(35.80,[ 23.8, 4.2, 10.2], [ 23.8, 3.8,  0.2], 38, 'push');
+  K(35.92,[ 27.8, 4.4, 11.0], [ 27.8, 3.8,  0.2], 39, 'arc');
+  K(39.40,[ 28.2, 4.2, 10.4], [ 28.2, 3.8,  0.2], 38, 'hold');
+  K(39.50,[ 28.4, 3.8, 10.2], [ 28.4, 3.4,  0.4], 38, 'push');
+  K(45.80,[ 28.4, 3.6,  9.8], [ 28.4, 3.4,  0.4], 38, 'hold');
+  K(45.94,[ 28.4, 3.8, 10.4], [ 28.4, 3.4,  0.2], 39, 'pull');
+  K(48.90,[ 26.8, 4.4, 11.8], [ 26.8, 3.4,  0.0], 40, 'pull');
+  K(49.02,[ 26.0, 4.2, 11.2], [ 26.0, 2.8,  0.2], 39, 'arc');
+  K(51.20,[ 26.0, 4.0, 10.4], [ 26.0, 2.6,  0.2], 38, 'push');
+  // Beat 4 (51.36 - 72.15, c = 52): Continuous Atlantic Map (Oil Houston->Rotterdam -> Workloads -> Virginia!=Frankfurt -> Geography Trap)
+  K(51.36,[ 47.2, 5.4,  8.8], [ 48.2, 0.8,  0.2], 40, 'fly');
+  K(55.64,[ 49.4, 5.2,  8.6], [ 50.4, 0.8, -0.2], 40, 'arc');
+  K(56.80,[ 55.2, 5.2,  8.4], [ 55.8, 0.8, -1.0], 40, 'arc');
+  K(57.58,[ 51.8, 4.6,  8.2], [ 51.8, 1.0, -0.2], 39, 'push');
+  K(60.28,[ 49.0, 4.2,  7.6], [ 48.4, 1.0, -0.2], 38, 'push');
+  K(61.50,[ 48.0, 3.8,  6.8], [ 48.0, 0.8, -0.4], 38, 'push');
+  K(63.82,[ 48.8, 3.6,  6.4], [ 48.6, 0.8, -0.4], 38, 'push');
+  K(65.00,[ 52.0, 5.2,  9.2], [ 52.0, 1.0, -0.6], 40, 'pull');
+  K(69.18,[ 55.4, 4.6,  8.4], [ 56.0, 1.0, -0.6], 39, 'arc');
+  K(69.48,[ 52.0, 6.6, 11.4], [ 52.0, 0.8, -0.6], 41, 'pull');
+  K(71.90,[ 52.0, 7.0, 12.2], [ 52.0, 0.8, -0.6], 41, 'hold');
   K(72.15, [78, 4.6, 17.5], [78, 3.0, -1.0], 42, 'fly');
   K(78.00, [78, 4.2, 15.8], [78, 3.0, -1.0], 40, 'push');
 
@@ -1732,6 +1764,16 @@ function drawSpriteChar(c, p, sc, t) {
     X.world = new THREE.Group(); scene.add(X.world);
     X.uBox = THREE.RoundedBoxGeometry ? new THREE.RoundedBoxGeometry(1, 1, 1, 3, 0.09) : new THREE.BoxGeometry(1, 1, 1);
     X.uEdge = new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1, 1)); X.uCyl = new THREE.CylinderGeometry(1, 1, 1, 18); X.uPlane = new THREE.PlaneGeometry(1, 1);
+    X.maxAniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+    {
+      const sc = document.createElement('canvas'); sc.width = sc.height = 128;
+      const sg = sc.getContext('2d'), rg = sg.createRadialGradient(64, 64, 6, 64, 64, 62);
+      rg.addColorStop(0, 'rgba(7, 19, 24, 0.65)');
+      rg.addColorStop(0.55, 'rgba(7, 19, 24, 0.28)');
+      rg.addColorStop(1, 'rgba(7, 19, 24, 0.0)');
+      sg.fillStyle = rg; sg.fillRect(0, 0, 128, 128);
+      X.shadowTex = new THREE.CanvasTexture(sc);
+    }
   }
 
   // =========================================================================
@@ -1740,8 +1782,8 @@ function drawSpriteChar(c, p, sc, t) {
   const eBack = u => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(u - 1, 3) + c1 * Math.pow(u - 1, 2); };
   const eIn = u => u * u * u;
   let GROUND = [], ITEMS = [], OVER = [], CAST = [];
-  const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0 };
-  const LBL = new Map(), NEARCULL = 9;
+  const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [], shadow: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0, shadow: 0 };
+  const LBL = new Map(), NEARCULL = 9, _lX = new THREE.Vector3(1, 0, 0), _lD = new THREE.Vector3();
   function grab(type, make) { const p = POOL[type]; let o = p[CNT[type]]; if (!o) { o = make(); X.world.add(o.m); p.push(o); } CNT[type]++; o.m.visible = true; return o; }
   function setCol(mat, col, em, a) { mat.color.set(col); if (mat.emissive) { mat.emissive.set(col); mat.emissiveIntensity = (em || 0) * 0.8; } const tr = a < 1; mat.opacity = a; if (mat.transparent !== tr) { mat.transparent = tr; mat.depthWrite = !tr; mat.needsUpdate = true; } }
   function paleCol(c) { const n = parseInt(String(c).replace('#', ''), 16) || 0, r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255; if (r + g + b > 330) return c; const f = 0.3; return 'rgb(' + Math.round(r + (255 - r) * f) + ',' + Math.round(g + (255 - g) * f) + ',' + Math.round(b + (255 - b) * f) + ')'; }
@@ -1762,7 +1804,7 @@ function drawSpriteChar(c, p, sc, t) {
     const cw = Math.max(256, Math.min(1024, Math.round(w * 120))), ch = Math.max(64, Math.round(cw * h / w)), c = document.createElement('canvas'); c.width = cw; c.height = ch; const g = c.getContext('2d');
     if (bg) { g.fillStyle = bg; g.strokeStyle = line || '#0B161C'; g.lineWidth = Math.max(2, ch * 0.06); g.beginPath(); g.roundRect(g.lineWidth / 2, g.lineWidth / 2, cw - g.lineWidth, ch - g.lineWidth, ch * 0.18); g.fill(); g.stroke(); }
     g.fillStyle = fg; g.textAlign = 'center'; g.textBaseline = 'middle'; let sz = ch * 0.62; const fam = ' system-ui, "Segoe UI", sans-serif'; g.font = '900 ' + sz + 'px' + fam; while (g.measureText(text).width > cw * 0.86 && sz > 8) { sz *= 0.93; g.font = '900 ' + sz + 'px' + fam; }
-    g.fillText(text, cw / 2, ch / 2 + ch * 0.03); t = new THREE.CanvasTexture(c); t.anisotropy = 4; LBL.set(key, t); return t;
+    g.fillText(text, cw / 2, ch / 2 + ch * 0.03); t = new THREE.CanvasTexture(c); t.anisotropy = X.maxAniso || 4; t.encoding = THREE.sRGBEncoding; LBL.set(key, t); return t;
   }
   function billboard(m, rot) { m.quaternion.copy(camera.quaternion); if (rot) m.rotateZ(-rot); }
   // ---- frame-fit log (read by tools/jb/fitcheck.js): screen rect of every label / panel / character this frame
@@ -1804,8 +1846,11 @@ function drawSpriteChar(c, p, sc, t) {
   function Panel(x, y, z, w, h, paint, o) {
     o = o || {}; const sx = o.sx === undefined ? 1 : o.sx, sy = o.sy === undefined ? 1 : o.sy; if (sx <= 0.02 || sy <= 0.02) return; const P = mp(x, y, z);
     const cw = o.cw || 512, ch = Math.max(64, Math.min(1024, Math.round(cw * h / w)));
-    const e = grab('panel', () => { const c = document.createElement('canvas'); const tex = new THREE.CanvasTexture(c); const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthTest: false, fog: false, toneMapped: false })); m.renderOrder = 19; return { m, c, tex }; });
-    if (e.c.width !== cw || e.c.height !== ch) { e.c.width = cw; e.c.height = ch; } const g = e.c.getContext('2d'); g.clearRect(0, 0, cw, ch); g.save(); paint(g, cw, ch); g.restore(); e.tex.needsUpdate = true;
+    const e = grab('panel', () => { const c = document.createElement('canvas'); const tex = new THREE.CanvasTexture(c); tex.anisotropy = X.maxAniso || 4; tex.encoding = THREE.sRGBEncoding; const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthTest: false, fog: false, toneMapped: false })); m.renderOrder = 19; return { m, c, tex, key: undefined }; });
+    if (e.c.width !== cw || e.c.height !== ch || o.key === undefined || e.key !== o.key) {
+      if (e.c.width !== cw || e.c.height !== ch) { e.c.width = cw; e.c.height = ch; }
+      const g = e.c.getContext('2d'); g.clearRect(0, 0, cw, ch); g.save(); paint(g, cw, ch); g.restore(); e.tex.needsUpdate = true; e.key = o.key;
+    }
     e.m.material.opacity = o.a === undefined ? 1 : o.a; e.m.position.set(P[0], P[1], P[2]); e.m.scale.set(w * sx, h * sy, 1); billboard(e.m, o.rot); nudge(e.m); fitRec(window.__fitName || 'panel', 'panel', e.m); window.__fitName = null;
   }
   function satBoost(c, k) { const h = {}; c.getHSL(h); c.setHSL(h.h, Math.min(1, h.s * k), h.l); return c; }
@@ -1833,10 +1878,20 @@ function drawSpriteChar(c, p, sc, t) {
       const e = segMesh(); e.m.position.set((A[0] + B[0]) / 2, y + 0.06, (A[2] + B[2]) / 2); e.m.scale.set(len, 0.08, Math.max(0.12, lw * 0.045)); e.m.rotation.set(0, -Math.atan2(dz, dx), 0); e.m.material.color.set(stroke);
     }
   }
+  function Shadow(x, z, w, d, a) {
+    if (!X.shadowTex) return;
+    const P = mp(x, 0.045, z);
+    const e = grab('shadow', () => {
+      const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: X.shadowTex, transparent: true, depthWrite: false, fog: false }));
+      m.rotation.x = -Math.PI / 2; m.renderOrder = 2; return { m };
+    });
+    e.m.position.set(P[0], P[1], P[2]); e.m.scale.set(w, d, 1); e.m.material.opacity = a === undefined ? 0.40 : a;
+  }
   function Line3(a, b, col, lw, al) {
     const A = mp(a[0], a[1], a[2]), B = mp(b[0], b[1], b[2]), dx = B[0] - A[0], dy = B[1] - A[1], dz = B[2] - A[2], len = Math.hypot(dx, dy, dz); if (len < 0.01) return;
     const e = grab('seg', () => ({ m: new THREE.Mesh(X.uBox, new THREE.MeshBasicMaterial()) })); e.m.position.set((A[0] + B[0]) / 2, (A[1] + B[1]) / 2, (A[2] + B[2]) / 2);
-    e.m.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), new THREE.Vector3(dx, dy, dz).normalize()); const th = Math.max(0.06, lw * 0.022); e.m.scale.set(len, th, th); e.m.material.color.set(col);
+    _lD.set(dx, dy, dz).normalize();
+    e.m.quaternion.setFromUnitVectors(_lX, _lD); const th = Math.max(0.06, lw * 0.022); e.m.scale.set(len, th, th); e.m.material.color.set(col);
   }
 
   // =========================================================================
@@ -2354,63 +2409,436 @@ function drawSpriteChar(c, p, sc, t) {
     beginFrame(t);
     const hit = (x, y, z, ht, col, r) => { const p = S(x, y, z); if (p) OVER.push(() => hitFx(p.x, p.y, t, ht, { color: col, r: r || 240, rays: 14 })); };
     const pop = (txt, x, y, z, w, h, bg, fg, t0, t1, o) => Card(x, y, z, w, h, Object.assign({ kind: /^#(D94E43|2B8A6E|D99B26)$/i.test(bg) ? 'stamp' : 'tag', text: txt, bg, fg, accent: /^#(0B1A22|0B191E)$/i.test(bg) ? '#45B8AC' : fg, t0, t1: t1 || 0 }, o || {}), t);
-    for (let k = 0; k < 5; k++) pad(-42 + k * 26, -12, -12 + k * 26, 14, '#12262E');
+    for (let k = 0; k < 5; k++) { const cx = -26 + k * 26; pad(cx - 12, -12, cx + 12, 12, '#12262E'); }
 
-    // ===== S0 (-26, 0.00 - 2.40): Continuity Bridge =====
-    if (t < 2.8) {
-      Card(-26, 5.6, 1.0, 17.0, 9.0, {
-        kind: 'paint', t0: 0, t1: 0,
-        paint: (g, pw, ph) => stepChart(g, pw, ph, [[0, 0.66]], t, 'H100 RENTAL RATE (/HR)', [[0, '$2.64']], { sub: 'Apr 2026', col: PAL.amber })
+    // ===== BEAT 1 (-26, 0.00 - 18.08): GPU Compute Benchmark Indexes -> Bloomberg Terminals -> 41% Divergence =====
+    if (t < 18.10) {
+      // Continuity from Part 2: Wall Street skyline silhouettes + stationary H100 GPU anchor
+      [-32.5, -29.0, -25.0, -21.0, -17.5].forEach((wx, wi) => {
+        Box(wx, 0, -4.8, 2.4, 4.8 + (wi % 3) * 1.4, 2.0, '#0B191E');
+        Box(wx, 2.4, -3.78, 1.5, 0.35, 0.08, PAL.amberHi, { lw: 0, emis: 0.45 });
+        Shadow(wx, -4.8, 3.0, 2.6, 0.38);
+      });
+      // Stationary H100 GPU Card in mobile-safe foreground (clean vertical separation below terminal)
+      Box(-26.0, 0.35, 2.2, 2.4, 0.20, 1.5, '#0B191E');
+      Box(-27.0, 0.27, 2.2, 0.30, 0.12, 1.0, PAL.amberHi, { lw: 0 });
+      Box(-26.0, 0.55, 2.2, 2.0, 0.28, 1.25, '#1B3540');
+      Box(-26.3, 0.83, 2.2, 0.85, 0.12, 0.85, PAL.sage, { emis: 0.8 });
+      Shadow(-26.0, 2.2, 3.0, 2.0, 0.40);
+      pop('NVIDIA H100', -26.0, 1.55, 2.2, 2.8, 0.54, PAL.ink, PAL.sageHi, 0.0, 18.0, { accent: PAL.sage });
+
+      // Shot 3 (9.08 - 12.78): Flanking Bloomberg trading terminals + traders tightened for mobile
+      if (t >= 9.00 && t < 13.40) {
+        [-29.6, -22.4].forEach(tx => {
+          Box(tx, 0, 0.2, 2.2, 1.0, 1.4, '#1B3540');
+          Box(tx, 1.0, 0.0, 1.9, 1.35, 0.16, '#0B191E');
+          Box(tx, 1.15, 0.10, 1.65, 1.05, 0.04, PAL.cyan, { lw: 0, emis: 0.45 });
+          Shadow(tx, 0.2, 2.8, 2.0, 0.38);
+        });
+        Char('trader', -29.0, 1.6, 1.40, { facing: 1, pose: 'tablet' }, 9.08, 13.30, t);
+        Char('trader', -23.0, 1.6, 1.40, { facing: -1, pose: 'point' }, 9.08, 13.30, t);
+        pop('GPU HOURS | MARKET BENCHMARKS', -26.0, 7.6, 0.4, 7.2, 0.86, PAL.ink, PAL.ivory, 9.15, 12.78, { accent: PAL.amber });
+      }
+
+      // Unified Bloomberg-style Terminal Interface evolving across Shots 1 -> 4 (compact w = 9.2 for mobile)
+      const sdOn = t >= 4.16;
+      const cdOn = t >= 6.60;
+      const divU = t >= 12.78 ? easeOut(seg(t, 12.78, 15.60)) : 0;
+      const lineU = easeOut(seg(t, 0.30, 8.60));
+      const termKey = 'b1_' + Math.round(lineU * 40) + '_' + (sdOn ? 1 : 0) + '_' + (cdOn ? 1 : 0) + '_' + Math.round(divU * 45);
+      Card(-26.0, 4.9, 0.4, 9.2, 4.8, {
+        kind: 'paint', cw: 1024, key: termKey, t0: 0.0, t1: 18.0,
+        paint: (g, pw, ph) => {
+          g.fillStyle = 'rgba(11,25,30,0.96)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+          g.strokeStyle = divU > 0.2 ? PAL.coral : PAL.amber; g.lineWidth = 4; g.stroke();
+          // Terminal top bar
+          g.fillStyle = '#071115'; rrect(g, 20, 18, pw - 40, 56, 12); g.fill();
+          g.fillStyle = PAL.amberHi; g.font = '900 24px' + FAM; g.textAlign = 'left';
+          g.fillText('BLOOMBERG TERMINAL  ·  H100 SPOT BENCHMARKS', 40, 48);
+
+          // Top 3 benchmark index cards (appear sequentially on the same terminal)
+          const idxDefs = [
+            { name: 'ORNN H100 INDEX', col: PAL.ivory, on: true, x: 28 },
+            { name: 'SILICON DATA H100', col: PAL.amberHi, on: sdOn, x: 356 },
+            { name: 'COMPUTE DESK COPPER US', col: PAL.sageHi, on: cdOn, x: 684 }
+          ];
+          idxDefs.forEach(ix => {
+            g.fillStyle = ix.on ? '#142B34' : '#0B191E';
+            rrect(g, ix.x, 90, 312, 76, 12); g.fill();
+            if (ix.on) {
+              g.strokeStyle = ix.col; g.lineWidth = 2.5; g.stroke();
+              g.fillStyle = ix.col; g.font = '800 18px' + FAM; g.textAlign = 'center';
+              g.fillText(ix.name, ix.x + 156, 128);
+            }
+          });
+
+          // Shared graph area where the 3 benchmark lines track & then diverge by 41% over 19 months
+          const gx0 = 64, gx1 = pw - 64, gy0 = 196, gy1 = ph - 82;
+          const gw = gx1 - gx0, gh = gy1 - gy0;
+          g.strokeStyle = 'rgba(244,241,234,0.10)'; g.lineWidth = 2;
+          for (let r = 0; r <= 4; r++) {
+            const yy = gy0 + (gh * r) / 4;
+            g.beginPath(); g.moveTo(gx0, yy); g.lineTo(gx1, yy); g.stroke();
+          }
+          const drawCurve = (col, offY, show) => {
+            if (!show) return;
+            g.strokeStyle = col; g.lineWidth = 6; g.lineCap = 'round';
+            g.beginPath();
+            for (let s = 0; s <= 24; s++) {
+              const f = (s / 24) * lineU;
+              const px = gx0 + gw * f;
+              const base = 0.56 - Math.sin(f * Math.PI * 1.4) * 0.14;
+              const py = gy0 + gh * (base + offY * divU * f);
+              if (s === 0) g.moveTo(px, py); else g.lineTo(px, py);
+            }
+            g.stroke();
+          };
+          drawCurve(PAL.ivory, -0.34, true);
+          drawCurve(PAL.amberHi, 0.04, sdOn);
+          drawCurve(PAL.sageHi, 0.34, cdOn);
+
+          // 41% Divergence Bracket + 19 Months timeline
+          if (divU > 0.15) {
+            const bx = gx1 - 18, topY = gy0 + gh * (0.56 - 0.34 * divU), botY = gy0 + gh * (0.56 + 0.34 * divU);
+            g.strokeStyle = PAL.coral; g.lineWidth = 5;
+            g.beginPath(); g.moveTo(bx - 16, topY); g.lineTo(bx, topY); g.lineTo(bx, botY); g.lineTo(bx - 16, botY); g.stroke();
+            g.fillStyle = PAL.coral; g.font = '900 32px' + FAM; g.textAlign = 'right';
+            g.fillText('UP TO ' + Math.round(divU * 41) + '% DIVERGENCE', bx - 28, (topY + botY) / 2);
+            g.fillStyle = '#B8C2C7'; g.font = '800 20px' + FAM; g.textAlign = 'center';
+            g.fillText('19 MONTHS', (gx0 + gx1) / 2, ph - 36);
+          }
+        }
       }, t);
+      if (t >= 15.55 && t < 16.20) hit(-23.0, 4.4, 0.8, 15.60, PAL.coral, 240);
     }
 
-    // ===== S1 (0, 2.40 - 18.05): 41% Index Gap =====
-    if (t >= 2.2 && t < 18.2) {
-      Card(0, 5.4, 0.5, 16.0, 8.6, {
-        kind: 'doc', t0: 2.6, t1: 0, dark: true, tag: 'BLOOMBERG TERMINALS', accent: PAL.cyan,
-        head: '41% METHODOLOGY GAP',
-        lines: [
-          'Ornn H100 Index',
-          'Silicon Data H100 Rental Index',
-          'Compute Desk Copper US Index',
-          'Divergence: 41% over 19 months'
-        ],
-        lineAt: [2.8, 4.2, 6.7, 12.78],
-        hl: t >= 12.78 ? 3 : -1, hlAt: 12.78
-      }, t);
-      pop('41% INDEX GAP', 0, 10.6, 0.5, 7.0, 1.0, PAL.ink, PAL.ivory, 12.8, 17.9, { accent: PAL.cyan });
-      if (t >= 12.75) hit(0, 5.4, 1.0, 12.78, PAL.cyanHi, 240);
+    // ===== BEAT 2 (0, 18.08 - 32.44): Standardized Benchmark -> Secondary Resale & Futures -> $140B Dark Value =====
+    if (t >= 17.85 && t < 32.60) {
+      // H100 Server Racks behind the financial interface
+      for (let i = 0; i < 4; i++) {
+        const rx = -3.3 + i * 2.2;
+        Box(rx, 0, -3.4, 1.4, 4.2, 1.5, '#0B191E');
+        Box(rx, 2.0, -2.62, 0.85, 0.75, 0.10, PAL.sage, { lw: 0, emis: 0.55 });
+      }
+      Shadow(0.0, -3.4, 9.6, 2.4, 0.40);
+
+      // Stationary H100 GPU physical anchor in foreground
+      Box(0.0, 0.35, 2.2, 2.2, 0.18, 1.35, '#0B191E');
+      Box(0.0, 0.53, 2.2, 1.8, 0.24, 1.1, '#1B3540');
+      Box(-0.25, 0.77, 2.2, 0.75, 0.10, 0.75, PAL.sage, { emis: 0.8 });
+      Shadow(0.0, 2.2, 2.8, 1.8, 0.36);
+
+      // Shot 1 (18.08 - 21.64): Three diverging lines converge into one Standardized Benchmark
+      if (t < 21.70) {
+        const convU = easeOut(seg(t, 18.20, 20.80));
+        Card(0.0, 4.7, 0.4, 8.6, 4.6, {
+          kind: 'paint', cw: 1024, key: 'b2s1_' + Math.round(convU * 40), t0: 18.08, t1: 21.64,
+          paint: (g, pw, ph) => {
+            g.fillStyle = 'rgba(11,25,30,0.96)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+            g.strokeStyle = convU > 0.75 ? PAL.sage : PAL.amber; g.lineWidth = 4; g.stroke();
+            g.fillStyle = PAL.ivory; g.font = '900 30px' + FAM; g.textAlign = 'center';
+            g.fillText('STANDARDIZED GPU BENCHMARK', pw / 2, 54);
+            const gx0 = 72, gx1 = pw - 72, gy0 = 110, gy1 = ph - 68;
+            const gw = gx1 - gx0, gh = gy1 - gy0;
+            const spread = 1 - convU;
+            [[PAL.ivory, -0.32], [PAL.amberHi, 0.04], [PAL.sageHi, 0.32]].forEach(([col, offY]) => {
+              g.strokeStyle = col; g.lineWidth = convU > 0.8 ? 8 : 5; g.lineCap = 'round';
+              g.beginPath();
+              for (let s = 0; s <= 24; s++) {
+                const f = s / 24, px = gx0 + gw * f;
+                const py = gy0 + gh * (0.54 - Math.sin(f * Math.PI * 1.4) * 0.12 + offY * spread * f);
+                if (s === 0) g.moveTo(px, py); else g.lineTo(px, py);
+              }
+              g.stroke();
+            });
+          }
+        }, t);
+      }
+
+      // Shot 2 (21.64 - 27.48): Three mechanisms — Benchmarks -> Secondary Resale -> Futures
+      if (t >= 21.64 && t < 27.55) {
+        pop('BENCHMARKS', 0.0, 6.2, 0.4, 4.8, 0.84, PAL.ink, PAL.ivory, 21.64, 27.48, { accent: PAL.amber });
+        // Mechanism 2: Secondary Resale (contract moves from Institution A to Institution B)
+        if (t >= 23.20) {
+          const resU = easeOut(seg(t, 23.30, 24.80));
+          Box(-3.2, 2.5, 0.4, 1.8, 1.5, 0.8, '#1B3540');
+          Box(3.2, 2.5, 0.4, 1.8, 1.5, 0.8, '#1B3540');
+          Line3([-2.2, 3.2, 0.4], [2.2, 3.2, 0.4], PAL.cyan, 4, 1);
+          Box(lerp(-2.2, 2.2, resU), 3.05, 0.5, 0.7, 0.45, 0.2, PAL.ivory, { emis: 0.35 });
+          pop('SECONDARY RESALE', 0.0, 4.5, 0.6, 5.2, 0.78, PAL.ink, PAL.cyanHi, 23.25, 27.48, { accent: PAL.cyan });
+        }
+        // Mechanism 3: Futures Contract unfolding with settlement date & price
+        if (t >= 25.10) {
+          pop('FUTURES · DEC 2026 · $2.45/HR', 0.0, 2.6, 1.2, 6.4, 0.80, PAL.ivory, PAL.ink, 25.15, 27.48, { accent: PAL.amber });
+        }
+      }
+
+      // Shot 3 (27.48 - 32.44): Capital flows into projected opportunity: UP TO $140 BILLION / YEAR | DARK VALUE UNLOCKED
+      if (t >= 27.48) {
+        const valU = easeOut(seg(t, 27.60, 30.20));
+        const valB = Math.round(valU * 140);
+        // Converging amber capital streams from the 3 mechanism nodes
+        [[-3.2, 2.6], [3.2, 2.6], [0.0, 1.8]].forEach(([sx, sy]) => {
+          Line3([sx, sy, 0.4], [0.0, 4.4, 0.6], PAL.amberHi, 4, 1);
+          const pq = (t * 1.15) % 1;
+          Box(lerp(sx, 0.0, pq), lerp(sy, 4.4, pq), lerp(0.4, 0.6, pq), 0.32, 0.22, 0.22, PAL.amberHi, { lw: 0, emis: 0.9 });
+        });
+        Card(0.0, 4.6, 0.6, 7.6, 3.6, {
+          kind: 'paint', cw: 1024, key: 'b2v_' + valB, t0: 27.48, t1: 32.40,
+          paint: (g, pw, ph) => {
+            g.fillStyle = 'rgba(11,25,30,0.96)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+            g.strokeStyle = PAL.amber; g.lineWidth = 5; g.stroke();
+            g.fillStyle = PAL.amberHi; g.font = '900 84px' + FAM; g.textAlign = 'center'; g.textBaseline = 'middle';
+            g.fillText(`UP TO $${valB}B / YR`, pw / 2, ph * 0.42);
+            g.fillStyle = PAL.ivory; g.font = '800 28px' + FAM;
+            g.fillText('PROJECTED DARK VALUE UNLOCKED', pw / 2, ph * 0.76);
+          }
+        }, t);
+        if (t >= 29.50 && t < 30.10) hit(0.0, 4.6, 0.8, 29.55, PAL.amberHi, 260);
+      }
     }
 
-    // ===== S2 (26, 18.05 - 49.00): $140B Dark Value =====
-    if (t >= 17.8 && t < 49.2) {
-      Card(26, 5.6, 1.0, 17.2, 9.2, {
-        kind: 'paint', t0: 18.2, t1: 0,
-        paint: (g, pw, ph) => cashChart(g, pw, ph, {
-          keys: [[18.2, 0.80], [27.48, 0.16, 1.2], [42.76, 0.16, 0.4]],
-          title: 'BCG LIQUID MARKET VALUE',
-          tags: [[27.5, '$140B/YR'], [35.9, '$97B + $26B']],
-          opt: { sub: '6.43% -> 4.75% rate drop on $3.6T', col: PAL.amberHi },
-          n0: 2, n1: 16, t0: 18.4, bursts: [27.48]
-        }, t)
-      }, t);
-      pop('$140B DARK VALUE', 26, 11.2, 1.0, 7.6, 1.1, PAL.ink, PAL.ivory, 27.5, 48.8, { accent: PAL.amberHi });
-      if (t >= 27.45) hit(26, 6.0, 1.6, 27.48, PAL.amberHi, 260);
+    // ===== BEAT 3 (26, 32.44 - 51.36): Where $140B Comes From ($97B Arbitrage + $26B Interest) -> Hedge -> AI != Oil =====
+    if (t >= 32.30 && t < 51.45) {
+      if (t < 46.20) {
+        pop('UP TO $140B / YR OPPORTUNITY', 26.0, 6.7, -0.4, 6.8, 0.80, PAL.ink, PAL.amberHi, 32.44, 46.15, { accent: PAL.amber });
+      }
+      // Shot 1-2 (32.44 - 39.50): Branch 1 ($97B Trading Arbitrage) & Branch 2 ($26B Interest Savings)
+      if (t < 39.60) {
+        Box(21.8, 0, 0.0, 1.8, 1.5, 1.2, '#1B3540');
+        Box(25.4, 0, 0.0, 1.8, 1.5, 1.2, '#1B3540');
+        Shadow(23.6, 0.0, 6.2, 2.0, 0.36);
+        Line3([22.7, 1.4, 0.2], [24.5, 1.4, 0.2], PAL.amberHi, 4.5, 1);
+        const aq = (t * 1.3) % 1;
+        Box(lerp(22.7, 24.5, aq), 1.4, 0.3, 0.34, 0.24, 0.24, PAL.amberHi, { lw: 0, emis: 0.9 });
+        const arbB = Math.round(easeOut(seg(t, 32.60, 35.20)) * 97);
+        pop(`UP TO $${arbB}B / YR`, 23.6, 4.4, 0.4, 4.8, 0.92, PAL.ink, PAL.amberHi, 32.50, 39.55, { accent: PAL.amber });
+        pop('TRADING ARBITRAGE', 23.6, 3.3, 0.4, 4.6, 0.72, PAL.ink, PAL.ivory, 32.70, 39.55, { accent: PAL.amber });
+
+        if (t >= 35.92) {
+          for (let r = 0; r < 3; r++) {
+            Box(27.2 + r * 1.2, 0, -2.2, 0.85, 2.0, 0.9, '#0B191E');
+            Box(27.2 + r * 1.2, 1.0, -1.72, 0.55, 0.48, 0.08, PAL.sage, { lw: 0, emis: 0.55 });
+          }
+          Shadow(28.4, -2.2, 4.2, 1.8, 0.38);
+          pop('~$26B / YR', 28.4, 4.8, 0.8, 4.4, 0.90, PAL.ink, PAL.cyanHi, 36.00, 39.55, { accent: PAL.cyan });
+          pop('INTEREST SAVINGS', 28.4, 3.5, 0.8, 4.6, 0.72, PAL.ink, PAL.ivory, 36.20, 39.55, { accent: PAL.cyan });
+        }
+      }
+
+      // Shot 3-4 (39.50 - 49.02): Hedge Chip Depreciation -> Borrowing Rates Drop Nearly 2 Percentage Points
+      if (t >= 39.50 && t < 49.08) {
+        const hedgeU = easeOut(seg(t, 40.20, 44.20));
+        const rateU = t >= 45.94 ? easeOut(seg(t, 45.94, 48.20)) : 0;
+        Box(28.4, 0.35, 2.0, 2.2, 0.18, 1.35, '#0B191E');
+        Box(28.4, 0.53, 2.0, 1.8, 0.24, 1.1, '#1B3540');
+        Box(28.1, 0.77, 2.0, 0.75, 0.10, 0.75, PAL.sage, { emis: 0.8 });
+        Shadow(28.4, 2.0, 2.8, 1.8, 0.36);
+
+        Card(28.4, 4.4, 0.4, 7.2, 4.0, {
+          kind: 'paint', cw: 1024, key: 'b3h_' + Math.round(hedgeU * 30) + '_' + Math.round(rateU * 30), t0: 39.50, t1: 49.02,
+          paint: (g, pw, ph) => {
+            g.fillStyle = `rgba(11,25,30,${0.95 - rateU * 0.22})`; rrect(g, 0, 0, pw, ph, 24); g.fill();
+            g.strokeStyle = rateU > 0.1 ? PAL.amber : PAL.cyan; g.lineWidth = 4; g.stroke();
+            g.fillStyle = PAL.ivory; g.font = '900 30px' + FAM; g.textAlign = 'left';
+            g.fillText(rateU > 0.1 ? 'BORROWING RATES ↓' : 'HEDGE CHIP DEPRECIATION', 40, 52);
+            if (rateU <= 0.1) {
+              g.strokeStyle = PAL.coral; g.lineWidth = 7; g.lineCap = 'round';
+              g.beginPath(); g.moveTo(64, 130); g.quadraticCurveTo(pw * 0.45, 220, pw - 64, 330); g.stroke();
+              if (hedgeU > 0.1) {
+                g.strokeStyle = PAL.cyanHi; g.lineWidth = 5;
+                rrect(g, 52, 114, (pw - 104) * hedgeU, 234, 18); g.stroke();
+              }
+            } else {
+              const rateVal = lerp(6.4, 4.5, rateU).toFixed(1);
+              g.fillStyle = PAL.cyanHi; g.font = '900 84px' + FAM; g.textAlign = 'center';
+              g.fillText(rateVal + '%', pw / 2, ph * 0.54);
+              g.fillStyle = PAL.amberHi; g.font = '800 24px' + FAM;
+              g.fillText('NEARLY 2 PERCENTAGE POINTS LOWER', pw / 2, ph * 0.80);
+            }
+          }
+        }, t);
+      }
+
+      // Shot 5 (49.02 - 51.36): Oil Barrel vs H100 GPU Comparison -> Line Breaks (AI IS NOT OIL)
+      if (t >= 49.02) {
+        const brkU = easeOut(seg(t, 49.40, 50.25));
+        Cyl(23.6, 0.4, 0.6, 0.72, 1.8, '#1B3540', { seg: 16 });
+        Box(23.6, 1.25, 0.6, 1.5, 0.16, 1.5, PAL.amberHi, { lw: 0, emis: 0.45 });
+        Shadow(23.6, 0.6, 2.4, 2.4, 0.40);
+        pop('CRUDE OIL', 23.6, 2.9, 0.6, 3.0, 0.62, PAL.ink, PAL.amberHi, 49.05, 51.35, { accent: PAL.amber });
+
+        Box(28.4, 0.8, 0.6, 2.2, 0.18, 1.35, '#0B191E');
+        Box(28.4, 0.98, 0.6, 1.8, 0.24, 1.1, '#1B3540');
+        Box(28.1, 1.22, 0.6, 0.75, 0.10, 0.75, PAL.sage, { emis: 0.8 });
+        Shadow(28.4, 0.6, 2.8, 1.8, 0.36);
+        pop('H100 GPU', 28.4, 2.9, 0.6, 3.0, 0.62, PAL.ink, PAL.sageHi, 49.05, 51.35, { accent: PAL.sage });
+
+        Line3([24.4, 1.4, 0.6], [lerp(27.2, 26.2, brkU), 1.4, 0.6], brkU > 0.3 ? PAL.coral : PAL.ivory, 4.5, 1);
+        pop('AI IS NOT OIL', 26.0, 4.8, 0.6, 4.8, 0.92, PAL.coral, PAL.ivory, 49.25, 51.35);
+        if (t >= 49.55 && t < 50.15) hit(26.6, 1.6, 0.8, 49.60, PAL.coral, 260);
+      }
     }
 
-    // ===== S3 (52, 49.00 - 72.15): Oil vs Compute Geography Trap =====
-    if (t >= 48.8 && t < 72.3) {
-      // Left: Oil tanker open bridge (Houston -> Rotterdam)
-      Box(44.5, 0, -1.5, 3.4, 1.8, 2.0, PAL.steel);
-      Box(51.5, 0, -1.5, 3.4, 1.8, 2.0, PAL.steel);
-      Line3([46.2, 1.4, -1.5], [49.8, 1.4, -1.5], PAL.cyan, 6, 1);
-      // Right: Virginia GPU cluster blocked from Frankfurt by coral wall
-      Box(56.0, 0, -1.5, 2.6, 4.2, 2.0, PAL.ink);
-      Box(62.5, 0, -1.5, 2.6, 4.2, 2.0, PAL.ink);
-      const wall = t >= 57.55;
-      Box(59.2, 0, -1.5, 0.6, wall ? 5.6 : 0.4, 5.2, wall ? PAL.coral : PAL.steel, { emis: wall ? 0.5 : 0 });
-      pop('GEOGRAPHY TRAP', 52, 8.0, -1.0, 7.4, 1.1, wall ? PAL.coral : PAL.ink, PAL.ivory, 57.6, 72.0, { accent: PAL.coral });
-      if (wall) hit(59.2, 3.2, -1.5, 57.58, PAL.coral, 260);
+    // ===== BEAT 4 (52, 51.36 - 72.15): Full-Screen 2D Real Atlantic World Map — Oil Travels, Compute Cannot =====
+    if (X.b4Map) X.b4Map.visible = false;
+    if (t >= 51.20 && t < 72.30) {
+      if (!X.b4Map2D) {
+        const mc = document.createElement('canvas'); mc.width = 1920; mc.height = 1080;
+        const mg = mc.getContext('2d');
+        mg.fillStyle = '#081318'; mg.fillRect(0, 0, 1920, 1080);
+        // Subtle ocean lat/long grid
+        mg.strokeStyle = 'rgba(69,184,172,0.12)'; mg.lineWidth = 1.5;
+        for (let gx = 0; gx <= 1920; gx += 120) { mg.beginPath(); mg.moveTo(gx, 0); mg.lineTo(gx, 1080); mg.stroke(); }
+        for (let gy = 0; gy <= 1080; gy += 120) { mg.beginPath(); mg.moveTo(0, gy); mg.lineTo(1920, gy); mg.stroke(); }
+
+        const drawLand = (pts) => {
+          mg.beginPath();
+          pts.forEach(([x, y], i) => i ? mg.lineTo(x, y) : mg.moveTo(x, y));
+          mg.closePath();
+          mg.fillStyle = '#162C36'; mg.fill();
+          mg.strokeStyle = '#3B6E75'; mg.lineWidth = 2.5; mg.stroke();
+        };
+        // North America + Gulf of Mexico + Florida + East Coast
+        drawLand([
+          [-40, 120], [520, 110], [660, 165], [755, 250], [725, 315], [645, 365],
+          [595, 425], [565, 475], [535, 515], [520, 585], [500, 625], [475, 560],
+          [445, 535], [375, 540], [330, 575], [305, 625], [260, 610], [220, 650],
+          [160, 560], [70, 480], [-40, 390]
+        ]);
+        // Central & South America (northern tip for geographic framing)
+        drawLand([[320, 740], [450, 720], [610, 780], [740, 890], [690, 1090], [380, 1090], [310, 880]]);
+        // UK & Ireland
+        drawLand([[1175, 285], [1235, 255], [1265, 320], [1245, 395], [1185, 390], [1175, 330]]);
+        drawLand([[1115, 325], [1155, 315], [1155, 375], [1110, 370]]);
+        // Continental Europe (Iberia -> France -> Germany/Benelux -> Italy -> Scandinavia)
+        drawLand([
+          [1160, 545], [1245, 520], [1310, 480], [1295, 425], [1365, 370], [1465, 335],
+          [1560, 320], [1690, 290], [1940, 260], [1940, 660], [1740, 645], [1615, 600],
+          [1535, 650], [1485, 585], [1415, 555], [1345, 565], [1270, 625], [1180, 635], [1145, 585]
+        ]);
+        // Scandinavia
+        drawLand([[1385, 160], [1560, 110], [1655, 175], [1575, 275], [1455, 285], [1375, 235]]);
+        // North Africa
+        drawLand([[1140, 710], [1380, 695], [1640, 725], [1940, 760], [1940, 1090], [1080, 1090], [1090, 830]]);
+        X.b4Map2D = mc;
+      }
+
+      OVER.push(() => {
+        const a = env(t, 51.20, 72.25, 0.25, 0.25);
+        ctx.save();
+        ctx.globalAlpha = a;
+
+        // Smooth 2D map pan/zoom camera across Shots 1-7
+        let zoom = 1.0, cx = 960, cy = 540;
+        if (t < 55.64) {
+          const u = easeOut(seg(t, 51.36, 55.64));
+          zoom = lerp(1.18, 1.08, u); cx = lerp(620, 780, u); cy = lerp(540, 510, u);
+        } else if (t < 57.58) {
+          const u = easeOut(seg(t, 55.64, 57.58));
+          zoom = 1.08; cx = lerp(780, 1120, u); cy = 500;
+        } else if (t < 60.28) {
+          const u = easeOut(seg(t, 57.58, 60.28));
+          zoom = lerp(1.08, 1.24, u); cx = lerp(1120, 760, u); cy = 500;
+        } else if (t < 63.82) {
+          zoom = 1.48; cx = 620; cy = 445;
+        } else if (t < 69.48) {
+          const u = easeOut(seg(t, 63.82, 68.50));
+          zoom = lerp(1.22, 1.06, u); cx = lerp(760, 1040, u); cy = 460;
+        } else {
+          zoom = 1.0; cx = 960; cy = 540;
+        }
+
+        ctx.translate(960, 540); ctx.scale(zoom, zoom); ctx.translate(-cx, -cy);
+        ctx.drawImage(X.b4Map2D, 0, 0);
+
+        // Key geographic coordinates on 1920x1080 Atlantic Map
+        const HOU = [345, 555], VA = [545, 445], DATA = [465, 415], ROT = [1355, 365], FRA = [1445, 425];
+
+        // Shots 1-3 (51.36 - 60.28): Oil Pipeline + Tanker (Houston -> Rotterdam) vs Anchored H100
+        if (t < 60.40) {
+          const tankA = t >= 57.58 ? 0.25 : 1.0;
+          const shipU = easeOut(seg(t, 52.00, 57.20));
+          ctx.save(); ctx.globalAlpha = a * tankA;
+          // Pipeline to Houston
+          ctx.strokeStyle = PAL.amber; ctx.lineWidth = 7;
+          ctx.beginPath(); ctx.moveTo(210, 525); ctx.lineTo(HOU[0], HOU[1]); ctx.stroke();
+          // Shipping lane Houston -> Rotterdam
+          ctx.setLineDash([14, 10]); ctx.strokeStyle = PAL.amberHi; ctx.lineWidth = 4;
+          ctx.beginPath(); ctx.moveTo(HOU[0], HOU[1]); ctx.quadraticCurveTo(840, 390, ROT[0], ROT[1]); ctx.stroke();
+          ctx.setLineDash([]);
+          // Tanker moving smoothly along curve
+          const tq = shipU, mt = 1 - tq;
+          const tx = mt * mt * HOU[0] + 2 * mt * tq * 840 + tq * tq * ROT[0];
+          const ty = mt * mt * HOU[1] + 2 * mt * tq * 390 + tq * tq * ROT[1];
+          rrect(ctx, tx - 24, ty - 11, 48, 22, 6); ctx.fillStyle = PAL.amberHi; ctx.fill();
+          ctx.strokeStyle = '#081318'; ctx.lineWidth = 3; ctx.stroke();
+          ctx.restore();
+
+          // City markers & prices
+          const dot = (pt, col) => { ctx.fillStyle = col; ctx.beginPath(); ctx.arc(pt[0], pt[1], 10, 0, Math.PI * 2); ctx.fill(); ctx.strokeStyle = '#F4F1EA'; ctx.lineWidth = 3; ctx.stroke(); };
+          dot(HOU, PAL.amberHi);
+          if (t >= 55.64) dot(ROT, PAL.amberHi);
+          if (t >= 57.58) {
+            dot(VA, PAL.sageHi);
+            // Broken shipping attempt from Virginia
+            ctx.strokeStyle = PAL.coral; ctx.lineWidth = 6;
+            ctx.beginPath(); ctx.moveTo(VA[0], VA[1]); ctx.lineTo(790, 415); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(776, 400); ctx.lineTo(804, 430); ctx.moveTo(804, 400); ctx.lineTo(776, 430); ctx.stroke();
+          }
+        }
+
+        // Shots 4-5 (60.28 - 63.82): Workloads must sit near data + light-speed signal
+        if (t >= 60.28 && t < 63.90) {
+          ctx.strokeStyle = PAL.coral; ctx.lineWidth = 3; ctx.setLineDash([10, 10]);
+          ctx.beginPath(); ctx.moveTo(DATA[0], DATA[1]); ctx.quadraticCurveTo(960, 290, FRA[0], FRA[1]); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.strokeStyle = PAL.cyanHi; ctx.lineWidth = 6;
+          ctx.beginPath(); ctx.moveTo(DATA[0], DATA[1]); ctx.lineTo(VA[0], VA[1]); ctx.stroke();
+          const lq = (t * 2.2) % 1;
+          ctx.fillStyle = '#FFFFFF'; ctx.beginPath();
+          ctx.arc(lerp(DATA[0], VA[0], lq), lerp(DATA[1], VA[1], lq), 8, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = PAL.cyanHi; ctx.beginPath(); ctx.arc(DATA[0], DATA[1], 11, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = PAL.sageHi; ctx.beginPath(); ctx.arc(VA[0], VA[1], 13, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // Shots 6-7 (63.82 - 72.20): Virginia != Frankfurt -> Regional Compute Zones
+        if (t >= 63.82) {
+          [VA, FRA].forEach(pt => {
+            ctx.fillStyle = PAL.sageHi; ctx.beginPath(); ctx.arc(pt[0], pt[1], 14, 0, Math.PI * 2); ctx.fill();
+            ctx.strokeStyle = '#F4F1EA'; ctx.lineWidth = 3.5; ctx.stroke();
+          });
+          // Regional zone rings
+          if (t >= 69.48) {
+            ctx.strokeStyle = 'rgba(118,185,0,0.55)'; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.arc(VA[0], VA[1], 110, 0, Math.PI * 2); ctx.stroke();
+            ctx.beginPath(); ctx.arc(FRA[0], FRA[1], 110, 0, Math.PI * 2); ctx.stroke();
+          }
+          // Mid-Atlantic latency barrier
+          ctx.strokeStyle = PAL.coral; ctx.lineWidth = 6;
+          ctx.beginPath(); ctx.moveTo(960, 220); ctx.lineTo(960, 680); ctx.stroke();
+          ctx.strokeStyle = '#F4F1EA'; ctx.lineWidth = 4;
+          ctx.beginPath(); ctx.moveTo(VA[0], VA[1]); ctx.lineTo(950, 435); ctx.stroke();
+        }
+        ctx.restore();
+
+        // Crisp 1920x1080 Screen-Space Callout Pills (always legible on mobile!)
+        const pill2D = (px, py, txt, bg, fg, accent, al) => {
+          ctx.save(); ctx.globalAlpha = al;
+          ctx.font = '900 28px' + FAM;
+          const tw = Math.max(300, ctx.measureText(txt).width + 64);
+          rrect(ctx, px - tw / 2, py - 30, tw, 60, 14); ctx.fillStyle = bg; ctx.fill();
+          ctx.strokeStyle = accent || fg; ctx.lineWidth = 3; ctx.stroke();
+          ctx.fillStyle = fg; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(txt, px, py + 1); ctx.restore();
+        };
+        if (t < 55.64) pill2D(960, 210, 'HOUSTON · $74.20 / BBL', '#0B191E', PAL.amberHi, PAL.amber, a);
+        else if (t < 57.58) pill2D(960, 210, 'HOUSTON ↔ ROTTERDAM · SIMILAR PRICES', '#0B191E', '#F4F1EA', PAL.amber, a);
+        else if (t < 60.28) pill2D(960, 210, 'COMPUTE CANNOT BE SHIPPED LIKE OIL', '#D94E43', '#F4F1EA', '#D94E43', a);
+        else if (t < 63.24) pill2D(960, 210, 'WORKLOADS MUST STAY NEAR THEIR DATA', '#0B191E', PAL.cyanHi, PAL.cyan, a);
+        else if (t < 69.48) pill2D(960, 210, 'VIRGINIA ≠ FRANKFURT', '#D94E43', '#F4F1EA', '#D94E43', a);
+        else pill2D(960, 210, 'COMPUTE IS TRAPPED BY GEOGRAPHY', '#D94E43', '#F4F1EA', '#D94E43', a);
+      });
     }
 
     // ===== S4 (78, 72.15 - 81.76): Locked Chip Slot =====

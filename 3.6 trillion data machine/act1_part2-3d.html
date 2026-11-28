@@ -1583,6 +1583,16 @@ function drawSpriteChar(c, p, sc, t) {
     X.world = new THREE.Group(); scene.add(X.world);
     X.uBox = THREE.RoundedBoxGeometry ? new THREE.RoundedBoxGeometry(1, 1, 1, 3, 0.09) : new THREE.BoxGeometry(1, 1, 1);
     X.uEdge = new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1, 1)); X.uCyl = new THREE.CylinderGeometry(1, 1, 1, 18); X.uPlane = new THREE.PlaneGeometry(1, 1);
+    X.maxAniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+    {
+      const sc = document.createElement('canvas'); sc.width = sc.height = 128;
+      const sg = sc.getContext('2d'), rg = sg.createRadialGradient(64, 64, 6, 64, 64, 62);
+      rg.addColorStop(0, 'rgba(7, 19, 24, 0.65)');
+      rg.addColorStop(0.55, 'rgba(7, 19, 24, 0.28)');
+      rg.addColorStop(1, 'rgba(7, 19, 24, 0.0)');
+      sg.fillStyle = rg; sg.fillRect(0, 0, 128, 128);
+      X.shadowTex = new THREE.CanvasTexture(sc);
+    }
   }
 
   // =========================================================================
@@ -1591,8 +1601,8 @@ function drawSpriteChar(c, p, sc, t) {
   const eBack = u => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(u - 1, 3) + c1 * Math.pow(u - 1, 2); };
   const eIn = u => u * u * u;
   let GROUND = [], ITEMS = [], OVER = [], CAST = [];
-  const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0 };
-  const LBL = new Map(), NEARCULL = 1.5;
+  const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [], shadow: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0, shadow: 0 };
+  const LBL = new Map(), NEARCULL = 1.5, _lX = new THREE.Vector3(1, 0, 0), _lD = new THREE.Vector3();
   function grab(type, make) { const p = POOL[type]; let o = p[CNT[type]]; if (!o) { o = make(); X.world.add(o.m); p.push(o); } CNT[type]++; o.m.visible = true; return o; }
   function setCol(mat, col, em, a) { mat.color.set(col); if (mat.emissive) { mat.emissive.set(col); mat.emissiveIntensity = (em || 0) * 0.8; } const tr = a < 1; mat.opacity = a; if (mat.transparent !== tr) { mat.transparent = tr; mat.depthWrite = !tr; mat.needsUpdate = true; } }
   function paleCol(c) { const n = parseInt(String(c).replace('#', ''), 16) || 0, r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255; if (r + g + b > 330) return c; const f = 0.3; return 'rgb(' + Math.round(r + (255 - r) * f) + ',' + Math.round(g + (255 - g) * f) + ',' + Math.round(b + (255 - b) * f) + ')'; }
@@ -1613,7 +1623,7 @@ function drawSpriteChar(c, p, sc, t) {
     const cw = Math.max(256, Math.min(1024, Math.round(w * 120))), ch = Math.max(64, Math.round(cw * h / w)), c = document.createElement('canvas'); c.width = cw; c.height = ch; const g = c.getContext('2d');
     if (bg) { g.fillStyle = bg; g.strokeStyle = line || '#0B161C'; g.lineWidth = Math.max(2, ch * 0.06); g.beginPath(); g.roundRect(g.lineWidth / 2, g.lineWidth / 2, cw - g.lineWidth, ch - g.lineWidth, ch * 0.18); g.fill(); g.stroke(); }
     g.fillStyle = fg; g.textAlign = 'center'; g.textBaseline = 'middle'; let sz = ch * 0.62; const fam = ' system-ui, "Segoe UI", sans-serif'; g.font = '900 ' + sz + 'px' + fam; while (g.measureText(text).width > cw * 0.86 && sz > 8) { sz *= 0.93; g.font = '900 ' + sz + 'px' + fam; }
-    g.fillText(text, cw / 2, ch / 2 + ch * 0.03); t = new THREE.CanvasTexture(c); t.anisotropy = 4; LBL.set(key, t); return t;
+    g.fillText(text, cw / 2, ch / 2 + ch * 0.03); t = new THREE.CanvasTexture(c); t.anisotropy = X.maxAniso || 4; t.encoding = THREE.sRGBEncoding; LBL.set(key, t); return t;
   }
   function billboard(m, rot) { m.quaternion.copy(camera.quaternion); if (rot) m.rotateZ(-rot); }
   // ---- frame-fit log (read by tools/jb/fitcheck.js): screen rect of every label / panel / character this frame
@@ -1655,8 +1665,11 @@ function drawSpriteChar(c, p, sc, t) {
   function Panel(x, y, z, w, h, paint, o) {
     o = o || {}; const sx = o.sx === undefined ? 1 : o.sx, sy = o.sy === undefined ? 1 : o.sy; if (sx <= 0.02 || sy <= 0.02) return; const P = mp(x, y, z);
     const cw = o.cw || 512, ch = Math.max(64, Math.min(1024, Math.round(cw * h / w)));
-    const e = grab('panel', () => { const c = document.createElement('canvas'); const tex = new THREE.CanvasTexture(c); const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthTest: false, fog: false, toneMapped: false })); m.renderOrder = 19; return { m, c, tex }; });
-    if (e.c.width !== cw || e.c.height !== ch) { e.c.width = cw; e.c.height = ch; } const g = e.c.getContext('2d'); g.clearRect(0, 0, cw, ch); g.save(); paint(g, cw, ch); g.restore(); e.tex.needsUpdate = true;
+    const e = grab('panel', () => { const c = document.createElement('canvas'); const tex = new THREE.CanvasTexture(c); tex.anisotropy = X.maxAniso || 4; tex.encoding = THREE.sRGBEncoding; const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthTest: false, fog: false, toneMapped: false })); m.renderOrder = 19; return { m, c, tex, key: undefined }; });
+    if (e.c.width !== cw || e.c.height !== ch || o.key === undefined || e.key !== o.key) {
+      if (e.c.width !== cw || e.c.height !== ch) { e.c.width = cw; e.c.height = ch; }
+      const g = e.c.getContext('2d'); g.clearRect(0, 0, cw, ch); g.save(); paint(g, cw, ch); g.restore(); e.tex.needsUpdate = true; e.key = o.key;
+    }
     e.m.material.opacity = o.a === undefined ? 1 : o.a; e.m.position.set(P[0], P[1], P[2]); e.m.scale.set(w * sx, h * sy, 1); billboard(e.m, o.rot); nudge(e.m); fitRec(window.__fitName || 'panel', 'panel', e.m); window.__fitName = null;
   }
   function satBoost(c, k) { const h = {}; c.getHSL(h); c.setHSL(h.h, Math.min(1, h.s * k), h.l); return c; }
@@ -1684,10 +1697,20 @@ function drawSpriteChar(c, p, sc, t) {
       const e = segMesh(); e.m.position.set((A[0] + B[0]) / 2, y + 0.06, (A[2] + B[2]) / 2); e.m.scale.set(len, 0.08, Math.max(0.12, lw * 0.045)); e.m.rotation.set(0, -Math.atan2(dz, dx), 0); e.m.material.color.set(stroke);
     }
   }
+  function Shadow(x, z, w, d, a) {
+    if (!X.shadowTex) return;
+    const P = mp(x, 0.015, z);
+    const e = grab('shadow', () => {
+      const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: X.shadowTex, transparent: true, depthWrite: false, fog: false }));
+      m.rotation.x = -Math.PI / 2; m.renderOrder = 1; return { m };
+    });
+    e.m.position.set(P[0], P[1], P[2]); e.m.scale.set(w, d, 1); e.m.material.opacity = a === undefined ? 0.40 : a;
+  }
   function Line3(a, b, col, lw, al) {
     const A = mp(a[0], a[1], a[2]), B = mp(b[0], b[1], b[2]), dx = B[0] - A[0], dy = B[1] - A[1], dz = B[2] - A[2], len = Math.hypot(dx, dy, dz); if (len < 0.01) return;
     const e = grab('seg', () => ({ m: new THREE.Mesh(X.uBox, new THREE.MeshBasicMaterial()) })); e.m.position.set((A[0] + B[0]) / 2, (A[1] + B[1]) / 2, (A[2] + B[2]) / 2);
-    e.m.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), new THREE.Vector3(dx, dy, dz).normalize()); const th = Math.max(0.06, lw * 0.022); e.m.scale.set(len, th, th); e.m.material.color.set(col);
+    _lD.set(dx, dy, dz).normalize();
+    e.m.quaternion.setFromUnitVectors(_lX, _lD); const th = Math.max(0.06, lw * 0.022); e.m.scale.set(len, th, th); e.m.material.color.set(col);
   }
 
   // =========================================================================
@@ -2294,6 +2317,7 @@ function drawSpriteChar(c, p, sc, t) {
       groundPoly([[-10, -6.5], [10, -6.5], [10, 5.5], [-10, 5.5]], 0.02, '#0E1E25', PAL.steel, 2, 0.95);
 
       // Permanent 3D Data Center Shell (persists across Beat 1, Beat 2, and Beat 4)
+      Shadow(0, -3.2, 11.8, 5.2, 0.42);
       const peelU = easeOut(seg(t, 0.25, 2.20));
       Box(0, 0, -3.2, 10.6, 0.38, 4.2, PAL.steel);
       Box(-5.0, 0.38, -3.2, 0.55, 5.4, 4.2, PAL.steel);
@@ -2778,20 +2802,50 @@ function drawSpriteChar(c, p, sc, t) {
     }
 
     // ===== BEAT 7 & BEAT 8 (53.50 - 72.96, c = 94): Escalating Burn-Rate Pressure -> Lights Kill & 10x10 Terminal Grid =====
+    if (!X.b7Racks) {
+      const RB = (w, h, d, r) => THREE.RoundedBoxGeometry ? new THREE.RoundedBoxGeometry(w, h, d, 3, r || 0.05) : new THREE.BoxGeometry(w, h, d);
+      const cv = document.createElement('canvas'); cv.width = cv.height = 512;
+      const g = cv.getContext('2d');
+      g.fillStyle = '#0B191E'; g.fillRect(0, 0, 512, 512);
+      g.fillStyle = '#142B34';
+      for (let y = 24; y < 488; y += 36) g.fillRect(36, y, 440, 18);
+      g.strokeStyle = '#3B5662'; g.lineWidth = 6; g.strokeRect(12, 12, 488, 488);
+      const rackTex = new THREE.CanvasTexture(cv);
+      rackTex.anisotropy = X.maxAniso || 4; rackTex.encoding = THREE.sRGBEncoding;
+      const grp = new THREE.Group(), count = 14;
+      const rackMesh = new THREE.InstancedMesh(RB(1.4, 4.2, 1.5, 0.05), new THREE.MeshStandardMaterial({ map: rackTex, roughness: 0.65, metalness: 0.2 }), count);
+      const ledMesh = new THREE.InstancedMesh(new THREE.BoxGeometry(1.0, 2.8, 0.08), new THREE.MeshBasicMaterial(), count);
+      const d = new THREE.Object3D(), col = new THREE.Color(), standby = [];
+      let idx = 0;
+      for (let r = 0; r < 2; r++) {
+        for (let c = 0; c < 7; c++) {
+          const rx = 86.2 + c * 2.5, rz = -4.2 + r * 3.0;
+          standby.push((r === 0 && c === 2) || (r === 1 && c === 5));
+          const PR = mp(rx, 2.1, rz), PL = mp(rx, 2.2, rz + 0.78);
+          d.position.set(PR[0], PR[1], PR[2]); d.updateMatrix(); rackMesh.setMatrixAt(idx, d.matrix);
+          d.position.set(PL[0], PL[1], PL[2]); d.updateMatrix(); ledMesh.setMatrixAt(idx, d.matrix);
+          idx++;
+        }
+      }
+      rackMesh.instanceMatrix.needsUpdate = true; ledMesh.instanceMatrix.needsUpdate = true;
+      grp.add(rackMesh, ledMesh); scene.add(grp);
+      grp.setDark = (darkOut) => {
+        for (let i = 0; i < count; i++) {
+          col.set(!darkOut ? PAL.sage : (standby[i] ? PAL.coral : '#142228'));
+          ledMesh.setColorAt(i, col);
+        }
+        ledMesh.instanceColor.needsUpdate = true;
+      };
+      X.b7Racks = grp;
+    }
+    X.b7Racks.visible = (t >= 53.3);
     if (t >= 53.3) {
       const isBeat8 = t >= 66.66;
       const darkOut = t >= 68.20;
       groundPoly([[84, -6.5], [104, -6.5], [104, 6], [84, 6]], 0.02, darkOut ? '#071115' : '#0E1E25', PAL.steel, 2, 0.95);
-
-      for (let r = 0; r < 2; r++) {
-        for (let c = 0; c < 7; c++) {
-          const rx = 86.2 + c * 2.5, rz = -4.2 + r * 3.0;
-          const isStandby = (r === 0 && c === 2) || (r === 1 && c === 5);
-          Box(rx, 0, rz, 1.4, 4.2, 1.5, PAL.ink);
-          const ledCol = !darkOut ? PAL.sage : (isStandby ? PAL.coral : '#142228');
-          Box(rx, 2.2, rz + 0.78, 1.0, 2.8, 0.08, ledCol, { lw: 0, emis: !darkOut ? 0.75 : (isStandby ? 0.85 : 0) });
-        }
-      }
+      X.b7Racks.setDark(darkOut);
+      Shadow(93.7, -4.2, 17.5, 2.4, 0.36);
+      Shadow(93.7, -1.2, 17.5, 2.4, 0.36);
 
       if (!isBeat8) {
         const nodPose = t >= 61.00 ? 'cheer' : 'present';

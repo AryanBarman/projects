@@ -717,14 +717,38 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
   const CAM_KEYS = [];
   const K = (t, p, l, fov, x) => CAM_KEYS.push({ t, v: [p[0], p[1], p[2], l[0], l[1], l[2], fov], cut: x === true, type: typeof x === 'string' ? x : 'auto' });
 
-  K(0.00, [-26, 6.0, 23.0], [-26, 3.4, 0.0], 45, 'hold');
-  K(2.40, [0, 5.6, 22.0], [0, 5.2, 0.0], 44, 'fly');
-  K(14.00, [0, 5.4, 19.5], [0, 5.2, 0.0], 43, 'hold');
-  K(32.60, [26, 6.0, 24.0], [26, 5.2, 1.0], 45, 'fly');
-  K(39.70, [26, 6.2, 20.5], [26, 5.4, 1.0], 44, 'push');
-  K(43.40, [52, 5.8, 23.0], [52, 5.2, 1.0], 45, 'fly');
-  K(53.50, [52, 5.4, 19.0], [52, 5.0, 1.0], 43, 'push');
-  K(59.80, [52, 5.4, 19.0], [52, 5.0, 1.0], 43, 'hold');
+  // Beat 1 (0.00 - 10.38, c = -26): Cost Travels Outward -> Subscription Shield -> Hidden Compute Cost
+  K(0.00, [-26.0, 5.4, 12.6], [-26.0, 2.6, -1.6], 42, 'hold');
+  K(3.24, [-22.4, 4.4, 11.4], [-22.4, 2.6,  0.2], 41, 'pull');
+  K(5.20, [-19.8, 3.4,  9.8], [-19.5, 2.5,  1.0], 39, 'push');
+  K(7.30, [-20.2, 3.3,  8.8], [-21.5, 2.5, -1.2], 38, 'push');
+  K(10.00,[-21.2, 3.2,  7.6], [-22.5, 2.5, -1.6], 37, 'push');
+  // Beat 2 (10.38 - 31.88, c = 0): Coherent Pricing Dashboard (Spring 2026 -> Windsurf -> Codex -> Copilot -> Anthropic)
+  K(10.38,[  0.0, 4.4, 11.8], [  0.0, 4.2,  0.0], 40, true);
+  K(13.28,[  0.0, 4.4, 10.6], [  0.0, 4.2,  0.0], 39, 'push');
+  K(14.04,[  2.8, 4.4, 11.2], [  2.8, 4.2,  0.0], 40, 'arc');
+  K(18.44,[  3.2, 4.4, 11.0], [  3.2, 4.2,  0.0], 40, 'hold');
+  K(18.78,[  5.6, 4.4, 11.2], [  5.6, 4.2,  0.0], 40, 'arc');
+  K(21.38,[  9.2, 4.4, 11.2], [  9.2, 4.2,  0.0], 40, 'arc');
+  K(24.18,[ 13.4, 4.4, 11.2], [ 13.4, 4.2,  0.0], 40, 'arc');
+  K(27.02,[ 13.8, 4.2, 10.0], [ 13.8, 4.0,  0.0], 39, 'push');
+  K(29.20,[ 14.4, 3.6, 10.6], [ 14.6, 3.4, -0.4], 40, 'arc');
+  K(31.88,[ 15.0, 3.8, 11.2], [ 15.0, 3.4, -0.6], 40, 'hold');
+  // Beat 3 (32.66 - 42.80, c = 26): Continuous 2-Bar Market Chart ($360B -> $2.3T)
+  K(32.66,[ 26.0, 5.4, 15.5], [ 26.0, 3.6, -0.5], 42, 'fly');
+  K(35.68,[ 24.4, 4.2, 12.2], [ 24.4, 3.4,  0.0], 40, 'push');
+  K(39.74,[ 27.6, 5.6, 13.8], [ 26.2, 4.4,  0.0], 41, 'arc');
+  K(42.80,[ 26.0, 5.8, 15.6], [ 26.0, 4.2,  0.0], 42, 'pull');
+  // Beat 4 (43.42 - 58.34, c = 52): Continuous H100 Price Chart ($8.00 -> $1.96 -> $2.64) + Stationary H100 Anchor
+  K(43.42,[ 52.0, 5.2, 14.5], [ 52.0, 4.2,  0.2], 41, 'fly');
+  K(46.18,[ 50.2, 4.4, 13.4], [ 51.8, 4.0,  0.4], 40, 'push');
+  K(49.88,[ 51.8, 4.8, 12.6], [ 52.2, 4.2,  0.4], 40, 'arc');
+  K(53.56,[ 53.8, 4.2, 11.4], [ 53.4, 3.6,  0.4], 39, 'push');
+  K(54.68,[ 54.4, 4.6, 12.2], [ 53.2, 4.0,  0.4], 40, 'arc');
+  K(58.34,[ 52.0, 5.0, 14.6], [ 52.0, 4.0,  0.4], 41, 'pull');
+  // Beat 5 (58.34 - 60.28, c = 52): Wall Street Financial District Reflection -> Capital Stream Bridge
+  K(59.10,[ 52.0, 5.2, 15.6], [ 52.0, 4.1,  0.0], 42, 'pull');
+  K(60.28,[ 52.0, 4.8, 13.6], [ 52.0, 3.8, -0.6], 40, 'push');
 
   const ORB_YAW = [-0.55, 0.5, -0.28, 0.62, -0.42, 0.34, -0.6, 0.22];
   const ORB_PIT = [0.12, 0.3, 0.07, 0.46, 0.16, 0.36, 0.1, 0.26];
@@ -1682,6 +1706,16 @@ function drawSpriteChar(c, p, sc, t) {
     X.world = new THREE.Group(); scene.add(X.world);
     X.uBox = THREE.RoundedBoxGeometry ? new THREE.RoundedBoxGeometry(1, 1, 1, 3, 0.09) : new THREE.BoxGeometry(1, 1, 1);
     X.uEdge = new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1, 1)); X.uCyl = new THREE.CylinderGeometry(1, 1, 1, 18); X.uPlane = new THREE.PlaneGeometry(1, 1);
+    X.maxAniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+    {
+      const sc = document.createElement('canvas'); sc.width = sc.height = 128;
+      const sg = sc.getContext('2d'), rg = sg.createRadialGradient(64, 64, 6, 64, 64, 62);
+      rg.addColorStop(0, 'rgba(7, 19, 24, 0.65)');
+      rg.addColorStop(0.55, 'rgba(7, 19, 24, 0.28)');
+      rg.addColorStop(1, 'rgba(7, 19, 24, 0.0)');
+      sg.fillStyle = rg; sg.fillRect(0, 0, 128, 128);
+      X.shadowTex = new THREE.CanvasTexture(sc);
+    }
   }
 
   // =========================================================================
@@ -1690,8 +1724,8 @@ function drawSpriteChar(c, p, sc, t) {
   const eBack = u => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(u - 1, 3) + c1 * Math.pow(u - 1, 2); };
   const eIn = u => u * u * u;
   let GROUND = [], ITEMS = [], OVER = [], CAST = [];
-  const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0 };
-  const LBL = new Map(), NEARCULL = 9;
+  const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [], shadow: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0, shadow: 0 };
+  const LBL = new Map(), NEARCULL = 9, _lX = new THREE.Vector3(1, 0, 0), _lD = new THREE.Vector3();
   function grab(type, make) { const p = POOL[type]; let o = p[CNT[type]]; if (!o) { o = make(); X.world.add(o.m); p.push(o); } CNT[type]++; o.m.visible = true; return o; }
   function setCol(mat, col, em, a) { mat.color.set(col); if (mat.emissive) { mat.emissive.set(col); mat.emissiveIntensity = (em || 0) * 0.8; } const tr = a < 1; mat.opacity = a; if (mat.transparent !== tr) { mat.transparent = tr; mat.depthWrite = !tr; mat.needsUpdate = true; } }
   function paleCol(c) { const n = parseInt(String(c).replace('#', ''), 16) || 0, r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255; if (r + g + b > 330) return c; const f = 0.3; return 'rgb(' + Math.round(r + (255 - r) * f) + ',' + Math.round(g + (255 - g) * f) + ',' + Math.round(b + (255 - b) * f) + ')'; }
@@ -1712,7 +1746,7 @@ function drawSpriteChar(c, p, sc, t) {
     const cw = Math.max(256, Math.min(1024, Math.round(w * 120))), ch = Math.max(64, Math.round(cw * h / w)), c = document.createElement('canvas'); c.width = cw; c.height = ch; const g = c.getContext('2d');
     if (bg) { g.fillStyle = bg; g.strokeStyle = line || '#0B161C'; g.lineWidth = Math.max(2, ch * 0.06); g.beginPath(); g.roundRect(g.lineWidth / 2, g.lineWidth / 2, cw - g.lineWidth, ch - g.lineWidth, ch * 0.18); g.fill(); g.stroke(); }
     g.fillStyle = fg; g.textAlign = 'center'; g.textBaseline = 'middle'; let sz = ch * 0.62; const fam = ' system-ui, "Segoe UI", sans-serif'; g.font = '900 ' + sz + 'px' + fam; while (g.measureText(text).width > cw * 0.86 && sz > 8) { sz *= 0.93; g.font = '900 ' + sz + 'px' + fam; }
-    g.fillText(text, cw / 2, ch / 2 + ch * 0.03); t = new THREE.CanvasTexture(c); t.anisotropy = 4; LBL.set(key, t); return t;
+    g.fillText(text, cw / 2, ch / 2 + ch * 0.03); t = new THREE.CanvasTexture(c); t.anisotropy = X.maxAniso || 4; t.encoding = THREE.sRGBEncoding; LBL.set(key, t); return t;
   }
   function billboard(m, rot) { m.quaternion.copy(camera.quaternion); if (rot) m.rotateZ(-rot); }
   // ---- frame-fit log (read by tools/jb/fitcheck.js): screen rect of every label / panel / character this frame
@@ -1754,8 +1788,11 @@ function drawSpriteChar(c, p, sc, t) {
   function Panel(x, y, z, w, h, paint, o) {
     o = o || {}; const sx = o.sx === undefined ? 1 : o.sx, sy = o.sy === undefined ? 1 : o.sy; if (sx <= 0.02 || sy <= 0.02) return; const P = mp(x, y, z);
     const cw = o.cw || 512, ch = Math.max(64, Math.min(1024, Math.round(cw * h / w)));
-    const e = grab('panel', () => { const c = document.createElement('canvas'); const tex = new THREE.CanvasTexture(c); const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthTest: false, fog: false, toneMapped: false })); m.renderOrder = 19; return { m, c, tex }; });
-    if (e.c.width !== cw || e.c.height !== ch) { e.c.width = cw; e.c.height = ch; } const g = e.c.getContext('2d'); g.clearRect(0, 0, cw, ch); g.save(); paint(g, cw, ch); g.restore(); e.tex.needsUpdate = true;
+    const e = grab('panel', () => { const c = document.createElement('canvas'); const tex = new THREE.CanvasTexture(c); tex.anisotropy = X.maxAniso || 4; tex.encoding = THREE.sRGBEncoding; const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthTest: false, fog: false, toneMapped: false })); m.renderOrder = 19; return { m, c, tex, key: undefined }; });
+    if (e.c.width !== cw || e.c.height !== ch || o.key === undefined || e.key !== o.key) {
+      if (e.c.width !== cw || e.c.height !== ch) { e.c.width = cw; e.c.height = ch; }
+      const g = e.c.getContext('2d'); g.clearRect(0, 0, cw, ch); g.save(); paint(g, cw, ch); g.restore(); e.tex.needsUpdate = true; e.key = o.key;
+    }
     e.m.material.opacity = o.a === undefined ? 1 : o.a; e.m.position.set(P[0], P[1], P[2]); e.m.scale.set(w * sx, h * sy, 1); billboard(e.m, o.rot); nudge(e.m); fitRec(window.__fitName || 'panel', 'panel', e.m); window.__fitName = null;
   }
   function satBoost(c, k) { const h = {}; c.getHSL(h); c.setHSL(h.h, Math.min(1, h.s * k), h.l); return c; }
@@ -1783,10 +1820,20 @@ function drawSpriteChar(c, p, sc, t) {
       const e = segMesh(); e.m.position.set((A[0] + B[0]) / 2, y + 0.06, (A[2] + B[2]) / 2); e.m.scale.set(len, 0.08, Math.max(0.12, lw * 0.045)); e.m.rotation.set(0, -Math.atan2(dz, dx), 0); e.m.material.color.set(stroke);
     }
   }
+  function Shadow(x, z, w, d, a) {
+    if (!X.shadowTex) return;
+    const P = mp(x, 0.015, z);
+    const e = grab('shadow', () => {
+      const m = new THREE.Mesh(X.uPlane, new THREE.MeshBasicMaterial({ map: X.shadowTex, transparent: true, depthWrite: false, fog: false }));
+      m.rotation.x = -Math.PI / 2; m.renderOrder = 1; return { m };
+    });
+    e.m.position.set(P[0], P[1], P[2]); e.m.scale.set(w, d, 1); e.m.material.opacity = a === undefined ? 0.40 : a;
+  }
   function Line3(a, b, col, lw, al) {
     const A = mp(a[0], a[1], a[2]), B = mp(b[0], b[1], b[2]), dx = B[0] - A[0], dy = B[1] - A[1], dz = B[2] - A[2], len = Math.hypot(dx, dy, dz); if (len < 0.01) return;
     const e = grab('seg', () => ({ m: new THREE.Mesh(X.uBox, new THREE.MeshBasicMaterial()) })); e.m.position.set((A[0] + B[0]) / 2, (A[1] + B[1]) / 2, (A[2] + B[2]) / 2);
-    e.m.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), new THREE.Vector3(dx, dy, dz).normalize()); const th = Math.max(0.06, lw * 0.022); e.m.scale.set(len, th, th); e.m.material.color.set(col);
+    _lD.set(dx, dy, dz).normalize();
+    e.m.quaternion.setFromUnitVectors(_lX, _lD); const th = Math.max(0.06, lw * 0.022); e.m.scale.set(len, th, th); e.m.material.color.set(col);
   }
 
   // =========================================================================
@@ -2305,64 +2352,316 @@ function drawSpriteChar(c, p, sc, t) {
     const pop = (txt, x, y, z, w, h, bg, fg, t0, t1, o) => Card(x, y, z, w, h, Object.assign({ kind: /^#(D94E43|2B8A6E|D99B26)$/i.test(bg) ? 'stamp' : 'tag', text: txt, bg, fg, accent: /^#(0B1A22|0B191E)$/i.test(bg) ? '#D99B26' : fg, t0, t1: t1 || 0 }, o || {}), t);
     for (let k = 0; k < 4; k++) pad(-42 + k * 26, -12, -12 + k * 26, 14, '#12262E');
 
-    // ===== S0 (-26, 0.00 - 2.40): Continuity Bridge =====
-    if (t < 2.8) {
-      for (let i = 0; i < 4; i++) {
-        const rx = -30.0 + i * 2.5;
-        Box(rx, 0, -2.8, 1.6, 4.6, 1.8, PAL.ink);
-        Box(rx, 2.4, -1.85, 0.7, 0.7, 0.14, PAL.cyan, { lw: 0, emis: 0.45 });
+    // ===== BEAT 1 (-26, 0.00 - 10.38): Cost Travels Outward -> Subscription Shield -> Hidden Compute Cost =====
+    if (t < 10.45) {
+      // Data center GPU racks in background
+      for (let i = 0; i < 5; i++) {
+        const rx = -30.5 + i * 2.2;
+        Box(rx, 0, -2.8, 1.5, 4.4, 1.7, PAL.ink);
+        Box(rx, 2.2, -1.9, 0.85, 0.75, 0.12, PAL.amberHi, { lw: 0, emis: 0.55 });
+      }
+      Shadow(-26.1, -2.8, 12.0, 2.6, 0.42);
+      // Enterprise customer office buildings receiving cost stream
+      [-21.5, -19.0].forEach((cx, ci) => {
+        const litU = easeOut(seg(t, 1.20 + ci * 0.6, 2.90 + ci * 0.6));
+        Box(cx, 0, 1.8, 2.0, 2.8, 1.8, '#1B3540');
+        Box(cx, 1.1, 2.72, 1.4, 0.9, 0.08, litU > 0.2 ? PAL.amberHi : '#0B191E', { lw: 0, emis: 0.5 * litU });
+        Shadow(cx, 1.8, 2.8, 2.4, 0.36);
+      });
+      // Amber cost stream emerging from server hall -> hitting Subscription Shield at z = 0.2
+      const shieldOn = t >= 3.24;
+      const streamEndZ = shieldOn ? 0.1 : 1.8;
+      Line3([-26.0, 1.8, -2.0], [-19.5, 1.6, streamEndZ], PAL.amberHi, 4.5, 1);
+      for (let p = 0; p < 4; p++) {
+        const pq = (t * 0.9 + p * 0.25) % 1;
+        Box(lerp(-26.0, -19.5, pq), lerp(1.8, 1.6, pq), lerp(-2.0, streamEndZ, pq), 0.36, 0.24, 0.28, PAL.amberHi, { lw: 0, emis: 0.9 });
+      }
+      if (shieldOn) {
+        const shA = t >= 7.30 ? 0.16 : 0.38;
+        Box(-19.5, 0.2, 0.2, 4.6, 4.0, 0.22, PAL.cyan, { a: shA });
+        Line3([-21.8, 4.2, 0.2], [-17.2, 4.2, 0.2], PAL.cyanHi, 4, 1);
+        Char('board', -17.6, 2.0, 1.45, { facing: -1, pose: 'hold', prop: 'laptop' }, 3.24, 10.4, t);
+        if (t < 7.30) {
+          pop('FLAT-RATE SUBSCRIPTION', -19.5, 5.1, 0.8, 5.8, 0.92, PAL.ink, PAL.cyanHi, 3.40, 7.25, { accent: PAL.cyan });
+        } else {
+          // Shot 3 (7.30 - 10.38): Translucent shield reveals accumulating hidden compute cost behind it
+          const hidCost = Math.round(lerp(120, 480, easeOut(seg(t, 7.30, 9.80))));
+          pop(`COMPUTE COST: $${hidCost}/MO`, -23.2, 4.4, -1.6, 5.4, 0.86, PAL.ink, PAL.amberHi, 7.35, 10.35, { accent: PAL.amber });
+          pop('THE REAL COMPUTE COST WAS HIDDEN', -20.8, 5.8, 0.4, 7.4, 0.94, PAL.ink, PAL.ivory, 7.45, 10.35, { accent: PAL.coral });
+        }
       }
     }
 
-    // ===== S1 (0, 2.40 - 32.60): Spring 2026 Metered Pricing =====
-    if (t >= 2.2 && t < 32.8) {
-      const hlIdx = t >= 24.18 ? 3 : t >= 21.38 ? 2 : t >= 18.78 ? 1 : t >= 16.40 ? 0 : -1;
-      Card(0, 5.4, 0.0, 15.6, 8.6, {
-        kind: 'doc', t0: 2.6, t1: 0, dark: true, tag: 'SPRING 2026 SHIFT', accent: PAL.amber,
-        head: 'METERED COMPUTE PRICING',
-        lines: [
-          'Windsurf: Hard weekly limits (Mar 2026)',
-          'OpenAI Codex: Token metering (Apr 2026)',
-          'GitHub Copilot: Tightened caps',
-          'Anthropic: $20/seat + token rates'
-        ],
-        lineAt: [16.40, 18.78, 21.38, 24.18],
-        hl: hlIdx, hlAt: hlIdx >= 0 ? [16.40, 18.78, 21.38, 24.18][hlIdx] : 99
-      }, t);
-      pop('SPRING 2026 METERING', 0, 10.6, 0.0, 8.2, 1.0, PAL.ink, PAL.ivory, 10.4, 32.4, { accent: PAL.amber });
+    // ===== BEAT 2 (0, 10.38 - 31.88): One Coherent Pricing Dashboard (Spring 2026 -> Windsurf -> Codex -> Copilot -> Anthropic) =====
+    if (t >= 10.2 && t < 32.5) {
+      // Continuous dark dashboard backdrop wall across x = -5..+20
+      Box(7.5, 0.2, -1.2, 26.0, 8.4, 0.35, '#0B191E');
+      Shadow(7.5, -1.2, 26.0, 2.2, 0.35);
+
+      // Shot 1 (10.38 - 14.04): Flat-rate card cracks & breaks -> Spring 2026
+      if (t < 14.20) {
+        const brkU = easeOut(seg(t, 11.40, 12.60));
+        Card(0.0, 4.2, 0.0, 7.4, 4.4, {
+          kind: 'paint', cw: 1024, key: 'b2s1_' + Math.round(brkU * 30), t0: 10.38, t1: 14.05,
+          paint: (g, pw, ph) => {
+            g.fillStyle = 'rgba(18,38,46,0.95)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+            g.strokeStyle = brkU > 0.2 ? PAL.coral : PAL.cyan; g.lineWidth = 5; g.stroke();
+            g.fillStyle = PAL.amberHi; g.font = '900 30px' + FAM; g.textAlign = 'center';
+            g.fillText('SPRING 2026', pw / 2, 68);
+            g.fillStyle = PAL.ivory; g.font = '900 54px' + FAM;
+            g.fillText('$20 / MO FLAT', pw / 2, ph * 0.52);
+            if (brkU > 0.1) {
+              g.strokeStyle = PAL.coral; g.lineWidth = 7;
+              g.beginPath(); g.moveTo(pw * 0.25, ph * 0.22); g.lineTo(pw * 0.52, ph * 0.50); g.lineTo(pw * 0.72, ph * 0.80); g.stroke();
+            }
+          }
+        }, t);
+        if (t >= 11.60 && t < 12.20) hit(0.0, 4.2, 0.4, 11.65, PAL.coral, 260);
+      }
+
+      // Shot 2 (14.04 - 20.82): Windsurf Hard Weekly Limits panel (slides left on Shot 3)
+      if (t >= 14.04 && t < 21.00) {
+        const wx = lerp(3.2, 1.0, easeOut(seg(t, 18.78, 19.60)));
+        const fillW = Math.min(1.0, easeOut(seg(t, 14.30, 16.80)));
+        const locked = fillW >= 0.98;
+        Card(wx, 4.2, 0.0, 5.2, 4.4, {
+          kind: 'paint', cw: 1024, key: 'ws_' + Math.round(fillW * 40), t0: 14.04, t1: 20.85,
+          paint: (g, pw, ph) => {
+            g.fillStyle = 'rgba(18,38,46,0.96)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+            g.strokeStyle = locked ? PAL.coral : PAL.amber; g.lineWidth = 5; g.stroke();
+            g.fillStyle = PAL.ivory; g.font = '900 36px' + FAM; g.textAlign = 'left';
+            g.fillText('WINDSURF', 44, 62);
+            g.fillStyle = PAL.coral; g.font = '800 24px' + FAM;
+            g.fillText('HARD WEEKLY LIMITS', 44, 108);
+            g.fillStyle = '#071115'; rrect(g, 44, 170, pw - 88, 72, 14); g.fill();
+            g.fillStyle = locked ? PAL.coral : PAL.amberHi;
+            rrect(g, 50, 176, Math.max(20, (pw - 100) * fillW), 60, 10); g.fill();
+            g.strokeStyle = PAL.coral; g.lineWidth = 6;
+            g.beginPath(); g.moveTo(pw - 52, 154); g.lineTo(pw - 52, 260); g.stroke();
+            if (locked) {
+              g.fillStyle = PAL.coral; g.font = '900 30px' + FAM; g.textAlign = 'center';
+              g.fillText('LIMIT LOCKED', pw / 2, 330);
+            }
+          }
+        }, t);
+      }
+
+      // Shot 3 (18.78 - 24.18): OpenAI Codex Token Metering (stays left during Copilot)
+      if (t >= 18.78 && t < 24.25) {
+        const tokK = Math.round(lerp(12, 480, easeOut(seg(t, 18.85, 21.00))));
+        Card(5.8, 4.2, 0.0, 4.8, 4.4, {
+          kind: 'paint', cw: 1024, key: 'codex_' + tokK, t0: 18.78, t1: 24.18,
+          paint: (g, pw, ph) => {
+            g.fillStyle = 'rgba(18,38,46,0.96)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+            g.strokeStyle = PAL.cyan; g.lineWidth = 5; g.stroke();
+            g.fillStyle = PAL.ivory; g.font = '900 34px' + FAM; g.textAlign = 'left';
+            g.fillText('OPENAI CODEX', 44, 62);
+            g.fillStyle = PAL.cyanHi; g.font = '800 24px' + FAM;
+            g.fillText('TOKEN METERING', 44, 108);
+            g.fillStyle = PAL.amberHi; g.font = '900 66px' + FAM;
+            g.fillText(tokK + 'K TOKENS', 44, 240);
+            g.fillStyle = PAL.ivory; g.font = '800 32px' + FAM;
+            g.fillText('COST: $' + (tokK * 0.08).toFixed(2), 44, 325);
+          }
+        }, t);
+      }
+
+      // Shot 4 (21.38 - 26.80): GitHub Copilot Tighter Usage Caps
+      if (t >= 21.38 && t < 26.80) {
+        const capW = lerp(0.92, 0.42, easeOut(seg(t, 21.60, 23.60)));
+        Card(10.2, 4.2, 0.0, 4.6, 4.4, {
+          kind: 'paint', cw: 1024, key: 'gh_' + Math.round(capW * 40), t0: 21.38, t1: 26.70,
+          paint: (g, pw, ph) => {
+            g.fillStyle = 'rgba(18,38,46,0.96)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+            g.strokeStyle = PAL.coral; g.lineWidth = 5; g.stroke();
+            g.fillStyle = PAL.ivory; g.font = '900 32px' + FAM; g.textAlign = 'left';
+            g.fillText('GITHUB COPILOT', 44, 62);
+            g.fillStyle = PAL.coral; g.font = '800 24px' + FAM;
+            g.fillText('TIGHTER USAGE CAPS', 44, 108);
+            g.fillStyle = '#071115'; rrect(g, 44, 180, pw - 88, 68, 14); g.fill();
+            g.fillStyle = PAL.amber; rrect(g, 50, 186, (pw - 100) * capW, 56, 10); g.fill();
+            const capX = 50 + (pw - 100) * capW;
+            g.strokeStyle = PAL.coral; g.lineWidth = 7;
+            g.beginPath(); g.moveTo(capX, 162); g.lineTo(capX, 266); g.stroke();
+          }
+        }, t);
+      }
+
+      // Shot 5-6 (24.18 - 31.88): Anthropic $20/Seat -> Extends down for Token Charges + Compute Shortage Meter
+      if (t >= 24.18) {
+        const seatsN = Math.min(5, 1 + Math.floor(seg(t, 24.25, 26.40) * 4.5));
+        const extU = easeOut(seg(t, 27.02, 28.40));
+        const extraTok = Math.round(lerp(0, 340, easeOut(seg(t, 27.20, 31.20))));
+        const supPct = Math.round(lerp(65, 14, easeOut(seg(t, 27.80, 31.40))));
+        Card(14.2, lerp(4.2, 3.6, extU), 0.0, 5.4, lerp(4.2, 5.2, extU), {
+          kind: 'paint', cw: 1024, key: 'ant_' + seatsN + '_' + Math.round(extU * 20) + '_' + extraTok, t0: 24.18, t1: 32.30,
+          paint: (g, pw, ph) => {
+            g.fillStyle = 'rgba(18,38,46,0.96)'; rrect(g, 0, 0, pw, ph, 24); g.fill();
+            g.strokeStyle = extU > 0.2 ? PAL.coral : PAL.amber; g.lineWidth = 5; g.stroke();
+            g.fillStyle = PAL.ivory; g.font = '900 34px' + FAM; g.textAlign = 'left';
+            g.fillText('ANTHROPIC', 44, 58);
+            g.fillStyle = PAL.amberHi; g.font = '800 26px' + FAM;
+            g.fillText('$20 PER SEAT BASE FEE', 44, 102);
+            for (let s = 0; s < 5; s++) {
+              const sx = 44 + s * 184;
+              g.fillStyle = s < seatsN ? '#1B3540' : '#0B191E';
+              rrect(g, sx, 138, 166, 94, 12); g.fill();
+              if (s < seatsN) {
+                g.strokeStyle = PAL.amberHi; g.lineWidth = 2.5; g.stroke();
+                g.fillStyle = PAL.amberHi; g.font = '900 28px' + FAM; g.textAlign = 'center';
+                g.fillText('$20', sx + 83, 192);
+              }
+            }
+            if (extU > 0.05) {
+              g.fillStyle = PAL.coral; g.font = '900 30px' + FAM; g.textAlign = 'left';
+              g.fillText('+ TOKEN CHARGES: $' + extraTok, 44, 305);
+              g.fillStyle = '#B8C2C7'; g.font = '800 22px' + FAM;
+              g.fillText('BASE FEE + TOKEN CHARGES', 44, 350);
+            }
+          }
+        }, t);
+        if (t >= 27.02) {
+          pop(`COMPUTE SHORTAGE · ${supPct}%`, 17.8, 5.2, -0.6, 5.2, 0.88, PAL.ink, PAL.coral, 27.20, 32.20, { accent: PAL.coral });
+        }
+      }
     }
 
-    // ===== S2 (26, 32.60 - 43.40): $360B to $2.3T =====
+    // ===== BEAT 3 (26, 32.66 - 43.42): One Continuous 2-Bar Market Chart ($360B 2025 -> $2.3T 2030) =====
     if (t >= 32.4 && t < 43.6) {
-      Card(26, 5.6, 1.0, 17.0, 9.0, {
-        kind: 'paint', t0: 32.7, t1: 0,
-        paint: (g, pw, ph) => cashChart(g, pw, ph, {
-          keys: [[32.7, 0.78], [35.7, 0.65, 1.0], [39.7, 0.16, 1.2]],
-          title: 'AI COMPUTE MARKET',
-          tags: [[35.7, '$360B'], [39.7, '$2.3T']],
-          opt: { sub: 'BCG forecast 2025 -> 2030', col: PAL.sage },
-          n0: 2, n1: 16, t0: 32.8, bursts: [39.74]
-        }, t)
-      }, t);
-      Char('trader', 35.5, 2.8, 1.50, { facing: -1, pose: 'point', phase: 0.6 }, 33.0, 43.5, t);
-      pop('$360B -> $2.3T', 26, 11.0, 1.0, 7.0, 1.0, PAL.ink, PAL.ivory, 35.7, 43.2, { accent: PAL.sage });
-      if (t >= 39.70) hit(26, 6.0, 1.6, 39.74, PAL.sageHi, 260);
+      // Data center campus silhouette behind chart
+      for (let i = 0; i < 5; i++) {
+        const rx = 20.0 + i * 3.0;
+        Box(rx, 0, -4.4, 1.8, 3.4, 1.8, '#0B191E');
+        Box(rx, 1.4, -3.45, 1.2, 0.8, 0.1, PAL.sage, { lw: 0, emis: 0.45 });
+      }
+      Shadow(26.0, -4.4, 15.0, 2.6, 0.40);
+
+      // Continuous 3D + 2D Chart Plinth & Axes
+      Box(26.0, 0.0, 0.2, 12.6, 0.42, 3.6, '#1B3540');
+      Shadow(26.0, 0.2, 13.8, 4.4, 0.42);
+      const axU = easeOut(seg(t, 32.75, 34.40));
+      Line3([21.2, 0.44, 0.4], [21.2 + 9.6 * axU, 0.44, 0.4], PAL.ivory, 4, 1);
+      Line3([21.2, 0.44, 0.4], [21.2, 0.44 + 6.4 * axU, 0.4], PAL.ivory, 4, 1);
+
+      // Bar 1: 2025 ($360B) rises & stays visible throughout
+      const b25U = easeOut(seg(t, 35.68, 37.80));
+      const h25 = 1.45 * b25U;
+      if (h25 > 0.04) {
+        Box(23.8, 0.42, 0.4, 2.2, h25, 1.8, PAL.cyan, { emis: 0.35 });
+        const v25 = Math.round(b25U * 360);
+        pop(`$${v25} BILLION | 2025`, 23.8, 1.0 + h25, 0.6, 4.8, 0.84, PAL.ink, PAL.cyanHi, 35.70, 43.40, { accent: PAL.cyan });
+      }
+
+      // Bar 2: 2030 ($2.3T) surges beside the 2025 bar
+      if (t >= 39.74) {
+        const b30U = easeOut(seg(t, 39.74, 41.90));
+        const h30 = 6.2 * b30U;
+        Box(28.4, 0.42, 0.4, 2.4, h30, 1.8, PAL.sage, { emis: 0.55 });
+        const v30 = (0.36 + b30U * 1.94).toFixed(1);
+        pop(`$${v30} TRILLION | 2030`, 28.4, 1.1 + h30, 0.6, 5.4, 0.92, PAL.ink, PAL.sageHi, 39.80, 43.40, { accent: PAL.sage });
+        if (t >= 41.80 && t < 42.35) hit(28.4, 6.6, 0.8, 41.85, PAL.sageHi, 260);
+      }
+
+      pop('AI COMPUTING POWER MARKET', 26.0, 8.2, 0.2, 7.6, 0.94, PAL.ink, PAL.ivory, 32.80, 43.40, { accent: PAL.sage });
+      pop('BCG MARKET PROJECTION', 22.0, 7.2, 0.2, 5.0, 0.72, PAL.ink, PAL.amberHi, 32.95, 35.65, { accent: PAL.amber });
     }
 
-    // ===== S3 (52, 43.40 - 60.28): H100 Price Swings ($8 -> $1.96 -> $2.64) =====
+    // ===== BEAT 4 (52, 43.42 - 60.28): Stationary H100 GPU + One Continuous Price Chart ($8.00 -> $1.96 -> $2.64) =====
     if (t >= 43.2) {
+      // Stationary NVIDIA H100 GPU Card Anchor on the left (x = 45.4)
+      Box(45.4, 1.2, 1.2, 2.8, 0.24, 1.7, '#0B191E');
+      Box(44.2, 1.1, 1.2, 0.35, 0.16, 1.2, PAL.amberHi, { lw: 0 });
+      Box(45.4, 1.44, 1.2, 2.4, 0.32, 1.45, '#1B3540');
+      Box(45.0, 1.76, 1.2, 0.95, 0.14, 0.95, PAL.sage, { emis: 0.8 });
+      Shadow(45.4, 1.2, 3.4, 2.2, 0.42);
+      pop('NVIDIA H100', 45.4, 2.8, 1.2, 3.2, 0.68, PAL.ink, PAL.sageHi, 46.20, 60.20, { accent: PAL.sage });
+
+      // Single Continuous Trading Chart ($8.00 -> $1.96 -> $2.64) + Beat 5 Wall Street Reflection
+      const prog1 = easeOut(seg(t, 47.00, 53.56)); // $8.00 -> $1.96
+      const prog2 = easeOut(seg(t, 54.68, 56.80)); // $1.96 -> $2.64
       const snapped = t >= 54.68;
-      Card(52, 5.6, 1.0, 17.0, 9.0, {
-        kind: 'paint', t0: 43.6, t1: 0,
-        paint: (g, pw, ph) => stepChart(g, pw, ph, [
-          [43.6, 0.18], [49.88, 0.18, 0.6], [53.56, 0.82, 0.8], [54.68, 0.66, 0.6]
-        ], t, 'H100 RENTAL RATE (/HR)', [[49.88, '$8.00'], [53.56, '$1.96'], [54.68, '$2.64']], {
-          sub: '2024 -> Late 2025 -> Apr 2026', col: snapped ? PAL.amber : PAL.coral
-        })
+      const wsFade = t >= 58.34 ? easeOut(seg(t, 58.34, 59.10)) : 0;
+      const chartKey = 'h100_' + Math.round(prog1 * 80) + '_' + Math.round(prog2 * 50) + (t >= 49.88 ? 1 : 0) + '_' + Math.round(wsFade * 15);
+      Card(53.4, 4.6, 0.4, 13.6, 7.4, {
+        kind: 'paint', cw: 1024, key: chartKey, t0: 43.42, t1: 0,
+        paint: (g, pw, ph) => {
+          g.fillStyle = wsFade > 0.05 ? `rgba(7,16,20,${0.96 - wsFade * 0.14})` : 'rgba(11,25,30,0.96)';
+          rrect(g, 0, 0, pw, ph, 26); g.fill();
+          g.strokeStyle = snapped ? PAL.amber : PAL.coral; g.lineWidth = 4; g.stroke();
+          // Subtle Wall Street skyline reflection emerging across darkened chart surface (Shot 1)
+          if (wsFade > 0.02) {
+            g.save(); g.globalAlpha = wsFade * 0.24;
+            g.fillStyle = PAL.amberHi;
+            [[140, 220, 74], [240, 310, 86], [360, 260, 72], [520, 360, 96], [660, 280, 82], [790, 330, 88]].forEach(([bx, bh, bw]) => {
+              g.fillRect(bx, ph - 92 - bh, bw, bh);
+            });
+            g.restore();
+          }
+          g.fillStyle = PAL.ivory; g.font = '900 32px' + FAM; g.textAlign = 'left';
+          g.fillText('H100 RENTAL RATE ($ / HOUR)', 44, 52);
+          g.fillStyle = PAL.amberHi; g.font = '800 22px' + FAM; g.textAlign = 'right';
+          g.fillText('$2.3T AI COMPUTE MARKET', pw - 44, 52);
+
+          const gx0 = 96, gx1 = pw - 72, gy0 = 110, gy1 = ph - 92;
+          const gw = gx1 - gx0, gh = gy1 - gy0;
+          g.strokeStyle = 'rgba(244,241,234,0.10)'; g.lineWidth = 2;
+          for (let i = 0; i <= 4; i++) {
+            const yy = gy0 + (gh * i) / 4;
+            g.beginPath(); g.moveTo(gx0, yy); g.lineTo(gx1, yy); g.stroke();
+          }
+
+          // Coordinates on one continuous line: P0 ($8.00), P1 ($1.96), P2 ($2.64)
+          const p0 = [gx0 + gw * 0.08, gy0 + gh * 0.14];
+          const p1 = [gx0 + gw * 0.62, gy0 + gh * 0.84];
+          const p2 = [gx0 + gw * 0.92, gy0 + gh * 0.72];
+
+          g.lineWidth = 8; g.lineCap = 'round'; g.lineJoin = 'round';
+          if (prog1 > 0.01) {
+            g.strokeStyle = PAL.coral;
+            g.beginPath(); g.moveTo(p0[0], p0[1]);
+            g.lineTo(lerp(p0[0], p1[0], prog1), lerp(p0[1], p1[1], prog1));
+            g.stroke();
+          }
+          if (prog2 > 0.01) {
+            g.strokeStyle = PAL.amberHi;
+            g.beginPath(); g.moveTo(p1[0], p1[1]);
+            g.lineTo(lerp(p1[0], p2[0], prog2), lerp(p1[1], p2[1], prog2));
+            g.stroke();
+          }
+
+          const drawMark = (pt, price, date, col) => {
+            g.fillStyle = col; g.beginPath(); g.arc(pt[0], pt[1], 13, 0, Math.PI * 2); g.fill();
+            g.strokeStyle = PAL.ivory; g.lineWidth = 3.5; g.stroke();
+            g.fillStyle = PAL.ivory; g.font = '900 28px' + FAM; g.textAlign = 'center';
+            g.fillText(price, pt[0], pt[1] - 32);
+            g.fillStyle = col; g.font = '800 18px' + FAM;
+            g.fillText(date, pt[0], pt[1] + 32);
+          };
+          if (t >= 49.88) drawMark(p0, '$8.00 / HR', 'EARLY 2024', PAL.ivory);
+          if (t >= 53.56) drawMark(p1, '$1.96 / HR', 'LATE 2025', PAL.coral);
+          if (t >= 56.20) drawMark(p2, '$2.64 / HR', 'APRIL 2026', PAL.amberHi);
+        }
       }, t);
-      Char('banker', 61.0, 2.8, 1.50, { facing: -1, pose: 'present', phase: 0.4 }, 44.0, 60.3, t);
-      pop('$8 -> $1.96 -> $2.64', 52, 11.0, 1.0, 7.8, 1.0, PAL.ink, PAL.ivory, 49.9, 60.1, { accent: snapped ? PAL.amber : PAL.coral });
-      if (t >= 53.50) hit(52, 4.2, 1.6, 53.56, PAL.coral, 260);
+      if (t >= 53.50 && t < 54.10) hit(54.2, 2.8, 0.8, 53.56, PAL.coral, 260);
+      if (t >= 56.20 && t < 56.80) hit(58.4, 3.2, 0.8, 56.25, PAL.amberHi, 240);
+
+      // Beat 5 Shot 2 (59.10 - 60.28): Wall Street Financial District Silhouette + Live Capital Stream Bridge
+      if (t >= 59.05) {
+        const wsU = easeOut(seg(t, 59.05, 59.75));
+        [45.0, 48.2, 52.0, 56.0, 59.2].forEach((wx, wi) => {
+          const wh = (4.8 + (wi % 3) * 1.4) * wsU;
+          Box(wx, 0, -4.6, 2.4, wh, 2.2, '#0B191E');
+          Box(wx, wh * 0.55, -3.48, 1.6, 0.35, 0.08, PAL.amberHi, { lw: 0, emis: 0.75 });
+          Shadow(wx, -4.6, 3.0, 2.8, 0.40);
+        });
+        Line3([52.0, 3.2, -3.6], [52.0, 2.6, 0.6], PAL.amberHi, 5, 1);
+        for (let cp = 0; cp < 4; cp++) {
+          const cq = (t * 1.3 + cp * 0.25) % 1;
+          Box(52.0, lerp(3.2, 2.6, cq), lerp(-3.6, 0.6, cq), 0.40, 0.28, 0.34, PAL.amberHi, { lw: 0, emis: 0.95 });
+        }
+        pop('WALL STREET', 52.0, 7.2, -1.6, 5.4, 0.96, PAL.ink, PAL.amberHi, 59.10, 0, { accent: PAL.amber });
+        if (t < 59.65) hit(52.0, 3.6, -1.0, 59.12, PAL.amberHi, 280);
+      }
     }
 
     endFrame(t);
