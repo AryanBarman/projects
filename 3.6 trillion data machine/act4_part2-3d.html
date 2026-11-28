@@ -61,7 +61,7 @@
 <div id="hud">
   <button id="b-play">Play</button>
   <button id="b-rst">Restart</button>
-  <input id="scrubber" type="range" min="0" max="24.68" step="0.01" value="0" list="scenes" aria-label="Timeline" />
+  <input id="scrubber" type="range" min="0" max="76.56" step="0.01" value="0" list="scenes" aria-label="Timeline" />
   <datalist id="scenes"><option value="0.00"></option><option value="7.00"></option><option value="15.10"></option></datalist>
   <span id="tc">00.00 / 24.68s</span>
   <button id="b-vo" class="active">VO: ON</button>
@@ -612,34 +612,109 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
 
   const CUE_SHEET = [
     {
-        "t": 2.35,
-        "name": "whip_pan",
-        "desc": "Fly from S0 bridge to border wall"
+        "t": 2.60,
+        "name": "stage_split",
+        "desc": "Interlocking concrete & gunmetal border wall erupts from fault line"
     },
     {
-        "t": 5.7,
+        "t": 3.20,
         "name": "stamp_impact",
-        "desc": "Sept 2025 CAC ban"
+        "desc": "NVIDIA Sage chip conduits slam into wall face"
     },
     {
-        "t": 17.9,
+        "t": 5.12,
         "name": "whip_pan",
-        "desc": "Fly to $31.6T -> $25.5T shear"
+        "desc": "Push toward East Asia border wall"
     },
     {
-        "t": 35.1,
+        "t": 8.20,
         "name": "stamp_impact",
-        "desc": "Wiping out $6 trillion"
+        "desc": "Red BANNED stamp slams onto September 2025 directive"
     },
     {
-        "t": 44.75,
+        "t": 12.44,
+        "name": "stamp_impact",
+        "desc": "Checkpoint barrier slams down blocking NVIDIA crates"
+    },
+    {
+        "t": 15.18,
+        "name": "gold_stack",
+        "desc": "Domestic semiconductor complex illuminates"
+    },
+    {
+        "t": 18.0,
+        "name": "gold_stack",
+        "desc": "PwC global investment globe & capital ring"
+    },
+    {
+        "t": 20.16,
+        "name": "stage_split",
+        "desc": "Stark split: Scenario A vs Scenario B"
+    },
+    {
+        "t": 25.28,
+        "name": "cascade_ping",
+        "desc": "Global pie rotates & shifts without shrinking"
+    },
+    {
+        "t": 28.12,
         "name": "whip_pan",
-        "desc": "Pull to armored truck synthesis"
+        "desc": "Move to Scenario B global supply chain"
     },
     {
-        "t": 70.8,
+        "t": 31.40,
+        "name": "stage_split",
+        "desc": "Export control barriers fracture supply chain & halve 2030 annual investment"
+    },
+    {
+        "t": 35.14,
+        "name": "stamp_impact",
+        "desc": "Wiping out $6 trillion cumulative spending"
+    },
+    {
+        "t": 42.42,
+        "name": "oven_drop",
+        "desc": "Build-out contracts from $31.6T to $25.5T"
+    },
+    {
+        "t": 44.82,
+        "name": "whip_pan",
+        "desc": "Return to the armored truck"
+    },
+    {
+        "t": 48.88,
+        "name": "chip_ignite",
+        "desc": "Visible tip of the spear: GPU modules illuminate"
+    },
+    {
+        "t": 55.72,
+        "name": "stage_split",
+        "desc": "2-year silicon replacement cycle"
+    },
+    {
+        "t": 58.94,
+        "name": "gold_stack",
+        "desc": "$2.3T compute market financializing like crude oil"
+    },
+    {
+        "t": 62.42,
+        "name": "stamp_impact",
+        "desc": "20-year software moat under siege"
+    },
+    {
+        "t": 65.92,
+        "name": "oven_drop",
+        "desc": "Megawatts and national borders physical ceiling"
+    },
+    {
+        "t": 70.82,
         "name": "power_spike",
-        "desc": "Whoever controls the power"
+        "desc": "Power plants -> substations -> data center grid"
+    },
+    {
+        "t": 75.50,
+        "name": "stamp_impact",
+        "desc": "Deep cinematic impact on central power junction"
     }
 ];
 
@@ -731,34 +806,55 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
   const CAM_KEYS = [];
   const K = (t, p, l, fov, x) => CAM_KEYS.push({ t, v: [p[0], p[1], p[2], l[0], l[1], l[2], fov], cut: x === true, type: typeof x === 'string' ? x : 'auto' });
 
-  K(0.00, [-26, 5.4, 18.5], [-26, 3.6, 0.0], 43, 'hold');
-  K(2.40, [0, 6.4, 25.0], [0, 3.8, 0.0], 46, 'fly');
-  K(9.15, [0, 5.8, 21.0], [0, 3.6, 0.0], 44, 'push');
-  K(17.95, [26, 6.0, 24.0], [26, 5.2, 1.0], 45, 'fly');
-  K(35.10, [26, 5.8, 20.5], [26, 5.0, 1.0], 44, 'hold');
-  K(44.80, [52, 7.0, 26.0], [52, 3.6, 0.0], 46, 'fly');
-  K(55.70, [52, 8.2, 31.0], [52, 4.0, 0.0], 48, 'pull');
-  K(70.80, [52, 7.6, 28.0], [52, 4.0, 0.0], 46, 'push');
+  // Beat 1 (0.00 - 5.12) & Beat 2 (5.12 - 17.38) seamlessly connected on c=0 East Asia Map
+  K(0.00, [ 5.6,  3.8,  7.6], [ 5.2, 0.8,  0.2], 40, true);
+  K(2.58, [ 4.8, 16.5, 20.5], [ 2.6, 0.5, -1.0], 40, 'pull');
+  K(2.62, [ 8.6,  3.6,  8.8], [ 2.6, 2.8, -0.5], 43, true);
+  K(4.45, [ 8.2,  4.0,  8.0], [ 2.6, 3.0, -0.5], 42, 'push');
+  K(5.12, [ 6.2,  5.8,  7.2], [ 1.6, 2.2, -0.5], 42, 'arc');
+  K(5.72, [ 0.6,  7.4,  8.6], [ 0.0, 0.8, -0.5], 39, 'push');
+  K(9.16, [ 0.0,  5.4,  6.4], [ 0.0, 1.1, -0.4], 37, 'push');
+  K(12.40,[ 2.2,  4.4,  6.2], [ 0.8, 1.0, -0.4], 37, 'arc');
+  K(12.44,[ 4.2,  2.4,  4.8], [ 2.6, 1.1,  0.6], 35, true);
+  K(15.18,[ 4.4,  2.5,  5.0], [ 2.6, 1.1,  0.6], 35, 'hold');
+  K(17.38,[-3.6,  5.4,  9.2], [-2.0, 1.1, -0.4], 40, 'pull');
+  // Beat 3 (18.00 - 27.68): PwC Global Globe -> Scenario A/B Split -> Sovereign AI -> Rotating Pie Ring
+  K(18.00,[26.0, 4.6, 10.8], [26.0, 2.2, -1.0], 40, true);
+  K(19.98,[26.0, 5.2, 12.6], [26.0, 2.2, -1.0], 42, 'pull');
+  K(21.50,[26.0, 4.8, 11.4], [26.0, 2.0, -0.6], 41, 'push');
+  K(21.94,[21.2, 4.2,  8.6], [20.5, 1.6, -0.5], 39, 'arc');
+  K(25.28,[20.5, 5.4, 11.2], [20.5, 1.6, -0.5], 41, 'pull');
+  K(27.68,[21.8, 4.6,  8.8], [20.5, 1.8, -0.8], 39, 'push');
+  // Beat 4 (28.12 - 44.24): Scenario B Supply Chain -> Fracture & 50% Cut -> -$6T Lost -> $31.6T to $25.5T
+  K(28.12,[31.5, 4.6,  8.8], [31.5, 1.5, -1.2], 39, 'arc');
+  K(31.32,[32.0, 4.8,  9.6], [31.5, 1.5, -1.2], 40, 'pull');
+  K(34.50,[32.6, 5.4, 11.8], [32.4, 1.8, -1.0], 41, 'pull');
+  K(35.14,[26.0, 4.6,  9.8], [26.0, 2.4, -1.0], 40, true);
+  K(38.60,[26.0, 6.2, 10.6], [26.0, 2.6, -1.0], 41, 'arc');
+  K(42.42,[26.0, 3.8, 10.2], [26.0, 2.1, -1.0], 40, 'pull');
+  K(44.24,[26.0, 3.2,  9.2], [26.0, 1.8, -1.0], 39, 'pull');
+  // Beat 5 (44.82 - 69.98): Armored Truck -> Tip of Spear -> $31.6T Trap -> 2-Yr Cycle -> $2.3T Market -> Software Moat -> Megawatts & Borders
+  K(44.82,[55.6, 2.2,  6.2], [52.0, 1.5,  1.2], 37, true);
+  K(48.42,[57.2, 2.1,  3.0], [53.4, 1.4,  1.2], 34, 'push');
+  K(48.88,[55.6, 1.9,  2.2], [53.2, 1.4,  1.2], 32, 'push');
+  K(51.78,[52.0, 4.2, 10.8], [52.0, 1.8, -3.5], 41, 'pull');
+  K(55.72,[52.0, 6.4, 14.5], [52.0, 2.0, -4.0], 43, 'pull');
+  K(58.94,[52.0, 2.2,  4.2], [52.0, 1.4,  0.0], 33, true);
+  K(62.42,[52.0, 4.2, 10.4], [52.0, 1.6, -1.0], 40, 'pull');
+  K(65.92,[48.2, 4.8, 10.6], [52.0, 2.0, -2.5], 40, 'arc');
+  K(69.98,[52.0, 6.8, 15.2], [52.0, 2.6, -2.5], 43, 'pull');
+  // Beat 6 (70.82 - 75.82): Power & Grid Panorama -> Rapid Push to Central Power Junction
+  K(70.82,[52.0, 7.2, 18.2], [52.0, 2.2, -2.0], 44, 'pull');
+  K(74.06,[52.0, 4.4, 11.4], [52.0, 1.6,  0.6], 40, 'push');
+  K(75.82,[52.0, 2.4,  4.8], [52.0, 1.4,  1.2], 34, 'push');
 
   const ORB_YAW = [-0.55, 0.5, -0.28, 0.62, -0.42, 0.34, -0.6, 0.22];
   const ORB_PIT = [0.12, 0.3, 0.07, 0.46, 0.16, 0.36, 0.1, 0.26];
   const ORB_DST = [0.35, 0.9, 0.15, 0.75, 0.55, 0.05, 0.85, 0.45];
   (function mapKeys() {
-    let prev = null, fly = 0, arcN = 0;
-    CAM_KEYS.forEach((k, i) => {
-      const v = k.v, F = mp(v[3], v[4], v[5]), ty = k.type; F[1] -= 0.5;   // aim a little lower so characters sit above the caption box
-      let yaw, pitch, Dh, fov;
-      if ((ty === 'hold' || ty === 'push' || ty === 'pull' || ty === 'arc') && prev) {      // same angle as the previous shot; only distance / fov change
-        yaw = ty === 'arc' ? Math.max(-YAWMAX, Math.min(YAWMAX, prev.yaw + (arcN++ % 2 ? -0.34 : 0.34))) : prev.yaw; pitch = ty === 'arc' ? Math.min(PMAX, prev.pitch + 0.05) : prev.pitch;
-        Dh = (ty === 'hold' || ty === 'arc') ? prev.Dh : ty === 'push' ? Math.max(DMIN * 0.55, prev.Dh * 0.6) : Math.min(DMAX * 1.35, prev.Dh * 1.7);
-        fov = (ty === 'hold' || ty === 'arc') ? prev.fov : ty === 'push' ? prev.fov - 9 : prev.fov + 6;
-      } else {
-        const j = (ty === 'auto' ? i : fly++) % ORB_YAW.length, ox = v[0] - v[3], oz = v[2] - v[5];
-        yaw = Math.max(-YAWMAX, Math.min(YAWMAX, Math.atan2(ox, oz) * 0.35 + ORB_YAW[j])); pitch = Math.max(PMIN, Math.min(PMAX, ORB_PIT[j])); Dh = (DMIN + (DMAX - DMIN) * ORB_DST[j]) * 0.86;
-        fov = v[6] + (j % 2 ? -3 : 2);
-      }
-      fov = Math.max(30, Math.min(58, fov)); prev = { yaw, pitch, Dh, fov };
-      k.v = [F[0] + Dh * Math.sin(yaw), F[1] + Dh * Math.tan(pitch), F[2] + Dh * Math.cos(yaw), F[0], F[1], F[2], fov];
+    CAM_KEYS.forEach(k => {
+      const v = k.v, P = mp(v[0], v[1], v[2]), F = mp(v[3], v[4], v[5]);
+      k.v = [P[0], P[1], P[2], F[0], F[1] - 0.2, F[2], v[6]];
     });
   })();
   (function buildTangents() {
@@ -1162,6 +1258,8 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
     renderer.setSize(1920, 1080, false);
     renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(PAL.parchment);
@@ -1195,6 +1293,81 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
     );
     X.floorD.rotation.x = -Math.PI / 2; X.floorD.position.set(floorW / 2 - 20, 0.004, -24);
     X.floorD.receiveShadow = true; scene.add(X.floorD);
+
+    // ---- Full-frame 2D Editorial East Asia Map for Beat 2 (c = 0, 24 x 13.5 units) ----
+    {
+      const ec = document.createElement('canvas'); ec.width = 2048; ec.height = 1152;
+      const eg = ec.getContext('2d');
+      eg.fillStyle = '#091119'; eg.fillRect(0, 0, 2048, 1152);
+      // Subtle bathymetry & lat/lon grid
+      eg.strokeStyle = 'rgba(142, 153, 168, 0.10)'; eg.lineWidth = 1.5;
+      for (let gx = 0; gx <= 2048; gx += 128) { eg.beginPath(); eg.moveTo(gx, 0); eg.lineTo(gx, 1152); eg.stroke(); }
+      for (let gy = 0; gy <= 1152; gy += 128) { eg.beginPath(); eg.moveTo(0, gy); eg.lineTo(2048, gy); eg.stroke(); }
+      // Surrounding Asian landmass (muted dark slate)
+      eg.beginPath();
+      eg.moveTo(0, 0); eg.lineTo(1550, 0); eg.lineTo(1420, 210); eg.lineTo(1260, 290);
+      eg.lineTo(1140, 220); eg.lineTo(960, 260); eg.lineTo(720, 220); eg.lineTo(420, 320);
+      eg.lineTo(280, 680); eg.lineTo(640, 920); eg.lineTo(780, 1152); eg.lineTo(0, 1152); eg.closePath();
+      eg.fillStyle = '#121820'; eg.fill();
+      // Recognizable Mainland China silhouette (Manchuria -> Bohai -> Shandong -> Yangtze -> SE Coast -> South)
+      eg.beginPath();
+      eg.moveTo(260, 360); eg.lineTo(440, 240); eg.lineTo(680, 240); eg.lineTo(840, 140);
+      eg.lineTo(1080, 110); eg.lineTo(1220, 180); eg.lineTo(1200, 300); eg.lineTo(1080, 340); // Manchuria
+      eg.lineTo(1030, 390); eg.lineTo(1110, 440); eg.lineTo(1060, 485); // Bohai & Shandong
+      eg.lineTo(1140, 560); eg.lineTo(1210, 640); eg.lineTo(1170, 740); // Yangtze / Hangzhou Bay
+      eg.lineTo(1090, 840); eg.lineTo(960, 900); eg.lineTo(840, 890); // SE & South Coast
+      eg.lineTo(720, 960); eg.lineTo(540, 910); eg.lineTo(390, 780); eg.lineTo(220, 640); eg.lineTo(180, 480);
+      eg.closePath();
+      eg.fillStyle = '#1E242B'; eg.fill();
+      eg.strokeStyle = '#3A424E'; eg.lineWidth = 3; eg.stroke();
+      // Glowing Terracotta Coral eastern seaboard border
+      eg.beginPath();
+      eg.moveTo(1110, 440); eg.lineTo(1140, 560); eg.lineTo(1210, 640); eg.lineTo(1170, 740); eg.lineTo(1090, 840); eg.lineTo(960, 900);
+      eg.strokeStyle = '#D94E43'; eg.lineWidth = 6; eg.stroke();
+      // Korean Peninsula
+      eg.beginPath(); eg.moveTo(1230, 360); eg.lineTo(1285, 380); eg.lineTo(1310, 495); eg.lineTo(1255, 515); eg.lineTo(1225, 430); eg.closePath();
+      eg.fillStyle = '#18202A'; eg.fill(); eg.strokeStyle = '#3A424E'; eg.lineWidth = 2; eg.stroke();
+      // Japan (Kyushu, Honshu, Hokkaido)
+      eg.beginPath(); eg.moveTo(1390, 520); eg.lineTo(1480, 440); eg.lineTo(1560, 320); eg.lineTo(1600, 220); eg.lineTo(1640, 240); eg.lineTo(1570, 420); eg.lineTo(1440, 560); eg.closePath();
+      eg.fillStyle = '#18202A'; eg.fill(); eg.stroke();
+      // Taiwan island
+      eg.beginPath(); eg.ellipse(1265, 815, 16, 36, 0.25, 0, Math.PI * 2);
+      eg.fillStyle = '#2A4216'; eg.fill(); eg.strokeStyle = '#76B900'; eg.lineWidth = 3; eg.stroke();
+      // Geographic labels
+      eg.fillStyle = 'rgba(244, 246, 248, 0.32)'; eg.font = '900 44px system-ui, sans-serif'; eg.textAlign = 'center';
+      eg.fillText('CHINA', 760, 570);
+      eg.fillStyle = 'rgba(142, 153, 168, 0.45)'; eg.font = '800 22px system-ui, sans-serif';
+      eg.fillText('PACIFIC OCEAN', 1620, 780);
+      eg.fillText('JAPAN', 1530, 405);
+      eg.fillStyle = '#76B900'; eg.font = '900 20px system-ui, sans-serif';
+      eg.fillText('TAIWAN', 1325, 845);
+
+      const eTex = new THREE.CanvasTexture(ec); eTex.anisotropy = 4;
+      X.eastAsiaMap = new THREE.Mesh(
+        new THREE.PlaneGeometry(36, 20.25),
+        new THREE.MeshStandardMaterial({ map: eTex, roughness: 0.9, metalness: 0.05 })
+      );
+      X.eastAsiaMap.rotation.x = -Math.PI / 2;
+      const eC = mp(0, 0.015, -0.5);
+      X.eastAsiaMap.position.set(eC[0], 0.015, eC[2]);
+      X.eastAsiaMap.receiveShadow = true; X.eastAsiaMap.visible = false;
+      scene.add(X.eastAsiaMap);
+
+      // 3D Illuminated Global Investment Globe for Beat 3 (c = 26)
+      const gg = new THREE.Group();
+      const gCore = new THREE.Mesh(
+        new THREE.SphereGeometry(1.75, 24, 18),
+        new THREE.MeshStandardMaterial({ color: 0x181C22, roughness: 0.65, metalness: 0.35 })
+      );
+      const gWire = new THREE.Mesh(
+        new THREE.SphereGeometry(1.78, 16, 12),
+        new THREE.MeshBasicMaterial({ color: 0xF59E0B, wireframe: true, transparent: true, opacity: 0.28 })
+      );
+      gg.add(gCore, gWire);
+      const gP = mp(26.0, 2.4, -1.0);
+      gg.position.set(gP[0], gP[1], gP[2]); gg.visible = false;
+      scene.add(gg); X.pwcGlobe = gg;
+    }
 
     X.cA = new THREE.Color(); X.cB = new THREE.Color();
 
@@ -1705,7 +1878,7 @@ function drawSpriteChar(c, p, sc, t) {
   const eIn = u => u * u * u;
   let GROUND = [], ITEMS = [], OVER = [], CAST = [];
   const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0 };
-  const LBL = new Map(), NEARCULL = 9;
+  const LBL = new Map(), NEARCULL = 0.5;
   function grab(type, make) { const p = POOL[type]; let o = p[CNT[type]]; if (!o) { o = make(); X.world.add(o.m); p.push(o); } CNT[type]++; o.m.visible = true; return o; }
   function setCol(mat, col, em, a) { mat.color.set(col); if (mat.emissive) { mat.emissive.set(col); mat.emissiveIntensity = (em || 0) * 0.8; } const tr = a < 1; mat.opacity = a; if (mat.transparent !== tr) { mat.transparent = tr; mat.depthWrite = !tr; mat.needsUpdate = true; } }
   function paleCol(c) { const n = parseInt(String(c).replace('#', ''), 16) || 0, r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255; if (r + g + b > 330) return c; const f = 0.3; return 'rgb(' + Math.round(r + (255 - r) * f) + ',' + Math.round(g + (255 - g) * f) + ',' + Math.round(b + (255 - b) * f) + ')'; }
@@ -1967,10 +2140,17 @@ function drawSpriteChar(c, p, sc, t) {
     return { t: cur.t.map((v, c) => prev.t[c] + (v - prev.t[c]) * k), f: lerpHSLHex(prev.f, cur.f, k), h: prev.h + (cur.h - prev.h) * k, sun: lerpHSLHex(prev.sun, cur.sun, k) };
   }
   function applyMood(t) {
-    const m = moodAt(t); scene.fog.color.setHex(m.f); scene.background.setHex(m.f);
-    X.sky.material.color.setRGB(m.t[0], m.t[1], m.t[2]); X.ground.material.color.setRGB(m.t[0] * 0.86, m.t[1] * 0.88, m.t[2] * 0.92);
-    X.bMats.forEach(b => b.color.setRGB(Math.min(1, m.t[0] * 1.05), Math.min(1, m.t[1] * 1.05), Math.min(1, m.t[2] * 1.05)));
-    X.sun.material.color.setHex(m.sun); hemiLight.intensity = 0.82 * m.h; dirLight.intensity = 1.05 * m.h;
+    scene.fog.color.setHex(0x0E1013); scene.background.setHex(0x0E1013);
+    if (X.floorN) X.floorN.visible = false;
+    if (X.sky) X.sky.visible = false;
+    if (X.sky2) X.sky2.visible = false;
+    if (X.ground) X.ground.material.color.setRGB(0.08, 0.09, 0.11);
+    if (X.trees) X.trees.visible = false;
+    if (X.trunks) X.trunks.visible = false;
+    if (X.sun) X.sun.visible = false;
+    (X.clouds || []).forEach(c => c.visible = false);
+    dirLight.color.setHex(0xDCE4F0);
+    hemiLight.intensity = 0.72; dirLight.intensity = 1.15;
   }
   // ---- beat dressing (data from cfg 'dress', authored by tools/jb/dress.py): flows, orbits, growing stacks, pulses, beams, sparks
   const DRESS = [];
@@ -1992,7 +2172,7 @@ function drawSpriteChar(c, p, sc, t) {
     r3Begin();
     applyMood(t);
     CAST.length = 0; GROUND = []; ITEMS = []; OVER = []; Object.keys(CNT).forEach(k => CNT[k] = 0);
-    applyCamera(t, [], null);
+    applyCamera(t, [[8.20, 9.0, 0.16], [12.44, 9.0, 0.16]], null);
     camera.updateMatrixWorld(); X.applySets(moodAt(t));
     X.animate(t); X.ambientCast(t);
     dressFrame(t);
@@ -2306,72 +2486,685 @@ function drawSpriteChar(c, p, sc, t) {
   const ball = (x, y, z) => { Cyl(x, y, z, 0.7, 0.7, '#E07B2A'); Box(x, y + 0.3, z + 0.1, 1.45, 0.07, 0.2, '#3A2410', { lw: 0 }); };
   // a wide, readable 'people' row of old-style casual characters and portrait avatars
   const peopleRow = (x, z, n, gap, t, t0, pose, t1) => { for (let i = 0; i < n; i++) Char('student', x + (i - (n - 1) / 2) * gap, z + (i % 2) * 1.2, 2.0, Object.assign({ phase: i * 0.6, pose }, {}), t0 + i * 0.08, t1 === undefined ? 1e9 : t1, t); };
-  const HEADS = [
-    [0.05, 2.30, 'CONTINUITY', 'From Aurora grid throttling to borders', PAL.cyan],
-    [2.40, 17.80, 'SEPT 2025 BAN', 'China CAC blocks ByteDance & Alibaba chip buys', PAL.coral],
-    [17.95, 44.60, 'EXPORT CUT: -$6T', '$31.6T buildout drops to $25.5T', PAL.coral],
-    [44.80, 76.20, 'POWER = CHOKEPOINT', 'Whoever controls the grid controls the AI economy', PAL.sageHi]
-  ];
+  const HEADS = [];
 
   function renderShots(t) {
     beginFrame(t);
     const hit = (x, y, z, ht, col, r) => { const p = S(x, y, z); if (p) OVER.push(() => hitFx(p.x, p.y, t, ht, { color: col, r: r || 240, rays: 14 })); };
     const pop = (txt, x, y, z, w, h, bg, fg, t0, t1, o) => Card(x, y, z, w, h, Object.assign({ kind: /^#(D94E43|2B8A6E|D99B26)$/i.test(bg) ? 'stamp' : 'tag', text: txt, bg, fg, accent: /^#(0B1A22|0B191E)$/i.test(bg) ? '#D94E43' : fg, t0, t1: t1 || 0 }, o || {}), t);
-    for (let k = 0; k < 4; k++) pad(-42 + k * 26, -12, -12 + k * 26, 14, '#12262E');
+    const pill2D = (cx, cy, txt, bg, fg, accent, a) => {
+      if (a <= 0.02) return;
+      ctx.save(); ctx.globalAlpha = a;
+      ctx.font = '900 25px' + FAM;
+      const tw = ctx.measureText(txt).width, w = tw + 44, h = 50;
+      rrect(ctx, cx - w / 2, cy - h / 2, w, h, 10); ctx.fillStyle = bg; ctx.fill();
+      ctx.strokeStyle = accent || '#2D3440'; ctx.lineWidth = 2; ctx.stroke();
+      ctx.fillStyle = fg; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(txt, cx, cy + 1);
+      ctx.restore();
+    };
 
-    // ===== S0 (-26, 0.00 - 2.40): Continuity Bridge =====
-    if (t < 2.8) {
-      Box(-31, 0, -1.8, 4.0, 4.8, 3.0, PAL.steel);
-      Box(-21, 0, -1.8, 4.0, 5.2, 3.0, PAL.ink);
-      Line3([-29, 2.8, -1.8], [-23, 2.8, -1.8], PAL.cyan, 8, 1);
-    }
-
-    // ===== S1 (0, 2.40 - 17.95): Geopolitical Border Wall (Sept 2025 Ban) =====
-    if (t >= 2.2 && t < 18.1) {
-      const wallDrop = easeOut(seg(t, 2.6, 5.7));
-      Box(0, 0, -1.5, 1.2, 0.6 + 6.4 * wallDrop, 6.5, PAL.steel);
-      Box(0, 0.6 + 6.4 * wallDrop, -1.5, 1.4, 0.4, 6.7, PAL.coral, { emis: 0.55 });
-      Char('lawmaker', -4.2, 2.6, 1.50, { facing: 1, pose: 'cross', phase: 0.4 }, 2.6, 18.0, t);
-      Char('lawmaker', 4.2, 2.6, 1.50, { facing: -1, pose: 'point', phase: 1.0 }, 2.8, 18.0, t);
-      pop('SEPT 2025 BAN', 0, 8.6, -1.0, 7.2, 1.1, PAL.coral, PAL.ivory, 5.7, 17.8);
-      if (t >= 5.70) hit(0, 4.2, -1.5, 5.72, PAL.coral, 260);
-    }
-
-    // ===== S2 (26, 17.95 - 44.80): -$6T Shear ($31.6T -> $25.5T) =====
-    if (t >= 17.7 && t < 45.0) {
-      const cut = t >= 35.14;
-      Card(26, 5.6, 1.0, 17.2, 9.2, {
-        kind: 'paint', t0: 18.1, t1: 0,
-        paint: (g, pw, ph) => cashChart(g, pw, ph, {
-          keys: [[18.1, 0.16], [28.12, 0.16, 0.4], [35.14, 0.46, 0.8], [42.42, 0.46, 0.4]],
-          title: 'GLOBAL AI SPENDING (PWC)',
-          tags: [[20.0, '$31.6T'], [38.6, '-$6T -> $25.5T']],
-          opt: { sub: 'Tighter export controls cut 2030 capex', col: cut ? PAL.coral : PAL.steel },
-          n0: 16, n1: 10, t0: 18.2, bursts: [35.14],
-          pill: cut ? [35.14, '-$6 TRILLION', PAL.coral] : null
-        }, t)
-      }, t);
-      pop('-$6T TO $25.5T', 26, 11.2, 1.0, 7.4, 1.1, PAL.coral, PAL.ivory, 35.1, 44.6);
-      if (cut) hit(26, 5.8, 1.6, 35.14, PAL.coral, 280);
-    }
-
-    // ===== S3 (52, 44.80 - 76.56): Armored Truck + 4 Pillars -> Power = Chokepoint =====
-    if (t >= 44.6) {
-      const echo = t >= 70.82;
-      // Armored truck foreground
-      Box(52, 0.4, 1.2, 5.4, 2.8, 2.6, PAL.steel);
-      Box(48.4, 0.4, 1.2, 1.8, 2.2, 2.4, PAL.ink);
-      // Four colossal pillars behind it
-      [44.5, 49.5, 54.5, 59.5].forEach((px, idx) => {
-        const isPower = idx === 3;
-        const h = 4.6 + idx * 1.1;
-        Box(px, 0, -3.5, 2.4, h, 2.2, (echo && isPower) ? PAL.sage : PAL.steel, { emis: (echo && isPower) ? 0.55 : 0 });
+    // ===== BEAT 1 (00.00 - 05.12) & BEAT 2 (05.12 - 17.38) on unified c=0 East Asia Map =====
+    if (X.eastAsiaMap) X.eastAsiaMap.visible = (t < 17.90);
+    if (t < 6.35) {
+      const beat1Fade = 1 - seg(t, 5.72, 6.30);
+      // Aurora-style NVIDIA Sage compute campus + Amber high-voltage transmission arteries on the map
+      Box(5.2, 0.05, 2.2, 2.8, 1.5, 2.0, '#181C22', { a: beat1Fade });
+      Box(5.2, 0.40, 3.24, 2.2, 0.75, 0.08, '#76B900', { lw: 0, a: beat1Fade, emis: 0.78 });
+      [-5, -2.5, 0, 2.5, 5].forEach(dz => {
+        Line3([5.2, 0.18, 1.2 + dz * 0.2], [2.6, 0.18, -0.5 + dz * 1.1], '#F59E0B', 3.5, 0.85 * beat1Fade);
+        Box(0.5, 0.16, -0.5 + dz * 0.7, 0.36, 1.6, 0.36, '#2C323B', { a: beat1Fade });
       });
-      if (echo) {
-        Line3([59.5, 7.8, -3.5], [52, 3.2, 1.2], PAL.sageHi, 8, 1);
-        hit(59.5, 6.4, -3.5, 70.82, PAL.sageHi, 300);
+
+      // 00:01.80s: Crisp recessed fault line etched in Muted Pewter (#8E99A8) along x = 2.6
+      if (t >= 1.80) {
+        const flU = easeOut(seg(t, 1.80, 2.45));
+        Line3([2.6, 0.14, -0.5 - 8.5 * flU], [2.6, 0.14, -0.5 + 8.5 * flU], '#8E99A8', 4.5, 0.9 * beat1Fade);
       }
-      pop('POWER = CHOKEPOINT', 52, 9.6, -1.0, 8.2, 1.2, PAL.ink, PAL.ivory, 70.8, 76.4, { accent: echo ? PAL.sageHi : PAL.coral });
+
+      // Shot 2 (2.60 - 5.12) & Beat 2 Shot 1 (5.12 - 5.72): Wall stays solid through 5.72s!
+      if (t >= 2.60) {
+        const erU = easeOut(seg(t, 2.60, 3.35));
+        const wh = 5.4 * erU * beat1Fade;
+        if (wh > 0.15) {
+          for (let s = -3; s <= 3; s++) {
+            const sz = -0.5 + s * 2.4;
+            Box(2.6, 0.0, sz, 1.2, wh, 2.25, s % 2 ? '#3A424E' : '#222831', { a: beat1Fade });
+            Box(3.25, 0.0, sz, 0.45, wh, 0.55, '#475261', { a: beat1Fade });
+          }
+        }
+        // 00:03.20s (The Severance): NVIDIA Sage conduits slam into eastern wall face & spark
+        if (t >= 3.10) {
+          const svU = easeInCubic(seg(t, 3.10, 3.35));
+          [-2.6, -0.5, 1.6].forEach(cz => {
+            Line3([5.2, 1.1, cz], [lerp(5.2, 3.2, svU), 1.1, cz], '#76B900', 5, beat1Fade);
+            if (svU > 0.9 && t < 5.15) hit(3.2, 1.1, cz, 3.25, '#76B900', 220);
+          });
+        }
+        // 00:03.60s (The Perimeter Scan): Razor-thin Terracotta Coral laser beacon sweeps top parapet
+        if (t >= 3.60 && wh > 1.5) {
+          const scanZ = lerp(-7.5, 6.5, ((t - 3.60) * 0.75) % 1);
+          Line3([2.6, wh + 0.08, -8.0], [2.6, wh + 0.08, 7.0], '#D94E43', 3, 0.85 * beat1Fade);
+          Box(2.6, wh + 0.10, scanZ, 0.35, 0.18, 1.1, '#D94E43', { lw: 0, a: beat1Fade, emis: 1.0 });
+        }
+      }
+
+      OVER.push(() => {
+        if (t >= 3.80 && t < 5.12) {
+          const a = env(t, 3.80, 5.12, 0.12, 0.12);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 640, 145, 640, 118, 14); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.fillStyle = '#D94E43'; ctx.fillRect(640, 145, 640, 5);
+          ctx.fillStyle = '#F4F6F8'; ctx.font = '900 38px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('THE GEOPOLITICAL WALL', 960, 192);
+          ctx.fillStyle = '#8E99A8'; ctx.font = '800 18px' + FAM;
+          ctx.fillText('EXPORT CONTROLS · SILICON CHOKEPOINT', 960, 236);
+          ctx.restore();
+        }
+      });
+    }
+
+    // ===== BEAT 2 (05.72 - 17.38, c = 0): Regulatory Document -> ByteDance & Alibaba -> Blocked Crates -> Self-Sufficiency =====
+    if (t >= 5.70 && t < 17.90) {
+      // Beat 2 Shot 2 (5.72 - 9.16): Regulatory Document enters from above & red BANNED stamp slams at 8.20s
+      if (t < 9.25) {
+        const docU = easeOut(seg(t, 5.72, 6.45));
+        const docFade = 1 - seg(t, 8.95, 9.25);
+        const docY = lerp(4.6, 1.4, docU);
+        Panel(0.0, docY, -0.4, 4.8, 3.1, (g, pw, ph) => {
+          g.fillStyle = '#F4F1EA'; g.fillRect(0, 0, pw, ph);
+          g.strokeStyle = '#181C22'; g.lineWidth = 8; g.strokeRect(4, 4, pw - 8, ph - 8);
+          g.fillStyle = '#181C22'; g.font = '900 22px' + FAM; g.textAlign = 'left';
+          g.fillText('CYBERSPACE ADMINISTRATION OF CHINA', 28, 46);
+          g.fillStyle = '#475569'; g.font = '800 18px' + FAM;
+          g.fillText('REGULATORY DIRECTIVE · AI CHIP PROCUREMENT', 28, 82);
+          g.strokeStyle = '#CBD5E1'; g.lineWidth = 3;
+          for (let r = 0; r < 3; r++) { g.beginPath(); g.moveTo(28, 124 + r * 42); g.lineTo(pw - 28, 124 + r * 42); g.stroke(); }
+          if (t >= 8.20) {
+            g.save(); g.translate(pw * 0.56, ph * 0.62); g.rotate(-0.14);
+            g.fillStyle = 'rgba(217, 78, 67, 0.16)'; g.fillRect(-150, -44, 300, 88);
+            g.strokeStyle = '#D94E43'; g.lineWidth = 7; g.strokeRect(-150, -44, 300, 88);
+            g.fillStyle = '#D94E43'; g.font = '900 48px' + FAM; g.textAlign = 'center'; g.textBaseline = 'middle';
+            g.fillText('BANNED', 0, 2);
+            g.restore();
+          }
+        }, { cw: 512, a: docFade });
+        if (t >= 8.20 && t < 8.65) hit(0.2, 1.4, -0.4, 8.20, '#D94E43', 260);
+      }
+
+      // Beat 2 Shot 3-5 (9.16 - 17.38): Beijing (ByteDance) & Hangzhou (Alibaba) multi-tier campuses + Taiwan/Pacific H20 route
+      if (t >= 9.10) {
+        const bldU = easeOut(seg(t, 9.16, 10.15));
+        const campus = (cx, cz, h, lit) => {
+          Box(cx, 0.03, cz, 1.5, 0.25, 1.5, '#181C22');
+          Box(cx - 0.22, 0.28, cz, 0.72, h * bldU, 0.95, '#3A424E');
+          Box(cx + 0.35, 0.28, cz + 0.15, 0.52, h * 0.72 * bldU, 0.72, '#2C323B');
+          Box(cx - 0.22, 0.28 + h * bldU, cz, 0.76, 0.10, 0.99, '#F4F6F8', { lw: 0, emis: 0.65 });
+          Box(cx - 0.22, 0.28 + h * 0.45 * bldU, cz + 0.49, 0.56, 0.24, 0.05, lit ? '#76B900' : '#8E99A8', { lw: 0, emis: lit ? 0.55 : 0.2 });
+        };
+        campus(-0.4, -2.2, 2.3, t < 12.44 || t >= 15.18); // Beijing (ByteDance)
+        campus( 0.8,  0.6, 1.9, t < 12.44 || t >= 15.18); // Hangzhou (Alibaba)
+
+        if (t >= 9.80 && t < 12.60) {
+          Label('BYTEDANCE', -0.4, 3.0, -2.2, 2.1, 0.48, '#181C22', '#F4F6F8', { line: '#8E99A8' });
+          Label('ALIBABA',    0.8, 2.6,  0.6, 1.9, 0.48, '#181C22', '#F4F6F8', { line: '#8E99A8' });
+        }
+
+        // Pacific / Taiwan -> Eastern Seaboard (x = 2.6) NVIDIA H20 supply conduit
+        const banned = t >= 12.44;
+        const shipU = easeOut(seg(t, 9.50, 12.80));
+        const sx = lerp(5.6, 3.4, shipU), sz = lerp(2.2, 0.6, shipU);
+        Line3([5.8, 0.16, 2.2], [2.6, 0.16, 0.6], banned ? '#D94E43' : '#76B900', 4, 0.95);
+        Line3([2.6, 0.16, 0.6], [-0.4, 0.16, -2.2], '#76B900', 3, banned ? 0.15 : 0.85);
+        Line3([2.6, 0.16, 0.6], [ 0.8, 0.16,  0.6], '#76B900', 3, banned ? 0.15 : 0.85);
+        // Two sleek H20 GPU pallet modules
+        const gpuEmis = t >= 12.80 ? (0.22 + 0.12 * Math.sin(t * 4)) : 0.85;
+        [-0.28, 0.28].forEach(gz => {
+          Box(sx, 0.08, sz + gz, 0.68, 0.24, 0.42, '#2C323B');
+          Box(sx, 0.32, sz + gz, 0.52, 0.08, 0.30, '#76B900', { lw: 0, emis: gpuEmis });
+        });
+
+        // Shot 5 (12.44 - 17.38): Gantry blast-gate angled toward 3/4 camera + bold X barricade
+        if (t >= 12.44) {
+          const gateU = easeOut(seg(t, 12.44, 12.75));
+          Box(2.6, 0.04, 0.6, 0.26, 2.8 * gateU, 4.4, '#D94E43', { a: 0.65, emis: 0.45 });
+          Box(2.6, 0.04, -1.6, 0.45, 3.0 * gateU, 0.45, '#181C22');
+          Box(2.6, 0.04,  2.8, 0.45, 3.0 * gateU, 0.45, '#181C22');
+          if (t >= 13.10) {
+            const xU = easeOut(seg(t, 13.10, 13.40));
+            Line3([2.8, 0.5, -0.2], [2.8, 0.5 + 1.5 * xU, -0.2 + 1.6 * xU], '#D94E43', 8, 1);
+            Line3([2.8, 0.5 + 1.5 * xU, -0.2], [2.8, 0.5, -0.2 + 1.6 * xU], '#D94E43', 8, 1);
+          }
+          if (t < 13.20) hit(2.7, 1.2, 0.6, 12.55, '#D94E43', 240);
+        }
+      }
+
+      // Shot 6 (15.18 - 17.38): Domestic fabrication cluster (cleanroom + exhaust stacks) pulsing into ByteDance & Alibaba
+      if (t >= 15.15) {
+        const fabU = easeOut(seg(t, 15.18, 16.40));
+        Box(-4.8, 0.04, -0.2, 2.2, 1.2 * fabU, 1.8, '#3A424E');
+        Box(-4.8, 1.2 * fabU + 0.04, -0.2, 1.8, 0.14, 1.4, '#F59E0B', { lw: 0, emis: 0.85 });
+        [-5.4, -4.8, -4.2].forEach(sx => Cyl(sx, 1.2 * fabU, -0.8, 0.14, 0.8 * fabU, '#2C323B', { seg: 10 }));
+        Line3([-4.2, 0.25, -0.2], [lerp(-4.2, -0.4, fabU), 0.25, lerp(-0.2, -2.2, fabU)], '#F59E0B', 4, 1);
+        Line3([-4.2, 0.25, -0.2], [lerp(-4.2,  0.8, fabU), 0.25, lerp(-0.2,  0.6, fabU)], '#F59E0B', 4, 1);
+      }
+
+      OVER.push(() => {
+        if (t >= 6.10 && t < 9.10) {
+          const a = env(t, 6.10, 9.10, 0.15, 0.15);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 190, 125, 420, 96, 12); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#D94E43'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = '#F4F6F8'; ctx.font = '900 26px' + FAM; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+          ctx.fillText('SEPTEMBER 2025', 218, 158);
+          ctx.fillStyle = '#8E99A8'; ctx.font = '800 16px' + FAM;
+          ctx.fillText('CAC · REGULATORY DIRECTIVE', 218, 194);
+          ctx.restore();
+        }
+        if (t >= 13.20 && t < 15.10) {
+          const a = env(t, 13.20, 15.10, 0.10, 0.12);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 680, 145, 560, 118, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#D94E43'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = '#D94E43'; ctx.font = '900 38px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('PURCHASE BLOCKED', 960, 190);
+          ctx.fillStyle = '#8E99A8'; ctx.font = '800 18px' + FAM;
+          ctx.fillText('NVIDIA CHINA-SPECIFIC CHIPS', 960, 236);
+          ctx.restore();
+        }
+        if (t >= 15.60 && t < 17.75) {
+          const a = env(t, 15.60, 17.75, 0.12, 0.15);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 660, 145, 600, 114, 14); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = '#F4F6F8'; ctx.font = '900 32px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('SELF-SUFFICIENCY DRIVE', 960, 186);
+          ctx.fillStyle = '#F59E0B'; ctx.font = '800 18px' + FAM;
+          ctx.fillText('DOMESTIC SILICON PIPELINE', 960, 230);
+          ctx.restore();
+        }
+      });
+    }
+
+    // ===== BEAT 3 (18.00 - 27.68, c = 26): Global Globe -> Scenario A/B Split -> Sovereign AI -> Rotating Pie =====
+    if (X.pwcGlobe) {
+      const inShot11 = (t >= 28.05 && t < 31.65);
+      X.pwcGlobe.visible = (t >= 17.90 && t < 22.40) || inShot11;
+      X.pwcGlobe.position.set(inShot11 ? 31.5 : 26.0, inShot11 ? 1.8 : 2.1, inShot11 ? -1.2 : -1.0);
+      const gs = inShot11 ? 0.62 : 1.0;
+      X.pwcGlobe.scale.set(gs, gs, gs);
+      X.pwcGlobe.rotation.y = t * 0.35;
+    }
+    if (t >= 17.90 && t < 28.10) {
+      // Shot 7-8 (18.00 - 21.85): Illuminated Globe + 6 Regional Installations + Circular Ring + Distinct Scenario A/B Outcomes
+      if (t < 22.10) {
+        for (let r = 0; r < 6; r++) {
+          const ang = (r / 6) * Math.PI * 2 + t * 0.12;
+          const rx = 26.0 + Math.cos(ang) * 3.8, rz = -1.0 + Math.sin(ang) * 3.2;
+          Box(rx, 0.0, rz, 0.75, 1.1 + (r % 2) * 0.5, 0.75, '#2C323B');
+          Box(rx, 1.1 + (r % 2) * 0.5, rz, 0.65, 0.12, 0.65, '#F59E0B', { lw: 0, emis: 0.65 });
+          const pq = (t * 0.7 + r * 0.16) % 1;
+          Box(lerp(rx, 26.0, pq), lerp(1.2, 2.4, pq), lerp(rz, -1.0, pq), 0.16, 0.16, 0.16, '#F59E0B', { lw: 0, emis: 0.85 });
+        }
+        // Circular amber financial ring around globe
+        for (let s = 0; s < 20; s++) {
+          const sa = (s / 20) * Math.PI * 2;
+          Box(26.0 + Math.cos(sa) * 4.5, 0.15, -1.0 + Math.sin(sa) * 4.5, 0.45, 0.18, 0.35, '#F59E0B', { lw: 0, emis: 0.4 });
+        }
+        // Shot 8 (20.16 - 21.85): Two separate 3D pathways with distinct physical outcomes
+        if (t >= 20.16) {
+          const spU = easeOut(seg(t, 20.16, 21.00));
+          Line3([26.0, 0.4, -1.0], [lerp(26.0, 20.5, spU), 0.4, -0.5], '#F59E0B', 5, 1);
+          Line3([26.0, 0.4, -1.0], [lerp(26.0, 31.5, spU), 0.4, -0.5], '#D94E43', 5, 1);
+          // Left outcome (Scenario A): intact glowing Sovereign AI cluster
+          Box(20.5, 0.0, -0.5, 1.4, 1.8 * spU, 1.4, '#181C22');
+          Box(20.5, 1.8 * spU, -0.5, 1.2, 0.16, 1.2, '#76B900', { lw: 0, emis: 0.75 });
+          // Right outcome (Scenario B): fractured export-control barrier
+          Box(31.5, 0.0, -0.5, 0.35, 2.2 * spU, 2.2, '#D94E43', { a: 0.78, emis: 0.45 });
+          Box(32.3, 0.0, -0.5, 0.9, 1.0 * spU, 0.9, '#2C323B');
+          if (spU > 0.45) {
+            Label('SCENARIO A · SOVEREIGN AI', 20.5, 2.8, -0.5, 3.6, 0.65, '#181C22', '#F59E0B', { line: '#F59E0B' });
+            Label('SCENARIO B · EXPORT CONTROLS', 31.5, 2.8, -0.5, 3.8, 0.65, '#181C22', '#D94E43', { line: '#D94E43' });
+          }
+        }
+      }
+
+      // Shot 9-10 (21.94 - 27.68): Sovereign AI national installations + Rotating Regional Pie Ring (constant diameter)
+      if (t >= 21.85) {
+        const regU = easeOut(seg(t, 21.94, 23.20));
+        // 4 national AI infrastructure installations (data center + compute + fab) shifting capital without shrinking
+        const nations = [
+          [17.8, -1.8, 1.4 + Math.sin(t * 1.8) * 0.45],
+          [20.5, -2.8, 1.8 - Math.sin(t * 1.8) * 0.35],
+          [23.2, -1.8, 1.2 + Math.cos(t * 1.8) * 0.45],
+          [20.5,  1.2, 1.6 - Math.cos(t * 1.8) * 0.35]
+        ];
+        nations.forEach(([nx, nz, nh], idx) => {
+          Box(nx, 0.0, nz, 1.25, nh * regU, 1.25, '#181C22');
+          Box(nx, nh * regU, nz, 1.05, 0.14, 1.05, idx % 2 === 0 ? '#76B900' : '#F59E0B', { lw: 0, emis: 0.7 });
+          Box(nx + 0.85, 0.0, nz, 0.45, nh * 0.55 * regU, 0.45, '#3A424E');
+        });
+        // Amber capital particles moving between regions (rather than vanishing)
+        for (let p = 0; p < 12; p++) {
+          const pq = (t * 0.85 + p * 0.08) % 1;
+          const a0 = (p % 4), a1 = (p + 1) % 4;
+          Box(lerp(nations[a0][0], nations[a1][0], pq), 1.4 + Math.sin(pq * Math.PI) * 0.8, lerp(nations[a0][1], nations[a1][1], pq), 0.18, 0.18, 0.18, '#F59E0B', { lw: 0, emis: 0.9 });
+        }
+        // Continuous outer amber ring at fixed radius 4.2 (visible in both Shot 9 & Shot 10)
+        const rot = t >= 25.20 ? (t - 25.20) * 0.55 : 0;
+        for (let s = 0; s < 24; s++) {
+          const sa = (s / 24) * Math.PI * 2 + rot;
+          Box(20.5 + Math.cos(sa) * 4.2, 0.15, -0.8 + Math.sin(sa) * 4.2, 0.72, 0.18, 0.25, '#F59E0B', { lw: 0, emis: 0.6 });
+          if (t >= 25.20) {
+            const grp = Math.floor(s / 6);
+            const segH = 0.75 + 0.55 * Math.sin(t * 2.4 + grp * 1.5);
+            const col = grp === 0 ? '#76B900' : (grp === 1 ? '#F59E0B' : (grp === 2 ? '#3A424E' : '#475261'));
+            Box(20.5 + Math.cos(sa) * 3.3, 0.2, -0.8 + Math.sin(sa) * 3.3, 0.64, segH, 0.52, col, { emis: grp < 2 ? 0.45 : 0.1 });
+          }
+        }
+      }
+
+      OVER.push(() => {
+        if (t >= 18.00 && t < 27.68) {
+          pill2D(310, 115, 'SOURCE: PwC · SCENARIO ANALYSIS', '#181C22', '#8E99A8', '#2D3440', env(t, 18.00, 27.68, 0.15, 0.15));
+        }
+        if (t >= 25.28 && t < 27.80) {
+          const a = env(t, 25.28, 27.80, 0.12, 0.15);
+          pill2D(960, 160, 'MONEY MOVES.', '#181C22', '#F59E0B', '#F59E0B', a);
+          pill2D(960, 222, "THE GLOBAL PIE DOESN'T SHRINK.", '#181C22', '#F4F6F8', '#76B900', a);
+        }
+      });
+    }
+
+    // ===== BEAT 4 (28.12 - 44.24, c = 26): Scenario B Supply Chain -> Fracture -> -$6T -> $31.6T to $25.5T =====
+    if (t >= 28.05 && t < 44.75) {
+      // Shot 11-12 (28.12 - 34.95): Interconnected 4-stage supply chain around globe -> Red barriers fracture & halve 2030 annual investment
+      if (t < 35.10) {
+        const nodes = [
+          { x: 28.2, z: -2.8, name: 'FAB' },
+          { x: 31.5, z: -4.0, name: 'PACKAGING' },
+          { x: 34.8, z: -2.8, name: 'TRANSPORT' },
+          { x: 31.5, z: 1.4,  name: 'DATA CENTERS' },
+        ];
+        const brkU = t >= 31.32 ? easeOut(seg(t, 31.32, 32.60)) : 0;
+        const linkA = Math.max(0, 1 - brkU * 2.2);
+
+        nodes.forEach((nd, idx) => {
+          const incomplete = brkU > 0.2 && idx === 3;
+          const h = incomplete ? 1.05 : 1.95;
+          Box(nd.x, 0, nd.z, 1.55, h, 1.55, '#181C22');
+          if (incomplete) {
+            // Unfinished upper construction skeleton on stalled data center
+            Box(nd.x, 1.05, nd.z, 1.45, 0.85, 1.45, '#2C323B', { a: 0.28 });
+            Box(nd.x - 0.62, 1.05, nd.z - 0.62, 0.10, 0.85, 0.10, '#8E99A8', { a: 0.55 });
+            Box(nd.x + 0.62, 1.05, nd.z + 0.62, 0.10, 0.85, 0.10, '#8E99A8', { a: 0.55 });
+          } else if (idx === 0) {
+            Cyl(nd.x, 1.95, nd.z, 0.52, 0.10, brkU > 0.35 ? '#8E99A8' : '#76B900', { lw: 0, emis: brkU > 0.35 ? 0.15 : 0.65 });
+          } else {
+            Box(nd.x, h, nd.z, 1.25, 0.14, 1.25, brkU > 0.35 ? '#D94E43' : '#76B900', { lw: 0, emis: brkU > 0.35 ? 0.35 : 0.7 });
+          }
+          if (linkA > 0.05) {
+            Line3([nd.x, 1.1, nd.z], [31.5, 1.6, -1.2], '#F59E0B', 2, 0.45 * linkA);
+          }
+          Label(nd.name, nd.x, (incomplete ? 2.15 : h + 0.45), nd.z, 1.9, 0.36, '#181C22', brkU > 0.35 ? '#D94E43' : '#F4F6F8', { line: false, a: 0.9 });
+        });
+
+        // Connections between fab -> packaging -> transport -> data center (disconnect & stall on brkU)
+        for (let i = 0; i < 4; i++) {
+          const aNd = nodes[i], bNd = nodes[(i + 1) % 4];
+          if (linkA > 0.04) {
+            Line3([aNd.x, 0.9, aNd.z], [bNd.x, 0.9, bNd.z], '#76B900', 3, linkA);
+            const pq = (t * 0.85 + i * 0.25) % 1;
+            Box(lerp(aNd.x, bNd.x, pq), 0.9, lerp(aNd.z, bNd.z, pq), 0.24, 0.18, 0.24, '#F59E0B', { lw: 0, emis: 0.85, a: linkA });
+          }
+          if (brkU > 0.15) {
+            const mx = (aNd.x + bNd.x) / 2, mz = (aNd.z + bNd.z) / 2;
+            Box(mx, 0, mz, 0.28, 2.4 * brkU, 1.65, '#D94E43', { a: 0.82, emis: 0.42 });
+            // Blocked chip shipment stalled in front of geopolitical barrier
+            Box(lerp(aNd.x, mx, 0.72), 0.12, lerp(aNd.z, mz, 0.72), 0.34, 0.24, 0.34, '#D94E43', { emis: 0.55, a: brkU });
+          }
+        }
+
+        // Annual Investment Indicator descending to ~50% by 2030
+        if (t >= 31.32) {
+          const halfH = lerp(4.4, 2.2, easeOut(seg(t, 31.50, 33.80)));
+          Box(36.4, 0, -1.0, 0.95, 4.4, 0.95, '#2C323B', { a: 0.22 });
+          Box(36.4, 0, -1.0, 0.86, halfH, 0.86, '#D94E43', { emis: 0.45 });
+        }
+      }
+
+      // Shot 13 (35.14 - 38.60): $6 Trillion detaches into pieces & disappears, leaving architectural gap
+      if (t >= 35.10 && t < 38.60) {
+        const lostU = easeOut(seg(t, 35.14, 37.50));
+        Box(25.2, 0.0, -1.0, 2.8, 4.4, 3.0, '#181C22');
+        Box(27.2, 0.0, -1.0, 1.6, 2.9, 3.0, '#181C22');
+        Box(25.2, 4.4, -1.0, 2.84, 0.12, 3.04, '#F59E0B', { lw: 0, emis: 0.35 });
+        // Empty architectural gap outline where the $6T mass detached
+        Box(27.2, 2.9, -1.0, 1.62, 1.5, 3.02, '#D94E43', { a: 0.14 * lostU });
+        // Detached $6T amber mass breaking into smaller pieces & fading into darkness
+        if (lostU < 0.96) {
+          for (let k = 0; k < 10; k++) {
+            const ox = 27.2 + (k % 3 - 1) * 0.48 + (k % 4) * 0.55 * lostU;
+            const oy = 3.15 + Math.floor(k / 3) * 0.42 - lostU * 1.8;
+            Box(ox, Math.max(0.08, oy), -1.0 + (k % 3 - 1) * 0.65 * lostU, 0.48, 0.36, 0.52, '#F59E0B', { a: 1 - lostU, emis: 0.55 });
+          }
+        }
+        if (t < 35.8) hit(27.2, 4.2, -1.0, 35.14, '#D94E43', 280);
+      }
+
+      // Shot 14-15 (38.60 - 44.24): $31.6T contracts down to $25.5T with disappearing data centers & ghosted $31.6T outline
+      if (t >= 38.60) {
+        const shrinkU = easeOut(seg(t, 39.80, 42.42));
+        const darkU = easeOut(seg(t, 43.40, 44.60));
+        const hCur = lerp(5.4, 4.2, shrinkU);
+        const coreA = 1 - darkU * 0.72;
+        // Ghosted $31.6T original outline
+        Box(26.0, 0.0, -1.0, 4.4, 5.4, 3.2, '#F59E0B', { a: 0.16 * (1 - darkU * 0.6) });
+        // Remaining $25.5T solid structure
+        Box(26.0, 0.0, -1.0, 4.2, hCur, 3.0, '#181C22', { a: coreA });
+        Box(26.0, hCur, -1.0, 4.24, 0.14, 3.04, shrinkU > 0.5 ? '#D94E43' : '#F59E0B', { lw: 0, emis: 0.55 * (1 - darkU), a: coreA });
+
+        // Surrounding data center installations & semiconductor links removed during contraction
+        for (let d = 0; d < 6; d++) {
+          const ang = (d / 6) * Math.PI * 2 + 0.35;
+          const dx = 26.0 + Math.cos(ang) * 4.2, dz = -1.0 + Math.sin(ang) * 3.1;
+          const dcA = Math.max(0, 1 - shrinkU * 1.45 - d * 0.08) * (1 - darkU);
+          if (dcA > 0.04) {
+            Box(dx, 0, dz, 0.75, 1.35 * (0.4 + 0.6 * dcA), 0.75, '#2C323B', { a: dcA });
+            Box(dx, 1.35 * (0.4 + 0.6 * dcA), dz, 0.65, 0.10, 0.65, '#76B900', { lw: 0, emis: 0.55, a: dcA });
+            Line3([dx, 0.7, dz], [26.0, 1.4, -1.0], '#F59E0B', 2, 0.55 * dcA);
+          }
+        }
+      }
+
+      OVER.push(() => {
+        if (t >= 31.32 && t < 34.95) {
+          pill2D(1380, 185, 'ANNUAL INVESTMENT', '#181C22', '#F4F6F8', '#D94E43', env(t, 31.32, 34.95, 0.10, 0.12));
+          if (t >= 32.50) pill2D(1380, 248, '~50% LOWER BY 2030', '#181C22', '#D94E43', '#D94E43', env(t, 32.50, 34.95, 0.10, 0.12));
+        }
+        if (t >= 35.14 && t < 38.55) {
+          const a = env(t, 35.14, 38.55, 0.12, 0.15);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 680, 150, 560, 122, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#D94E43'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = '#D94E43'; ctx.font = '900 46px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('$6 TRILLION', 960, 196);
+          ctx.fillStyle = '#F4F6F8'; ctx.font = '800 18px' + FAM;
+          ctx.fillText('CUMULATIVE GLOBAL SPENDING LOST', 960, 244);
+          ctx.restore();
+        }
+        if (t >= 38.60 && t < 42.35) {
+          pill2D(960, 175, '$31.6 TRILLION', '#181C22', '#F59E0B', '#F59E0B', env(t, 38.60, 42.35, 0.12, 0.12));
+        }
+        if (t >= 42.42 && t < 44.55) {
+          const a = env(t, 42.42, 44.55, 0.12, 0.15);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 680, 150, 560, 122, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#D94E43'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = '#F4F6F8'; ctx.font = '900 46px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('$25.5 TRILLION', 960, 196);
+          ctx.fillStyle = '#8E99A8'; ctx.font = '800 18px' + FAM;
+          ctx.fillText('REVISED GLOBAL AI BUILD-OUT', 960, 244);
+          ctx.restore();
+        }
+      });
+    }
+
+    // ===== BEAT 5 (44.82 - 69.98, c = 52) & FINALE (70.82 - 76.56): Armored Truck Synthesis =====
+    if (t >= 44.6) {
+      // Shot 16-17 (44.82 - 51.78): Cold-Open Armored Truck callback + opening rear doors -> GPU tip of spear extending into infrastructure
+      if (t < 51.85) {
+        const tx = lerp(49.2, 51.4, easeOut(seg(t, 44.82, 47.40)));
+        const openU = easeOut(seg(t, 47.10, 48.55));
+        const boltU = 1 - easeOut(seg(t, 46.70, 47.25));
+        const s = 0.56;
+        // Original Cold-Open Armored Truck geometry (scaled s = 0.56 around [tx, 0, 1.2])
+        Box(tx - 0.6 * s, 0.72 * s, 1.2, 12.6 * s, 0.36 * s, 4.0 * s, '#181C22'); // chassis
+        Box(tx + 0.2 * s, 1.08 * s, 1.2 - 1.8 * s, 8.4 * s, 4.2 * s, 0.34 * s, '#2C323B'); // far cargo wall
+        Box(tx + 0.2 * s, 1.08 * s, 1.2 + 1.8 * s, 8.4 * s, 4.2 * s, 0.34 * s, '#2C323B'); // near cargo wall
+        Box(tx + 0.2 * s, 5.18 * s, 1.2, 8.4 * s, 0.34 * s, 3.94 * s, '#2E5261'); // roof
+        Box(tx - 3.85 * s, 1.08 * s, 1.2, 0.34 * s, 4.1 * s, 3.8 * s, '#181C22'); // front bulkhead
+        Box(tx + 0.2 * s, 1.08 * s, 1.2, 8.4 * s, 0.28 * s, 3.8 * s, '#181C22'); // cargo floor
+        Box(tx + 0.2 * s, 3.1 * s, 1.2 + 2.0 * s, 7.8 * s, 0.36 * s, 0.08 * s, '#F59E0B', { lw: 0, emis: 0.35 }); // gold security stripe
+        Box(tx + 0.2 * s, 4.35 * s, 1.2 + 2.0 * s, 7.6 * s, 0.14 * s, 0.04 * s, '#8E99A8', { lw: 0, emis: 0.25, a: 0.45 }); // subtle body reflection highlight
+        Box(tx + 4.55 * s, 0.65 * s, 1.2, 0.65 * s, 0.35 * s, 4.0 * s, '#2E5261'); // rear step
+        Box(tx - 5.3 * s, 1.08 * s, 1.2, 2.8 * s, 3.6 * s, 3.5 * s, '#2C323B'); // cab
+        Box(tx - 7.0 * s, 1.08 * s, 1.2, 1.4 * s, 2.1 * s, 3.3 * s, '#2E5261'); // hood
+        Box(tx - 7.72 * s, 1.35 * s, 1.2, 0.14 * s, 1.3 * s, 2.4 * s, '#181C22'); // grille
+        Box(tx - 6.72 * s, 3.05 * s, 1.2, 0.14 * s, 1.1 * s, 2.8 * s, '#0B191E'); // windshield
+        [-1.0 * s, 1.0 * s].forEach(hz => Box(tx - 7.74 * s, 1.35 * s, 1.2 + hz, 0.12 * s, 0.32 * s, 0.45 * s, '#F59E0B', { lw: 0, emis: 0.9 }));
+        [-5.6 * s, 1.8 * s].forEach(wx => [-1.9 * s, 1.9 * s].forEach(wz => {
+          Cyl(tx + wx, 0.0, 1.2 + wz, 0.72 * s, 0.56 * s, '#181C22', { seg: 16 });
+          Box(tx + wx, 0.72 * s, 1.2 + wz + (wz > 0 ? 0.24 * s : -0.24 * s), 0.55 * s, 0.55 * s, 0.12 * s, '#7F8C94', { lw: 0 });
+        }));
+        // Twin swinging rear doors + locking bolts + interior bay light
+        const dAng = openU * 2.00;
+        Box(tx + (4.4 - Math.sin(dAng) * 0.85) * s, 1.1 * s, 1.2 - (1.75 + openU * 0.95) * s, 0.26 * s, 4.0 * s, 1.75 * s, '#2E5261');
+        const dxN = tx + (4.4 - Math.sin(dAng) * 0.85) * s, dzN = 1.2 + (0.88 + openU * 1.15) * s;
+        Box(dxN, 1.1 * s, dzN, 0.26 * s, 4.0 * s, 1.75 * s, '#2E5261');
+        Cyl(dxN + 0.15 * s, 2.5 * s, dzN, 0.44 * s, 0.16 * s, '#F59E0B', { seg: 14 });
+        if (boltU > 0.05) {
+          Box(dxN + 0.16 * s, (2.9 + 0.7 * boltU) * s, dzN, 0.12 * s, 0.9 * s, 0.14 * s, '#F4F6F8', { lw: 0 });
+          Box(dxN + 0.16 * s, (2.9 - 0.7 * boltU) * s, dzN, 0.12 * s, 0.9 * s, 0.14 * s, '#F4F6F8', { lw: 0 });
+        }
+        Box(tx + 0.2 * s, 4.95 * s, 1.2, 7.4 * s, 0.10 * s, 2.8 * s, openU > 0.2 ? '#F59E0B' : '#2C323B', { lw: 0, emis: openU > 0.2 ? 0.65 : 0.1 });
+
+        // High-value GPU modules inside rear compartment (illuminating as doors open)
+        const gpuGlow = t >= 48.60 ? 0.95 : 0.45 + 0.4 * openU;
+        for (let g = 0; g < 3; g++) {
+          Box(tx + 1.5 * s, (1.45 + g * 0.72) * s, 1.2, 1.15 * s, 0.28 * s, 1.45 * s, '#181C22');
+          Box(tx + 1.5 * s, (1.73 + g * 0.72) * s, 1.2, 0.85 * s, 0.14 * s, 1.15 * s, '#76B900', { lw: 0, emis: gpuGlow });
+        }
+
+        // Elegant converging spear-like architectural layers extending behind the GPU tip (Shot 17)
+        if (t >= 49.10) {
+          const spU = easeOut(seg(t, 49.10, 51.50));
+          for (let k = 1; k <= 6; k++) {
+            const zPos = 1.2 - k * 2.2 * spU;
+            const wLayer = 1.2 + k * 1.15;
+            Box(52.0, 0.0, zPos, wLayer, 1.1 + k * 0.42, 1.3, '#181C22');
+            Box(52.0, 0.35, zPos + 0.68, wLayer * 0.78, 0.45, 0.08, k % 2 === 0 ? '#F59E0B' : '#76B900', { lw: 0, emis: 0.45 });
+            Line3([52.0, 1.2, 1.2], [52.0 - wLayer * 0.45, 1.1 + k * 0.42, zPos], '#F59E0B', 2, 0.45 * spU);
+            Line3([52.0, 1.2, 1.2], [52.0 + wLayer * 0.45, 1.1 + k * 0.42, zPos], '#F59E0B', 2, 0.45 * spU);
+          }
+        }
+      }
+
+      // Shot 18 (51.78 - 55.72): $31.6T Data Center Trap (enormous server landscape + cooling/substations + subtle structural trap)
+      if (t >= 51.75 && t < 55.75) {
+        const trapU = easeOut(seg(t, 52.10, 54.80));
+        for (let r = 0; r < 4; r++) {
+          for (let c = -2; c <= 2; c++) {
+            const bx = 52.0 + c * 2.45, bz = 0.6 - r * 3.1;
+            Box(bx, 0.0, bz, 1.65, 2.0, 1.8, '#181C22');
+            Box(bx, 0.45, bz + 0.92, 1.25, 0.95, 0.08, '#76B900', { lw: 0, emis: 0.55 });
+            if (r > 0) Line3([bx, 1.8, bz + 3.1], [bx, 1.8, bz], '#76B900', 2, 0.55);
+          }
+        }
+        // Flanking industrial cooling systems & amber electrical substations
+        [-7.8, 7.8].forEach(sx => {
+          Cyl(52.0 + sx, 0.0, -3.0, 1.05, 2.4, '#2C323B', { seg: 14 });
+          Cyl(52.0 + sx, 2.4, -3.0, 1.12, 0.22, '#3A424E', { seg: 14 });
+          Box(52.0 + sx, 0.0, -6.4, 1.8, 1.7, 1.8, '#181C22');
+          Box(52.0 + sx, 1.7, -6.4, 1.9, 0.16, 1.9, '#F59E0B', { lw: 0, emis: 0.6 });
+          Line3([52.0 + sx, 1.4, -6.4], [52.0, 1.4, -6.4], '#F59E0B', 2.5, 0.7);
+        });
+        // Subtle, intelligent architectural trap/enclosure framing the complex
+        if (trapU > 0.1) {
+          const topY = 5.4 * trapU;
+          for (let cx = -7.5; cx <= 7.5; cx += 3.0) {
+            Line3([52.0 + cx, 0, 2.4], [52.0 + cx, topY, 2.4], '#F59E0B', 2.5, 0.6);
+            Line3([52.0 + cx, topY, 2.4], [52.0 + cx, topY, -10.0], '#F59E0B', 2.5, 0.6);
+          }
+          Line3([44.5, topY, 2.4], [59.5, topY, 2.4], '#F59E0B', 3, 0.75);
+          Line3([44.5, topY, -3.8], [59.5, topY, -3.8], '#F59E0B', 2.5, 0.55);
+        }
+      }
+
+      // Shot 19 (55.72 - 58.94): 2-Year Silicon Replacement Cycle (obsolescence & swap inside intact rack)
+      if (t >= 55.70 && t < 58.96) {
+        const cyc = (t - 55.72) / 1.6;
+        const ph = cyc % 1;
+        // Intact surrounding server rack
+        Box(52.0, 0.0, 0.0, 2.5, 3.0, 1.8, '#181C22');
+        Box(52.0, 2.85, 0.0, 2.55, 0.16, 1.85, '#2C323B');
+        // Old layered silicon assembly (dims when outdated at ph > 0.45, slides out on swap)
+        const outdated = ph > 0.45;
+        const oldZ = ph > 0.55 ? lerp(0.25, 1.85, (ph - 0.55) / 0.45) : 0.25;
+        const oldA = ph > 0.78 ? Math.max(0.15, 1 - (ph - 0.78) / 0.22) : 1;
+        Box(52.0, 1.15, oldZ, 1.45, 0.18, 1.15, '#2C323B', { a: oldA });
+        Box(52.0, 1.33, oldZ, 1.15, 0.24, 0.95, outdated ? '#3A424E' : '#76B900', { emis: outdated ? 0.08 : 0.75, a: oldA });
+        // Newer generation silicon entering from rear into intact rack
+        if (ph > 0.52) {
+          const newZ = lerp(-1.35, 0.25, (ph - 0.52) / 0.48);
+          Box(52.0, 1.55, newZ, 1.45, 0.18, 1.15, '#2C323B');
+          Box(52.0, 1.73, newZ, 1.20, 0.26, 0.95, '#76B900', { emis: 0.9 });
+        }
+      }
+
+      // Shot 20 (58.94 - 62.42): $2.3T Compute Market (standardized compute blocks + metaphorical crude oil barrels)
+      if (t >= 58.92 && t < 62.45) {
+        // Exchange-style trading lanes
+        for (let ln = -1; ln <= 1; ln++) {
+          Line3([46.5, 0.2, ln * 1.8], [57.5, 0.2, ln * 1.8], '#F59E0B', 3, 0.8);
+          const q = (t * 0.82 + (ln + 1) * 0.33) % 1;
+          Box(lerp(47.0, 57.0, q), 0.3, ln * 1.8, 0.72, 0.48, 0.72, q > 0.42 ? '#F59E0B' : '#76B900', { emis: 0.65 });
+        }
+        // Metaphorical crude-oil barrels on comparison plinth alongside compute trading lanes
+        Box(55.6, 0.0, 0.0, 2.2, 0.22, 5.4, '#181C22');
+        [-1.8, 1.8].forEach(bz => {
+          Cyl(55.6, 0.22, bz, 0.46, 1.25, '#2C323B', { seg: 14 });
+          Box(55.6, 0.85, bz, 0.96, 0.14, 0.96, '#F59E0B', { lw: 0, emis: 0.4 });
+        });
+      }
+
+      // Shot 21 (62.42 - 65.92): 20-Year Software Moat Under Siege (fortress standing under multi-directional pressure)
+      if (t >= 62.40 && t < 65.95) {
+        Box(52.0, 0.0, -2.5, 3.8, 3.9, 3.8, '#181C22');
+        Box(52.0, 0.6, -0.55, 2.9, 2.3, 0.10, '#76B900', { lw: 0, emis: 0.65 });
+        // Deep green software moat ring
+        for (let m = 0; m < 18; m++) {
+          const ma = (m / 18) * Math.PI * 2;
+          Box(52.0 + Math.cos(ma) * 3.6, 0.05, -2.5 + Math.sin(ma) * 3.6, 0.52, 0.24, 0.52, '#76B900', { lw: 0, emis: 0.45 });
+        }
+        // Alternative architectures approaching from multiple directions + outer wall fractures
+        [[-5.8, -2.5, '#D94E43'], [5.8, -2.5, '#4285F4'], [0.0, -7.8, '#F59E0B']].forEach(([ax, az, acol]) => {
+          Line3([52.0 + ax, 1.4, az], [52.0 + Math.sign(ax) * 2.0, 1.4, az === -2.5 ? -2.5 : -4.4], acol, 4, 1);
+          if (ax !== 0) {
+            Line3([52.0 + Math.sign(ax) * 1.92, 0.8, -1.2], [52.0 + Math.sign(ax) * 1.92, 2.9, -3.0], '#D94E43', 3, 1);
+          }
+        });
+      }
+
+      // Shot 22 (65.92 - 70.80): Megawatts & National Borders (physical power infrastructure + rising border wall)
+      if (t >= 65.90 && t < 70.82) {
+        [45.8, 58.2].forEach(px => {
+          Box(px, 0, -2.5, 2.9, 2.6, 2.5, '#2C323B');
+          Cyl(px, 2.6, -2.5, 0.68, 2.2, '#3A424E', { seg: 12 });
+          Box(px, 0.0, 1.2, 1.2, 1.4, 1.2, '#181C22'); // substation
+          Box(px, 0.2, 1.2, 0.48, 3.6, 0.48, '#F59E0B', { emis: 0.3 }); // transmission tower
+        });
+        // Electrical grid spans both sides; semiconductor/compute pathways stop at border wall
+        Line3([45.8, 3.6, 1.2], [58.2, 3.6, 1.2], '#FFF7E6', 4, 1);
+        Line3([46.5, 0.9, -2.5], [51.2, 0.9, -2.5], '#76B900', 3, 0.75);
+        Line3([52.8, 0.9, -2.5], [57.5, 0.9, -2.5], '#76B900', 3, 0.75);
+        const bwU = easeOut(seg(t, 66.20, 68.10));
+        Box(52.0, 0.0, -1.5, 1.2, 6.2 * bwU, 8.8, '#181C22');
+        Box(52.0, 6.2 * bwU, -1.5, 1.3, 0.28, 8.9, '#D94E43', { lw: 0, emis: 0.65 });
+      }
+
+      // Shot 23-24 (70.82 - 75.82): Power & Grid Landscape -> Central Chokepoint Substation
+      if (t >= 70.82) {
+        const dimEnv = t >= 74.06 ? (1 - easeOut(seg(t, 74.06, 75.20)) * 0.80) : 1.0;
+        // Background geopolitical border wall
+        Box(52.0, 0.0, -7.2, 24.0, 5.4, 1.2, '#181C22', { a: dimEnv * 0.85 });
+        Box(52.0, 5.4, -7.2, 24.2, 0.22, 1.3, '#D94E43', { lw: 0, a: dimEnv * 0.7, emis: 0.4 });
+        // Massive central AI data center installation
+        Box(52.0, 0.0, -3.4, 4.8, 3.0, 3.2, '#181C22', { a: dimEnv });
+        Box(52.0, 0.6, -1.75, 3.8, 1.6, 0.10, '#76B900', { lw: 0, a: dimEnv, emis: 0.65 * dimEnv });
+        // Power plants -> Substations -> Transmission towers -> Central Power Junction
+        [-1, 1].forEach(dir => {
+          const px = 52.0 + dir * 7.8; // power plant
+          const sx = 52.0 + dir * 4.8; // substation
+          const tx = 52.0 + dir * 2.4; // transmission tower
+          Box(px, 0, -2.5, 2.5, 2.4, 2.3, '#2C323B', { a: dimEnv });
+          Cyl(px, 2.4, -2.5, 0.65, 2.0, '#3A424E', { seg: 12, a: dimEnv });
+          Box(sx, 0, -0.5, 1.3, 1.3, 1.3, '#181C22', { a: dimEnv });
+          Box(sx, 1.3, -0.5, 1.35, 0.14, 1.35, '#F59E0B', { lw: 0, a: dimEnv, emis: 0.45 * dimEnv });
+          Box(tx, 0, 0.45, 0.42, 2.8, 0.42, '#3A424E', { a: dimEnv });
+          Line3([px, 1.5, -1.5], [sx, 1.2, -0.5], '#F59E0B', 3.5, dimEnv);
+          Line3([sx, 1.2, -0.5], [tx, 2.6, 0.45], '#F59E0B', 3.5, dimEnv);
+          Line3([tx, 2.6, 0.45], [52.0, 1.5, 1.2], '#F59E0B', 4, dimEnv);
+          // Animated amber electrical pulses along the grid toward central junction
+          const pq = (t * 1.15) % 1;
+          Box(lerp(px, sx, pq), lerp(1.5, 1.2, pq), lerp(-1.5, -0.5, pq), 0.24, 0.18, 0.24, '#F59E0B', { lw: 0, emis: 0.9, a: dimEnv });
+          Box(lerp(tx, 52.0, pq), lerp(2.6, 1.5, pq), lerp(0.45, 1.2, pq), 0.28, 0.22, 0.28, '#FFF7E6', { lw: 0, emis: 0.95 });
+          // Final concentrated amber pulse sweeping inward during Shot 24
+          if (t >= 74.06 && t < 75.30) {
+            const fq = easeOut(seg(t, 74.06, 75.15));
+            Box(lerp(px, 52.0, fq), lerp(1.8, 1.4, fq), lerp(-1.8, 1.2, fq), 0.36, 0.28, 0.36, '#FFF7E6', { lw: 0, emis: 1.1 });
+          }
+        });
+        // Central electrical distribution junction (highlighted entry point -> brightest object in Shot 24)
+        const juncGlow = t >= 74.06 ? 1.15 : 0.80;
+        Box(52.0, 0.0, 1.2, 2.3, 1.8, 2.0, '#2C323B');
+        Box(52.0, 1.8, 1.2, 2.4, 0.30, 2.1, '#F59E0B', { lw: 0, emis: juncGlow });
+        Box(52.0, 0.6, 2.25, 1.45, 0.85, 0.10, '#FFF7E6', { lw: 0, emis: juncGlow });
+        Line3([52.0, 1.6, 1.2], [52.0, 1.6, -1.8], '#FFF7E6', 4.5, 1);
+        if (t >= 75.35 && t < 75.95) hit(52.0, 1.4, 1.2, 75.40, '#F59E0B', 320);
+      }
+
+      OVER.push(() => {
+        if (t >= 48.88 && t < 51.75) pill2D(960, 175, 'THE VISIBLE TIP', '#181C22', '#76B900', '#76B900', env(t, 48.88, 51.75, 0.12, 0.12));
+        if (t >= 51.78 && t < 55.70) {
+          const a = env(t, 51.78, 55.70, 0.12, 0.12);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 680, 150, 560, 118, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = '#F59E0B'; ctx.font = '900 44px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('$31.6 TRILLION', 960, 194);
+          ctx.fillStyle = '#F4F6F8'; ctx.font = '800 18px' + FAM;
+          ctx.fillText('DATA CENTER BUILD-OUT', 960, 240);
+          ctx.restore();
+        }
+        if (t >= 55.72 && t < 58.90) {
+          const a = env(t, 55.72, 58.90, 0.12, 0.12);
+          const ph = ((t - 55.72) / 1.6) % 1;
+          const yrs = Math.min(2.0, (ph / 0.50) * 2.0).toFixed(1);
+          pill2D(960, 175, '2-YEAR SILICON CYCLE', '#181C22', '#F4F6F8', '#76B900', a);
+          pill2D(1340, 480, `CYCLE: ${yrs} / 2.0 YRS`, '#181C22', ph > 0.45 ? '#F59E0B' : '#76B900', ph > 0.45 ? '#F59E0B' : '#76B900', a);
+        }
+        if (t >= 58.94 && t < 62.38) {
+          const a = env(t, 58.94, 62.38, 0.12, 0.12);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 700, 150, 520, 118, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = '#F59E0B'; ctx.font = '900 44px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('$2.3 TRILLION', 960, 194);
+          ctx.fillStyle = '#F4F6F8'; ctx.font = '800 18px' + FAM;
+          ctx.fillText('COMPUTE MARKET', 960, 240);
+          ctx.restore();
+        }
+        if (t >= 62.42 && t < 65.88) {
+          const a = env(t, 62.42, 65.88, 0.12, 0.12);
+          pill2D(960, 165, '20-YEAR SOFTWARE MOAT', '#181C22', '#76B900', '#76B900', a);
+          pill2D(960, 226, 'UNDER SIEGE', '#181C22', '#D94E43', '#D94E43', a);
+        }
+        if (t >= 65.92 && t < 70.60) {
+          const a = env(t, 65.92, 70.60, 0.12, 0.12);
+          pill2D(660, 185, 'MEGAWATTS', '#181C22', '#F59E0B', '#F59E0B', a);
+          pill2D(1260, 185, 'NATIONAL BORDERS', '#181C22', '#D94E43', '#D94E43', a);
+        }
+        if (t >= 74.06 && t < 74.98) {
+          pill2D(960, 185, 'CONTROL THE POWER.', '#181C22', '#F59E0B', '#F59E0B', env(t, 74.06, 74.98, 0.08, 0.08));
+        }
+        if (t >= 74.98 && t < 75.98) {
+          pill2D(960, 185, 'CONTROL THE AI ECONOMY.', '#181C22', '#FFF7E6', '#F59E0B', env(t, 74.98, 75.98, 0.08, 0.08));
+        }
+        if (t >= 75.98) {
+          ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, 1920, 1080);
+        }
+      });
     }
 
     endFrame(t);
@@ -2400,7 +3193,7 @@ function drawSpriteChar(c, p, sc, t) {
     const gf = Math.floor(time * 12);
     grainPat.setTransform(new DOMMatrix([1, 0, 0, 1, Math.floor(hash(gf * 5 + 3) * 256), Math.floor(hash(gf * 5 + 4) * 256)]));
     ctx.fillStyle = grainPat; ctx.fillRect(0, 0, 1920, 1080);
-    if (!showSheet) drawRail(time, [0.0, 2.4, 17.95, 44.8, 76.56]);
+    if (!showSheet) drawRail(time, [0.0, 5.72, 18.00, 28.12, 44.82, 70.82]);
     drawCaptions(time);
   }
 

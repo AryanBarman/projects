@@ -597,34 +597,99 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
 
   const CUE_SHEET = [
     {
-        "t": 2.15,
-        "name": "whip_pan",
-        "desc": "Fly from S0 bridge to 5M dev tollbooth"
-    },
-    {
-        "t": 21.5,
-        "name": "gold_stack",
-        "desc": "$5 trillion corporation"
-    },
-    {
-        "t": 34.05,
-        "name": "whip_pan",
-        "desc": "Fly to ROCm & ASIC bypass lanes"
-    },
-    {
-        "t": 43.7,
+        "t": 0.1,
         "name": "chip_ignite",
-        "desc": "Azure & Oracle deployments"
+        "desc": "CUDA GPU core ignites & 5M developer network expands"
     },
     {
-        "t": 60.5,
+        "t": 3.85,
         "name": "whip_pan",
-        "desc": "Pull to the hard power wall"
+        "desc": "Network compresses into 80% AI GPU market ring"
     },
     {
-        "t": 65.65,
+        "t": 7.15,
+        "name": "stage_split",
+        "desc": "Ring unfolds into 75% Top 500 supercomputer wall"
+    },
+    {
+        "t": 12.2,
+        "name": "power_spike",
+        "desc": "Data streams through the CUDA Software Tollbooth"
+    },
+    {
+        "t": 15.1,
+        "name": "oven_drop",
+        "desc": "Abrupt drop into dim 1990s office (30 days from bankruptcy)"
+    },
+    {
+        "t": 18.9,
+        "name": "gold_stack",
+        "desc": "Sega $5M lifeline cheque illuminates"
+    },
+    {
+        "t": 21.56,
+        "name": "chip_ignite",
+        "desc": "$5 trillion transformation monument rises"
+    },
+    {
+        "t": 26.25,
+        "name": "cascade_ping",
+        "desc": "Revenue streams converge to $215.9B"
+    },
+    {
+        "t": 34.95,
         "name": "stamp_impact",
-        "desc": "The hard wall slams down"
+        "desc": "Rival chip hits invisible CUDA ecosystem barrier"
+    },
+    {
+        "t": 36.6,
+        "name": "whip_pan",
+        "desc": "Pan to AMD MI300 facility"
+    },
+    {
+        "t": 40.3,
+        "name": "power_spike",
+        "desc": "ROCm modular software blocks connect"
+    },
+    {
+        "t": 43.76,
+        "name": "chip_ignite",
+        "desc": "Azure & Oracle Cloud MI300 deployments"
+    },
+    {
+        "t": 47.76,
+        "name": "whip_pan",
+        "desc": "Enter McKinsey custom silicon research table"
+    },
+    {
+        "t": 50.4,
+        "name": "stage_split",
+        "desc": "Custom ASIC casing separates into layers"
+    },
+    {
+        "t": 54.22,
+        "name": "cascade_ping",
+        "desc": "Google TPU systolic matrix illuminates"
+    },
+    {
+        "t": 56.8,
+        "name": "gold_stack",
+        "desc": "Training & everyday inference streams across GPU, CPU & TPU"
+    },
+    {
+        "t": 60.58,
+        "name": "whip_pan",
+        "desc": "Three alternatives target CUDA ecosystem"
+    },
+    {
+        "t": 63.1,
+        "name": "stage_split",
+        "desc": "CUDA monopoly fractures physically"
+    },
+    {
+        "t": 68.84,
+        "name": "stamp_impact",
+        "desc": "Deep cinematic impact at the uncodeable wall"
     }
 ];
 
@@ -716,33 +781,56 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
   const CAM_KEYS = [];
   const K = (t, p, l, fov, x) => CAM_KEYS.push({ t, v: [p[0], p[1], p[2], l[0], l[1], l[2], fov], cut: x === true, type: typeof x === 'string' ? x : 'auto' });
 
-  K(0.00, [-26, 5.6, 19.5], [-26, 4.4, 0.0], 43, 'hold');
-  K(2.20, [0, 6.4, 26.0], [0, 4.2, 0.0], 46, 'fly');
-  K(21.50, [0, 6.2, 21.5], [0, 4.6, 0.0], 44, 'push');
-  K(34.10, [26, 5.8, 24.0], [26, 3.6, 0.0], 45, 'fly');
-  K(50.40, [26, 5.4, 20.5], [26, 3.6, 0.0], 44, 'push');
-  K(60.50, [52, 6.8, 26.0], [52, 4.0, 0.0], 46, 'fly');
-  K(65.65, [52, 6.0, 21.0], [52, 4.0, 0.0], 44, 'hold');
+  // Beat 1 (0.00 - 11.64): 5M Developers Network -> 80%+ AI GPU Ring -> 75%+ Supercomputer Wall -> Rack GPU Close-Up
+  K(0.00, [-24.6, 1.8, 2.6],  [-26.0, 0.7, 0.0], 34, 'hold');
+  K(3.82, [-22.4, 5.2, 10.8], [-26.0, 1.4, 0.0], 42, 'pull');
+  K(5.20, [-29.2, 5.8, 9.6],  [-26.0, 1.2, 0.0], 40, 'arc');
+  K(7.12, [-27.6, 3.6, 6.2],  [-26.0, 1.2, 0.0], 37, 'push');
+  K(7.40, [-30.0, 3.8, 10.5], [-29.0, 2.2, -2.0], 40, 'pull');
+  K(10.60,[-21.5, 3.8, 10.5], [-21.5, 2.2, -2.0], 40, 'push');
+  K(11.64,[-23.5, 2.0, 2.2],  [-23.5, 1.8, -2.0], 34, 'push');
+  // Beat 2 (12.20 - 25.76): Software Tollbooth -> 1990s Office (30 Days) -> Sega $5M Cheque -> $5T Monument
+  K(12.20,[0.0, 2.2, -5.5],  [0.0, 2.2, 1.0],  38, true);
+  K(13.80,[0.0, 2.6,  8.5],  [0.0, 2.6, -2.5], 40, 'pull');
+  K(15.05,[0.0, 2.5, -1.2],  [0.0, 2.5, -4.0], 38, 'push');
+  K(15.10,[0.8, 2.1,  3.2],  [1.0, 2.2, -1.8], 36, true);
+  K(18.30,[1.0, 2.4,  0.4],  [1.1, 2.5, -1.8], 34, 'push');
+  K(18.34,[0.5, 2.1,  2.8],  [0.2, 1.2,  0.3], 34, 'arc');
+  K(21.20,[0.2, 1.55, 1.7],  [0.35, 1.12, 0.35], 32, 'push');
+  K(21.56,[0.0, 1.8,  5.5],  [0.0, 2.2, -2.5], 40, 'pull');
+  K(25.76,[0.0, 6.8, 17.2],  [0.0, 6.2, -2.5], 44, 'pull');
+  // Beat 3 (26.22 - 36.16): $215.9B Revenue Machine -> Competitors Appear -> Silicon Alone Barrier
+  K(26.22,[2.2, 8.8,  7.2],  [0.0, 7.4, -2.5], 38, true);
+  K(30.42,[2.6, 4.0,  9.8],  [0.0, 3.6, -2.5], 39, 'pull');
+  K(34.10,[-6.8, 7.4, 18.8], [0.0, 3.6, -2.5], 44, 'arc');
+  K(34.15,[-7.2, 2.4,  5.4], [-3.2, 1.8, -1.2], 36, true);
+  K(36.16,[-2.6, 2.5,  6.4], [-2.8, 1.9, -1.8], 37, 'arc');
+  // Beat 4 (36.60 - 47.02): AMD MI300 -> ROCm Modular Stack -> Azure & Oracle Cloud Deployments
+  K(36.60,[22.5, 2.8, 7.8], [26.0, 1.0, 0.0], 39, 'arc');
+  K(40.30,[28.4, 3.2, 6.2], [26.0, 1.0, 0.0], 37, 'arc');
+  K(43.46,[25.6, 2.0, 3.8], [26.0, 1.1, 0.0], 34, 'push');
+  K(43.76,[23.0, 2.8, 8.8], [23.2, 1.8, -0.5], 38, 'pull');
+  K(47.02,[29.4, 2.8, 8.8], [28.8, 1.8, -0.5], 38, 'push');
+  // Beat 5 (47.76 - 59.82): McKinsey Table (GPU/CPU/ASIC) -> Custom ASIC -> Google TPU -> Training & Inference
+  K(47.76,[22.8, 3.2, 6.8], [24.2, 1.0, -0.5], 38, 'arc');
+  K(50.40,[27.2, 3.0, 6.8], [26.6, 1.0, 0.0], 37, 'push');
+  K(54.22,[28.6, 2.5, 4.4], [26.8, 1.1, 0.0], 35, 'arc');
+  K(56.80,[26.2, 2.2, 3.8], [26.8, 1.0, 0.0], 34, 'push');
+  K(59.82,[28.4, 3.6, 10.6],[25.8, 1.6, -0.4], 40, 'pull');
+  // Beat 6 (60.58 - 69.28): Three Alternatives -> Crack CUDA Monopoly -> Enormous Wall -> Cliffhanger Push
+  K(60.58,[52.0, 2.8,  7.6], [52.0, 1.4,  0.0], 39, true);
+  K(62.94,[52.0, 3.6, 10.2], [52.0, 1.8, -2.5], 41, 'pull');
+  K(65.70,[52.0, 2.8, -3.2], [52.0, 2.2, -9.0], 38, 'push');
+  K(68.84,[52.0, 2.4, -7.8], [52.0, 3.2, -15.5],40, 'push');
+  K(69.28,[52.0, 2.4,-10.8], [52.0, 3.2, -15.5],36, 'push');
 
   const ORB_YAW = [-0.55, 0.5, -0.28, 0.62, -0.42, 0.34, -0.6, 0.22];
   const ORB_PIT = [0.12, 0.3, 0.07, 0.46, 0.16, 0.36, 0.1, 0.26];
   const ORB_DST = [0.35, 0.9, 0.15, 0.75, 0.55, 0.05, 0.85, 0.45];
   (function mapKeys() {
-    let prev = null, fly = 0, arcN = 0;
-    CAM_KEYS.forEach((k, i) => {
-      const v = k.v, F = mp(v[3], v[4], v[5]), ty = k.type; F[1] -= 0.5;   // aim a little lower so characters sit above the caption box
-      let yaw, pitch, Dh, fov;
-      if ((ty === 'hold' || ty === 'push' || ty === 'pull' || ty === 'arc') && prev) {      // same angle as the previous shot; only distance / fov change
-        yaw = ty === 'arc' ? Math.max(-YAWMAX, Math.min(YAWMAX, prev.yaw + (arcN++ % 2 ? -0.34 : 0.34))) : prev.yaw; pitch = ty === 'arc' ? Math.min(PMAX, prev.pitch + 0.05) : prev.pitch;
-        Dh = (ty === 'hold' || ty === 'arc') ? prev.Dh : ty === 'push' ? Math.max(DMIN * 0.55, prev.Dh * 0.6) : Math.min(DMAX * 1.35, prev.Dh * 1.7);
-        fov = (ty === 'hold' || ty === 'arc') ? prev.fov : ty === 'push' ? prev.fov - 9 : prev.fov + 6;
-      } else {
-        const j = (ty === 'auto' ? i : fly++) % ORB_YAW.length, ox = v[0] - v[3], oz = v[2] - v[5];
-        yaw = Math.max(-YAWMAX, Math.min(YAWMAX, Math.atan2(ox, oz) * 0.35 + ORB_YAW[j])); pitch = Math.max(PMIN, Math.min(PMAX, ORB_PIT[j])); Dh = (DMIN + (DMAX - DMIN) * ORB_DST[j]) * 0.86;
-        fov = v[6] + (j % 2 ? -3 : 2);
-      }
-      fov = Math.max(30, Math.min(58, fov)); prev = { yaw, pitch, Dh, fov };
-      k.v = [F[0] + Dh * Math.sin(yaw), F[1] + Dh * Math.tan(pitch), F[2] + Dh * Math.cos(yaw), F[0], F[1], F[2], fov];
+    CAM_KEYS.forEach(k => {
+      const v = k.v, P = mp(v[0], v[1], v[2]), F = mp(v[3], v[4], v[5]);
+      k.v = [P[0], P[1], P[2], F[0], F[1] - 0.2, F[2], v[6]];
     });
   })();
   (function buildTangents() {
@@ -1146,6 +1234,8 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
     renderer.setSize(1920, 1080, false);
     renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(PAL.parchment);
@@ -1689,7 +1779,7 @@ function drawSpriteChar(c, p, sc, t) {
   const eIn = u => u * u * u;
   let GROUND = [], ITEMS = [], OVER = [], CAST = [];
   const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0 };
-  const LBL = new Map(), NEARCULL = 9;
+  const LBL = new Map(), NEARCULL = 0.5;
   function grab(type, make) { const p = POOL[type]; let o = p[CNT[type]]; if (!o) { o = make(); X.world.add(o.m); p.push(o); } CNT[type]++; o.m.visible = true; return o; }
   function setCol(mat, col, em, a) { mat.color.set(col); if (mat.emissive) { mat.emissive.set(col); mat.emissiveIntensity = (em || 0) * 0.8; } const tr = a < 1; mat.opacity = a; if (mat.transparent !== tr) { mat.transparent = tr; mat.depthWrite = !tr; mat.needsUpdate = true; } }
   function paleCol(c) { const n = parseInt(String(c).replace('#', ''), 16) || 0, r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255; if (r + g + b > 330) return c; const f = 0.3; return 'rgb(' + Math.round(r + (255 - r) * f) + ',' + Math.round(g + (255 - g) * f) + ',' + Math.round(b + (255 - b) * f) + ')'; }
@@ -1951,10 +2041,21 @@ function drawSpriteChar(c, p, sc, t) {
     return { t: cur.t.map((v, c) => prev.t[c] + (v - prev.t[c]) * k), f: lerpHSLHex(prev.f, cur.f, k), h: prev.h + (cur.h - prev.h) * k, sun: lerpHSLHex(prev.sun, cur.sun, k) };
   }
   function applyMood(t) {
-    const m = moodAt(t); scene.fog.color.setHex(m.f); scene.background.setHex(m.f);
-    X.sky.material.color.setRGB(m.t[0], m.t[1], m.t[2]); X.ground.material.color.setRGB(m.t[0] * 0.86, m.t[1] * 0.88, m.t[2] * 0.92);
-    X.bMats.forEach(b => b.color.setRGB(Math.min(1, m.t[0] * 1.05), Math.min(1, m.t[1] * 1.05), Math.min(1, m.t[2] * 1.05)));
-    X.sun.material.color.setHex(m.sun); hemiLight.intensity = 0.82 * m.h; dirLight.intensity = 1.05 * m.h;
+    const inOffice = t >= 15.10 && t < 21.56;
+    const warmLift = inOffice ? easeOut(seg(t, 19.20, 21.20)) : 0;
+    scene.fog.color.setHex(inOffice ? 0x16120E : 0x0E1013);
+    scene.background.setHex(inOffice ? 0x16120E : 0x0E1013);
+    if (X.floorN) X.floorN.visible = false;
+    if (X.sky) X.sky.visible = false;
+    if (X.sky2) X.sky2.visible = false;
+    if (X.ground) X.ground.material.color.setRGB(0.08, 0.09, 0.11);
+    if (X.trees) X.trees.visible = false;
+    if (X.trunks) X.trunks.visible = false;
+    if (X.sun) X.sun.visible = false;
+    (X.clouds || []).forEach(c => c.visible = false);
+    dirLight.color.setHex(inOffice ? 0xD98A3A : 0xDCE4F0);
+    hemiLight.intensity = inOffice ? lerp(0.38, 0.56, warmLift) : 0.72;
+    dirLight.intensity = inOffice ? lerp(0.62, 0.92, warmLift) : 1.15;
   }
   // ---- beat dressing (data from cfg 'dress', authored by tools/jb/dress.py): flows, orbits, growing stacks, pulses, beams, sparks
   const DRESS = [];
@@ -1976,7 +2077,7 @@ function drawSpriteChar(c, p, sc, t) {
     r3Begin();
     applyMood(t);
     CAST.length = 0; GROUND = []; ITEMS = []; OVER = []; Object.keys(CNT).forEach(k => CNT[k] = 0);
-    applyCamera(t, [], null);
+    applyCamera(t, [[34.95, 9.0, 0.22], [68.84, 10.0, 0.25]], null);
     camera.updateMatrixWorld(); X.applySets(moodAt(t));
     X.animate(t); X.ambientCast(t);
     dressFrame(t);
@@ -2290,61 +2391,578 @@ function drawSpriteChar(c, p, sc, t) {
   const ball = (x, y, z) => { Cyl(x, y, z, 0.7, 0.7, '#E07B2A'); Box(x, y + 0.3, z + 0.1, 1.45, 0.07, 0.2, '#3A2410', { lw: 0 }); };
   // a wide, readable 'people' row of old-style casual characters and portrait avatars
   const peopleRow = (x, z, n, gap, t, t0, pose, t1) => { for (let i = 0; i < n; i++) Char('student', x + (i - (n - 1) / 2) * gap, z + (i % 2) * 1.2, 2.0, Object.assign({ phase: i * 0.6, pose }, {}), t0 + i * 0.08, t1 === undefined ? 1e9 : t1, t); };
-  const HEADS = [
-    [0.05, 2.10, 'CONTINUITY', 'From 40-50% stack value to the 2024 moat', PAL.amber],
-    [2.20, 33.90, '5M DEVS | $5T CAP', '>80% market share & $215.9B FY26 revenue', PAL.sage],
-    [34.10, 60.30, 'ROCM & CUSTOM ASICS', 'AMD MI300 & Google TPUs carve bypass lanes', PAL.cyan],
-    [60.50, 69.50, 'THE HARD WALL', 'One wall nobody can code their way around', PAL.amber]
-  ];
+  const HEADS = [];
 
   function renderShots(t) {
     beginFrame(t);
     const hit = (x, y, z, ht, col, r) => { const p = S(x, y, z); if (p) OVER.push(() => hitFx(p.x, p.y, t, ht, { color: col, r: r || 240, rays: 14 })); };
     const pop = (txt, x, y, z, w, h, bg, fg, t0, t1, o) => Card(x, y, z, w, h, Object.assign({ kind: /^#(D94E43|2B8A6E|D99B26)$/i.test(bg) ? 'stamp' : 'tag', text: txt, bg, fg, accent: /^#(0B1A22|0B191E)$/i.test(bg) ? '#76B900' : fg, t0, t1: t1 || 0 }, o || {}), t);
-    for (let k = 0; k < 4; k++) pad(-42 + k * 26, -12, -12 + k * 26, 14, '#12262E');
+    const pill2D = (cx, cy, txt, bg, fg, accent, a) => {
+      if (a <= 0.02) return;
+      ctx.save(); ctx.globalAlpha = a;
+      ctx.font = '900 26px' + FAM;
+      const tw = ctx.measureText(txt).width, w = tw + 48, h = 52;
+      rrect(ctx, cx - w / 2, cy - h / 2, w, h, 10); ctx.fillStyle = bg; ctx.fill();
+      ctx.strokeStyle = accent || '#2D3440'; ctx.lineWidth = 2; ctx.stroke();
+      ctx.fillStyle = fg; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(txt, cx, cy + 1);
+      ctx.restore();
+    };
 
-    // ===== S0 (-26, 0.00 - 2.20): Continuity Bridge =====
-    if (t < 2.6) {
-      Box(-31, 0, -1.0, 2.4, 2.6, 2.0, PAL.steel);
-      Box(-26, 0, -1.0, 2.4, 1.8, 2.0, PAL.steel);
-      Box(-21, 0, -1.0, 2.8, 5.4, 2.2, PAL.amber, { emis: 0.35 });
+    // ===== BEAT 1 (00.00 - 11.64, c = -26): CUDA Empire (5M Devs -> 80% AI GPU Ring -> 75% Supercomputers) =====
+    if (t < 12.1) {
+      // Central glowing NVIDIA GPU origin (visible across Shots 1 & 2)
+      if (t < 7.25) {
+        Box(-26.0, 0.0, 0.0, 2.2, 0.24, 2.2, '#2C323B');
+        Box(-26.0, 0.24, 0.0, 1.45, 0.22, 1.45, '#76B900', { emis: 0.72 + 0.15 * Math.sin(t * 5) });
+      }
+
+      // Shot 1 (0.00 - 3.82): Interconnected network of green pathways + progressively illuminating developer workstations
+      if (t < 4.45) {
+        const netU = easeOut(seg(t, 0.15, 3.20));
+        const compU = easeInOut(seg(t, 3.82, 4.45));
+        const fadeOut = 1 - compU;
+        const rings = [
+          { r: 2.8, n: 8,  tOn: 0.35 },
+          { r: 4.8, n: 12, tOn: 0.95 },
+          { r: 6.8, n: 16, tOn: 1.65 }
+        ];
+        rings.forEach((rg, ri) => {
+          for (let i = 0; i < rg.n; i++) {
+            const ang = (i / rg.n) * Math.PI * 2 + ri * 0.22;
+            const rr = lerp(rg.r, 3.4, compU);
+            const wx = -26.0 + Math.cos(ang) * rr, wz = Math.sin(ang) * rr;
+            const lit = t >= rg.tOn + i * 0.06;
+            const linkU = clamp((netU * 1.4 - ri * 0.25), 0, 1);
+            if (linkU > 0.05) {
+              Line3([-26.0, 0.35, 0.0], [lerp(-26.0, wx, linkU), 0.35, lerp(0.0, wz, linkU)], '#76B900', 2.4, fadeOut);
+            }
+            if (t >= rg.tOn * 0.7 && fadeOut > 0.05) {
+              Box(wx, 0.0, wz, 0.42, 0.28, 0.32, '#181C22', { a: fadeOut });
+              Box(wx, 0.30, wz, 0.34, 0.24, 0.08, lit ? '#76B900' : '#2C323B', { lw: 0, a: fadeOut, emis: lit ? 0.75 : 0 });
+            }
+          }
+        });
+      }
+
+      // Shot 2 (3.82 - 7.12): Physical rotating circular market-share ring (80%+ NVIDIA Sage vs Dark Graphite)
+      if (t >= 3.80 && t < 7.35) {
+        const ringU = easeOut(seg(t, 3.82, 4.65));
+        const fillU = easeOut(seg(t, 4.15, 6.20));
+        const rot = t * 0.45;
+        const segs = 24, R = 3.5;
+        for (let s = 0; s < segs; s++) {
+          const ang = (s / segs) * Math.PI * 2 + rot;
+          const sx = -26.0 + Math.cos(ang) * R, sz = Math.sin(ang) * R;
+          const isNv = s < 19; // 19/24 ~ 79.2% (~80%)
+          const lit = isNv && (s / 19) <= fillU;
+          Box(sx, 0.55, sz, 0.72 * ringU, 0.75 * ringU, 0.52 * ringU, lit ? '#76B900' : '#2C323B', { emis: lit ? 0.65 : 0.05 });
+        }
+      }
+
+      // Shot 3 (7.12 - 11.64): Massive architectural wall of server racks (75%+ illuminated green + measurement bracket)
+      if (t >= 7.10) {
+        const wallU = easeOut(seg(t, 7.12, 8.00));
+        const cols = 16, tiers = 3;
+        for (let c = 0; c < cols; c++) {
+          const rx = -33.2 + c * 0.98;
+          const isNv = c < 12; // 12/16 = 75%
+          for (let tr = 0; tr < tiers; tr++) {
+            const ry = 0.2 + tr * 1.25;
+            Box(rx, ry, -2.2, 0.82, 1.05 * wallU, 0.95, '#181C22');
+            Box(rx, ry + 0.35, -1.70, 0.64, 0.32 * wallU, 0.06, isNv ? '#76B900' : '#3A424E', { lw: 0, emis: isNv ? 0.65 : 0 });
+          }
+        }
+        // Highlighted GPU module on approached rack (x = -23.5, y = 1.8) for transition into Beat 2
+        Box(-23.4, 1.55, -1.62, 0.74, 0.62, 0.14, '#76B900', { emis: 0.95 });
+        // 75% measurement bracket along the illuminated racks
+        if (wallU > 0.5) {
+          Line3([-33.6, 4.35, -1.7], [-22.0, 4.35, -1.7], '#76B900', 4, 1);
+          Line3([-33.6, 4.05, -1.7], [-33.6, 4.35, -1.7], '#76B900', 3, 1);
+          Line3([-22.0, 4.05, -1.7], [-22.0, 4.35, -1.7], '#76B900', 3, 1);
+        }
+      }
+
+      // Beat 1 2D Kinetic Overlays
+      OVER.push(() => {
+        if (t >= 0.40 && t < 3.82) {
+          const cntU = easeOut(seg(t, 0.45, 2.30));
+          const val = Math.round(5000000 * cntU).toLocaleString('en-US');
+          const a = env(t, 0.40, 3.82, 0.15, 0.18);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 680, 150, 560, 126, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#76B900'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = '#76B900'; ctx.font = '900 48px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(val, 960, 198);
+          ctx.fillStyle = '#F4F6F8'; ctx.font = '800 19px' + FAM;
+          ctx.fillText('DEVELOPERS', 960, 246);
+          ctx.restore();
+        }
+        if (t >= 4.10 && t < 7.10) {
+          const a = env(t, 4.10, 7.10, 0.15, 0.15);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 740, 160, 440, 124, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#76B900'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = '#76B900'; ctx.font = '900 50px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('80%+', 960, 206);
+          ctx.fillStyle = '#F4F6F8'; ctx.font = '800 19px' + FAM;
+          ctx.fillText('AI GPU MARKET', 960, 254);
+          ctx.restore();
+        }
+        if (t >= 7.50 && t < 11.45) {
+          const a = env(t, 7.50, 11.45, 0.15, 0.18);
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 710, 155, 500, 124, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#76B900'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.fillStyle = '#76B900'; ctx.font = '900 50px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('75%+', 960, 202);
+          ctx.fillStyle = '#F4F6F8'; ctx.font = '800 19px' + FAM;
+          ctx.fillText('TOP 500 SUPERCOMPUTERS', 960, 250);
+          ctx.restore();
+        }
+      });
     }
 
-    // ===== S1 (0, 2.20 - 34.10): 5M Devs Tollbooth & $5T Tower =====
-    if (t >= 2.0 && t < 34.3) {
-      // Fortified CUDA tollbooth
-      Box(-4.5, 0, -2.0, 1.0, 5.5, 1.2, PAL.steel);
-      Box(4.5, 0, -2.0, 1.0, 5.5, 1.2, PAL.steel);
-      Box(0, 5.5, -2.0, 10.6, 1.2, 1.4, PAL.sage, { emis: 0.45 });
-      // Queued Circle developers (1.72u, y=0)
-      for (let i = 0; i < 4; i++) Char('engineer', -5.5 + i * 2.2, 2.6, 1.43, { facing: 1, pose: 'hold', prop: 'laptop', phase: i * 0.5 }, 2.3 + i * 0.2, 34.2, t);
-      // $5M SEGA brick -> $5T tower
-      const twH = t >= 21.5 ? 7.2 * easeOut(seg(t, 21.5, 25.0)) : 1.0;
-      Box(7.8, 0, -1.2, 3.0, Math.max(0.6, twH), 2.4, PAL.sage, { emis: t >= 21.5 ? 0.4 : 0 });
-      pop('5M DEVS | $5T CAP', 0, 8.2, -1.5, 8.0, 1.1, PAL.ink, PAL.ivory, 3.8, 33.9, { accent: PAL.sage });
-      if (t >= 21.50) hit(7.8, 6.2, -1.2, 21.56, PAL.sageHi, 280);
+    // ===== BEAT 2 (12.20 - 25.76, c = 0): Software Tollbooth -> 1990s Office -> Sega $5M -> $5T Monument =====
+    if (t >= 12.1 && t < 26.25) {
+      // Shot 4 (12.20 - 15.10): Converging green pathways through monumental CUDA Software Tollbooth Gateway
+      if (t < 15.10) {
+        // Architectural Tollbooth pillars & lintel with integrated THE SOFTWARE TOLLBOOTH lettering
+        Box(-4.2, 0, -2.5, 1.4, 5.4, 1.8, '#2C323B');
+        Box( 4.2, 0, -2.5, 1.4, 5.4, 1.8, '#2C323B');
+        Box(0.0, 5.2, -2.5, 10.2, 1.3, 2.0, '#181C22');
+        Box(0.0, 5.05, -1.46, 8.2, 0.14, 0.08, '#76B900', { lw: 0, emis: 0.75 });
+        Label('THE SOFTWARE TOLLBOOTH', 0.0, 5.85, -1.40, 7.6, 0.95, '#181C22', '#76B900', { line: '#76B900' });
+        // Converging green pathways & steady data stream passing through the gateway
+        for (let ln = -2; ln <= 2; ln++) {
+          Line3([ln * 2.2, 0.25, 6.0], [ln * 0.85, 0.25, -2.5], '#76B900', 3, 1);
+          Line3([ln * 0.85, 0.25, -2.5], [ln * 2.6, 0.25, -11.0], '#76B900', 3, 1);
+          const q = (t * 0.9 + (ln + 2) * 0.19) % 1;
+          const pz = lerp(5.5, -10.0, q);
+          const px = q < 0.48 ? lerp(ln * 2.2, ln * 0.85, q / 0.48) : lerp(ln * 0.85, ln * 2.6, (q - 0.48) / 0.52);
+          Box(px, 0.35, pz, 0.28, 0.18, 0.48, '#76B900', { lw: 0, emis: 0.85 });
+        }
+      }
+
+      // Shot 5 (15.10 - 18.34) & Shot 6 (18.34 - 21.56): Dim 1990s Office -> Calendar (30 Days) -> Sega $5M Cheque
+      if (t >= 15.10 && t < 21.56) {
+        // 1990s office wall, wooden desk, beige CRT monitor, old PC tower & unpaid bills
+        Box(0.0, 0.0, -2.2, 10.0, 5.6, 0.3, '#25201B');
+        Box(0.0, 0.0,  0.0, 4.4, 0.92, 2.2, '#5C4430');
+        Box(-1.3, 0.92, -0.35, 0.95, 0.85, 0.85, '#C8BFA8'); // CRT housing
+        Box(-1.3, 1.05,  0.09, 0.72, 0.58, 0.04, '#182420', { lw: 0, emis: 0.22 }); // dim CRT screen
+        Box(-2.05, 0.92, -0.25, 0.42, 0.95, 0.85, '#B8AF98'); // 1990s PC tower
+        // Stack of financial documents / unpaid bills on desk
+        Box(-0.75, 0.92, 0.35, 0.75, 0.18, 0.95, '#E5DEC9');
+        Box(-0.75, 1.10, 0.35, 0.72, 0.03, 0.22, '#D94E43', { lw: 0, emis: 0.25 });
+
+        // Wall Calendar counting down to 30 DAYS REMAINING (Shot 5)
+        Panel(1.1, 2.55, -1.98, 1.7, 1.8, (g, pw, ph) => {
+          const days = Math.max(30, Math.round(lerp(90, 30, easeOut(seg(t, 15.20, 17.50)))));
+          g.fillStyle = '#E5DEC9'; g.fillRect(0, 0, pw, ph);
+          g.fillStyle = '#D94E43'; g.fillRect(0, 0, pw, ph * 0.26);
+          g.fillStyle = '#FAF7F0'; g.font = '900 44px' + FAM; g.textAlign = 'center'; g.textBaseline = 'middle';
+          g.fillText('1990s RUNWAY', pw / 2, ph * 0.13);
+          g.fillStyle = '#181C22'; g.font = '900 130px' + FAM;
+          g.fillText(String(days), pw / 2, ph * 0.56);
+          g.fillStyle = '#D94E43'; g.font = '800 32px' + FAM;
+          g.fillText('DAYS LEFT', pw / 2, ph * 0.84);
+        }, { cw: 384 });
+
+        // Physical Sega Cheque sliding onto desk (Shot 6: 18.34 - 21.56)
+        if (t >= 18.30) {
+          const chU = easeOut(seg(t, 18.34, 19.05));
+          const chX = lerp(2.6, 0.45, chU);
+          Panel(chX, 1.02, 0.35, 1.55, 0.82, (g, pw, ph) => {
+            g.fillStyle = '#F5EFE0'; g.fillRect(0, 0, pw, ph);
+            g.strokeStyle = '#F59E0B'; g.lineWidth = 10; g.strokeRect(8, 8, pw - 16, ph - 16);
+            g.fillStyle = '#181C22'; g.font = '900 28px' + FAM; g.textAlign = 'left';
+            g.fillText('PAY TO: NVIDIA CORP', 28, 48);
+            g.fillStyle = '#D97706'; g.font = '900 62px' + FAM;
+            g.fillText('$5,000,000', 28, 128);
+            g.fillStyle = '#3A424E'; g.font = '800 24px' + FAM;
+            g.fillText('SIGNED: SEGA · 1990s', 28, 188);
+          }, { cw: 512 });
+
+          // Glowing amber financial line extending from cheque to NVIDIA company documents
+          const lineU = easeOut(seg(t, 19.50, 21.10));
+          if (lineU > 0.02) {
+            Line3([0.2, 1.02, 0.35], [lerp(0.2, -0.75, lineU), 1.02, 0.35], '#F59E0B', 5, 1);
+          }
+        }
+      }
+
+      // Shot 7 (21.56 - 25.76): Amber lifeline leaves office -> Monumental $5 Trillion Structure rises
+      if (t >= 21.56) {
+        const monU = easeOut(seg(t, 21.65, 24.40));
+        const hMon = 11.4 * monU;
+        // Amber architectural pathway into the monument
+        Line3([0.0, 0.25, 4.5], [0.0, 0.25, -2.5], '#F59E0B', 6, 1);
+        // Towering corporate valuation monument (server hardware + green ecosystem connections)
+        Box(0.0, 0.0, -2.5, 4.2, Math.max(0.4, hMon), 3.6, '#181C22');
+        Box(0.0, 0.0, -2.5, 4.28, Math.max(0.2, hMon * 0.45), 3.68, '#76B900', { a: 0.35, emis: 0.42 });
+        if (hMon > 2.0) {
+          Line3([-2.16, 0.0, -0.68], [-2.16, hMon, -0.68], '#F59E0B', 3.5, 1);
+          Line3([ 2.16, 0.0, -0.68], [ 2.16, hMon, -0.68], '#F59E0B', 3.5, 1);
+        }
+        // Surrounding server infrastructure assembling around base
+        [[-3.6, -1.8], [3.6, -1.8], [-3.2, -4.4], [3.2, -4.4]].forEach(([sx, sz], idx) => {
+          const sH = (3.4 + (idx % 2) * 1.4) * monU;
+          Box(sx, 0, sz, 1.6, Math.max(0.2, sH), 1.6, '#2C323B');
+          Line3([sx, sH * 0.6, sz], [0.0, hMon * 0.4, -2.5], '#76B900', 2.5, 1);
+        });
+        if (t >= 21.56 && t < 22.30) hit(0.0, 4.5, -2.5, 21.60, '#76B900', 300);
+      }
     }
 
-    // ===== S2 (26, 34.10 - 60.50): AMD ROCm & Google TPUs Bypass Lanes =====
-    if (t >= 33.9 && t < 60.7) {
-      // Steel CUDA tollbooth on left
-      Box(21.0, 0, -2.0, 4.2, 5.2, 1.6, PAL.steel);
-      // Cyan bypass lanes carving around right
-      const laneProg = easeOut(seg(t, 36.6, 46.0));
-      Line3([24.0, 0.2, 1.5], [24.0 + 10 * laneProg, 0.2, 1.5], PAL.cyan, 8, 1);
-      Line3([24.0, 0.2, -0.5], [24.0 + 10 * laneProg, 0.2, -0.5], PAL.cyan, 8, 1);
-      Char('engineer', 29.0, 2.6, 1.43, { facing: -1, pose: 'point', phase: 0.4 }, 36.6, 60.6, t);
-      pop('ROCM & ASICS', 26, 7.6, -1.0, 7.0, 1.1, PAL.ink, PAL.ivory, 40.3, 60.4, { accent: PAL.cyan });
-      if (t >= 43.70) hit(29.0, 1.2, 1.5, 43.76, PAL.cyanHi, 220);
+    // ===== BEAT 3 (26.22 - 36.16, c = 0): $215.9B Revenue Machine -> Competitors -> CUDA Barrier =====
+    if (t >= 26.22 && t < 36.35) {
+      const hMon = 11.4;
+      // Central $5T NVIDIA tower with moving green data pathways
+      Box(0.0, 0.0, -2.5, 4.2, hMon, 3.6, '#181C22');
+      Box(0.0, 0.0, -2.5, 4.28, hMon * 0.45, 3.68, '#76B900', { a: 0.35, emis: 0.45 });
+      Line3([-2.16, 0.0, -0.68], [-2.16, hMon, -0.68], '#F59E0B', 3.5, 1);
+      Line3([ 2.16, 0.0, -0.68], [ 2.16, hMon, -0.68], '#F59E0B', 3.5, 1);
+
+      // Shot 8 (26.22 - 30.42): Multiple product/software/infra streams flowing into NVIDIA central tower
+      if (t < 30.50) {
+        [[-5.5, 6.2], [-4.8, 3.8], [5.5, 6.2], [4.8, 3.8]].forEach(([sx, sy], idx) => {
+          Line3([sx, sy, -2.5], [0.0, sy * 0.85, -2.5], '#76B900', 3, 1);
+          const q = (t * 1.15 + idx * 0.25) % 1;
+          Box(lerp(sx, 0.0, q), lerp(sy, sy * 0.85, q), -2.5, 0.34, 0.24, 0.34, idx % 2 ? '#F59E0B' : '#76B900', { lw: 0, emis: 0.85 });
+        });
+      }
+
+      // Shot 9 (30.42 - 34.12) & Shot 10 (34.12 - 36.16): Muted grey competitor structures + Invisible CUDA Barrier
+      if (t >= 30.42) {
+        const compU = easeOut(seg(t, 30.50, 32.80));
+        const rivals = [
+          [-9.5, -1.0, 2.4, 4.2, 2.4],
+          [-7.5, -6.5, 2.2, 3.6, 2.2],
+          [ 9.2, -1.5, 2.6, 4.5, 2.6],
+          [ 7.8, -6.8, 2.0, 3.4, 2.0],
+          [ 0.5, -9.8, 2.8, 4.0, 2.2]
+        ];
+        rivals.forEach(([rx, rz, rw, rh, rd]) => {
+          Box(rx, 0, rz, rw, Math.max(0.2, rh * compU), rd, '#2C323B');
+        });
+      }
+
+      // Shot 10 (34.12 - 36.16): Competitor silicon chip accelerates -> collides with invisible CUDA ecosystem shield
+      if (t >= 34.12) {
+        const chU = easeInCubic(seg(t, 34.20, 34.95));
+        const chipX = lerp(-7.8, -3.9, chU);
+        Box(chipX, 1.5, -1.6, 1.25, 0.35, 1.25, '#5B6573');
+        // Green CUDA software ecosystem barrier revealed around NVIDIA's tower on impact
+        const shA = easeOut(seg(t, 34.90, 35.40));
+        if (shA > 0.04) {
+          for (let b = -3; b <= 3; b++) {
+            Line3([-3.2, 0.2, -2.5 + b * 0.75], [-3.2, 6.2, -2.5 + b * 0.75], '#76B900', 4, shA);
+          }
+          if (t < 35.45) hit(-3.2, 1.7, -1.6, 34.95, '#76B900', 260);
+        }
+      }
     }
 
-    // ===== S3 (52, 60.50 - 69.76): The Hard Wall =====
+    // Beat 2 & Beat 3 2D Kinetic Overlays
+    OVER.push(() => {
+      if (t >= 15.25 && t < 18.30) {
+        pill2D(960, 175, '30 DAYS FROM BANKRUPTCY', '#181C22', '#D94E43', '#D94E43', env(t, 15.25, 18.30, 0.15, 0.15));
+      }
+      if (t >= 18.45 && t < 21.35) {
+        const a = env(t, 18.45, 21.35, 0.15, 0.15);
+        ctx.save(); ctx.globalAlpha = a;
+        rrect(ctx, 210, 160, 400, 118, 14); ctx.fillStyle = '#181C22'; ctx.fill();
+        ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 2.5; ctx.stroke();
+        ctx.fillStyle = '#F59E0B'; ctx.font = '900 32px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText("SEGA'S LIFELINE", 410, 202);
+        ctx.fillStyle = '#8E99A8'; ctx.font = '800 20px' + FAM;
+        ctx.fillText('1990s', 410, 248);
+        ctx.restore();
+      }
+      if (t >= 22.10 && t < 25.90) {
+        const u5 = easeOut(seg(t, 22.20, 24.10));
+        const val5 = (5.0 * u5).toFixed(1);
+        const a = env(t, 22.10, 25.90, 0.18, 0.18);
+        ctx.save(); ctx.globalAlpha = a;
+        rrect(ctx, 700, 150, 520, 126, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+        ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 2.5; ctx.stroke();
+        ctx.fillStyle = '#F59E0B'; ctx.font = '900 48px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(u5 >= 0.99 ? '$5 TRILLION' : '$' + val5 + ' TRILLION', 960, 198);
+        ctx.fillStyle = '#F4F6F8'; ctx.font = '800 19px' + FAM;
+        ctx.fillText('OCTOBER 2025', 960, 246);
+        ctx.restore();
+      }
+      if (t >= 26.35 && t < 30.40) {
+        const u215 = easeOut(seg(t, 26.45, 28.60));
+        const val215 = (215.9 * u215).toFixed(1);
+        const a = env(t, 26.35, 30.40, 0.15, 0.18);
+        ctx.save(); ctx.globalAlpha = a;
+        rrect(ctx, 700, 155, 520, 126, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+        ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 2.5; ctx.stroke();
+        ctx.fillStyle = '#F59E0B'; ctx.font = '900 46px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('$' + val215 + ' BILLION', 960, 202);
+        ctx.fillStyle = '#76B900'; ctx.font = '800 19px' + FAM;
+        ctx.fillText('FISCAL 2026 REVENUE', 960, 250);
+        ctx.restore();
+      }
+      if (t >= 34.95 && t < 36.25) {
+        pill2D(960, 200, "RAW SILICON ISN'T ENOUGH.", '#181C22', '#F4F6F8', '#76B900', env(t, 34.95, 36.25, 0.10, 0.12));
+      }
+    });
+
+    // ===== BEAT 4 (36.60 - 47.02, c = 26): AMD MI300 -> ROCm Modular Stack -> Azure & Oracle Cloud =====
+    if (t >= 36.4 && t < 47.55) {
+      // Shot 11 (36.60 - 40.30) & Shot 12 (40.30 - 43.46): AMD MI300 Chiplet Accelerator + Open Modular ROCm Stack
+      if (t < 43.75) {
+        // Alternative semiconductor facility plinth with restrained AMD red edge lighting
+        Box(26.0, -0.1, 0.0, 9.0, 0.25, 6.0, '#181C22');
+        Line3([21.6, 0.16, 2.9], [30.4, 0.16, 2.9], '#D94E43', 2.5, 0.7);
+        // MI300 interposer + 8 outer HBM3 memory stacks + 4 central compute chiplets
+        Box(26.0, 0.15, 0.0, 3.4, 0.24, 2.5, '#2C323B');
+        [-1.35, 1.35].forEach(hx => {
+          [-0.75, -0.25, 0.25, 0.75].forEach(hz => {
+            Box(26.0 + hx, 0.39, hz, 0.45, 0.28, 0.38, '#181C22');
+            Box(26.0 + hx, 0.67, hz, 0.42, 0.04, 0.35, '#D94E43', { lw: 0, emis: 0.45 });
+          });
+        });
+        [[-0.45, -0.45], [0.45, -0.45], [-0.45, 0.45], [0.45, 0.45]].forEach(([cx, cz]) => {
+          Box(26.0 + cx, 0.39, cz, 0.72, 0.22, 0.72, '#3A424E');
+          if (t >= 40.30) {
+            Box(26.0 + cx, 0.62, cz, 0.56, 0.04, 0.56, '#D94E43', { lw: 0, emis: 0.65 + 0.2 * Math.sin(t * 7 + cx) });
+          }
+        });
+
+        // Shot 12 (40.30 - 43.46): Open, modular ROCm software blocks assembling & connecting independently
+        if (t >= 40.30) {
+          const modU = easeOut(seg(t, 40.35, 41.60));
+          const modOffsets = [[-1.1, -0.5], [0.0, -0.7], [1.1, -0.5], [-0.6, 0.6], [0.6, 0.6]];
+          modOffsets.forEach(([mx, mz], idx) => {
+            const my = lerp(2.4, 1.35, modU) + Math.sin(t * 2.5 + idx) * 0.04;
+            Box(26.0 + mx, my, mz, 0.68, 0.16, 0.48, '#2C323B');
+            Box(26.0 + mx, my + 0.16, mz, 0.62, 0.04, 0.42, '#D94E43', { lw: 0, emis: 0.55 });
+            Line3([26.0 + mx, my, mz], [26.0 + mx * 0.4, 0.62, mz * 0.5], '#D94E43', 2.5, modU);
+          });
+        }
+      }
+
+      // Shot 13 (43.76 - 47.02): Microsoft Azure & Oracle Cloud enterprise server installations + Price/Performance bar
+      if (t >= 43.70) {
+        const cldU = easeOut(seg(t, 43.76, 44.60));
+        [22.8, 28.4].forEach((rx, rIdx) => {
+          Box(rx, 0.0, -1.2, 2.6, 4.2 * cldU, 1.6, '#181C22');
+          for (let u = 0; u < 4; u++) {
+            Box(rx, 0.45 + u * 0.9, -0.35, 2.1, 0.42 * cldU, 0.12, '#D94E43', { lw: 0, emis: 0.6 });
+          }
+          // Incoming AI inference requests -> processed outgoing data streams
+          const q = (t * 1.1 + rIdx * 0.45) % 1;
+          Line3([rx - 1.8, 1.8, 1.2], [rx, 1.8, -0.3], '#D94E43', 3, 1);
+          Line3([rx, 1.8, -0.3], [rx + 2.4, 1.8, 1.2], '#F59E0B', 3, 1);
+          Box(lerp(rx - 1.8, rx + 2.4, q), 1.8, q < 0.5 ? lerp(1.2, -0.3, q * 2) : lerp(-0.3, 1.2, (q - 0.5) * 2), 0.28, 0.22, 0.28, q < 0.5 ? '#D94E43' : '#F59E0B', { lw: 0, emis: 0.85 });
+        });
+        // Amber Price / Performance indicator beside servers
+        const ppU = easeOut(seg(t, 44.40, 45.80));
+        Box(30.8, 0.0, -1.0, 0.72, 3.4 * ppU, 0.72, '#F59E0B', { emis: 0.38 });
+      }
+    }
+
+    // ===== BEAT 5 (47.76 - 59.82, c = 26): Custom Silicon Revolution (GPU/CPU/ASIC -> Google TPU -> Training & Inference) =====
+    if (t >= 47.45 && t < 60.25) {
+      // Architectural research table
+      Box(26.0, -0.1, -0.4, 12.0, 0.25, 6.0, '#181C22');
+
+      // Shot 14 (47.76 - 50.40) & Shot 17 (56.80 - 59.82): General-purpose GPU (left) & CPU (center-left)
+      if (t < 50.60 || t >= 56.75) {
+        const gpX = t >= 56.75 ? 22.0 : 22.4;
+        const cpX = t >= 56.75 ? 25.4 : 24.6;
+        // Complex general-purpose GPU
+        Box(gpX, 0.15, -0.2, 2.0, 0.28, 2.0, '#2C323B');
+        for (let g = -1; g <= 1; g++) Box(gpX + g * 0.52, 0.43, -0.2, 0.34, 0.12, 1.5, '#76B900', { lw: 0, emis: 0.4 });
+        // Complex CPU
+        Box(cpX, 0.15, -0.2, 1.6, 0.24, 1.6, '#3A424E');
+        Box(cpX, 0.39, -0.2, 1.0, 0.10, 1.0, '#8E99A8', { lw: 0, emis: 0.25 });
+      }
+
+      // Shot 14-17: Purpose-built Custom ASIC -> Google TPU architecture
+      const asicX = t < 50.40 ? lerp(30.5, 26.8, easeOut(seg(t, 48.20, 49.90))) : (t >= 56.75 ? 29.0 : 26.8);
+      const isTpu = t >= 54.22;
+      const sepU = (t >= 50.40 && t < 54.22) ? easeOut(seg(t, 50.55, 51.60)) : 0;
+
+      // Base substrate + separated casing layer
+      Box(asicX, 0.15, 0.0, 1.9, 0.26, 1.9, '#2C323B');
+      if (sepU > 0.02) {
+        Box(asicX, 0.65 + sepU * 0.85, 0.0, 1.85, 0.10, 1.85, '#3A424E', { a: 0.55 });
+      }
+      if (!isTpu) {
+        // Purpose-built ASIC systolic blocks & direct compute pathway
+        Box(asicX, 0.41, 0.0, 1.25, 0.18, 1.25, '#181C22');
+        Box(asicX, 0.59, 0.0, 0.95, 0.06, 0.35, '#F59E0B', { lw: 0, emis: 0.65 });
+        if (t >= 50.40) {
+          const wq = (t * 1.1) % 1;
+          Line3([asicX - 1.5, 0.52, 0.0], [asicX + 1.5, 0.52, 0.0], '#F59E0B', 3.5, 1);
+          Box(lerp(asicX - 1.5, asicX + 1.5, wq), 0.56, 0.0, 0.24, 0.16, 0.24, '#F59E0B', { lw: 0, emis: 0.9 });
+        }
+      } else {
+        // Shot 16 & 17: Google TPU 4x4 systolic matrix array with restrained Google accents
+        const gCols = ['#4285F4', '#EA4335', '#FBBC05', '#34A853'];
+        for (let r = 0; r < 4; r++) {
+          for (let c = 0; c < 4; c++) {
+            const pulse = 0.45 + 0.45 * Math.sin(t * 8 + r * 0.9 + c * 0.9);
+            Box(asicX - 0.54 + c * 0.36, 0.43, -0.54 + r * 0.36, 0.26, 0.14, 0.26, gCols[(r + c) % 4], { lw: 0, emis: pulse });
+          }
+        }
+      }
+
+      // Shot 17 (56.80 - 59.82): Two separate workload streams (Training vs Everyday Inference)
+      if (t >= 56.80) {
+        // Stream 1: Large Training workloads -> GPU & TPU
+        const q1 = (t * 0.65) % 1;
+        Line3([22.0, 1.6, -2.8], [22.0, 0.55, -0.2], '#F59E0B', 4, 1);
+        Line3([29.0, 1.6, -2.8], [29.0, 0.55, 0.0], '#F59E0B', 4, 1);
+        Box(22.0, lerp(1.6, 0.55, q1), lerp(-2.8, -0.2, q1), 0.42, 0.34, 0.42, '#F59E0B', { lw: 0, emis: 0.85 });
+        Box(29.0, lerp(1.6, 0.55, q1), lerp(-2.8, 0.0, q1), 0.42, 0.34, 0.42, '#F59E0B', { lw: 0, emis: 0.85 });
+        // Stream 2: Fast repeated Everyday Inference requests -> CPU, GPU & TPU
+        [22.0, 25.4, 29.0].forEach((tx, idx) => {
+          const q2 = (t * 1.45 + idx * 0.33) % 1;
+          Line3([tx, 1.2, 2.6], [tx, 0.5, 0.2], '#4285F4', 2.5, 1);
+          Box(tx, lerp(1.2, 0.5, q2), lerp(2.6, 0.2, q2), 0.18, 0.14, 0.18, '#4285F4', { lw: 0, emis: 0.85 });
+        });
+      }
+    }
+
+    // Beat 4 & Beat 5 2D Kinetic Overlays
+    OVER.push(() => {
+      if (t >= 37.10 && t < 40.25) {
+        pill2D(960, 175, 'AMD MI300', '#181C22', '#D94E43', '#D94E43', env(t, 37.10, 40.25, 0.15, 0.15));
+      }
+      if (t >= 40.40 && t < 43.45) {
+        const a = env(t, 40.40, 43.45, 0.15, 0.15);
+        ctx.save(); ctx.globalAlpha = a;
+        rrect(ctx, 700, 155, 520, 120, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+        ctx.strokeStyle = '#D94E43'; ctx.lineWidth = 2.5; ctx.stroke();
+        ctx.fillStyle = '#D94E43'; ctx.font = '900 44px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('ROCm', 960, 198);
+        ctx.fillStyle = '#F4F6F8'; ctx.font = '800 18px' + FAM;
+        ctx.fillText('OPEN-SOURCE SOFTWARE STACK', 960, 244);
+        ctx.restore();
+      }
+      if (t >= 43.90 && t < 47.00) {
+        const a = env(t, 43.90, 47.00, 0.15, 0.15);
+        const pAz = S(22.8, 4.6, -1.2), pOr = S(28.4, 4.6, -1.2);
+        if (pAz) pill2D(clamp(pAz.x, 300, 820), clamp(pAz.y, 170, 320), 'MICROSOFT AZURE', '#181C22', '#F4F6F8', '#D94E43', a);
+        if (pOr) pill2D(clamp(pOr.x, 960, 1460), clamp(pOr.y, 170, 320), 'ORACLE CLOUD', '#181C22', '#F4F6F8', '#D94E43', a);
+        pill2D(1420, 420, 'PRICE / PERFORMANCE', '#181C22', '#F59E0B', '#F59E0B', a);
+      }
+      if (t >= 47.90 && t < 59.82) {
+        pill2D(310, 115, 'McKINSEY · ARCHITECTURE ANALYSIS', '#181C22', '#8E99A8', '#2D3440', env(t, 47.90, 59.82, 0.2, 0.15));
+      }
+      if (t >= 50.55 && t < 54.15) {
+        const a = env(t, 50.55, 54.15, 0.15, 0.15);
+        ctx.save(); ctx.globalAlpha = a;
+        rrect(ctx, 700, 155, 520, 120, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+        ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 2.5; ctx.stroke();
+        ctx.fillStyle = '#F59E0B'; ctx.font = '900 42px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('CUSTOM ASIC', 960, 198);
+        ctx.fillStyle = '#F4F6F8'; ctx.font = '800 18px' + FAM;
+        ctx.fillText('WORKLOAD-SPECIFIC SILICON', 960, 244);
+        ctx.restore();
+      }
+      if (t >= 54.30 && t < 56.75) {
+        const a = env(t, 54.30, 56.75, 0.12, 0.12);
+        ctx.save(); ctx.globalAlpha = a;
+        rrect(ctx, 700, 155, 520, 120, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+        ctx.strokeStyle = '#4285F4'; ctx.lineWidth = 2.5; ctx.stroke();
+        ctx.fillStyle = '#4285F4'; ctx.font = '900 42px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('GOOGLE TPU', 960, 198);
+        ctx.fillStyle = '#F4F6F8'; ctx.font = '800 18px' + FAM;
+        ctx.fillText('PURPOSE-BUILT AI ACCELERATOR', 960, 244);
+        ctx.restore();
+      }
+      if (t >= 56.85 && t < 58.35) {
+        const a = env(t, 56.85, 58.35, 0.10, 0.10);
+        pill2D(680, 185, 'TRAINING', '#181C22', '#F59E0B', '#F59E0B', a);
+        pill2D(1240, 185, 'EVERYDAY INFERENCE', '#181C22', '#4285F4', '#4285F4', a);
+      }
+      if (t >= 58.35 && t < 59.90) {
+        pill2D(960, 185, 'PURPOSE-BUILT HARDWARE', '#181C22', '#F4F6F8', '#4285F4', env(t, 58.35, 59.90, 0.12, 0.15));
+      }
+    });
+
+    // ===== BEAT 6 (60.58 - 69.28, c = 52): Three Alternatives -> Crack CUDA -> Enormous Wall -> Cliffhanger =====
     if (t >= 60.3) {
-      const drop = easeOut(seg(t, 65.65, 67.2));
-      Box(52, 0, -1.5, 14.0, 0.5 + 8.5 * drop, 2.2, PAL.ink);
-      Box(52, 0.5 + 8.5 * drop, -1.5, 14.2, 0.35, 2.4, PAL.amber, { emis: 0.5 });
-      pop('THE HARD WALL', 52, 10.4, -0.5, 7.2, 1.1, PAL.ink, PAL.ivory, 65.7, 69.6, { accent: PAL.amber });
-      if (t >= 65.65) hit(52, 4.5, -0.5, 65.70, PAL.amberHi, 280);
+      const attU = easeOut(seg(t, 60.90, 62.90));
+      const brkU = easeOut(seg(t, 63.00, 65.50));
+      const cudaFade = 1 - seg(t, 65.70, 66.60);
+      const wallU = easeOut(seg(t, 65.70, 67.60));
+
+      // Shot 18-20: Three alternatives arranged side by side in foreground (z = 2.6): MI300 (L), ASIC/TPU (C), ROCm (R)
+      if (t < 68.80) {
+        // Left: AMD MI300
+        Box(48.8, 0.15, 2.6, 1.8, 0.24, 1.4, '#2C323B');
+        Box(48.8, 0.39, 2.6, 1.2, 0.08, 0.9, '#D94E43', { lw: 0, emis: 0.65 });
+        // Center: Custom ASIC / TPU
+        Box(52.0, 0.15, 2.6, 1.6, 0.24, 1.6, '#181C22');
+        Box(52.0, 0.39, 2.6, 0.95, 0.10, 0.95, '#4285F4', { lw: 0, emis: 0.65 });
+        // Right: Open-Source ROCm modular blocks
+        [[-0.45, -0.3], [0.45, -0.3], [-0.45, 0.3], [0.45, 0.3]].forEach(([ox, oz]) => {
+          Box(55.2 + ox, 0.20, 2.6 + oz, 0.55, 0.16, 0.42, '#3A424E');
+          Box(55.2 + ox, 0.36, 2.6 + oz, 0.48, 0.04, 0.36, '#D94E43', { lw: 0, emis: 0.5 });
+        });
+
+        // Pathways from all three alternatives directed toward CUDA (Shots 18-19) then stopping before the Wall (Shot 20)
+        const targetZ = t < 65.70 ? lerp(2.6, -4.5, attU) : -13.2;
+        [[48.8, '#D94E43'], [52.0, '#4285F4'], [55.2, '#D94E43']].forEach(([ax, acol]) => {
+          Line3([ax, 0.42, 1.8], [ax, 0.42, targetZ], acol, 3, 1);
+        });
+      }
+
+      // Shot 18-19: Distant CUDA ecosystem structure cracking & physically splitting apart
+      if (cudaFade > 0.03) {
+        const split = brkU * 2.4;
+        [[-2.2, -1], [0.0, 0], [2.2, 1]].forEach(([ox, dir]) => {
+          const sx = 52.0 + ox + dir * split;
+          Box(sx, 0.0, -4.5, 1.35, 4.4, 1.35, '#181C22', { a: cudaFade });
+          Box(sx, 0.4, -3.8, 1.10, 3.4, 0.10, '#76B900', { lw: 0, a: cudaFade, emis: 0.55 * (1 - brkU * 0.5) });
+          if (brkU > 0.15) {
+            Line3([sx - 0.6, 2.2, -3.72], [sx + 0.6, 1.5, -3.72], '#D94E43', 3, cudaFade);
+          }
+        });
+      }
+
+      // Shot 20-21 (65.70 - 69.28): Enormous concrete & dark metallic wall extending far beyond frame (identity unrevealed)
+      if (wallU > 0.02) {
+        Box(52.0, 0.0, -15.5, 34.0, 16.0 * wallU, 2.4, '#181C22');
+        // Industrial structural buttresses, layered panels & deep surface cracks
+        for (let b = -3; b <= 3; b++) {
+          Box(52.0 + b * 4.2, 0.0, -14.2, 0.95, 16.0 * wallU, 0.65, '#2C323B');
+        }
+        Line3([46.0, 5.2, -14.1], [50.4, 3.8, -14.1], '#0E1013', 4, wallU);
+        Line3([54.2, 6.4, -14.1], [57.8, 4.9, -14.1], '#0E1013', 4, wallU);
+      }
+
+      // Beat 6 2D Kinetic Overlays
+      OVER.push(() => {
+        if (t >= 63.10 && t < 65.65) {
+          const a = env(t, 63.10, 65.65, 0.12, 0.14);
+          const frac = easeOut(seg(t, 63.45, 64.50)) * 10;
+          ctx.save(); ctx.globalAlpha = a;
+          rrect(ctx, 620, 155, 680, 92, 14); ctx.fillStyle = '#181C22'; ctx.fill();
+          ctx.strokeStyle = '#76B900'; ctx.lineWidth = 2.5; ctx.stroke();
+          ctx.font = '900 40px' + FAM; ctx.textBaseline = 'middle';
+          ctx.fillStyle = '#F4F6F8'; ctx.textAlign = 'right';
+          ctx.fillText('THE CUDA', 945, 202);
+          ctx.fillStyle = '#76B900'; ctx.textAlign = 'left';
+          ctx.fillText('MONO', 962, 202 - frac * 0.6);
+          ctx.fillText('POLY', 1094 + frac, 202 + frac * 0.6);
+          ctx.restore();
+        }
+        if (t >= 68.84 && t < 69.58) {
+          pill2D(960, 520, 'ONE WALL NOBODY CAN CODE AROUND.', '#181C22', '#F4F6F8', '#3A424E', env(t, 68.84, 69.58, 0.06, 0.06));
+        }
+        if (t >= 69.58) {
+          ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, 1920, 1080);
+        }
+      });
     }
 
     endFrame(t);
@@ -2373,7 +2991,7 @@ function drawSpriteChar(c, p, sc, t) {
     const gf = Math.floor(time * 12);
     grainPat.setTransform(new DOMMatrix([1, 0, 0, 1, Math.floor(hash(gf * 5 + 3) * 256), Math.floor(hash(gf * 5 + 4) * 256)]));
     ctx.fillStyle = grainPat; ctx.fillRect(0, 0, 1920, 1080);
-    if (!showSheet) drawRail(time, [0.0, 2.2, 34.1, 60.5, 69.76]);
+    if (!showSheet) drawRail(time, [0.0, 12.2, 26.22, 36.6, 47.76, 60.58]);
     drawCaptions(time);
   }
 

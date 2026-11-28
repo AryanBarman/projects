@@ -571,31 +571,13 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
 ];
 
   const CUE_SHEET = [
-    {
-        "t": 15.9,
-        "name": "power_spike",
-        "desc": "#1 Electricity payoff"
-    },
-    {
-        "t": 26.7,
-        "name": "whip_pan",
-        "desc": "Fly to Taiwan chip vs power plant"
-    },
-    {
-        "t": 31.3,
-        "name": "oven_drop",
-        "desc": "Cannot fly power plant"
-    },
-    {
-        "t": 37.5,
-        "name": "whip_pan",
-        "desc": "Fly to Aurora Virginia"
-    },
-    {
-        "t": 46.25,
-        "name": "chip_ignite",
-        "desc": "Real-time grid throttling"
-    }
+    { "t": 0.2,   "name": "gold_stack",   "desc": "PwC 2026 ledger & $31.6T particles converge" },
+    { "t": 3.80,  "name": "cascade_ping", "desc": "$31.6T & Five forces separate" },
+    { "t": 17.20, "name": "stage_split",  "desc": "#1 Electricity locks at top" },
+    { "t": 26.74, "name": "whip_pan",     "desc": "Hard cut to Taiwan chip container & 24h flight" },
+    { "t": 32.60, "name": "oven_drop",    "desc": "Colossal bolted power plant vs tiny aircraft" },
+    { "t": 43.60, "name": "chip_ignite",  "desc": "Aurora Virginia facility unveiled" },
+    { "t": 48.85, "name": "power_spike",  "desc": "Real-time energy throttling stabilizes grid" }
 ];
 
   // =========================================================================
@@ -685,33 +667,48 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
   const CAM_KEYS = [];
   const K = (t, p, l, fov, x) => CAM_KEYS.push({ t, v: [p[0], p[1], p[2], l[0], l[1], l[2], fov], cut: x === true, type: typeof x === 'string' ? x : 'auto' });
 
-  K(0.00, [0, 5.6, 22.0], [0, 5.0, 0.0], 44, 'fly');
-  K(15.90, [0, 5.4, 18.5], [0, 5.0, 0.0], 42, 'hold');
-  K(26.70, [26, 6.4, 25.0], [26, 3.8, 0.0], 46, 'fly');
-  K(31.30, [26, 6.0, 22.0], [26, 3.8, 0.0], 45, 'hold');
-  K(37.50, [52, 5.8, 22.0], [52, 3.6, 0.0], 45, 'fly');
-  K(46.30, [52, 5.4, 18.5], [52, 3.6, 0.0], 43, 'push');
-  K(52.60, [52, 5.4, 18.5], [52, 3.6, 0.0], 43, 'hold');
+  // Beat 1 (0.00 - 9.70): Macro Ledger Track -> Pull Back to $31.6T Monument -> 5 Forces Orbit -> Ranked Plinths
+  K(0.00, [-0.5, 0.95, 1.45], [-0.3, 0.35, 0.0], 32, 'hold');
+  K(1.80, [ 0.5, 1.05, 1.65], [ 0.3, 0.45, 0.0], 33, 'push');
+  K(3.80, [ 0.0, 3.4,  9.6],  [ 0.0, 2.3,  0.0], 40, 'pull');
+  K(7.40, [-6.0, 5.4, 11.2],  [ 0.0, 2.0,  0.0], 42, 'arc');
+  K(9.70, [ 2.8, 4.6, 11.4],  [ 0.0, 2.5,  0.0], 40, 'arc');
+  // Beat 2 (10.30 - 19.32): Four Forces Lateral -> GPU Access Push -> #1 Electricity Crane Up Along Power Lines
+  K(10.30,[-4.8, 2.7,  7.6], [-4.2, 1.7,  0.0], 38, 'push');
+  K(13.60,[ 1.8, 2.6,  7.2], [ 1.8, 1.8,  0.0], 37, 'arc');
+  K(13.82,[ 2.2, 2.3,  4.4], [ 2.3, 1.8,  0.0], 35, 'push');
+  K(15.38,[ 2.3, 2.1,  3.6], [ 2.4, 1.7,  0.0], 34, 'push');
+  K(15.96,[ 0.0, 4.4, 12.2], [ 0.0, 2.8, -1.2], 42, 'pull');
+  K(19.32,[ 0.0, 6.4,  8.2], [ 0.0, 4.8, -8.0], 40, 'push');
+  // Beat 3 (20.16 - 30.80): Vast Power Grid -> Dominant Power Plant -> Taiwan Macro -> Aerial 3D Plane over World Map
+  K(20.16,[26.0, 5.2, 11.5], [26.0, 2.6, -4.5], 42, true);
+  K(23.00,[23.6, 4.6, 13.6], [26.2, 2.6, -3.5], 43, 'pull');
+  K(26.70,[22.4, 3.6,  9.4], [26.5, 2.6, -2.0], 39, 'arc');
+  K(26.74,[26.0, 1.3,  2.1], [26.0, 0.4,  0.0], 33, true);
+  K(28.10,[26.0, 1.8,  3.0], [26.0, 0.5,  0.0], 34, 'pull');
+  K(28.15,[19.8, 5.4,  6.8], [21.2, 0.5, -0.2], 38, true);
+  K(30.80,[30.8, 5.6,  6.2], [30.4, 0.5, -1.2], 38, 'pull');
+  // Beat 4 (31.34 - 37.54): Pull Back from Destination (Plant vs Plane + Red X) -> Substation -> Virginia Grid
+  K(31.34,[30.4, 4.6,  6.8], [29.6, 1.0, -0.8], 39, 'pull');
+  K(33.20,[26.2, 4.2, 11.8], [26.6, 2.4, -0.4], 42, 'pull');
+  K(35.05,[24.6, 3.4,  9.2], [25.6, 2.2,  0.2], 38, 'push');
+  K(35.10,[29.8, 4.2, 11.4], [26.5, 2.6, -1.5], 41, 'arc');
+  K(37.54,[26.0, 6.4,  7.2], [26.0, 0.6, -1.0], 37, 'push');
+  // Beat 5 (37.94 - 52.58): 3 Orgs (37.94-43.60) -> Aurora Facility (43.60-46.30) -> Control Room (46.30-51.78) -> Grid Pullback
+  K(37.94,[52.0, 5.2, 11.5], [52.0, 1.8, -1.0], 40, true);
+  K(43.50,[50.0, 5.4, 11.6], [52.0, 1.8, -1.5], 40, 'arc');
+  K(45.88,[50.8, 2.6,  5.4], [50.2, 1.4, -1.5], 36, 'push');
+  K(46.30,[52.0, 2.2,  5.8], [52.0, 1.8, -1.5], 35, true);
+  K(51.78,[52.0, 2.4,  6.6], [52.0, 1.8, -1.5], 36, 'pull');
+  K(52.58,[52.0, 5.8, 14.2], [52.0, 2.2, -1.5], 42, 'pull');
 
   const ORB_YAW = [-0.55, 0.5, -0.28, 0.62, -0.42, 0.34, -0.6, 0.22];
   const ORB_PIT = [0.12, 0.3, 0.07, 0.46, 0.16, 0.36, 0.1, 0.26];
   const ORB_DST = [0.35, 0.9, 0.15, 0.75, 0.55, 0.05, 0.85, 0.45];
   (function mapKeys() {
-    let prev = null, fly = 0, arcN = 0;
-    CAM_KEYS.forEach((k, i) => {
-      const v = k.v, F = mp(v[3], v[4], v[5]), ty = k.type; F[1] -= 0.5;   // aim a little lower so characters sit above the caption box
-      let yaw, pitch, Dh, fov;
-      if ((ty === 'hold' || ty === 'push' || ty === 'pull' || ty === 'arc') && prev) {      // same angle as the previous shot; only distance / fov change
-        yaw = ty === 'arc' ? Math.max(-YAWMAX, Math.min(YAWMAX, prev.yaw + (arcN++ % 2 ? -0.34 : 0.34))) : prev.yaw; pitch = ty === 'arc' ? Math.min(PMAX, prev.pitch + 0.05) : prev.pitch;
-        Dh = (ty === 'hold' || ty === 'arc') ? prev.Dh : ty === 'push' ? Math.max(DMIN * 0.55, prev.Dh * 0.6) : Math.min(DMAX * 1.35, prev.Dh * 1.7);
-        fov = (ty === 'hold' || ty === 'arc') ? prev.fov : ty === 'push' ? prev.fov - 9 : prev.fov + 6;
-      } else {
-        const j = (ty === 'auto' ? i : fly++) % ORB_YAW.length, ox = v[0] - v[3], oz = v[2] - v[5];
-        yaw = Math.max(-YAWMAX, Math.min(YAWMAX, Math.atan2(ox, oz) * 0.35 + ORB_YAW[j])); pitch = Math.max(PMIN, Math.min(PMAX, ORB_PIT[j])); Dh = (DMIN + (DMAX - DMIN) * ORB_DST[j]) * 0.86;
-        fov = v[6] + (j % 2 ? -3 : 2);
-      }
-      fov = Math.max(30, Math.min(58, fov)); prev = { yaw, pitch, Dh, fov };
-      k.v = [F[0] + Dh * Math.sin(yaw), F[1] + Dh * Math.tan(pitch), F[2] + Dh * Math.cos(yaw), F[0], F[1], F[2], fov];
+    CAM_KEYS.forEach(k => {
+      const v = k.v, P = mp(v[0], v[1], v[2]), F = mp(v[3], v[4], v[5]);
+      k.v = [P[0], P[1], P[2], F[0], F[1] - 0.2, F[2], v[6]];
     });
   })();
   (function buildTangents() {
@@ -1115,6 +1112,8 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
     renderer.setSize(1920, 1080, false);
     renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(PAL.parchment);
@@ -1148,6 +1147,102 @@ RigKit.loadPub('data:image/webp;base64,UklGRjgDAQBXRUJQVlA4WAoAAAAQAAAA/wMAIQEAQ
     );
     X.floorD.rotation.x = -Math.PI / 2; X.floorD.position.set(floorW / 2 - 20, 0.004, -24);
     X.floorD.receiveShadow = true; scene.add(X.floorD);
+
+    // ---- Full-frame 2D Illustrated Editorial World Map + Premium 3D Cargo Aircraft + Catmull-Rom Flight Path ----
+    {
+      const mc = document.createElement('canvas'); mc.width = 2048; mc.height = 1024;
+      const mg = mc.getContext('2d');
+      mg.fillStyle = '#091119'; mg.fillRect(0, 0, 2048, 1024);
+      // Graticule lines
+      mg.strokeStyle = 'rgba(142, 153, 168, 0.12)'; mg.lineWidth = 1.5;
+      for (let gx = 0; gx <= 2048; gx += 128) { mg.beginPath(); mg.moveTo(gx, 0); mg.lineTo(gx, 1024); mg.stroke(); }
+      for (let gy = 0; gy <= 1024; gy += 128) { mg.beginPath(); mg.moveTo(0, gy); mg.lineTo(2048, gy); mg.stroke(); }
+      // Editorial landmass polygons (East Asia, Japan, Taiwan, SE Asia, Australia, Alaska, North America)
+      const land = (pts, fill = '#16202B', stroke = '#3A424E') => {
+        mg.beginPath(); pts.forEach(([x, y], i) => i ? mg.lineTo(x, y) : mg.moveTo(x, y)); mg.closePath();
+        mg.fillStyle = fill; mg.fill(); mg.strokeStyle = stroke; mg.lineWidth = 2.5; mg.stroke();
+      };
+      // East Asia / China / Russia
+      land([[0, 60], [420, 80], [560, 190], [640, 320], [590, 460], [540, 560], [470, 650], [360, 670], [260, 740], [120, 720], [0, 790]]);
+      // Japan
+      land([[690, 290], [740, 320], [720, 420], [665, 445], [655, 360]]);
+      // Taiwan (highlighted)
+      land([[606, 515], [634, 535], [625, 588], [596, 570]], '#2D4D14', '#76B900');
+      // SE Asia / Philippines / Indonesia
+      land([[640, 620], [685, 645], [675, 735], [625, 710]]);
+      land([[450, 770], [620, 790], [600, 855], [440, 835]]);
+      // North America / US
+      land([[1220, 120], [1420, 105], [1640, 110], [2048, 120], [2048, 760], [1760, 730], [1560, 640], [1440, 540], [1390, 420], [1310, 310], [1160, 230]]);
+      // Country & Regional Labels
+      mg.fillStyle = 'rgba(142, 153, 168, 0.45)'; mg.font = '800 22px system-ui, sans-serif'; mg.textAlign = 'center';
+      mg.fillText('EAST ASIA', 320, 380); mg.fillText('PACIFIC OCEAN', 960, 620); mg.fillText('NORTH AMERICA', 1680, 340);
+      mg.fillStyle = '#76B900'; mg.font = '900 26px system-ui, sans-serif'; mg.fillText('TAIWAN · FAB', 615, 625);
+      mg.fillStyle = '#F59E0B'; mg.fillText('UNITED STATES · CARGO HUB', 1520, 505);
+
+      const mTex = new THREE.CanvasTexture(mc); mTex.anisotropy = 4;
+      X.worldMap = new THREE.Mesh(
+        new THREE.PlaneGeometry(46, 23),
+        new THREE.MeshStandardMaterial({ map: mTex, roughness: 0.9, metalness: 0.05 })
+      );
+      X.worldMap.rotation.x = -Math.PI / 2;
+      const mC = mp(26.0, 0.015, -1.5);
+      X.worldMap.position.set(mC[0], 0.015, mC[2]);
+      X.worldMap.receiveShadow = true; X.worldMap.visible = false;
+      scene.add(X.worldMap);
+
+      // Catmull-Rom trans-Pacific flight curve
+      const p0 = mp(19.8, 0.45, 0.6), p1 = mp(23.5, 2.7, -1.0), p2 = mp(27.5, 3.0, -1.8), p3 = mp(31.2, 0.48, -1.2);
+      X.flightCurve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(p0[0], p0[1], p0[2]),
+        new THREE.Vector3(p1[0], p1[1], p1[2]),
+        new THREE.Vector3(p2[0], p2[1], p2[2]),
+        new THREE.Vector3(p3[0], p3[1], p3[2])
+      ]);
+
+      // Premium 3D Commercial Cargo Aircraft (nose along +Z)
+      const pl = new THREE.Group();
+      const bodyMat = new THREE.MeshStandardMaterial({ color: 0xF1F5F9, roughness: 0.35, metalness: 0.35 });
+      const darkMat = new THREE.MeshStandardMaterial({ color: 0x181C22, roughness: 0.4, metalness: 0.5 });
+      const wingMat = new THREE.MeshStandardMaterial({ color: 0xCBD5E1, roughness: 0.4, metalness: 0.45 });
+      const tailMat = new THREE.MeshStandardMaterial({ color: 0xF59E0B, roughness: 0.4, metalness: 0.3, emissive: 0xF59E0B, emissiveIntensity: 0.25 });
+      const fuse = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 1.45, 18), bodyMat);
+      fuse.rotation.x = Math.PI / 2; fuse.castShadow = true; pl.add(fuse);
+      const nose = new THREE.Mesh(new THREE.SphereGeometry(0.16, 16, 12), bodyMat);
+      nose.scale.set(1, 0.92, 1.85); nose.position.set(0, -0.01, 0.72); pl.add(nose);
+      const cock = new THREE.Mesh(new THREE.BoxGeometry(0.19, 0.08, 0.18), darkMat);
+      cock.position.set(0, 0.09, 0.68); pl.add(cock);
+      const tCone = new THREE.Mesh(new THREE.ConeGeometry(0.16, 0.52, 16), bodyMat);
+      tCone.rotation.x = -Math.PI / 2; tCone.position.set(0, 0.02, -0.98); pl.add(tCone);
+      // Swept main wings + winglets + 4 turbofan engines
+      [-1, 1].forEach(s => {
+        const w = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.04, 0.38), wingMat);
+        w.position.set(s * 0.62, -0.04, 0.02); w.rotation.y = s * -0.26; w.castShadow = true; pl.add(w);
+        const wl = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.18, 0.14), tailMat);
+        wl.position.set(s * 1.16, 0.04, -0.14); pl.add(wl);
+        [0.44, 0.82].forEach(ex => {
+          const eng = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.055, 0.28, 12), darkMat);
+          eng.rotation.x = Math.PI / 2; eng.position.set(s * ex, -0.11, 0.14 - ex * 0.12); pl.add(eng);
+        });
+      });
+      // Vertical tailfin + horizontal stabilizers + cargo door markings
+      const vTail = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.48, 0.34), tailMat);
+      vTail.position.set(0, 0.28, -0.78); vTail.rotation.x = -0.35; pl.add(vTail);
+      const hTail = new THREE.Mesh(new THREE.BoxGeometry(0.76, 0.03, 0.20), wingMat);
+      hTail.position.set(0, 0.06, -0.84); pl.add(hTail);
+      const cDoor = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.14, 0.36), new THREE.MeshStandardMaterial({ color: 0x76B900, emissive: 0x76B900, emissiveIntensity: 0.55 }));
+      cDoor.position.set(0, -0.02, 0.28); pl.add(cDoor);
+      pl.visible = false; scene.add(pl); X.cargoPlane = pl;
+
+      // Parallax cloud layer over Pacific
+      X.mapClouds = [];
+      const clMat = new THREE.MeshBasicMaterial({ color: 0xDCE4F0, transparent: true, opacity: 0.14, depthWrite: false });
+      for (let i = 0; i < 8; i++) {
+        const cm = new THREE.Mesh(new THREE.SphereGeometry(0.8 + (i % 3) * 0.35, 10, 8), clMat);
+        cm.scale.set(1.8, 0.28, 1.1);
+        const cp = mp(20.5 + i * 1.4, 1.6 + (i % 2) * 0.5, -2.5 + (i % 3) * 1.4);
+        cm.position.set(cp[0], cp[1], cp[2]); cm.visible = false; scene.add(cm); X.mapClouds.push(cm);
+      }
+    }
 
     X.cA = new THREE.Color(); X.cB = new THREE.Color();
 
@@ -1658,7 +1753,7 @@ function drawSpriteChar(c, p, sc, t) {
   const eIn = u => u * u * u;
   let GROUND = [], ITEMS = [], OVER = [], CAST = [];
   const POOL = { box: [], cyl: [], label: [], panel: [], poly: [], seg: [] }, CNT = { box: 0, cyl: 0, label: 0, panel: 0, poly: 0, seg: 0 };
-  const LBL = new Map(), NEARCULL = 9;
+  const LBL = new Map(), NEARCULL = 0.5;
   function grab(type, make) { const p = POOL[type]; let o = p[CNT[type]]; if (!o) { o = make(); X.world.add(o.m); p.push(o); } CNT[type]++; o.m.visible = true; return o; }
   function setCol(mat, col, em, a) { mat.color.set(col); if (mat.emissive) { mat.emissive.set(col); mat.emissiveIntensity = (em || 0) * 0.8; } const tr = a < 1; mat.opacity = a; if (mat.transparent !== tr) { mat.transparent = tr; mat.depthWrite = !tr; mat.needsUpdate = true; } }
   function paleCol(c) { const n = parseInt(String(c).replace('#', ''), 16) || 0, r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255; if (r + g + b > 330) return c; const f = 0.3; return 'rgb(' + Math.round(r + (255 - r) * f) + ',' + Math.round(g + (255 - g) * f) + ',' + Math.round(b + (255 - b) * f) + ')'; }
@@ -1920,10 +2015,18 @@ function drawSpriteChar(c, p, sc, t) {
     return { t: cur.t.map((v, c) => prev.t[c] + (v - prev.t[c]) * k), f: lerpHSLHex(prev.f, cur.f, k), h: prev.h + (cur.h - prev.h) * k, sun: lerpHSLHex(prev.sun, cur.sun, k) };
   }
   function applyMood(t) {
-    const m = moodAt(t); scene.fog.color.setHex(m.f); scene.background.setHex(m.f);
-    X.sky.material.color.setRGB(m.t[0], m.t[1], m.t[2]); X.ground.material.color.setRGB(m.t[0] * 0.86, m.t[1] * 0.88, m.t[2] * 0.92);
-    X.bMats.forEach(b => b.color.setRGB(Math.min(1, m.t[0] * 1.05), Math.min(1, m.t[1] * 1.05), Math.min(1, m.t[2] * 1.05)));
-    X.sun.material.color.setHex(m.sun); hemiLight.intensity = 0.82 * m.h; dirLight.intensity = 1.05 * m.h;
+    const isArch = t < 3.80;
+    scene.fog.color.setHex(0x0E1013); scene.background.setHex(0x0E1013);
+    if (X.floorN) X.floorN.visible = false;
+    if (X.sky) X.sky.visible = false;
+    if (X.sky2) X.sky2.visible = false;
+    if (X.ground) X.ground.material.color.setRGB(0.08, 0.09, 0.11);
+    if (X.trees) X.trees.visible = false;
+    if (X.trunks) X.trunks.visible = false;
+    if (X.sun) X.sun.visible = false;
+    (X.clouds || []).forEach(c => c.visible = false);
+    dirLight.color.setHex(isArch ? 0xD98A3A : 0xDCE4F0);
+    hemiLight.intensity = 0.72; dirLight.intensity = 1.15;
   }
   // ---- beat dressing (data from cfg 'dress', authored by tools/jb/dress.py): flows, orbits, growing stacks, pulses, beams, sparks
   const DRESS = [];
@@ -2259,62 +2362,398 @@ function drawSpriteChar(c, p, sc, t) {
   const ball = (x, y, z) => { Cyl(x, y, z, 0.7, 0.7, '#E07B2A'); Box(x, y + 0.3, z + 0.1, 1.45, 0.07, 0.2, '#3A2410', { lw: 0 }); };
   // a wide, readable 'people' row of old-style casual characters and portrait avatars
   const peopleRow = (x, z, n, gap, t, t0, pose, t1) => { for (let i = 0; i < n; i++) Char('student', x + (i - (n - 1) / 2) * gap, z + (i % 2) * 1.2, 2.0, Object.assign({ phase: i * 0.6, pose }, {}), t0 + i * 0.08, t1 === undefined ? 1e9 : t1, t); };
-  const HEADS = [
-    [0.05, 26.50, 'ACT 4: THE PHYSICAL CEILING', 'PwC 5-factor ranking: #1 is Electricity', PAL.amberHi],
-    [26.70, 37.30, 'CANNOT FLY POWER', 'Chips fly in 24h; gigawatt plants stay bolted', PAL.amber],
-    [37.50, 52.80, 'AURORA VIRGINIA', 'Nvidia + EPRI + PJM real-time grid throttling', PAL.cyan]
-  ];
+  const HEADS = [];
 
   function renderShots(t) {
     beginFrame(t);
     const hit = (x, y, z, ht, col, r) => { const p = S(x, y, z); if (p) OVER.push(() => hitFx(p.x, p.y, t, ht, { color: col, r: r || 240, rays: 14 })); };
-    const pop = (txt, x, y, z, w, h, bg, fg, t0, t1, o) => Card(x, y, z, w, h, Object.assign({ kind: /^#(D94E43|2B8A6E|D99B26)$/i.test(bg) ? 'stamp' : 'tag', text: txt, bg, fg, accent: /^#(0B1A22|0B191E)$/i.test(bg) ? '#EBC16B' : fg, t0, t1: t1 || 0 }, o || {}), t);
-    for (let k = 0; k < 3; k++) pad(-16 + k * 26, -12, 14 + k * 26, 14, '#0B191E');
+    const pill2D = (cx, cy, txt, bg, fg, accent, a) => {
+      if (a <= 0.02) return;
+      ctx.save(); ctx.globalAlpha = a;
+      ctx.font = '900 25px' + FAM;
+      const tw = ctx.measureText(txt).width, w = tw + 44, h = 50;
+      rrect(ctx, cx - w / 2, cy - h / 2, w, h, 10); ctx.fillStyle = bg; ctx.fill();
+      ctx.strokeStyle = accent || '#2D3440'; ctx.lineWidth = 2; ctx.stroke();
+      ctx.fillStyle = fg; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(txt, cx, cy + 1);
+      ctx.restore();
+    };
 
-    // ===== S1 (0, 0.00 - 26.70): PwC 5-Factor Card (#1 Electricity) =====
-    if (t < 26.9) {
-      const pwrOn = t >= 15.96;
-      Card(0, 5.4, 0.0, 15.6, 8.6, {
-        kind: 'doc', t0: 0.4, t1: 0, dark: true, tag: 'PWC 2026 OUTLOOK', accent: pwrOn ? PAL.amberHi : PAL.steel,
-        head: '5 FORCES DECIDING $31.6T',
-        lines: [
-          '5. GPU Access',
-          '4. Community Consent',
-          '3. Security & 2. Connectivity',
-          '1. ELECTRICITY (THE BOTTLENECK)'
-        ],
-        lineAt: [10.3, 10.3, 10.3, 15.96],
-        hl: pwrOn ? 3 : -1, hlAt: 15.96
-      }, t);
-      pop('#1: ELECTRICITY', 0, 10.6, 0.0, 7.6, 1.1, PAL.ink, PAL.ivory, 16.0, 26.5, { accent: PAL.amberHi });
-      if (pwrOn) hit(0, 4.4, 0.4, 15.96, PAL.amberHi, 280);
+    // ===== BEAT 1 & 2 (00.00 - 19.32, c = 0): $31.6T Ledger -> Five Forces -> #1 Electricity =====
+    if (t < 19.9) {
+      // Shot 1 (0.00 - 3.80): Macro investment ledger -> rising figures -> $31.6T monumental structure
+      if (t < 4.25) {
+        const fade = 1 - seg(t, 3.65, 4.25);
+        const monU = easeOut(seg(t, 1.50, 3.20));
+        // Multi-column financial ledger on dark desk
+        Panel(0.0, 0.25, 0.0, 3.2, 2.0, (g, pw, ph) => {
+          g.fillStyle = '#181C22'; g.fillRect(0, 0, pw, ph);
+          g.strokeStyle = '#D98A3A'; g.lineWidth = 5; g.strokeRect(4, 4, pw - 8, ph - 8);
+          g.fillStyle = '#D98A3A'; g.font = '800 22px' + FAM;
+          g.fillText('GLOBAL AI CAPITAL ALLOCATION · LEDGER', 22, 36);
+          const cols = ['$6.4T  POWER', '$5.8T  COMPUTE', '$4.9T  NETWORK', '$7.2T  GRID', '$7.3T  FACILITY'];
+          cols.forEach((txt, ci) => {
+            g.fillStyle = ci % 2 ? '#F4F6F8' : '#F59E0B'; g.font = '800 24px' + FAM;
+            g.fillText(txt, 22 + (ci % 2) * 240, 88 + Math.floor(ci / 2) * 58);
+          });
+        }, { cw: 512, a: fade * (1 - monU * 0.65) });
+
+        // Monumental $31.6T architectural structure rising as camera pulls back
+        if (monU > 0.02) {
+          Box(0.0, 0.0, -0.8, 3.8, 4.8 * monU, 2.2, '#181C22', { a: fade });
+          Line3([-1.92, 0, 0.32], [-1.92, 4.8 * monU, 0.32], '#F59E0B', 3, fade);
+          Line3([ 1.92, 0, 0.32], [ 1.92, 4.8 * monU, 0.32], '#F59E0B', 3, fade);
+          if (monU > 0.55) Label('$31.6 TRILLION', 0.0, 2.6 * monU, 0.38, 3.6, 0.95, '#181C22', '#F59E0B', { line: '#F59E0B', a: fade });
+        }
+        // 48 amber financial particles detaching & converging into the monument
+        for (let p = 0; p < 48; p++) {
+          const pu = clamp((t * 0.45 + hash(p * 13) * 0.7), 0, 1);
+          const px = lerp((hash(p * 7) - 0.5) * 6.5, 0.0, pu);
+          const py = lerp(0.4, 2.6, pu) + Math.sin(pu * Math.PI) * 0.6;
+          const pz = lerp((hash(p * 19) - 0.5) * 3.8, 0.2, pu);
+          Box(px, py, pz, 0.11, 0.11, 0.11, '#F59E0B', { lw: 0, a: fade, emis: 0.8 });
+        }
+      }
+
+      // Shot 2-6 (3.80 - 19.32): Five distinct architectural silhouettes (orbital -> ranked plinths -> #1 Electricity)
+      if (t >= 3.65) {
+        const sepU = easeOut(seg(t, 3.80, 5.10));
+        const rankU = easeOut(seg(t, 7.40, 8.95));
+        const pwrWin = t >= 15.96;
+        const dimOther = pwrWin ? (1 - seg(t, 16.00, 17.20) * 0.78) : 1.0;
+
+        // Central AI infrastructure core (visible during Shot 2 orbit before ranking)
+        if (rankU < 0.95) {
+          const coreA = 1 - rankU;
+          Box(0.0, 0.0, 0.0, 1.5, 2.2, 1.5, '#181C22', { a: coreA });
+          Box(0.0, 0.5, 0.78, 1.1, 1.2, 0.08, '#76B900', { lw: 0, a: coreA, emis: 0.6 });
+        }
+
+        // Helper: interpolate from radial orbit (Shot 2) to ranked linear stepped plinths (Shot 3)
+        const posAt = (ang, rx) => {
+          const ox = Math.sin(ang) * 4.4 * sepU, oz = Math.cos(ang) * 3.8 * sepU;
+          return [lerp(ox, rx, rankU), lerp(oz, 0.0, rankU)];
+        };
+
+        // 1. Connectivity (x = -4.6, rank #5): Communication cables & active network pulses
+        const [cX, cZ] = posAt(-2.1, -4.6), cBase = rankU * 0.35;
+        const cLit = t >= 5.30 || t >= 10.30;
+        Box(cX, 0, cZ, 1.3, cBase + 0.1, 1.3, '#181C22', { a: dimOther });
+        Box(cX, cBase, cZ, 0.55, 2.6, 0.55, '#2C323B', { a: dimOther });
+        Box(cX, cBase + 2.2, cZ, 1.2, 0.16, 0.25, cLit ? '#76B900' : '#8E99A8', { lw: 0, a: dimOther, emis: cLit ? 0.65 : 0.15 });
+        Line3([cX, cBase + 2.2, cZ], [0, 1.8, 0], cLit ? '#76B900' : '#8E99A8', 2, dimOther * (1 - rankU * 0.5));
+        if (t >= 10.30 && t < 15.80) {
+          const cq = (t * 1.3) % 1;
+          Box(lerp(cX, cX + 1.1, cq), cBase + 2.2, cZ, 0.16, 0.16, 0.16, '#76B900', { lw: 0, a: dimOther, emis: 0.85 });
+        }
+
+        // 2. Security (x = -2.3, rank #4): Protective enclosure doors closing around industrial facility
+        const [sX, sZ] = posAt(-1.05, -2.3), sBase = rankU * 0.65;
+        const secClose = easeOut(seg(t, 11.20, 12.10));
+        const sLit = t >= 6.00;
+        Box(sX, 0, sZ, 1.5, sBase + 0.1, 1.5, '#181C22', { a: dimOther });
+        Box(sX, sBase, sZ, 1.25, 1.8, 1.25, '#2C323B', { a: dimOther });
+        Box(sX - 0.52 * (1 - secClose * 0.65), sBase, sZ + 0.72, 0.58, 1.8, 0.16, sLit ? '#8E99A8' : '#3A424E', { a: dimOther });
+        Box(sX + 0.52 * (1 - secClose * 0.65), sBase, sZ + 0.72, 0.58, 1.8, 0.16, sLit ? '#8E99A8' : '#3A424E', { a: dimOther });
+
+        // 3. Community Consent (x = 0.0, rank #3): Residential landscape beside data center with rising boundary wall
+        const [rX, rZ] = posAt(0.0, 0.0), rBase = rankU * 0.95;
+        const rLit = t >= 6.60;
+        const bndU = easeOut(seg(t, 12.10, 12.90));
+        Box(rX, 0, rZ, 1.6, rBase + 0.1, 1.6, '#181C22', { a: dimOther });
+        Box(rX - 0.45, rBase, rZ + 0.25, 0.52, 0.75, 0.52, rLit ? '#D98A3A' : '#3A424E', { a: dimOther, emis: rLit ? 0.28 : 0 });
+        Box(rX + 0.45, rBase, rZ - 0.20, 0.66, 1.25, 0.66, '#2C323B', { a: dimOther });
+        if (bndU > 0.05) Box(rX, rBase, rZ, 0.12, 1.05 * bndU, 1.35, '#8E99A8', { a: dimOther });
+
+        // 4. GPU Access (x = 2.3, rank #2): Sequential GPU modules + supply indicator beside rack (Shot 5)
+        const [gX, gZ] = posAt(1.05, 2.3), gBase = rankU * 1.25;
+        Box(gX, 0, gZ, 1.5, gBase + 0.1, 1.5, '#181C22', { a: dimOther });
+        Box(gX, gBase, gZ, 1.25, 2.3, 1.15, '#2C323B', { a: dimOther });
+        for (let m = 0; m < 3; m++) {
+          const mIn = easeOut(seg(t, 13.85 + m * 0.32, 14.35 + m * 0.32));
+          Box(gX, gBase + 0.35 + m * 0.62, gZ + lerp(1.05, 0.48, mIn), 0.90, 0.28, 0.22, '#76B900', { lw: 0, a: dimOther, emis: t >= 13.82 ? 0.8 : 0.35 });
+        }
+        if (t >= 14.30) {
+          const supU = easeOut(seg(t, 14.30, 15.10));
+          Box(gX + 0.92, gBase, gZ, 0.24, 1.9 * supU, 0.24, '#76B900', { lw: 0, a: dimOther, emis: 0.75 });
+        }
+
+        // 5. Electricity (partially obscured in background during Shot 4-5, rises above on Shot 6)
+        const [eX0, eZ0] = posAt(2.1, 4.6);
+        const bgObs = (t >= 10.20 && t < 15.96) ? easeOut(seg(t, 10.20, 10.80)) : 0;
+        const eX = pwrWin ? lerp(eX0, 0.0, easeOut(seg(t, 15.96, 17.20))) : eX0;
+        const eZ = pwrWin ? lerp(eZ0 - 3.6 * bgObs, -2.2, easeOut(seg(t, 15.96, 17.20))) : (eZ0 - 3.6 * bgObs);
+        const eBase = pwrWin ? lerp(1.65, 2.4, easeOut(seg(t, 15.96, 17.20))) : rankU * 1.65;
+        const eAlpha = bgObs ? 0.45 : 1.0;
+        Box(eX, 0, eZ, 1.7, eBase + 0.1, 1.7, '#181C22', { a: eAlpha });
+        Box(eX, eBase, eZ, 1.4, 4.0, 1.4, '#2C323B', { a: eAlpha });
+        Box(eX, eBase + 3.4, eZ, 2.6, 0.22, 0.34, '#F59E0B', { lw: 0, a: eAlpha, emis: pwrWin ? 0.95 : 0.35 });
+        if (pwrWin) {
+          Line3([eX - 1.1, eBase + 3.4, eZ], [eX - 1.1, eBase + 4.8, -18.0], '#FFF7E6', 3.5, 1);
+          Line3([eX + 1.1, eBase + 3.4, eZ], [eX + 1.1, eBase + 4.8, -18.0], '#FFF7E6', 3.5, 1);
+          Line3([eX - 1.1, eBase + 3.4, eZ], [eX + 1.1, eBase + 3.4, eZ], '#FFF7E6', 3, 1);
+          if (t < 16.6) hit(eX, eBase + 3.4, eZ, 15.96, '#F59E0B', 260);
+        }
+
+        // Restrained world-space labels for Shot 4 (10.30 - 15.38) synced to exact SRT words
+        if (t >= 10.30 && t < 15.40) {
+          const lA = env(t, 10.30, 15.40, 0.15, 0.15);
+          if (t >= 10.30) Label('CONNECTIVITY', cX, cBase + 3.1, cZ, 2.4, 0.55, '#181C22', '#76B900', { line: '#76B900', a: lA });
+          if (t >= 11.05) Label('SECURITY', sX, sBase + 2.5, sZ, 2.0, 0.55, '#181C22', '#F4F6F8', { line: '#8E99A8', a: lA });
+          if (t >= 11.85) Label('COMMUNITY CONSENT', rX, rBase + 2.0, rZ, 3.0, 0.55, '#181C22', '#F4F6F8', { line: '#8E99A8', a: lA });
+          if (t >= 13.30) Label('GPU ACCESS', gX, gBase + 3.0, gZ, 2.2, 0.55, '#181C22', '#76B900', { line: '#76B900', a: lA });
+        }
+
+        // Small numerical rank markers (#5 -> #1) during Shot 3 (7.40 - 9.70)
+        if (t >= 7.60 && t < 10.10) {
+          const mkA = env(t, 7.60, 10.10, 0.2, 0.2);
+          [[cX, cBase + 3.1, '#5', '#8E99A8'], [sX, sBase + 2.4, '#4', '#8E99A8'], [rX, rBase + 1.9, '#3', '#8E99A8'], [gX, gBase + 2.9, '#2', '#76B900'], [eX, eBase + 4.3, '#1', '#F59E0B']].forEach(([mx, my, mtxt, mcol]) => {
+            Label(mtxt, mx, my, 0.0, 0.9, 0.65, '#181C22', mcol, { line: mcol, a: mkA });
+          });
+        }
+      }
     }
 
-    // ===== S2 (26, 26.70 - 37.50): Fly Chip vs Bolted Power Plant =====
-    if (t >= 26.5 && t < 37.7) {
-      // Left: Chip flying across arc
-      const arcU = easeOut(seg(t, 26.8, 30.8));
-      const cx = 19.0 + arcU * 6.0, cy = 1.5 + Math.sin(arcU * Math.PI) * 4.2;
-      Box(cx, cy, -1.0, 1.4, 0.9, 1.4, PAL.steel);
-      Line3([19.0, 1.5, -1.0], [cx, cy, -1.0], PAL.steel, 4, 1);
-      // Right: Massive bolted power plant
-      Box(31.5, 0, -1.5, 5.4, 4.6, 4.2, PAL.steel);
-      Cyl(30.2, 4.6, -1.5, 0.85, 3.2, PAL.amber, { emis: 0.35, seg: 12 });
-      Cyl(32.8, 4.6, -1.5, 0.85, 3.2, PAL.amber, { emis: 0.35, seg: 12 });
-      pop('CANNOT FLY POWER', 26, 8.6, -1.0, 7.6, 1.1, PAL.ink, PAL.ivory, 31.3, 37.3, { accent: PAL.amber });
-      if (t >= 31.30) hit(31.5, 4.6, -1.5, 31.34, PAL.amberHi, 260);
+    // ===== BEAT 3 & 4 (20.16 - 37.54, c = 26): Power Grid -> Plant vs 24h Chip Flight -> Virginia Grid =====
+    if (t >= 20.0 && t < 37.85) {
+      // Shot 7-8 (20.16 - 26.74): Vast power grid + dominant power plant + demand vs capacity
+      if (t < 26.74) {
+        // Substations, 4 transmission towers & warm-white lines leading to distant green AI data center
+        Box(20.4, 0, 1.2, 2.0, 1.4, 2.0, '#181C22');
+        Box(20.4, 1.4, 1.2, 1.6, 0.16, 1.6, '#F59E0B', { lw: 0, emis: 0.45 });
+        for (let tw = 0; tw < 4; tw++) {
+          const tz = 4.0 - tw * 3.5;
+          Box(23.5, 0, tz, 0.55, 3.8, 0.55, '#2C323B');
+          Box(23.5, 3.4, tz, 1.6, 0.16, 0.24, '#F59E0B', { lw: 0, emis: 0.45 });
+        }
+        Line3([23.5, 3.5, 4.0], [26.0, 2.4, -8.2], '#FFF7E6', 3.5, 1);
+        Line3([20.4, 1.5, 1.2], [23.5, 3.4,  0.5], '#F59E0B', 3, 1);
+        // Distant green-lit AI data center
+        Box(26.0, 0, -8.5, 4.2, 2.6, 2.8, '#181C22');
+        Box(26.0, 0.6, -7.05, 3.4, 1.2, 0.1, '#76B900', { lw: 0, emis: 0.65 });
+
+        // Dominant power plant: turbine hall, 2 cooling towers & 3 step-up transformers
+        Box(28.8, 0, -2.2, 4.8, 2.8, 3.4, '#2C323B');
+        Cyl(27.5, 2.8, -2.2, 0.80, 3.0, '#3A424E', { seg: 14 });
+        Cyl(30.1, 2.8, -2.2, 0.80, 3.0, '#3A424E', { seg: 14 });
+        for (let tf = 0; tf < 3; tf++) {
+          Box(25.8, 0, -3.2 + tf * 1.1, 0.85, 1.4, 0.75, '#181C22');
+          Box(25.8, 1.4, -3.2 + tf * 1.1, 0.75, 0.15, 0.65, '#F59E0B', { lw: 0, emis: 0.55 });
+        }
+        Line3([25.8, 1.5, -2.1], [23.5, 3.4, -3.0], '#FFF7E6', 3, 1);
+
+        // Demand (amber/coral) vs constrained grid capacity + staggered world-anchored labels synced to 20.16-24.10 SRT
+        if (t >= 20.16) {
+          if (t >= 20.20) Label('AFFORDABLE', 25.8, 2.1, -1.2, 2.2, 0.55, '#181C22', '#F59E0B', { line: '#F59E0B' });
+          if (t >= 20.90) Label('RELIABLE',   28.8, 3.4, -0.5, 2.0, 0.55, '#181C22', '#FFF7E6', { line: '#F59E0B' });
+          if (t >= 21.65) Label('LOW-CARBON', 29.0, 6.2, -2.2, 2.2, 0.55, '#181C22', '#76B900', { line: '#76B900' });
+          if (t >= 22.65) Label('AT SCALE',   22.5, 4.4, -1.5, 2.0, 0.55, '#181C22', '#D94E43', { line: '#D94E43' });
+        }
+        if (t >= 23.00) {
+          const demU = easeOut(seg(t, 23.20, 26.20));
+          Box(21.4, 0, -1.5, 0.65, 1.9, 0.65, '#F59E0B', { emis: 0.35 });
+          Box(22.5, 0, -1.5, 0.65, lerp(1.5, 3.9, demU), 0.65, demU > 0.6 ? '#D94E43' : '#F59E0B', { emis: 0.6 });
+        }
+      }
+
+      // Shot 9 (26.74 - 30.80): Taiwan chip on tray -> container closes -> Premium 3D Cargo Jet over Full 2D World Map
+      if (X.worldMap) X.worldMap.visible = (t >= 28.15 && t < 35.10);
+      if (X.mapClouds) X.mapClouds.forEach((cm, ci) => { cm.visible = (t >= 28.15 && t < 35.10); cm.position.x += Math.sin(t * 0.2 + ci) * 0.002; });
+      if (X.cargoPlane) X.cargoPlane.visible = (t >= 28.15 && t < 35.10);
+
+      if (t >= 26.74 && t < 31.34) {
+        if (t < 28.15) {
+          const packU = easeOut(seg(t, 26.85, 27.65));
+          const lidU = easeOut(seg(t, 27.60, 28.10));
+          Box(26.0, 0.0, 0.0, 2.2, 0.16, 2.2, '#2C323B');
+          Box(26.0, lerp(0.18, 0.32, packU), 0.0, 0.85, 0.14, 0.85, '#76B900', { emis: 0.65 });
+          Box(26.0, 0.18, 0.0, 1.35, 0.45, 1.35, '#181C22', { a: 0.75 });
+          if (lidU > 0.05) Box(26.0, lerp(1.15, 0.63, lidU), 0.0, 1.40, 0.14, 1.40, '#3A424E');
+        } else if (X.flightCurve && X.cargoPlane) {
+          const flU = clamp(easeInOut(seg(t, 28.20, 30.80)), 0.01, 0.99);
+          // Draw glowing amber Catmull-Rom route line up to flU
+          const steps = 18;
+          for (let s = 0; s < steps; s++) {
+            const u0 = (s / steps) * flU, u1 = ((s + 1) / steps) * flU;
+            const q0 = X.flightCurve.getPointAt(u0), q1 = X.flightCurve.getPointAt(u1);
+            const mC = mp(26, 0, 0); // convert world back to local for Line3
+            Line3([q0.x - mC[0] + 26, q0.y, q0.z - mC[2]], [q1.x - mC[0] + 26, q1.y, q1.z - mC[2]], '#F59E0B', 3.5, 0.95);
+          }
+          // Position & bank 3D cargo aircraft along Catmull-Rom tangent
+          const pos = X.flightCurve.getPointAt(flU);
+          const nxt = X.flightCurve.getPointAt(Math.min(1, flU + 0.02));
+          X.cargoPlane.position.copy(pos);
+          X.cargoPlane.lookAt(nxt);
+          X.cargoPlane.rotateZ(Math.sin(flU * Math.PI) * -0.24);
+          X.cargoPlane.scale.setScalar(1.25);
+
+          // Taiwan fab marker & US destination cargo airport + chip shipment icon
+          Box(19.8, 0.04, 0.6, 0.55, 0.25, 0.55, '#76B900', { lw: 0, emis: 0.75 });
+          Box(31.2, 0.04, -1.2, 0.65, 0.12, 0.65, '#F59E0B', { lw: 0, emis: 0.55 });
+          if (flU > 0.85) Box(31.2, 0.22, -1.2, 0.42, 0.24, 0.42, '#76B900', { lw: 0, emis: 0.9 });
+        }
+      }
+
+      // Shot 10-11 (31.34 - 37.54): Pull back from US shipment (Foreground Plant vs Background Plane + Red X) -> Virginia
+      if (t >= 31.34) {
+        if (t < 35.10) {
+          // Keep 3D cargo plane parked at US destination in background
+          if (X.cargoPlane && X.flightCurve) {
+            const dst = X.flightCurve.getPointAt(0.99);
+            X.cargoPlane.position.copy(dst);
+            X.cargoPlane.rotation.set(0, Math.PI * 0.45, 0);
+            X.cargoPlane.scale.setScalar(0.95);
+          }
+          Box(31.2, 0.04, -1.2, 0.65, 0.12, 0.65, '#F59E0B', { lw: 0, emis: 0.55 });
+          Box(31.2, 0.22, -1.2, 0.42, 0.24, 0.42, '#76B900', { lw: 0, emis: 0.85 });
+
+          // Massive foreground power plant (cooling towers, turbines, generators, transformers)
+          Box(25.4, 0, 0.4, 5.8, 3.8, 3.8, '#2C323B');
+          Cyl(24.0, 3.8, 0.4, 0.88, 3.2, '#3A424E', { seg: 14 });
+          Cyl(26.8, 3.8, 0.4, 0.88, 3.2, '#3A424E', { seg: 14 });
+          Box(28.8, 0, 0.6, 1.2, 1.4, 1.8, '#181C22'); // transformer bay
+          Box(28.8, 1.4, 0.6, 1.0, 0.16, 1.6, '#F59E0B', { lw: 0, emis: 0.5 });
+          Box(25.4, 0.04, 0.4, 6.2, 0.14, 4.2, '#F59E0B', { lw: 0, emis: 0.35 });
+
+          // Attempted dashed loading outline around aircraft (31.60 - 32.85): stops, shakes, disappears
+          if (t >= 31.60 && t < 32.95) {
+            const shk = t >= 32.45 ? Math.sin(t * 60) * 0.12 : 0;
+            const bx = lerp(26.2, 29.8, easeOut(seg(t, 31.60, 32.40))) + shk;
+            Line3([bx - 1.2, 0.4, -0.4], [bx + 1.2, 0.4, -0.4], '#F59E0B', 3, 0.9);
+            Line3([bx - 1.2, 2.2, -0.4], [bx + 1.2, 2.2, -0.4], '#F59E0B', 3, 0.9);
+            Line3([bx - 1.2, 0.4, -0.4], [bx - 1.2, 2.2, -0.4], '#F59E0B', 3, 0.9);
+            Line3([bx + 1.2, 0.4, -0.4], [bx + 1.2, 2.2, -0.4], '#F59E0B', 3, 0.9);
+          }
+
+          // Large Terracotta Coral Cross Mark (X) over attempted loading (32.60 - 35.05)
+          if (t >= 32.60) {
+            const xU = easeOut(seg(t, 32.60, 32.95));
+            Line3([23.0, 0.8, 2.5], [lerp(23.0, 29.0, xU), lerp(0.8, 5.8, xU), 2.5], '#D94E43', 7, 1);
+            Line3([29.0, 0.8, 2.5], [lerp(29.0, 23.0, xU), lerp(0.8, 5.8, xU), 2.5], '#D94E43', 7, 1);
+            if (t < 33.3) hit(26.0, 3.2, 2.5, 32.60, '#D94E43', 280);
+          }
+        } else {
+          // Shot 11 (34.36 - 37.54): Substation cables -> Eastern US architectural grid map + Virginia focal point
+          Box(26.0, 0.0, -1.0, 10.5, 0.18, 7.0, '#181C22');
+          [[-3.2, -2.0], [-1.8, 1.4], [2.2, -1.2], [2.8, 1.8], [0.4, -2.6]].forEach(([gx, gz]) => {
+            Line3([26.0 + gx, 0.22, -1.0 + gz], [26.0, 0.22, -1.0], '#F59E0B', 3, 1);
+            Box(26.0 + gx, 0.20, -1.0 + gz, 0.52, 0.24, 0.52, '#2C323B');
+          });
+          // Virginia focal point + October 2025 marker
+          const vaPulse = 0.75 + 0.25 * Math.sin(t * 6);
+          Box(26.0, 0.22, -1.0, 1.05, 0.36, 1.05, '#FFF7E6', { lw: 0, emis: vaPulse });
+          Label('VIRGINIA', 26.0, 1.15, -1.0, 2.0, 0.5, '#181C22', '#FFF7E6', { line: '#F59E0B' });
+        }
+      }
     }
 
-    // ===== S3 (52, 37.50 - 53.04): Aurora Virginia Grid Throttling =====
-    if (t >= 37.3) {
-      Box(47.0, 0, -1.8, 4.0, 4.8, 3.0, PAL.steel);
-      Box(57.0, 0, -1.8, 4.0, 5.2, 3.0, PAL.ink);
-      const thr = t >= 46.30;
-      Line3([49.0, 2.8, -1.8], [55.0, 2.8, -1.8], thr ? PAL.cyan : PAL.amber, 8, 1);
-      Box(52.0, 2.0, -1.8, 1.6, 1.8, 1.6, thr ? PAL.cyan : PAL.steel, { emis: thr ? 0.65 : 0 });
-      pop('AURORA VIRGINIA', 52, 7.8, -1.0, 7.6, 1.1, PAL.ink, PAL.ivory, 43.9, 52.8, { accent: PAL.cyan });
-      if (thr) hit(52.0, 2.8, -1.8, 46.30, PAL.cyanHi, 250);
+    // ===== BEAT 5 (37.94 - 52.58, c = 52): Aurora Virginia (3 Orgs -> Facility -> Control Room -> Grid Stability) =====
+    if (t >= 37.7) {
+      // Shot 12 (37.94 - 43.60): NVIDIA (37.94), EPRI (38.70), PJM (40.62) converging to Aurora
+      if (t < 43.80) {
+        const lnU = easeOut(seg(t, 41.20, 43.40));
+        // NVIDIA GPU compute structure
+        Box(48.2, 0.0, -2.5, 1.4, 2.3, 1.2, '#181C22');
+        Box(48.2, 0.5, -1.85, 1.0, 1.2, 0.1, '#76B900', { lw: 0, emis: 0.75 });
+        if (t >= 37.94) Label('NVIDIA', 48.2, 2.8, -2.5, 1.8, 0.5, '#181C22', '#76B900', { line: '#76B900' });
+        // EPRI power research rig
+        Box(52.0, 0.0, -3.6, 1.5, 2.1, 1.4, '#2C323B');
+        Box(52.0, 2.1, -3.6, 1.54, 0.14, 1.44, '#FFF7E6', { lw: 0, emis: 0.75 });
+        if (t >= 38.70) Label('EPRI', 52.0, 2.7, -3.6, 1.6, 0.5, '#181C22', '#FFF7E6', { line: '#FFF7E6' });
+        // PJM Interconnection grid pylon
+        Box(55.8, 0.0, -2.5, 1.2, 2.6, 1.2, '#2C323B');
+        Box(55.8, 2.3, -2.5, 2.0, 0.18, 0.25, '#F59E0B', { lw: 0, emis: 0.75 });
+        if (t >= 40.62) Label('PJM INTERCONNECTION', 55.8, 3.0, -2.5, 3.1, 0.5, '#181C22', '#F59E0B', { line: '#F59E0B' });
+
+        [[48.2, -2.5, '#76B900'], [52.0, -3.6, '#FFF7E6'], [55.8, -2.5, '#F59E0B']].forEach(([ox, oz, ocol]) => {
+          Line3([ox, 0.5, oz + 0.7], [lerp(ox, 52.0, lnU), 0.5, lerp(oz + 0.7, 0.5, lnU)], ocol, 3, 1);
+        });
+      }
+
+      // Shot 13-16 (43.60 - 52.58): Aurora Data Center Buildings + Substation + Control Room + Grid Pulse
+      if (t >= 43.55) {
+        // Two Data Center Buildings with green GPU racks alongside electrical substation (amber) + regional grid lines
+        Box(48.8, 0.0, -2.0, 3.2, 2.4, 2.6, '#181C22');
+        Box(48.8, 0.55, -0.65, 2.5, 1.2, 0.10, '#76B900', { lw: 0, emis: t >= 49.30 ? 0.45 : 0.78 });
+        Box(51.4, 0.0, -3.8, 2.4, 1.8, 2.0, '#181C22');
+        Box(51.4, 0.45, -2.75, 1.8, 0.9, 0.08, '#76B900', { lw: 0, emis: t >= 49.30 ? 0.45 : 0.78 });
+        Box(55.2, 0.0, -2.0, 3.0, 2.2, 2.6, '#2C323B');
+        Box(55.2, 2.2, -2.0, 2.6, 0.20, 0.35, '#F59E0B', { lw: 0, emis: 0.75 });
+        Line3([50.4, 1.4, -2.0], [53.7, 1.4, -2.0], t >= 49.30 ? '#FFF7E6' : '#F59E0B', 4, 1);
+        Line3([55.2, 2.3, -2.0], [60.5, 2.8, -6.5], '#FFF7E6', 3, 0.9);
+
+        // Shot 14-15 (46.30 - 51.78): Control Room Monitoring Installation + Real-Time Throttling
+        if (t >= 46.20 && t < 52.10) {
+          const riseU = easeOut(seg(t, 46.30, 49.10));
+          const throtU = easeOut(seg(t, 49.40, 51.40));
+          const demRatio = clamp(lerp(0.42, 0.94, riseU) - throtU * 0.34, 0.2, 0.96);
+          Panel(52.0, 2.2, -0.4, 3.8, 2.1, (g, pw, ph) => {
+            g.fillStyle = '#181C22'; g.fillRect(0, 0, pw, ph);
+            g.strokeStyle = t >= 49.30 ? '#76B900' : '#F59E0B'; g.lineWidth = 6; g.strokeRect(4, 4, pw - 8, ph - 8);
+            g.fillStyle = '#F4F6F8'; g.font = '800 24px' + FAM;
+            g.fillText('AURORA · REAL-TIME GRID TELEMETRY', 24, 38);
+            g.fillStyle = '#8E99A8'; g.font = '800 18px' + FAM;
+            g.fillText('GRID CAPACITY LIMIT', 24, 86);
+            g.fillStyle = '#2C323B'; g.fillRect(24, 98, pw - 48, 28);
+            g.fillStyle = '#F59E0B'; g.fillRect(24, 98, (pw - 48) * 0.85, 28);
+            g.fillStyle = '#8E99A8'; g.fillText('DATA CENTER DEMAND', 24, 160);
+            g.fillStyle = '#2C323B'; g.fillRect(24, 172, pw - 48, 28);
+            g.fillStyle = (riseU > 0.75 && throtU < 0.3) ? '#D94E43' : '#76B900';
+            g.fillRect(24, 172, (pw - 48) * demRatio, 28);
+          }, { cw: 512 });
+        }
+        // Controlled electrical pulse travelling across network (Shots 15-16)
+        if (t >= 49.30) {
+          const pQ = (t * 1.15) % 1;
+          Box(lerp(48.8, 59.5, pQ), 1.8, lerp(-2.0, -5.8, pQ), 0.26, 0.22, 0.26, '#FFF7E6', { lw: 0, emis: 0.95 });
+        }
+      }
     }
+
+    // ===== 2D KINETIC OVERLAYS (synced to Act 4 part 1.srt) =====
+    OVER.push(() => {
+      if (t >= 0.15 && t < 9.75) {
+        pill2D(280, 115, 'PwC · 2026 OUTLOOK', '#181C22', '#8E99A8', '#2D3440', env(t, 0.15, 9.75, 0.15, 0.15));
+      }
+      if (t >= 3.80 && t < 7.35) {
+        pill2D(960, 175, '$31.6 TRILLION', '#181C22', '#F59E0B', '#F59E0B', env(t, 3.80, 7.35, 0.15, 0.15));
+      }
+      if (t >= 17.20 && t < 19.60) {
+        pill2D(960, 175, '#1 — ELECTRICITY', '#181C22', '#F59E0B', '#F59E0B', env(t, 17.20, 19.60, 0.12, 0.15));
+      }
+      if (t >= 29.00 && t < 31.10) {
+        const hrs = Math.round(24 * easeOut(seg(t, 29.00, 30.65)));
+        pill2D(960, 175, hrs + ' HOURS', '#181C22', '#F4F6F8', '#76B900', env(t, 29.00, 31.10, 0.12, 0.12));
+      }
+      if (t >= 31.34 && t < 32.70) {
+        pill2D(960, 175, 'CHIPS CAN FLY.', '#181C22', '#F4F6F8', '#76B900', env(t, 31.34, 32.70, 0.10, 0.10));
+      }
+      if (t >= 32.70 && t < 34.95) {
+        pill2D(960, 175, 'POWER PLANTS CANNOT.', '#181C22', '#F59E0B', '#D94E43', env(t, 32.70, 34.95, 0.10, 0.12));
+      }
+      if (t >= 35.30 && t < 37.65) {
+        pill2D(960, 175, 'OCTOBER 2025', '#181C22', '#FFF7E6', '#F59E0B', env(t, 35.30, 37.65, 0.12, 0.12));
+      }
+      if (t >= 43.60 && t < 46.10) {
+        const a = env(t, 43.60, 46.10, 0.12, 0.15);
+        ctx.save(); ctx.globalAlpha = a;
+        rrect(ctx, 700, 150, 520, 118, 16); ctx.fillStyle = '#181C22'; ctx.fill();
+        ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 2.5; ctx.stroke();
+        ctx.fillStyle = '#FFF7E6'; ctx.font = '900 42px' + FAM; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('AURORA', 960, 194);
+        ctx.fillStyle = '#F59E0B'; ctx.font = '800 18px' + FAM;
+        ctx.fillText('VIRGINIA · OCTOBER 2025', 960, 240);
+        ctx.restore();
+      }
+      if (t >= 46.30 && t < 49.00) {
+        pill2D(960, 175, 'REAL-TIME POWER MANAGEMENT', '#181C22', '#76B900', '#76B900', env(t, 46.30, 49.00, 0.12, 0.12));
+      }
+      if (t >= 49.00 && t < 52.30) {
+        const a = env(t, 49.00, 52.30, 0.12, 0.15);
+        pill2D(720, 195, 'GRID CAPACITY', '#181C22', '#F59E0B', '#F59E0B', a);
+        pill2D(1200, 195, 'DATA CENTER DEMAND', '#181C22', '#76B900', '#76B900', a);
+      }
+    });
 
     endFrame(t);
   }
@@ -2342,7 +2781,7 @@ function drawSpriteChar(c, p, sc, t) {
     const gf = Math.floor(time * 12);
     grainPat.setTransform(new DOMMatrix([1, 0, 0, 1, Math.floor(hash(gf * 5 + 3) * 256), Math.floor(hash(gf * 5 + 4) * 256)]));
     ctx.fillStyle = grainPat; ctx.fillRect(0, 0, 1920, 1080);
-    if (!showSheet) drawRail(time, [0.0, 26.7, 37.5, 53.04]);
+    if (!showSheet) drawRail(time, [0.0, 10.30, 20.16, 31.34, 37.94, 52.58]);
     drawCaptions(time);
   }
 
